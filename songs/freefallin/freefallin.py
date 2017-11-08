@@ -1,8 +1,8 @@
 # string order: EADGBe
 chords = dict([
-('E'   , 'xxxx2g1r0w0w'),
-('D'   , 'xxxx0w2r3b2g'),
-('A'   , 'xx0w2r2g2b0w'),
+('E'   , 'ExxAxxD2gG1rB0we0w'),
+('D'   , 'ExxAxxD0wG2rB3be2g'),
+('A'   , 'ExxA0wD2rG2gB2be0w'),
 ])
 
 f = open("chords.txt", "r+")
@@ -19,7 +19,7 @@ for line in f.readlines():
         g.write(tab)
         g.write('\n')
 
-g.write('xxxxxxxxxxxx')
+g.write("xxxxxxxxxxxxxxxxx")
 
 f.close()
 g.close()
