@@ -1,12 +1,15 @@
+#include "Switches.h"
+
 //creating type "State"
-enum State {HOME = 0, LESSONS = 1, LEARN = 2, PLAY = 3, SETTINGS = 4, SHIFTING = 5, SUSTAIN = 6, CHORDS = 7, PLAYING_LESSON = 8, LEARNING_SONG = 9, PLAYING_SONG = 10, FINISHED_LEARNING = 11, FINISHED_PLAYING = 12};
+enum State {HOME = 0, LESSONS = 1, LEARN = 2, PLAY = 3, SETTINGS = 4, SHIFTING = 5, SUSTAIN = 6, CHORDS = 7, PLAYING_LESSON = 8, LEARNING_SONG = 9, PLAYING_SONG = 10, FINISHED_LESSON = 11, FINISHED_LEARNING = 12, FINISHED_PLAYING = 13};
 
 //creating variable of type "State" called CurrState
-extern enum State CurrState;
+enum State CurrState;
+
 
 void setup() {
   // put your setup code here, to run once:
-
+  InitializeVars();
 }
 
 void loop() {
@@ -54,19 +57,19 @@ void loop() {
       }
     case SHIFTING:
       switch (BtnPressed){
-        case Shifting101:
+        case Btn1: //Shifting101:
           //TODO: DrawShiftingLesson(101);
             // -- Make Changes for each Difficulty withing the draw
             // -- ex. print("101")
           CurrState = PLAYING_LESSON;
           break;
-        case Shifting102:
+        case Btn2: //Shifting102:
           //TODO: DrawShiftingLesson(102);
               // -- Make Changes for each Difficulty within the draw
               // -- ex. print("102")
           CurrState = PLAYING_LESSON;
           break;
-        case Shifting103:
+        case Btn3: //Shifting103:
           //TODO: DrawShiftingLesson(103);
             // -- Make Changes for each Difficulty within the draw
             // -- ex. print("101")
@@ -75,19 +78,19 @@ void loop() {
       }
     case SUSTAIN:
       switch (BtnPressed){
-        case Sustain101:
+        case Btn1: //Sustain101:
           //TODO: DrawSustainLesson();
             // -- Make Changes for each Difficulty within the draw
             // -- ex. print("101")
           CurrState = PLAYING_LESSON;
           break;
-        case Sustain102:
+        case Btn2: //Sustain102:
           //TODO: DrawSustainLesson();
               // -- Make Changes for each Difficulty within the draw
               // -- ex. print("102")
           CurrState = PLAYING_LESSON;
           break;
-        case Sustain103:
+        case Btn3: //Sustain103:
           //TODO: DrawSustainLesson();
             // -- Make Changes for each Difficulty within the draw
             // -- ex. print("101")
@@ -96,19 +99,19 @@ void loop() {
       }
     case CHORDS:
       switch (BtnPressed){
-        case Chords101:
+        case Btn1: //Chords101:
           //TODO: DrawChordsLesson();
             // -- Make Changes for each Difficulty within the draw
             // -- ex. print("101")
           CurrState = PLAYING_LESSON;
           break;
-        case Chords102:
+        case Btn2: //Chords102:
           //TODO: DrawChordsLesson();
               // -- Make Changes for each Difficulty within the draw
               // -- ex. print("102")
           CurrState = PLAYING_LESSON;
           break;
-        case Chords103:
+        case Btn3: //Chords103:
           //TODO: DrawChordsLesson();
             // -- Make Changes for each Difficulty within the draw
             // -- ex. print("101")
@@ -117,12 +120,12 @@ void loop() {
       }
     case PLAYING_LESSON:
       switch (BtnPressed){
-        case PlayPause:
+        case Btn1: //PlayPause:
           //TODO: PlayPause() DOMINO //Use a change of flag in the interrupt for this
                                      //  -- to know if it is on Play or Pause.
                                      // within PlayPause() will be LED functionality.
           break;
-        case Quit:
+        case Btn2: //Quit:
           //TODO: DrawFinishedLesson();
           //TODO: Quit(); //within this function should be a "CurrState = FINIHEDD_LESSON"
         
@@ -132,30 +135,30 @@ void loop() {
       }
     case FINISHED_LESSON:
       switch (BtnPressed){
-        case Lessons:
+        case Btn1: //Lessons:
           //TODO: CurrState = DrawLessonsScreen();
           break;
       }
 /****************************** LEARN MODE *************************************/ 
     case LEARN:
       switch (BtnPressed){
-        case UP:
+        case Btn1: //UP:
           //TODO: UPsongList() keep track of how many times, possible loop around?
           //TODO: DrawLearnScreen(); //to refresh the screen with the new songs.
           break;
-        case DOWN:
+        case Btn2: //DOWN:
           //TODO: DOWNsongList() same as UPsongList
           //TODO: DrawLearnScreen();
           break;
-        case SONG1:
+        case Btn3: //SONG1:
           //TODO: DrawLearnSong(); draws the learning song screen
           CurrState = LEARNING_SONG;
           break;
-        case SONG2:
+        case Btn4: //SONG2:
           //TODO: DrawLearnSong();
           CurrState = LEARNING_SONG;
           break;
-        case SONG3:
+        case Btn5: //SONG3:
           //TODO: DrawLearnSong();
           CurrState = LEARNING_SONG;
           break;      
@@ -172,11 +175,11 @@ void loop() {
                               ex. Control Placement LED
           */
       switch (BtnPressed){
-        case PlayPause:
+        case Btn1: //PlayPause:
           //TODO: PlayPause() //Use a change of flag in the interrupt for this
           //                     -- to know if it is on Play or Pause.
           break;
-        case Quit:
+        case Btn2: //Quit:
           //TODO: Quit(); //within this function should be a "CurrState = FINISHED_LEARNING"
           //TODO: DrawFinishedLearning();
           break;
@@ -184,35 +187,35 @@ void loop() {
         //TODO: At 100% in this screen it should change State. Ex. "CurrState = FINSIHED_LEARNING
         //TODO: DrawFinishedLearning();
       }
-   case FINSIHED_LEARNING:
+   case FINISHED_LEARNING:
       switch (BtnPressed){
-        case PlayCurrentSong:
+        case Btn1: //PlayCurrentSong:
           //TODO: PlaySong();  
           break;
-        case Back:
+        case BackBtn:
           CurrState = LEARN;
           break;
       }
 /******************************** PLAY MODE **********************************/
    case PLAY:
       switch (BtnPressed){
-        case UP:
+        case Btn1: //UP:
           //TODO: UPsongList()
           //TODO: DrawPlayScreen(); //to refresh the songlist
           break;
-        case DOWN:
+        case Btn2: //DOWN:
           //TODO: DOWNsongList() //same as UPsongList
           //TODO: DrawPlayScreen();
           break;
-        case SONG1:
+        case Btn3: //SONG1:
           //TODO: DrawPlaySong(); draws the learning song screen
           CurrState = PLAYING_SONG;
           break;
-        case SONG2:
+        case Btn4: //SONG2:
           //TODO: DrawPlaySong();
           CurrState = PLAYING_SONG;
           break;
-        case SONG3:
+        case Btn5: //SONG3:
           //TODO: DrawPlaySong();
           CurrState = PLAYING_SONG;
           break;      
@@ -229,31 +232,36 @@ void loop() {
                               ex. No Control Placement LED, instead uses the tempo.
           */
       switch (BtnPressed){
-        case PlayPause:
+        case Btn1: //PlayPause:
           //TODO: PlayPause() //Use a change of flag in the interrupt for this
           //                     -- to know if it is on Play or Pause.
           break;
-        case Quit:
+        case Btn2: //Quit:
           //TODO: Quit(); //quits the song, and takes user to the results
           //TODO: DrawFinishedPlaying();
-          CurrState = FINSIHED_PLAYING;
+          CurrState = FINISHED_PLAYING;
           break;
         
         //TODO: At 100% in this screen it should change State. Ex. "CurrState = FINSIHED_PlAYING"
         //TODO: DrawFinishedPlaying();
       }
-   case FINSIHED_PLAYING:
+   case FINISHED_PLAYING:
       switch (BtnPressed){
-        case SongSelect:
+        case Btn1: //SongSelect:
           CurrState = PLAY;  
           break;
       }
 /********************************* SETTINGS ***********************************/
   case SETTINGS:
-    switch (BtnPrssed){
+    switch (BtnPressed){
       //TODO: ALL SETTINGS OPTIONS AND FUNCTIONALITY
     }
   } //State Switch Closing Brace
 }
 
+void InitializeVars(){
+ CurrState = HOME;
+ BtnPressed = NONE;
+  
+}
 
