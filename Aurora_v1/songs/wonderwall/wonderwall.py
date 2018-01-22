@@ -1,11 +1,11 @@
 # string order: EADGBe
 chords = dict([
-('Em'  , '0w2r2g0w3b3y'),
-('G'   , '3g2r0w0w3b3y'),
-('D'   , 'xxxx0w2r3b3y'),
-('A'   , 'xxxx1r1g3b3y'),
-('C'   , 'xx3g2r0w3b3y'),
-('D/F#', 'xx0w0w2r3b3y')
+('Em'  , 'E0wA2rD2gG0wB3be3y'),
+('G'   , 'E3gA2rD0wG0wB3be3y'),
+('D'   , 'ExxAxxD0wG2rB3be3y'),
+('A'   , 'ExxAxxD1rG1gB3be3y'),
+('C'   , 'ExxA3gD2rG0wB3be3y'),
+('D/F#', 'ExxA0wD0wG2rB3be3y')
 ])
 
 f = open("chords.txt", "r+")
@@ -22,7 +22,7 @@ for line in f.readlines():
         g.write(tab)
         g.write('\n')
 
-g.write("xxxxxxxxxxxx")
+g.write("xxxxxxxxxxxxxxxxx")
 
 f.close()
 g.close()
