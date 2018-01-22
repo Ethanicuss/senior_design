@@ -1,8 +1,7 @@
-//Functions that control song play and can be called from any screen
+// Functions that control song play and can be called from any screen
 bool fileOpened;
 String song;
 int noteNumber;
-extern bool play;
 void PlayPause(String songName){
   if (play){
     // load song from SD card (DOMINO)
@@ -25,7 +24,7 @@ void PlayPause(String songName){
   }
 }
 
-void Quit(){
+void quit(){
   darkLED(); // TODO: Turns off all the LEDS
 }
 

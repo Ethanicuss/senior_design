@@ -7,6 +7,10 @@ void UpdateScreen(){
   
 }
 
+void DrawStartupScreen(){
+  // bmpDraw(bmpfilename, 0, 0);
+ }
+
  void DrawHomeScreen(){
   //Home screen options
  }
@@ -92,4 +96,4 @@ void UpdateScreen(){
    *  
    */
  }
-
+ 
