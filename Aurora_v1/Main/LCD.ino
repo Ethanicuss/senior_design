@@ -15,7 +15,7 @@ Adafruit_HX8357 tft = Adafruit_HX8357(TFT_CS, TFT_DC);
 
 #define SD_CS 4
 
-void setup(void) {
+void LCDsetup(void) {
   Serial.begin(9600);
 
   tft.begin(HX8357D);
@@ -27,11 +27,16 @@ void setup(void) {
   }
   Serial.println("OK!");
 
-  bmpDraw("jumpers.bmp", 0, 0);
+ // bmpDraw("jumpers.bmp", 0, 0);
 }
 
-void loop() {
+void LCDloop() {
 }
+
+
+void DrawStartupScreen(){
+  // bmpDraw(bmpfilename, 0, 0);
+ }
 
 
  void DrawHomeScreen(){
@@ -119,6 +124,10 @@ void loop() {
    *  
    */
  }
+
+
+// LCD Code Below
+ 
 
 #define BUFFPIXEL 20
 

@@ -1,3 +1,5 @@
+#include "Switches.h"
+
 /*TODO: Within an interrupt Handler for switch inputs
         we have to assign "BtnPressed = _______"
 
@@ -27,6 +29,8 @@
 */
 
 //Remove this code when we figure out touch screen buttons.
-enum Button {NONE = 0, UP = 1, DOWN = 2, BACK = 3, SET = 4, OFF = 5};
-extern enum Button BtnPressed;
+//enum Button {NONE = 0, UP = 1, DOWN = 2, BACK = 3, SET = 4, OFF = 5};
+//extern enum Button BtnPressed;
+
+enum Button BtnPressed = NONE;
 
