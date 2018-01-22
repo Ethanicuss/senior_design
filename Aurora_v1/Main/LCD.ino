@@ -3,6 +3,9 @@
  *       This Module will just draw each screen.
  */
 
+void UpdateScreen(){
+  
+}
 
  void DrawHomeScreen(){
   //Home screen options

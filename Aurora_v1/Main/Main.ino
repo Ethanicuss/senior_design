@@ -1,12 +1,17 @@
-//creating type "State"
+// creating type "State"
 enum State {HOME = 0, LESSONS = 1, LEARN = 2, PLAY = 3, SETTINGS = 4, SHIFTING = 5, SUSTAIN = 6, CHORDS = 7, PLAYING_LESSON = 8, LEARNING_SONG = 9, PLAYING_SONG = 10, FINISHED_LEARNING = 11, FINISHED_PLAYING = 12};
 
-//creating variable of type "State" called CurrState
+// variable/flag to keep track of play or paused state
+extern bool play;
+
+// creating variable of type "State" called CurrState
 extern enum State CurrState;
 
 void setup() {
   // put your setup code here, to run once:
-
+  play = false;
+  setupLED();
+  setupSD();
 }
 
 void loop() {
@@ -124,7 +129,7 @@ void loop() {
           break;
         case Quit:
           //TODO: DrawFinishedLesson();
-          //TODO: Quit(); //within this function should be a "CurrState = FINIHEDD_LESSON"
+          //TODO: Quit(); //within this function should be a "CurrState = FINISHED_LESSON"
         
         //TODO: At 100% in this screen it should change State. Ex. "CurrState = FINISHED_LESSON"
         //TODO: 
@@ -250,7 +255,7 @@ void loop() {
       }
 /********************************* SETTINGS ***********************************/
   case SETTINGS:
-    switch (BtnPrssed){
+    switch (BtnPressed){
       //TODO: ALL SETTINGS OPTIONS AND FUNCTIONALITY
     }
   } //State Switch Closing Brace

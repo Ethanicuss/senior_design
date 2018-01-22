@@ -8,4 +8,8 @@
  *       
  */
 
+ void CheckADC(String s){
+  
+ }
+
  
