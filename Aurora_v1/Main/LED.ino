@@ -7,7 +7,7 @@
 
 void LearnSong(char* song, int numberOfNotes){
  for(int i = 0; i < numberOfNotes; i++){
-  LED_ON(song[i], song[i].length);
+  //LED_ON(song[i], song[i].length);
  }
 }
 
