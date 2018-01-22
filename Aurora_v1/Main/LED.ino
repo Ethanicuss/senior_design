@@ -1,8 +1,8 @@
 #include "stdio.h"
 #include <FastLED.h>
 #define LEDS_PER_ROW 6
-#define NUM_ROWS 10
-#define NUM_LEDS 60
+#define NUM_ROWS 12
+#define NUM_LEDS 72
 #define LED_PIN 2
 
 /* TODO: Any function that have "LED" in it.
@@ -33,6 +33,7 @@ void lightLED(String s, int noteNumber){
     char str = s[position];
     int fret = int(s[position + 1]);
     char color = s[position + 2];
+    // todo: actually light up LED
   }
 }
 
