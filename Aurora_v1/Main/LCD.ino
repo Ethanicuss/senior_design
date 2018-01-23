@@ -1,12 +1,3 @@
-/* TODO: Any function that has "Draw" in it.
- *       
- *       This Module will just draw each screen.
- */
-
-#include <Adafruit_GFX.h>    // Core graphics library
-#include "Adafruit_HX8357.h"
-#include <SPI.h>
-#include <SD.h>
 
 #define TFT_DC 9
 #define TFT_CS 10
@@ -15,7 +6,8 @@ Adafruit_HX8357 tft = Adafruit_HX8357(TFT_CS, TFT_DC);
 
 #define SD_CS 4
 
-void LCDsetup(void) {
+
+void LCDSetup(void) {
   Serial.begin(9600);
 
   tft.begin(HX8357D);
@@ -27,10 +19,7 @@ void LCDsetup(void) {
   }
   Serial.println("OK!");
 
- // bmpDraw("jumpers.bmp", 0, 0);
-}
-
-void LCDloop() {
+  bmpDraw("jumpers.bmp", 0, 0);
 }
 
 
@@ -126,8 +115,16 @@ void DrawStartupScreen(){
  }
 
 
-// LCD Code Below
- 
+
+
+
+// This function opens a Windows Bitmap (BMP) file and
+// displays it at the given coordinates.  It's sped up
+// by reading many pixels worth of data at a time
+// (rather than pixel by pixel).  Increasing the buffer
+// size takes more of the Arduino's precious RAM but
+// makes loading a little faster.  20 pixels seems a
+// good balance.
 
 #define BUFFPIXEL 20
 
@@ -260,4 +257,5 @@ uint32_t read32(File &f) {
   ((uint8_t *)&result)[3] = f.read(); // MSB
   return result;
 }
+
 

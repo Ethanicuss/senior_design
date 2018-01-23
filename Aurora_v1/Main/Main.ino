@@ -1,8 +1,7 @@
 #include <Adafruit_GFX.h>    // Core graphics library
-#include "Adafruit_HX8357.h"
+#include <Adafruit_HX8357.h>
 #include <SPI.h>
 #include <SD.h>
-#include </Applications/Arduino.app/Contents/Java/libraries/SD>
 #include "Switches.h"
 
 //creating type "State"
@@ -14,8 +13,9 @@ enum State CurrState;
 
 void setup() {
   // put your setup code here, to run once:
-  InitializeVars();
-}
+  LCDSetup();
+  InitializeVars();  
+} 
 
 void loop() {
   //SWITCH STATEMENT THAT HANDLES EVERY SCREEN STATE
