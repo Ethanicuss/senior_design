@@ -1,5 +1,6 @@
 #include <Adafruit_GFX.h>    // Core graphics library
 #include <Adafruit_HX8357.h>
+#include <TouchScreen.h>
 #include <SPI.h>
 #include <SD.h>
 #include "Switches.h"
@@ -14,13 +15,16 @@ enum State CurrState;
 void setup() {
   // put your setup code here, to run once:
   LCDSetup();
-  InitializeVars();  
+  TouchscreenSetup();
+  InitializeVars(); 
 } 
 
 void loop() {
   //SWITCH STATEMENT THAT HANDLES EVERY SCREEN STATE
   // -- See UI Diagram for Control Flow Graph
 /****************** HOME SCREEN OPTIONS *****************/
+
+  DisplayXYZ();
   switch(CurrState){
     case HOME:
       //TODO; HOME
