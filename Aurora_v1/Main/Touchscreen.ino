@@ -4,6 +4,7 @@
 
 #include <stdint.h>
 #include "TouchScreen.h"
+#include "Switches.h"
 
 #define YP A2  // must be an analog pin, use "An" notation!
 #define XM A3  // must be an analog pin, use "An" notation!
@@ -14,6 +15,12 @@
 // between X+ and X- Use any multimeter to read it
 // For the one we're using, its 300 ohms across the X plate
 TouchScreen ts = TouchScreen(XP, YP, XM, YM, 300);
+
+
+
+TouchScreen getTS(){
+  return ts;
+}
 
 void TouchscreenSetup(void) {
   Serial.begin(9600);
@@ -31,5 +38,10 @@ void DisplayXYZ(void) {
      Serial.print("\tPressure = "); Serial.println(p.z);
   }
 
+  Ycoor = p.y;
+  Xcoor = p.x;
+
   delay(100);
 }
+
+

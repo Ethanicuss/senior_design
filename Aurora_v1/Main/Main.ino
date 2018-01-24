@@ -1,3 +1,5 @@
+#include <TouchScreen.h>
+
 #include <Adafruit_GFX.h>    // Core graphics library
 #include <Adafruit_HX8357.h>
 #include <TouchScreen.h>
@@ -28,25 +30,26 @@ void loop() {
   switch(CurrState){
     case HOME:
       //TODO; HOME
-      TODO: DrawHomeScreen();
+      CheckTouch();
       switch (BtnPressed){
-        case LESSONS:
+        case Btn1: //LESSONS:
           //TODO: DrawLessonsScreen() DON
           DrawLessonsScreen();
           CurrState = LESSONS;
           break;
-        case LEARN:
+        case Btn2: //LEARN:
           //TODO: DrawLearnScreen() DON
           DrawLearnScreen();
           CurrState = LEARN;
           break;
-        case PLAY:
+        case Btn3: //PLAY:
           //TODO: DrawPlayScreen() DON
           DrawPlayScreen();
           CurrState = PLAY;
           break;
-        case SETTINGS:
+        case Btn4: //SETTINGS:
           //TODO: DrawSettingsScreen()
+          DrawSettingsScreen();
           CurrState = SETTINGS;
           break;
       }
@@ -54,18 +57,22 @@ void loop() {
     case LESSONS:
       //TODO - LESSONS
       switch (BtnPressed){
-        case SHIFTING:
+        case Btn1: //SHIFTING:
           //TODO: DrawShiftingScreen()
           CurrState = SHIFTING;
           break;
-        case SUSTAIN:
+        case Btn2: //SUSTAIN:
           //TODO: DrawSustainScreen()
           CurrState = SUSTAIN;
           break;
-        case CHORDS:
-         //TODO: DrawChordsScreen()
-         CurrState = CHORDS;
-         break;
+        case Btn3: //CHORDS:
+          //TODO: DrawChordsScreen()
+          CurrState = CHORDS;
+          break;
+        case BackBtn: //Back:
+          //TODO: DrawHomeScreen()
+          CurrState = HOME;
+          break;
       }
     case SHIFTING:
       switch (BtnPressed){
@@ -86,6 +93,10 @@ void loop() {
             // -- Make Changes for each Difficulty within the draw
             // -- ex. print("101")
           CurrState = PLAYING_LESSON;
+          break;
+        case BackBtn: //Back:
+          //TODO: DrawLessonsScreen()
+          CurrState = LESSONS;
           break;
       }
     case SUSTAIN:
@@ -108,6 +119,10 @@ void loop() {
             // -- ex. print("101")
           CurrState = PLAYING_LESSON;
           break;
+        case BackBtn: //Back:
+          //TODO: DrawLessonsScreen()
+          CurrState = LESSONS;
+          break;
       }
     case CHORDS:
       switch (BtnPressed){
@@ -129,6 +144,10 @@ void loop() {
             // -- ex. print("101")
           CurrState = PLAYING_LESSON;
           break;
+        case BackBtn: //Back:
+          //TODO: DrawLessonsScreen()
+          CurrState = LESSONS;
+          break;
       }
     case PLAYING_LESSON:
       switch (BtnPressed){
@@ -139,7 +158,7 @@ void loop() {
           break;
         case Btn2: //Quit:
           //TODO: DrawFinishedLesson();
-          //TODO: Quit(); //within this function should be a "CurrState = FINIHEDD_LESSON"
+          //TODO: Quit(); //within this function should be a "CurrState = FINISHED_LESSON"
         
         //TODO: At 100% in this screen it should change State. Ex. "CurrState = FINISHED_LESSON"
         //TODO: 
@@ -173,6 +192,10 @@ void loop() {
         case Btn5: //SONG3:
           //TODO: DrawLearnSong();
           CurrState = LEARNING_SONG;
+          break;
+        case BackBtn: //Back:
+          //TODO: DrawHomeScreen()
+          CurrState = HOME;
           break;      
       }
     case LEARNING_SONG:
@@ -205,6 +228,7 @@ void loop() {
           //TODO: PlaySong();  
           break;
         case BackBtn:
+          //TODO: DrawLearnScreen();
           CurrState = LEARN;
           break;
       }
@@ -230,7 +254,11 @@ void loop() {
         case Btn5: //SONG3:
           //TODO: DrawPlaySong();
           CurrState = PLAYING_SONG;
-          break;      
+          break;
+        case BackBtn: //Back:
+          //TODO: DrawHomeScreen()
+          CurrState = HOME;
+          break;       
       }
    case PLAYING_SONG:
         /*TODO: PlaySong() this function should check whatever variable you have assigned
@@ -260,6 +288,7 @@ void loop() {
    case FINISHED_PLAYING:
       switch (BtnPressed){
         case Btn1: //SongSelect:
+          //TODO: DrawPlayScreen();
           CurrState = PLAY;  
           break;
       }
@@ -267,6 +296,10 @@ void loop() {
   case SETTINGS:
     switch (BtnPressed){
       //TODO: ALL SETTINGS OPTIONS AND FUNCTIONALITY
+      case BackBtn: //Back:
+          //TODO: DrawHomeScreen()
+          CurrState = HOME;
+          break; 
     }
   } //State Switch Closing Brace
 }
@@ -274,6 +307,6 @@ void loop() {
 void InitializeVars(){
  CurrState = HOME;
  BtnPressed = NONE;
-  
+ DrawHomeScreen();
 }
 

@@ -27,7 +27,6 @@ void DrawStartupScreen(){
   // bmpDraw(bmpfilename, 0, 0);
  }
 
-
  void DrawHomeScreen(){
   bmpDraw("Home.bmp", 0, 0);
   //Home screen options
@@ -50,6 +49,7 @@ void DrawStartupScreen(){
  }
 
  void DrawSettingsScreen(){
+  bmpDraw("Play.bmp", 0, 0);
   //shows settings
  }
 
@@ -261,5 +261,3 @@ uint32_t read32(File &f) {
   ((uint8_t *)&result)[3] = f.read(); // MSB
   return result;
 }
-
-

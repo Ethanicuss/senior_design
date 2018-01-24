@@ -1,3 +1,8 @@
+#include <stdint.h>
+#include "TouchScreen.h"
+#include <TouchScreen.h>
+
+
 //Functions that Control functionality and can be called from any screen
 
 void PlayPause(){ //DOMINO's structure
@@ -13,5 +18,47 @@ void PlayPause(){ //DOMINO's structure
 
 void Quit(){
   //TODO: LED_OFF "Turns off all the LEDS
+}
+
+void CheckTouch(){
+
+  //Touchscreen ts = getTS();
+  //TSPoint p = ts.getPoint();
+  switch (CurrState){
+    case HOME:
+      if (Ycoor < 1000 && Ycoor > 712 ){
+        BtnPressed = Btn1;
+      }
+      else if (Ycoor < 712 && Ycoor > 513 ){
+        BtnPressed = Btn2;
+      }
+      else if (Ycoor < 513 && Ycoor > 314 ){
+        BtnPressed = Btn3;
+      }
+      else if (Ycoor < 314 &&Ycoor> 100 ){
+        BtnPressed = Btn4;
+      }
+      break;
+    case LESSONS:
+      if (Ycoor < 1000 &&Ycoor> 712 ){
+        BtnPressed = BackBtn;
+      }
+      break;
+    case LEARN:
+      if (Ycoor < 1000 &&Ycoor> 712 ){
+        BtnPressed = BackBtn;
+      }
+      break;
+    case PLAY:
+      if (Ycoor < 1000 && Ycoor > 712 ){
+        BtnPressed = BackBtn;
+      }
+      break;
+    case SETTINGS:
+      if (Ycoor < 1000 && Ycoor > 712 ){
+        BtnPressed = BackBtn;
+      }
+      break;
+  }
 }
 
