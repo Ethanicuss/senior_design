@@ -19,7 +19,7 @@ void LCDSetup(void) {
   }
   Serial.println("OK!");
 
-  bmpDraw("jumpers.bmp", 0, 0);
+  //bmpDraw("jumpers.bmp", 0, 0);
 }
 
 
@@ -29,19 +29,23 @@ void DrawStartupScreen(){
 
 
  void DrawHomeScreen(){
+  bmpDraw("Home.bmp", 0, 0);
   //Home screen options
  }
 
  /*********** HOME MENU SCREENS **********/
  void DrawLessonsScreen(){
+  bmpDraw("Less.bmp", 0, 0);
   //shwos lessons - shifting, sustains, chords
  }
 
  void DrawLearnScreen(){
+  bmpDraw("Learn.bmp", 0, 0);
   //shows song list for learning
  }
 
  void DrawPlayScreen(){
+  bmpDraw("Play.bmp", 0, 0);
   //shows song list for playing
  }
 

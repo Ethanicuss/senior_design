@@ -28,18 +28,21 @@ void loop() {
   switch(CurrState){
     case HOME:
       //TODO; HOME
-      //TODO: DrawHomeScreen();
+      TODO: DrawHomeScreen();
       switch (BtnPressed){
         case LESSONS:
           //TODO: DrawLessonsScreen() DON
+          DrawLessonsScreen();
           CurrState = LESSONS;
           break;
         case LEARN:
           //TODO: DrawLearnScreen() DON
+          DrawLearnScreen();
           CurrState = LEARN;
           break;
         case PLAY:
           //TODO: DrawPlayScreen() DON
+          DrawPlayScreen();
           CurrState = PLAY;
           break;
         case SETTINGS:
