@@ -1,6 +1,7 @@
 #include <stdint.h>
 #include "TouchScreen.h"
 #include <TouchScreen.h>
+#include "Switches.h"
 
 
 //Functions that Control functionality and can be called from any screen
@@ -35,12 +36,12 @@ void CheckTouch(){
       else if (Ycoor < 513 && Ycoor > 314 ){
         BtnPressed = Btn3;
       }
-      else if (Ycoor < 314 &&Ycoor> 100 ){
+      else if (Ycoor < 314 && Ycoor> 100 ){
         BtnPressed = Btn4;
       }
       break;
     case LESSONS:
-      if (Ycoor < 1000 &&Ycoor> 712 ){
+      if (Ycoor < 1000 && Ycoor> 712 ){
         BtnPressed = BackBtn;
       }
       break;
