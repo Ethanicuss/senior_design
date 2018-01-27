@@ -14,7 +14,7 @@
 // For better pressure precision, we need to know the resistance
 // between X+ and X- Use any multimeter to read it
 // For the one we're using, its 300 ohms across the X plate
-TouchScreen ts = TouchScreen(XP, YP, XM, YM, 300);
+TouchScreen ts = TouchScreen(XP, YP, XM, YM, 700);
 
 
 
@@ -23,7 +23,8 @@ TouchScreen getTS(){
 }
 
 void TouchscreenSetup(void) {
-  Serial.begin(9600);
+  //Serial.begin(9600);
+  Serial.begin(115200);
 }
 
 void DisplayXYZ(void) {
@@ -35,13 +36,15 @@ void DisplayXYZ(void) {
   if (p.z > ts.pressureThreshhold) {
      Serial.print("X = "); Serial.print(p.x);
      Serial.print("\tY = "); Serial.print(p.y);
-     Serial.print("\tPressure = "); Serial.println(p.z);
+     //Serial.print("\tPressure = "); Serial.println(p.z);
   }
 
   Ycoor = p.y;
   Xcoor = p.x;
 
-  delay(100);
+  Serial.print("Ycoor = "); Serial.println(Ycoor);
+
+  delay(50);
 }
 
 
