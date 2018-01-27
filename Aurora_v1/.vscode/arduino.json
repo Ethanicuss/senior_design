@@ -1,0 +1,4 @@
+{
+    "port": "COM14",
+    "board": "arduino:sam:arduino_due_x_dbg"
+}
