@@ -28,7 +28,9 @@ void loop() {
 
   DisplayXYZ();
   switch(CurrState){
+    BtnPressed = NONE;
     case HOME:
+      Serial.println("In HOME ");
       //TODO; HOME
       CheckTouch();
       switch (BtnPressed){
@@ -55,6 +57,7 @@ void loop() {
       }
 /*********************** LESSONS MODE **********************/
     case LESSONS:
+      Serial.println("In Lessons ");
       //TODO - LESSONS
       switch (BtnPressed){
         case Btn1: //SHIFTING:
@@ -74,6 +77,7 @@ void loop() {
           CurrState = HOME;
           break;
       }
+      
     case SHIFTING:
       switch (BtnPressed){
         case Btn1: //Shifting101:
@@ -172,6 +176,7 @@ void loop() {
       }
 /****************************** LEARN MODE *************************************/ 
     case LEARN:
+      Serial.println("In Learn ");
       switch (BtnPressed){
         case Btn1: //UP:
           //TODO: UPsongList() keep track of how many times, possible loop around?
@@ -234,6 +239,7 @@ void loop() {
       }
 /******************************** PLAY MODE **********************************/
    case PLAY:
+      Serial.println("In Play ");
       switch (BtnPressed){
         case Btn1: //UP:
           //TODO: UPsongList()
@@ -294,6 +300,7 @@ void loop() {
       }
 /********************************* SETTINGS ***********************************/
   case SETTINGS:
+    Serial.println("In Settings ");
     switch (BtnPressed){
       //TODO: ALL SETTINGS OPTIONS AND FUNCTIONALITY
       case BackBtn: //Back:

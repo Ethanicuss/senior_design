@@ -8,6 +8,7 @@
             "browse": {
                 "limitSymbolsToIncludedHeaders": false,
                 "path": [
+                    "C:\\Users\\Tarang Khandpur\\Documents\\Arduino\\libraries\\Touch-Screen-Library-master",
                     "C:\\Users\\Tarang Khandpur\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\sam\\1.6.11\\cores\\arduino"
                 ]
             },
