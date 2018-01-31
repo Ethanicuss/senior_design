@@ -14,28 +14,27 @@ void setupSD(){
 
   if (!SD.begin(4)) {
     Serial.println("initialization failed!");
-    while (1);
   }
-  Serial.println("initialization done.");
+  else{
+    Serial.println("initialization done."); 
+  }
   
 }
 
-String openFile(String fname){
-  String fileText;
+void openFile(String fname){
   // open the file for reading:
   f = SD.open(fname);
   if (f) {
     Serial.println(fname);
-    // read from the file until there's nothing else in it:
     while (f.available()) {
-      fileText.concat(f.read());
+      Serial.write(f.read());
     }
   } 
   else {
     // if the file didn't open, print an error:
-    Serial.println("error opening test.txt");
+    Serial.println("error opening song file");
   }
-  f.close();
-  return fileText;
 }
+
+
 

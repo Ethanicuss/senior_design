@@ -1,19 +1,23 @@
+#include "Controls.h"
+#include "SD.h"
+#include "LED.h"
+
 // Functions that control song play and can be called from any screen
 bool fileOpened;
-String song;
 int noteNumber;
 void PlayPause(String songName){
   if (play){
     // load song from SD card (DOMINO)
     if(!fileOpened){
-      song = openFile(songName);
+      openFile(songName);
       fileOpened = true;
       noteNumber = 0;
     }
-    lightLED(song, noteNumber); 
+    String song = "ExxA0wD2rG2gB2be0w";
+    lightLED(song); 
     noteNumber++;
     // TODO: TARANG
-    CheckADC(song); 
+    // CheckADC(song); 
     // This will update the percentage of notes the user has hit perfectly
     // TODO: DON
     UpdateScreen(); 
