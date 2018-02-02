@@ -19,6 +19,7 @@ void setup() {
   LCDSetup();
   TouchscreenSetup();
   InitializeVars(); 
+  analogReadResolution(12);
 } 
 
 void loop() {
