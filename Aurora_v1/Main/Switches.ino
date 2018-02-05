@@ -33,5 +33,8 @@
 //extern enum Button BtnPressed;
 
 enum Button BtnPressed = NONE;
+int Ycoor = 0;
+int Xcoor = 0;
+
 
 

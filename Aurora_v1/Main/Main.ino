@@ -1,3 +1,9 @@
+#include <TouchScreen.h>
+#include <Adafruit_GFX.h>    // Core graphics library
+#include <Adafruit_HX8357.h>
+#include <TouchScreen.h>
+#include <SPI.h>
+#include <SD.h>
 #include "Switches.h"
 #include "SD.h"
 #include "Controls.h"
@@ -19,6 +25,10 @@ void setup() {
   int bpm = openFile("freefall.txt");
   String song = readFile();
   lightLED(song);
+  LCDSetup();
+  TouchscreenSetup();
+  InitializeVars(); 
+  analogReadResolution(12);
 }
 
 void loop() {
@@ -26,45 +36,67 @@ void loop() {
   //SWITCH STATEMENT THAT HANDLES EVERY SCREEN STATE
   // -- See UI Diagram for Control Flow Graph
 /****************** HOME SCREEN OPTIONS *****************/
+
+  DisplayXYZ();
+  CheckTouch();
   switch(CurrState){
     case HOME:
+      Serial.println("In HOME ");
       //TODO; HOME
-      //TODO: DrawHomeScreen();
       switch (BtnPressed){
-        case LESSONS:
+        case Btn1: //LESSONS:
+          Serial.println("Button 1 Hit");
           //TODO: DrawLessonsScreen() DON
+          DrawLessonsScreen();
           CurrState = LESSONS;
           break;
-        case LEARN:
+        case Btn2: //LEARN:
+          Serial.println("Button 2 Hit");
           //TODO: DrawLearnScreen() DON
+          DrawLearnScreen();
           CurrState = LEARN;
           break;
-        case PLAY:
+        case Btn3: //PLAY:
+          Serial.println("Button 3 Hit");
           //TODO: DrawPlayScreen() DON
+          DrawPlayScreen();
           CurrState = PLAY;
           break;
-        case SETTINGS:
+        case Btn4: //SETTINGS:
+          Serial.println("Button 4 Hit");
           //TODO: DrawSettingsScreen()
+          DrawSettingsScreen();
           CurrState = SETTINGS;
           break;
       }
+      break;
 /*********************** LESSONS MODE **********************/
     case LESSONS:
+      Serial.println("In Lessons ");
       //TODO - LESSONS
       switch (BtnPressed){
-        case SHIFTING:
+        case Btn1: //SHIFTING:
+          Serial.println("Button 1.1 Hit");
           //TODO: DrawShiftingScreen()
           CurrState = SHIFTING;
           break;
-        case SUSTAIN:
+        case Btn2: //SUSTAIN:
+          Serial.println("Button 2.1 Hit");
           //TODO: DrawSustainScreen()
           CurrState = SUSTAIN;
           break;
-        case CHORDS:
-         //TODO: DrawChordsScreen()
-         CurrState = CHORDS;
-         break;
+        case Btn3: //CHORDS:
+          Serial.println("Button 3.1 Hit");
+          //TODO: DrawChordsScreen()
+          CurrState = CHORDS;
+          break;
+        case BackBtn: //Back:
+          Serial.println("Button 4,1 Hit");
+          CurrState = HOME;
+          DrawHomeScreen();
+          break;
       }
+      break;
     case SHIFTING:
       switch (BtnPressed){
         case Btn1: //Shifting101:
@@ -85,7 +117,12 @@ void loop() {
             // -- ex. print("101")
           CurrState = PLAYING_LESSON;
           break;
+        case BackBtn: //Back:
+          //TODO: DrawLessonsScreen()
+          CurrState = LESSONS;
+          break;
       }
+      break;
     case SUSTAIN:
       switch (BtnPressed){
         case Btn1: //Sustain101:
@@ -106,7 +143,12 @@ void loop() {
             // -- ex. print("101")
           CurrState = PLAYING_LESSON;
           break;
+        case BackBtn: //Back:
+          //TODO: DrawLessonsScreen()
+          CurrState = LESSONS;
+          break;
       }
+      break;
     case CHORDS:
       switch (BtnPressed){
         case Btn1: //Chords101:
@@ -127,7 +169,12 @@ void loop() {
             // -- ex. print("101")
           CurrState = PLAYING_LESSON;
           break;
+        case BackBtn: //Back:
+          //TODO: DrawLessonsScreen()
+          CurrState = LESSONS;
+          break;
       }
+      break;
     case PLAYING_LESSON:
       switch (BtnPressed){
         case Btn1: //PlayPause:
@@ -143,14 +190,17 @@ void loop() {
         //TODO: 
           break;
       }
+      break;
     case FINISHED_LESSON:
       switch (BtnPressed){
         case Btn1: //Lessons:
           //TODO: CurrState = DrawLessonsScreen();
           break;
       }
+      break;
 /****************************** LEARN MODE *************************************/ 
     case LEARN:
+      Serial.println("In Learn ");
       switch (BtnPressed){
         case Btn1: //UP:
           //TODO: UPsongList() keep track of how many times, possible loop around?
@@ -171,8 +221,13 @@ void loop() {
         case Btn5: //SONG3:
           //TODO: DrawLearnSong();
           CurrState = LEARNING_SONG;
+          break;
+        case BackBtn: //Back:
+          DrawHomeScreen();
+          CurrState = HOME;
           break;      
       }
+      break;
     case LEARNING_SONG:
         /*TODO: LearnSong() this function should check whatever variable you have assigned
                               for each song, so that it can just do a quick, "switch(songNumber)"
@@ -197,17 +252,21 @@ void loop() {
         //TODO: At 100% in this screen it should change State. Ex. "CurrState = FINSIHED_LEARNING
         //TODO: DrawFinishedLearning();
       }
+      break;
    case FINISHED_LEARNING:
       switch (BtnPressed){
         case Btn1: //PlayCurrentSong:
           //TODO: PlaySong();  
           break;
         case BackBtn:
+          //TODO: DrawLearnScreen();
           CurrState = LEARN;
           break;
       }
+      break;
 /******************************** PLAY MODE **********************************/
    case PLAY:
+      Serial.println("In Play ");
       switch (BtnPressed){
         case Btn1: //UP:
           //TODO: UPsongList()
@@ -228,8 +287,13 @@ void loop() {
         case Btn5: //SONG3:
           //TODO: DrawPlaySong();
           CurrState = PLAYING_SONG;
-          break;      
+          break;
+        case BackBtn: //Back:
+          DrawHomeScreen();
+          CurrState = HOME;
+          break;       
       }
+      break;
    case PLAYING_SONG:
         /*TODO: PlaySong() this function should check whatever variable you have assigned
                               for each song, so that it can just do a quick, "switch(songNumber)"
@@ -255,24 +319,34 @@ void loop() {
         //TODO: At 100% in this screen it should change State. Ex. "CurrState = FINSIHED_PlAYING"
         //TODO: DrawFinishedPlaying();
       }
+      break;
    case FINISHED_PLAYING:
       switch (BtnPressed){
         case Btn1: //SongSelect:
+          //TODO: DrawPlayScreen();
           CurrState = PLAY;  
           break;
       }
+      break;
 /********************************* SETTINGS ***********************************/
   case SETTINGS:
+    Serial.println("In Settings ");
     switch (BtnPressed){
       //TODO: ALL SETTINGS OPTIONS AND FUNCTIONALITY
+      case BackBtn: //Back:
+          DrawHomeScreen();
+          CurrState = HOME;
+          break; 
     }
+    break;
   } //State Switch Closing Brace
+  BtnPressed = NONE;
 }
 
 void InitializeVars(){
  CurrState = HOME;
  BtnPressed = NONE;
-  
+ DrawHomeScreen();
 }
 
 
