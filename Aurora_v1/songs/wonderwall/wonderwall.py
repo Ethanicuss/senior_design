@@ -22,7 +22,5 @@ for line in f.readlines():
         g.write(tab)
         g.write('\n')
 
-g.write("xxxxxxxxxxxxxxxxx")
-
 f.close()
 g.close()

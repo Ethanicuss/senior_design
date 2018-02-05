@@ -17,6 +17,7 @@ CRGB led[NUM_LEDS];
 
 void setupLED() {
   FastLED.addLeds<NEOPIXEL, LED_PIN>(led, NUM_LEDS);
+  FastLED.setBrightness(100);
   for(int i = 0; i < NUM_ROWS; i++){
     for(int j = 0; j < LEDS_PER_ROW; j++){
       led[i * LEDS_PER_ROW + j] = CRGB(0, 0, 0);  
@@ -31,42 +32,76 @@ void learnMode(String song[], int numNotes){
 
 // example string would be: ExxA0wD2rG2gB2be0w
 void lightLED(String s){
-  // for each string
+  // for each string of the guitar in the chord
   for(int i = 0; i < NUM_STRINGS; i++){
     // get the string name, fret number, and LED color
     char str = s[3 * i];
-    int fret = int(s[3 * i + 1]);
+    int fret = int(s[3 * i + 1]) - 48;
     char color = s[3 * i + 2];
-    if(color != 'x' && fret < NUM_FRETS){
+    if(color != 'x' && fret != 0){
       // index in the LED array
       int index = 0;
       // offset changes based on which string needs to be lit
       switch(str){
         case 'E':
-          index = fret * LEDS_PER_ROW;
+          index = (fret - 1) * LEDS_PER_ROW;
+          break;
         case 'A':
-          index = fret * LEDS_PER_ROW + 1;
+          index = (fret - 1) * LEDS_PER_ROW + 1;
+          break;
         case 'D':
-          index = fret * LEDS_PER_ROW + 2;
+          index = (fret - 1) * LEDS_PER_ROW + 2;
+          break;
         case 'G':
-          index = fret * LEDS_PER_ROW + 3;
+          index = (fret - 1) * LEDS_PER_ROW + 3;
+          break;
         case 'B':
-          index = fret * LEDS_PER_ROW + 4;
+          index = (fret - 1) * LEDS_PER_ROW + 4;
+          break;
         case 'e':
-          index = fret * LEDS_PER_ROW + 5;
+          index = (fret - 1) * LEDS_PER_ROW + 5;
+          break;
       }
       // CRGB values change based on color we want
       switch(color){
-        case 'w':
-          led[index] = CRGB(0,0,0);
         case 'r':
           led[index] = CRGB(255,0,0);
-        case 'b':
-          led[index] = CRGB(0,255,0);
+          break;
         case 'g':
           led[index] = CRGB(0,0,255);
+          break;
+        case 'b':
+          led[index] = CRGB(0,255,0);
+          break;
       }
     }
+    // special case of an open string
+      if(fret == 0){
+        int offset = 0;
+        switch(str){
+        case 'E':
+          offset = 0;
+          break;
+        case 'A':
+          offset = 1;
+          break;
+        case 'D':
+          offset = 2;
+          break;
+        case 'G':
+          offset = 3;
+          break;
+        case 'B':
+          offset = 4;
+          break;
+        case 'e':
+          offset = 5;
+          break;
+        }
+        for(int i = 0; i< NUM_FRETS; i++){
+          led[i * NUM_STRINGS + offset] = CRGB(255,255,255);
+        }
+      }
   }
   FastLED.show();
 }
@@ -87,4 +122,5 @@ void LearnSong(char* song, int numberOfNotes){
  }
 
 }
+
 

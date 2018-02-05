@@ -13,14 +13,16 @@ enum State CurrState;
 void setup() {
   // put your setup code here, to run once:
   InitializeVars();
-  play = false;
+  play = true;
   setupLED();
   setupSD();
-  openFile("wonderwall.txt");
+  int bpm = openFile("freefall.txt");
+  String song = readFile();
+  lightLED(song);
 }
 
 void loop() {
-
+  
   //SWITCH STATEMENT THAT HANDLES EVERY SCREEN STATE
   // -- See UI Diagram for Control Flow Graph
 /****************** HOME SCREEN OPTIONS *****************/
@@ -272,4 +274,5 @@ void InitializeVars(){
  BtnPressed = NONE;
   
 }
+
 
