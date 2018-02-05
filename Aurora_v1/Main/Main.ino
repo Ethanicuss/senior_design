@@ -28,29 +28,32 @@ void loop() {
 /****************** HOME SCREEN OPTIONS *****************/
 
   DisplayXYZ();
+  CheckTouch();
   switch(CurrState){
-    BtnPressed = NONE;
-    CheckTouch();
     case HOME:
       Serial.println("In HOME ");
       //TODO; HOME
       switch (BtnPressed){
         case Btn1: //LESSONS:
+          Serial.println("Button 1 Hit");
           //TODO: DrawLessonsScreen() DON
           DrawLessonsScreen();
           CurrState = LESSONS;
           break;
         case Btn2: //LEARN:
+          Serial.println("Button 2 Hit");
           //TODO: DrawLearnScreen() DON
           DrawLearnScreen();
           CurrState = LEARN;
           break;
         case Btn3: //PLAY:
+          Serial.println("Button 3 Hit");
           //TODO: DrawPlayScreen() DON
           DrawPlayScreen();
           CurrState = PLAY;
           break;
         case Btn4: //SETTINGS:
+          Serial.println("Button 4 Hit");
           //TODO: DrawSettingsScreen()
           DrawSettingsScreen();
           CurrState = SETTINGS;
@@ -63,20 +66,24 @@ void loop() {
       //TODO - LESSONS
       switch (BtnPressed){
         case Btn1: //SHIFTING:
+          Serial.println("Button 1.1 Hit");
           //TODO: DrawShiftingScreen()
           CurrState = SHIFTING;
           break;
         case Btn2: //SUSTAIN:
+          Serial.println("Button 2.1 Hit");
           //TODO: DrawSustainScreen()
           CurrState = SUSTAIN;
           break;
         case Btn3: //CHORDS:
+          Serial.println("Button 3.1 Hit");
           //TODO: DrawChordsScreen()
           CurrState = CHORDS;
           break;
         case BackBtn: //Back:
-          //TODO: DrawHomeScreen()
+          Serial.println("Button 4,1 Hit");
           CurrState = HOME;
+          DrawHomeScreen();
           break;
       }
       break;
@@ -206,7 +213,7 @@ void loop() {
           CurrState = LEARNING_SONG;
           break;
         case BackBtn: //Back:
-          //TODO: DrawHomeScreen()
+          DrawHomeScreen();
           CurrState = HOME;
           break;      
       }
@@ -272,7 +279,7 @@ void loop() {
           CurrState = PLAYING_SONG;
           break;
         case BackBtn: //Back:
-          //TODO: DrawHomeScreen()
+          DrawHomeScreen();
           CurrState = HOME;
           break;       
       }
@@ -317,12 +324,13 @@ void loop() {
     switch (BtnPressed){
       //TODO: ALL SETTINGS OPTIONS AND FUNCTIONALITY
       case BackBtn: //Back:
-          //TODO: DrawHomeScreen()
+          DrawHomeScreen();
           CurrState = HOME;
           break; 
     }
     break;
   } //State Switch Closing Brace
+  BtnPressed = NONE;
 }
 
 void InitializeVars(){

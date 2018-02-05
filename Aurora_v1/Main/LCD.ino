@@ -11,7 +11,9 @@ void LCDSetup(void) {
   Serial.begin(9600);
 
   tft.begin(HX8357D);
-  tft.fillScreen(HX8357_BLUE);
+  
+  tft.setRotation(3);
+  tft.fillScreen(HX8357_WHITE);
   
   Serial.print("Initializing SD card...");
   if (!SD.begin(SD_CS)) {
@@ -28,18 +30,18 @@ void DrawStartupScreen(){
  }
 
  void DrawHomeScreen(){
-  bmpDraw("Home.bmp", 0, 0);
+  bmpDraw("home.bmp", 0, 0);
   //Home screen options
  }
 
  /*********** HOME MENU SCREENS **********/
  void DrawLessonsScreen(){
-  bmpDraw("Less.bmp", 0, 0);
+  bmpDraw("lessons.bmp", 0, 0);
   //shwos lessons - shifting, sustains, chords
  }
 
  void DrawLearnScreen(){
-  bmpDraw("Learn.bmp", 0, 0);
+  bmpDraw("learn.bmp", 0, 0);
   //shows song list for learning
  }
 
@@ -56,14 +58,17 @@ void DrawStartupScreen(){
  /*********** LESSONS SCREENS ***********/
 
  void DrawShiftingScreen(){
+   bmpDraw("shifting.bmp", 0 , 0);
   // shows shifting 101, 102, 103
  }
 
  void DrawSustainScreen(){
+   bmpDraw("sustain.bmp", 0 , 0);
   // shows sustains 101, 102, 103
  }
 
  void DrawChordsScreen(){
+   bmpDraw("chords.bmp", 0 , 0);  
   // shows chords 101, 102, 103
  }
 

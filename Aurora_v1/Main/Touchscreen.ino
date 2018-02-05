@@ -44,6 +44,8 @@ void DisplayXYZ(void) {
 
   Serial.print("Ycoor = "); Serial.println(Ycoor);
 
+  Serial.print("Xcoor = "); Serial.println(Xcoor);
+  
   delay(50);
 }
 
