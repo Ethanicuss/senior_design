@@ -6,6 +6,11 @@
 enum Button {NONE = 0, Btn1 = 1, Btn2 = 2, Btn3 = 3, Btn4 = 4, Btn5 = 5, Btn6 = 6, Btn7 = 7, BackBtn = 8};
 extern enum Button BtnPressed;
 
+//int Ycoor;
+extern int Ycoor;
+
+//int Xcoor;
+extern int Xcoor;
 
 #endif // _HEADERFILE_H    // Put this line at the end of your file.
 
