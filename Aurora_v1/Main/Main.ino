@@ -11,7 +11,7 @@
 extern bool play; 
 
 //creating type "State"
-enum State {HOME = 0, LESSONS = 1, LEARN = 2, PLAY = 3, SETTINGS = 4, SHIFTING = 5, SUSTAIN = 6, CHORDS = 7, PLAYING_LESSON = 8, LEARNING_SONG = 9, PLAYING_SONG = 10, FINISHED_LESSON = 11, FINISHED_LEARNING = 12, FINISHED_PLAYING = 13};
+enum State {HOME = 0, LESSONS = 1, LEARN = 2, PLAY = 3, SETTINGS = 4, SHIFTING = 5, SUSTAIN = 6, CHORDS = 7, PLAYING_LESSON = 8, LEARNING_SONG = 9, PLAYING_SONG = 10, FINISHED_LESSON = 11, FINISHED_LEARNING = 12, FINISHED_PLAYING = 13, PAUSED = 14};
 
 //creating variable of type "State" called CurrState
 enum State CurrState;
@@ -77,7 +77,7 @@ void loop() {
       switch (BtnPressed){
         case Btn1: //SHIFTING:
           Serial.println("Button 1.1 Hit");
-          //TODO: DrawShiftingScreen()
+          DrawShiftingScreen();
           CurrState = SHIFTING;
           break;
         case Btn2: //SUSTAIN:
@@ -103,6 +103,7 @@ void loop() {
           //TODO: DrawShiftingLesson(101);
             // -- Make Changes for each Difficulty withing the draw
             // -- ex. print("101")
+          DrawShiftingLesson();
           CurrState = PLAYING_LESSON;
           break;
         case Btn2: //Shifting102:
@@ -181,6 +182,7 @@ void loop() {
           //TODO: PlayPause() DOMINO //Use a change of flag in the interrupt for this
                                      //  -- to know if it is on Play or Pause.
                                      // within PlayPause() will be LED functionality.
+                                     
           break;
         case Btn2: //Quit:
           //TODO: DrawFinishedLesson();
@@ -202,24 +204,20 @@ void loop() {
     case LEARN:
       Serial.println("In Learn ");
       switch (BtnPressed){
-        case Btn1: //UP:
-          //TODO: UPsongList() keep track of how many times, possible loop around?
-          //TODO: DrawLearnScreen(); //to refresh the screen with the new songs.
-          break;
-        case Btn2: //DOWN:
-          //TODO: DOWNsongList() same as UPsongList
-          //TODO: DrawLearnScreen();
-          break;
-        case Btn3: //SONG1:
+        case Btn1: //SONG1:
           //TODO: DrawLearnSong(); draws the learning song screen
           CurrState = LEARNING_SONG;
           break;
-        case Btn4: //SONG2:
+        case Btn2: //SONG2:
           //TODO: DrawLearnSong();
           CurrState = LEARNING_SONG;
           break;
-        case Btn5: //SONG3:
+        case Btn3: //SONG3:
           //TODO: DrawLearnSong();
+          CurrState = LEARNING_SONG;
+          break;
+        case Btn4: //SONG1:
+          //TODO: DrawLearnSong(); draws the learning song screen
           CurrState = LEARNING_SONG;
           break;
         case BackBtn: //Back:
@@ -309,6 +307,8 @@ void loop() {
         case Btn1: //PlayPause:
           //TODO: PlayPause() //Use a change of flag in the interrupt for this
           //                     -- to know if it is on Play or Pause.
+          DrawPausedLearning();
+          CurrState = PAUSED;
           break;
         case Btn2: //Quit:
           //TODO: Quit(); //quits the song, and takes user to the results
@@ -328,6 +328,26 @@ void loop() {
           break;
       }
       break;
+
+/********************************** PAUSED **************************************/
+  case PAUSED:
+      Serial.println("In Play ");
+      switch (BtnPressed){
+        case Btn1: //PLAY:
+          //TODO: UPsongList()
+          //TODO: DrawPlayScreen(); //to refresh the songlist
+          DrawShiftingLesson();
+          CurrState = PLAYING_LESSON;
+          break;
+        case Btn2: //QUIT:
+          //TODO: DOWNsongList() //same as UPsongList
+          //TODO: DrawPlayScreen();
+          DrawHomeScreen();
+          CurrState = HOME;
+          break;
+      }
+
+      
 /********************************* SETTINGS ***********************************/
   case SETTINGS:
     Serial.println("In Settings ");

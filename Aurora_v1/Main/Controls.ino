@@ -119,6 +119,37 @@ void CheckTouch(){
         BtnPressed = BackBtn;
       }
       break;
+
+    case SHIFTING:
+      if ((Ycoor < -1060 && Ycoor > -3000) && (Xcoor < -1500 && Xcoor > -2500)){
+        Serial.println("Should go Lessons 101 ");
+        BtnPressed = Btn1;
+      }
+      else if ((Ycoor < -1060 && Ycoor > -3000) && (Xcoor < -600 && Xcoor > -1500 )){
+        Serial.println("Should go to Sustains ");
+        BtnPressed = Btn2;
+      }
+      else if ((Ycoor < -1060 && Ycoor > -3000) && (Xcoor < -250 && Xcoor > -600 )){
+        Serial.println("Should go to Chords ");
+        BtnPressed = Btn3;
+      }
+      else if ((Ycoor < 500 && Ycoor > 150) && (Xcoor < -2000 && Xcoor > -2500)){
+        Serial.println("Should go back to HOME");
+        BtnPressed = BackBtn;
+      }
+      break;
+      
+
+    case PLAYING_LESSON:
+      if ((Ycoor < 350 && Ycoor > -1050) && (Xcoor < 300 && Xcoor > -300)){
+        Serial.println("Should pause/play ");
+        BtnPressed = Btn1;
+      }
+      else if ((Ycoor < -1050 && Ycoor > -3000) && (Xcoor < 300 && Xcoor > -300 )){
+        Serial.println("Should quit ");
+        BtnPressed = Btn2;
+      }
+      break;
     case SETTINGS:
       if (Ycoor < 1000 && Ycoor > 712 ){
         BtnPressed = BackBtn;

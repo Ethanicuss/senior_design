@@ -53,12 +53,12 @@ void DrawStartupScreen(){
  }
 
  void DrawPlayScreen(){
-  bmpDraw("Play.bmp", 0, 0);
+  bmpDraw("play.bmp", 0, 0);
   //shows song list for playing
  }
 
  void DrawSettingsScreen(){
-  bmpDraw("Play.bmp", 0, 0);
+  bmpDraw("play.bmp", 0, 0);
   //shows settings
  }
 
@@ -81,6 +81,7 @@ void DrawStartupScreen(){
 
  /*********** SHIFTING LESSON ***********/
  void DrawShiftingLesson(){
+  bmpDraw("lessonpl.bmp", 0 , 0);
   // shows current progress in lesson
  }
 
@@ -109,25 +110,60 @@ void DrawStartupScreen(){
 
      ^ May not be the best way, just my first thought.
   */
+  bmpDraw("learnpl.bmp", 0 , 0);
  }
 
  void DrawPlaySong(){
   /* same as DrawLearnSong()
    *  
    */
+  bmpDraw("playplay.bmp", 0 , 0);
  }
 
+ /********** PAUSED SCREENS *******/
+  void DrawPausedLessons(){
+  /* Should show the results of the learning screen
+   *  and give you the appropriate buttons
+   */
+   bmpDraw("lessonpa.bmp", 0 , 0);
+ }
+ 
+ void DrawPausedLearning(){
+  /* Should show the results of the learning screen
+   *  and give you the appropriate buttons
+   */
+   bmpDraw("learnpau.bmp", 0 , 0);
+ }
+
+ void DrawPausedPlaying(){
+  /* Same as DrawFinishedPlaying()
+   *  
+   */
+   bmpDraw("playpaus.bmp", 0 , 0);
+ }
+
+ 
+
  /********** FINSIHED SCREENS *******/
+ void DrawFinishedLessons(){
+  /* Should show the results of the learning screen
+   *  and give you the appropriate buttons
+   */
+   bmpDraw("lessonen.bmp", 0 , 0);
+ }
+
  void DrawFinishedLearning(){
   /* Should show the results of the learning screen
    *  and give you the appropriate buttons
    */
- }
+   bmpDraw("learnpau.bmp", 0 , 0);
+   }
 
  void DrawFinishedPlaying(){
   /* Same as DrawFinishedPlaying()
    *  
    */
+   bmpDraw("playend.bmp", 0 , 0);
  }
 
 // This function opens a Windows Bitmap (BMP) file and
