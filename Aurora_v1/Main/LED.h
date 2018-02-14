@@ -1,6 +1,6 @@
 #ifndef LED_H
 #define LED_H
-void lightLED(String s);
-void darkLED();
+void LightLED(String s);
+void DarkLED();
 #endif
 

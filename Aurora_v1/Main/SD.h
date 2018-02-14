@@ -1,7 +1,7 @@
 #ifndef SD_H
 #define SD_H
-void setupSD(void);
-int openFile(String fname);
-String readFile(void);
+int GetSongLength(void);
+void OpenFile(String fname);
+String ReadFile(void);
 #endif
 

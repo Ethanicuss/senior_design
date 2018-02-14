@@ -15,7 +15,7 @@
 
 CRGB led[NUM_LEDS];
 
-void setupLED() {
+void SetupLED() {
   FastLED.addLeds<NEOPIXEL, LED_PIN>(led, NUM_LEDS);
   FastLED.setBrightness(100);
   for(int i = 0; i < NUM_ROWS; i++){
@@ -31,7 +31,7 @@ void learnMode(String song[], int numNotes){
 }
 
 // example string would be: ExxA0wD2rG2gB2be0w
-void lightLED(String s){
+void LightLED(String s){
   // for each string of the guitar in the chord
   for(int i = 0; i < NUM_STRINGS; i++){
     // get the string name, fret number, and LED color
@@ -106,7 +106,7 @@ void lightLED(String s){
   FastLED.show();
 }
 
-void darkLED(){
+void DarkLED(){
   for(int i = 0; i < NUM_ROWS; i++){
     for(int j = 0; j < LEDS_PER_ROW; j++){
       led[i * LEDS_PER_ROW + j] = CRGB(0, 0, 0);  

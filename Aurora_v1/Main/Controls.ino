@@ -2,35 +2,69 @@
 #include "SD.h"
 #include "LED.h"
 #include <stdint.h>
-#include "TouchScreen.h"
 #include <TouchScreen.h>
 #include "Switches.h"
 
-
-//Functions that Control functionality and can be called from any screen
-
 // Functions that control song play and can be called from any screen
-bool fileOpened;
-int bpm;
-void playPause(String songName){
-  // load song from SD card (DOMINO)
-  if(!fileOpened){
-    bpm = openFile(songName);
-    fileOpened = true;
-  }
+bool playing;
+
+void SetupInterrupt(Tc *tc, uint32_t channel, IRQn_Type irq, uint32_t frequency){
+  // the code below will generate a 'TC3' interrupt whenever the counter value passes 0xAF (max count)
+  Serial.print("Initializing interrupts... ");
+  noInterrupts();
+  pmc_set_writeprotect(false);
+  pmc_enable_periph_clk((uint32_t)irq);
+  TC_Configure(tc, channel, TC_CMR_WAVE | TC_CMR_WAVSEL_UP_RC | TC_CMR_TCCLKS_TIMER_CLOCK4);
+  uint32_t rc = VARIANT_MCK/128/frequency; //128 because we selected TIMER_CLOCK4 above
+  TC_SetRA(tc, channel, rc/2); //50% high, 50% low
+  TC_SetRC(tc, channel, rc);
+  TC_Start(tc, channel);
+  tc->TC_CHANNEL[channel].TC_IER=TC_IER_CPCS;
+  tc->TC_CHANNEL[channel].TC_IDR=~TC_IER_CPCS;
+  NVIC_EnableIRQ(irq);
+  interrupts();
+  Serial.println("done.");
+}
+
+bool UpdateNote(){
   // ex: "ExxA0wD2rG2gB2be0w";
-  String chord = readFile();
-  lightLED(chord); 
+  String chord = ReadFile();
+  Serial.println(chord);
+  // exit from playing loop if we reach the end of the song 
+  if(chord == "X"){
+    return false;
+  }
+  // actually light up LEDs
+  LightLED(chord); 
   // TODO: TARANG
   // CheckADC(song); 
   // This will update the percentage of notes the user has hit perfectly
   // TODO: DON
-  UpdateScreen(); 
-  // Goto Next Note AKA close "for loop".
+  // UpdateScreen(); 
+  return true;
 }
 
-void quit(){
-  darkLED(); // TODO: Turns off all the LEDS
+// Interrupt is called once per millisecond
+void TC3_Handler(){
+  if(playing){
+    unsigned long currentMillis = millis();
+    playing = UpdateNote();
+    if(!playing){
+      Quit();
+    }
+  }
+}
+
+void StartSong(String songName){
+  // load song from SD card
+  OpenFile(songName);
+  // "play" first note in the song
+  playing = UpdateNote();
+}
+
+void Quit(){
+  // turns off all the LEDS
+  DarkLED();
 }
 
 void CheckTouch(){

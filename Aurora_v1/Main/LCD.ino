@@ -23,7 +23,7 @@ void LCDSetup(void) {
   tft.setRotation(3);
   tft.fillScreen(HX8357_WHITE);
   
-  Serial.print("Initializing SD card...");
+  Serial.println("Initializing LCD...");
   if (!SD.begin(SD_CS)) {
     Serial.println("failed!");
   }
@@ -164,7 +164,7 @@ void bmpDraw(char *filename, uint8_t x, uint16_t y) {
 
   // Open requested file on SD card
   if ((bmpFile = SD.open(filename)) == NULL) {
-    Serial.print(F("File not found"));
+    Serial.println(F("File not found"));
     return;
   }
 

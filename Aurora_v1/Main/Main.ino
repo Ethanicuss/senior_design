@@ -1,34 +1,30 @@
 #include <TouchScreen.h>
 #include <Adafruit_GFX.h>    // Core graphics library
 #include <Adafruit_HX8357.h>
-#include <TouchScreen.h>
 #include <SPI.h>
 #include <SD.h>
 #include "Switches.h"
 #include "SD.h"
 #include "Controls.h"
-
-extern bool play; 
-
+ 
 //creating type "State"
 enum State {HOME = 0, LESSONS = 1, LEARN = 2, PLAY = 3, SETTINGS = 4, SHIFTING = 5, SUSTAIN = 6, CHORDS = 7, PLAYING_LESSON = 8, LEARNING_SONG = 9, PLAYING_SONG = 10, FINISHED_LESSON = 11, FINISHED_LEARNING = 12, FINISHED_PLAYING = 13};
 
 //creating variable of type "State" called CurrState
 enum State CurrState;
 
+
 void setup() {
   // put your setup code here, to run once:
   InitializeVars();
-  play = true;
-  setupLED();
-  setupSD();
-  int bpm = openFile("freefall.txt");
-  String song = readFile();
-  lightLED(song);
+  SetupLED();
   LCDSetup();
   TouchscreenSetup();
-  InitializeVars(); 
   analogReadResolution(12);
+  // SetupInterrupt(TC1, 0, TC3_IRQn, 1000); // should interrupt about every millisecond, need to verify tho
+  OpenFile("wonderwa.txt");
+  String chord = ReadFile();
+  Serial.println(chord);
 }
 
 void loop() {

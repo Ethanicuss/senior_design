@@ -11,6 +11,8 @@ g = open("tabs.txt", "w")
 # BPM
 g.write('84')
 g.write('\n')
+g.write('185')
+g.write('\n')
 
 for line in f.readlines():
     line = " ".join(line.split()).split()
