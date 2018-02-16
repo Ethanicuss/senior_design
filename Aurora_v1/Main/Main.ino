@@ -1,3 +1,5 @@
+#include <TFT.h>
+
 #include <TouchScreen.h>
 #include <Adafruit_GFX.h>    // Core graphics library
 #include <Adafruit_HX8357.h>
@@ -307,8 +309,6 @@ void loop() {
         case Btn1: //PlayPause:
           //TODO: PlayPause() //Use a change of flag in the interrupt for this
           //                     -- to know if it is on Play or Pause.
-          DrawPausedLearning();
-          CurrState = PAUSED;
           break;
         case Btn2: //Quit:
           //TODO: Quit(); //quits the song, and takes user to the results
@@ -329,25 +329,6 @@ void loop() {
       }
       break;
 
-/********************************** PAUSED **************************************/
-  case PAUSED:
-      Serial.println("In Play ");
-      switch (BtnPressed){
-        case Btn1: //PLAY:
-          //TODO: UPsongList()
-          //TODO: DrawPlayScreen(); //to refresh the songlist
-          DrawShiftingLesson();
-          CurrState = PLAYING_LESSON;
-          break;
-        case Btn2: //QUIT:
-          //TODO: DOWNsongList() //same as UPsongList
-          //TODO: DrawPlayScreen();
-          DrawHomeScreen();
-          CurrState = HOME;
-          break;
-      }
-
-      
 /********************************* SETTINGS ***********************************/
   case SETTINGS:
     Serial.println("In Settings ");

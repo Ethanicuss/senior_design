@@ -23,8 +23,8 @@ TouchScreen getTS(){
 }
 
 void TouchscreenSetup(void) {
-  //Serial.begin(9600);
-  Serial.begin(115200);
+  Serial.begin(9600);
+  //Serial.begin(115200);
 }
 
 void DisplayXYZ(void) {

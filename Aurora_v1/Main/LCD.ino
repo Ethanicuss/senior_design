@@ -1,4 +1,4 @@
-/* TODO: Any function that has "Draw" in it.
+S/* TODO: Any function that has "Draw" in it.
  *       
  *       This Module will just draw each screen.
  */
@@ -38,6 +38,7 @@ void DrawStartupScreen(){
 
  void DrawHomeScreen(){
   bmpDraw("home.bmp", 0, 0);
+  tft.
   //Home screen options
  }
 
@@ -119,29 +120,6 @@ void DrawStartupScreen(){
    */
   bmpDraw("playplay.bmp", 0 , 0);
  }
-
- /********** PAUSED SCREENS *******/
-  void DrawPausedLessons(){
-  /* Should show the results of the learning screen
-   *  and give you the appropriate buttons
-   */
-   bmpDraw("lessonpa.bmp", 0 , 0);
- }
- 
- void DrawPausedLearning(){
-  /* Should show the results of the learning screen
-   *  and give you the appropriate buttons
-   */
-   bmpDraw("learnpau.bmp", 0 , 0);
- }
-
- void DrawPausedPlaying(){
-  /* Same as DrawFinishedPlaying()
-   *  
-   */
-   bmpDraw("playpaus.bmp", 0 , 0);
- }
-
  
 
  /********** FINSIHED SCREENS *******/
