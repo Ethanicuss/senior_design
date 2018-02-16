@@ -3,6 +3,7 @@
 #include <Adafruit_HX8357.h>
 #include <SPI.h>
 #include <SD.h>
+#include <DueTimer.h>
 #include "Switches.h"
 #include "SD.h"
 #include "Controls.h"
@@ -13,18 +14,14 @@ enum State {HOME = 0, LESSONS = 1, LEARN = 2, PLAY = 3, SETTINGS = 4, SHIFTING =
 //creating variable of type "State" called CurrState
 enum State CurrState;
 
-
 void setup() {
-  // put your setup code here, to run once:
+  Serial.begin(9600);
   InitializeVars();
-  SetupLED();
-  LCDSetup();
-  TouchscreenSetup();
+  LEDSetup();
+  // LCDSetup();
+  // TouchscreenSetup();
+  InterruptSetup();
   analogReadResolution(12);
-  // SetupInterrupt(TC1, 0, TC3_IRQn, 1000); // should interrupt about every millisecond, need to verify tho
-  OpenFile("wonderwa.txt");
-  String chord = ReadFile();
-  Serial.println(chord);
 }
 
 void loop() {

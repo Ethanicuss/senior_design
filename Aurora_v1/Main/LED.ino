@@ -7,15 +7,10 @@
 #define NUM_FRETS 12
 #define NUM_STRINGS 6
 
-/* TODO: Any function that have "LED" in it.
- *       and LearnSong + PlaySong
- *  
- */
-
-
 CRGB led[NUM_LEDS];
 
-void SetupLED() {
+void LEDSetup() {
+  pinMode(LED_PIN, OUTPUT);
   FastLED.addLeds<NEOPIXEL, LED_PIN>(led, NUM_LEDS);
   FastLED.setBrightness(100);
   for(int i = 0; i < NUM_ROWS; i++){

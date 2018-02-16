@@ -16,18 +16,17 @@ Adafruit_HX8357 tft = Adafruit_HX8357(TFT_CS, TFT_DC);
 
 
 void LCDSetup(void) {
-  Serial.begin(9600);
 
   tft.begin(HX8357D);
   
   tft.setRotation(3);
   tft.fillScreen(HX8357_WHITE);
   
-  Serial.println("Initializing LCD...");
+  Serial.print("Initializing LCD...");
   if (!SD.begin(SD_CS)) {
     Serial.println("failed!");
   }
-  Serial.println("OK!");
+  Serial.println("done.");
 
   //bmpDraw("jumpers.bmp", 0, 0);
 }

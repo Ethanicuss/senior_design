@@ -25,7 +25,7 @@ void OpenFile(String fname){
     f.read(line, 3);
     // read newline character in to dummy buffer
     f.read(newline, 1);
-    // calculate bpm (basically convert from chars to an integer using the minus '0' trick)
+    // find the number of lines in the song (basically convert from chars to an integer using the minus '0' trick)
     len = (line[0] - '0') * 100 + (line[1] - '0') * 10 + (line[2] - '0');
   } 
   else {
