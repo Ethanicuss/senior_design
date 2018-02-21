@@ -1,18 +1,16 @@
 # string order: EADGBe
 chords = dict([
-('E'   , 'ExxAxxD2gG1rB0we0w'),
-('D'   , 'ExxAxxD0wG2rB3be2g'),
-('A'   , 'ExxA0wD2rG2gB2be0w'),
+('8th' , ''),
+('quarter', ''),
+('dotquarter', ''),
+('half', ''),
+('E'   , 'ExxAxxDxxG3_B6_e5_'),
+('D'   , 'ExxAxxDxxG5_B6_e6_'),
+('A'   , 'ExxAxxDxxG5_B6_e5_'),
 ])
 
 f = open("chords.txt", "r+")
 g = open("tabs.txt", "w")
-
-# BPM
-g.write('84')
-g.write('\n')
-g.write('185')
-g.write('\n')
 
 for line in f.readlines():
     line = " ".join(line.split()).split()
@@ -20,8 +18,6 @@ for line in f.readlines():
         tab = chords[chord]
         g.write(tab)
         g.write('\n')
-
-g.write("xxxxxxxxxxxxxxxxx")
 
 f.close()
 g.close()

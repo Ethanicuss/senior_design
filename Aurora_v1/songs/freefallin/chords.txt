@@ -1,37 +1,98 @@
-A   D   D   A   E
-A   D   D   A   E
-A   D   D   A   E
-A   D   D   A   E
-A   D   D   A   E
-A   D   D   A   E
-A   D   D   A   E
-A   D   D   A   E
-A   D   D   A   E
-A   D   D   A   E
-A   D   D   A   E
-A   D   D   A   E
-A   D   D   A   E
-A   D   D   A   E
-A   D   D   A   E
-A   D   D   A   E
-A   D   D   A   E
-A   D   D   A   E
-A   D   D   A   E
-A   D   D   A   E
-A   D   D   A   E
-A   D   D   A   E
-A   D   D   A   E
-A   D   D   A   E
-A   D   D   A   E
-A   D   D   A   E
-A   D   D   A   E
-A   D   D   A   E
-A   D   D   A   E
-A   D   D   A   E
-A   D   D   A   E
-A   D   D   A   E
-A   D   D   A   E
-A   D   D   A   E
-A   D   D   A   E
-A   D   D   A   E
-A   D   D   A   E
+A dotquarter D 8th D half
+D 8th A quarter E 8th E half
+A dotquarter D 8th D half
+D 8th A quarter E 8th E half
+A dotquarter D 8th D half
+D 8th A quarter E 8th E half
+A dotquarter D 8th D half
+D 8th A quarter E 8th E half
+A dotquarter D 8th D half
+D 8th A quarter E 8th E half
+A dotquarter D 8th D half
+D 8th A quarter E 8th E half
+A dotquarter D 8th D half
+D 8th A quarter E 8th E half
+A dotquarter D 8th D half
+D 8th A quarter E 8th E half
+A dotquarter D 8th D half
+D 8th A quarter E 8th E half
+A dotquarter D 8th D half
+D 8th A quarter E 8th E half
+A dotquarter D 8th D half
+D 8th A quarter E 8th E half
+A dotquarter D 8th D half
+D 8th A quarter E 8th E half
+A dotquarter D 8th D half
+D 8th A quarter E 8th E half
+A dotquarter D 8th D half
+D 8th A quarter E 8th E half
+A dotquarter D 8th D half
+D 8th A quarter E 8th E half
+A dotquarter D 8th D half
+D 8th A quarter E 8th E half
+A dotquarter D 8th D half
+D 8th A quarter E 8th E half
+A dotquarter D 8th D half
+D 8th A quarter E 8th E half
+A dotquarter D 8th D half
+D 8th A quarter E 8th E half
+A dotquarter D 8th D half
+D 8th A quarter E 8th E half
+A dotquarter D 8th D half
+D 8th A quarter E 8th E half
+A dotquarter D 8th D half
+D 8th A quarter E 8th E half
+A dotquarter D 8th D half
+D 8th A quarter E 8th E half
+A dotquarter D 8th D half
+D 8th A quarter E 8th E half
+A dotquarter D 8th D half
+D 8th A quarter E 8th E half
+A dotquarter D 8th D half
+D 8th A quarter E 8th E half
+A dotquarter D 8th D half
+D 8th A quarter E 8th E half
+A dotquarter D 8th D half
+D 8th A quarter E 8th E half
+A dotquarter D 8th D half
+D 8th A quarter E 8th E half
+A dotquarter D 8th D half
+D 8th A quarter E 8th E half
+A dotquarter D 8th D half
+D 8th A quarter E 8th E half
+A dotquarter D 8th D half
+D 8th A quarter E 8th E half
+A dotquarter D 8th D half
+D 8th A quarter E 8th E half
+A dotquarter D 8th D half
+D 8th A quarter E 8th E half
+A dotquarter D 8th D half
+D 8th A quarter E 8th E half
+A dotquarter D 8th D half
+D 8th A quarter E 8th E half
+A dotquarter D 8th D half
+D 8th A quarter E 8th E half
+A dotquarter D 8th D half
+D 8th A quarter E 8th E half
+A dotquarter D 8th D half
+D 8th A quarter E 8th E half
+A dotquarter D 8th D half
+D 8th A quarter E 8th E half
+A dotquarter D 8th D half
+D 8th A quarter E 8th E half
+A dotquarter D 8th D half
+D 8th A quarter E 8th E half
+A dotquarter D 8th D half
+D 8th A quarter E 8th E half
+A dotquarter D 8th D half
+D 8th A quarter E 8th E half
+A dotquarter D 8th D half
+D 8th A quarter E 8th E half
+A dotquarter D 8th D half
+D 8th A quarter E 8th E half
+A dotquarter D 8th D half
+D 8th A quarter E 8th E half
+A dotquarter D 8th D half
+D 8th A quarter E 8th E half
+A dotquarter D 8th D half
+D 8th A quarter E 8th E half
