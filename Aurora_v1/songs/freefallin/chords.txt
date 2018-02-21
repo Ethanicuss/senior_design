@@ -68,10 +68,10 @@ A dotquarter D 8th D half
 D 8th A quarter E 8th E half
 A dotquarter D 8th D half
 D 8th A quarter E 8th E half
-A dotquarter D 8th D half
-D 8th A quarter E 8th E half
-A dotquarter D 8th D half
-D 8th A quarter E 8th E half
+rest whole
+rest whole
+rest whole
+rest whole
 A dotquarter D 8th D half
 D 8th A quarter E 8th E half
 A dotquarter D 8th D half

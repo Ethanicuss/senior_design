@@ -32,25 +32,15 @@ chords = dict([
 f = open("chords.txt", "r+")
 g = open("tabs.txt", "w")
 
-linenum = 0
+g.write('1015')
+g.write('\n')
 
 for line in f.readlines():
-    linenum += 1
-    measuresum = 0.0
     line = " ".join(line.split()).split()
     for chord in line:
         tab = chords[chord]
         g.write(tab)
         g.write('\n')
-        if(chord == "16th"):
-            measuresum += .0625
-        if(chord == "8th"):
-            measuresum += .125
-        if(chord == "half"):
-            measuresum += .5
-    if(measuresum != 1):
-        print(linenum)
-        print(measuresum)
 
 f.close()
 g.close()
