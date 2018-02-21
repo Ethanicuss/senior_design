@@ -1,34 +1,36 @@
-/* TODO: Any function that has "Draw" in it.
- *       
- *       This Module will just draw each screen.
- */
-
-void UpdateScreen(){
-  
-}
-
 #define TFT_DC 9
 #define TFT_CS 10
+#define SD_CS 4
+
 // Use hardware SPI (on Uno, #13, #12, #11) and the above for CS/DC
 Adafruit_HX8357 tft = Adafruit_HX8357(TFT_CS, TFT_DC);
 
-#define SD_CS 4
+bool LCDSetup(void) {
 
-
-void LCDSetup(void) {
+  Serial.begin(9600);
+  
+  Serial.print("Initializing LCD... ");
 
   tft.begin(HX8357D);
-  
   tft.setRotation(3);
   tft.fillScreen(HX8357_WHITE);
+
+  Serial.println("done.");
+  Serial.print("Initializing SD card... ");
   
-  Serial.print("Initializing LCD...");
   if (!SD.begin(SD_CS)) {
     Serial.println("failed!");
+    return false;
   }
-  Serial.println("done.");
+  else{
+    Serial.println("done.");
+    return true;
+  }
 
-  //bmpDraw("jumpers.bmp", 0, 0);
+}
+
+void UpdateScreen(){
+  
 }
 
 void DrawStartupScreen(){

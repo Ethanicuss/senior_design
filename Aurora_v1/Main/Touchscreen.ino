@@ -22,11 +22,6 @@ TouchScreen getTS(){
   return ts;
 }
 
-void TouchscreenSetup(void) {
-  Serial.begin(9600);
-  // Serial.begin(115200);
-}
-
 void DisplayXYZ(void) {
   // a point object holds x y and z coordinates
   TSPoint p = ts.getPoint();
@@ -42,9 +37,9 @@ void DisplayXYZ(void) {
   Ycoor = p.y;
   Xcoor = p.x;
 
-  Serial.print("Ycoor = "); Serial.println(Ycoor);
+  //Serial.print("Ycoor = "); Serial.println(Ycoor);
 
-  Serial.print("Xcoor = "); Serial.println(Xcoor);
+  //Serial.print("Xcoor = "); Serial.println(Xcoor);
   
   delay(50);
 }

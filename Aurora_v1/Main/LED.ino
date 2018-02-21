@@ -1,4 +1,3 @@
-#include "stdio.h"
 #include <FastLED.h>
 #define LEDS_PER_ROW 6
 #define NUM_ROWS 12
@@ -26,7 +25,9 @@ void learnMode(String song[], int numNotes){
 }
 
 // example string would be: ExxA0wD2rG2gB2be0w
-void LightLED(String s){
+void LightLED(String s, bool fullBrightness){
+  if(s == "X")
+    return;
   // for each string of the guitar in the chord
   for(int i = 0; i < NUM_STRINGS; i++){
     // get the string name, fret number, and LED color
@@ -57,18 +58,35 @@ void LightLED(String s){
           index = (fret - 1) * LEDS_PER_ROW + 5;
           break;
       }
-      // CRGB values change based on color we want
-      switch(color){
-        case 'r':
-          led[index] = CRGB(255,0,0);
-          break;
-        case 'g':
-          led[index] = CRGB(0,0,255);
-          break;
-        case 'b':
-          led[index] = CRGB(0,255,0);
-          break;
+      if(fullBrightness){
+        // CRGB values change based on color we want
+        switch(color){
+          case 'r':
+            led[index] = CRGB(255,0,0);
+            break;
+          case 'g':
+            led[index] = CRGB(0,0,255);
+            break;
+          case 'b':
+            led[index] = CRGB(0,255,0);
+            break;
+        }
       }
+      else{
+        // CRGB values change based on color we want
+        switch(color){
+          case 'r':
+            led[index] = CRGB(125,0,0);
+            break;
+          case 'g':
+            led[index] = CRGB(0,0,125);
+            break;
+          case 'b':
+            led[index] = CRGB(0,125,0);
+            break;
+        }
+      }
+      
     }
     // special case of an open string
       if(fret == 0){
@@ -93,9 +111,17 @@ void LightLED(String s){
           offset = 5;
           break;
         }
-        for(int i = 0; i< NUM_FRETS; i++){
-          led[i * NUM_STRINGS + offset] = CRGB(255,255,255);
+        if(fullBrightness){
+          for(int i = 0; i< NUM_FRETS; i++){
+            led[i * NUM_STRINGS + offset] = CRGB(255,255,255);
+          }
         }
+        else{
+          for(int i = 0; i< NUM_FRETS; i++){
+            led[i * NUM_STRINGS + offset] = CRGB(125,125,125);
+          }
+        }
+        
       }
   }
   FastLED.show();

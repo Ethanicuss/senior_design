@@ -13,10 +13,9 @@ int GetSongLength(){
   }
 }
 
-void OpenFile(String fname){
+String OpenFile(String fname){
   char line[3];
   char newline[1];
-  int bpm = 0;
   // open the file for reading:
   f = SD.open(fname);
   // read song bpm from first line of file
@@ -27,6 +26,7 @@ void OpenFile(String fname){
     f.read(newline, 1);
     // find the number of lines in the song (basically convert from chars to an integer using the minus '0' trick)
     len = (line[0] - '0') * 100 + (line[1] - '0') * 10 + (line[2] - '0');
+    return ReadFile();
   } 
   else {
     // if the file didn't open, print an error:
