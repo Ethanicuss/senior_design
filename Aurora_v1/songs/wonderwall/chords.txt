@@ -1,32 +1,90 @@
-Em  G   D   A
-Em  G   D   A
-Em  G   D   A
-Em  G   D   A
-Em  G   D   A
-Em  G   D   A
-Em  G   D   A
-C   D   A   A
-Em  G   D   A
-Em  G   D   A
-Em  G   D   A
-Em  G   D   A
-C   D   Em  Em
-C   D   Em  Em
-C   D   G   D/F#  Em  D
-A   A   A   A
-C   Em  G   Em
-C   Em  G   Em
-C   Em  G   Em
-C   Em  G   Em
-Em  G   D   A
-Em  G   D   A
-Em  G   D   A
-C   D   A   A
-C   D   Em  Em
-C   D   Em  Em
-C   D   G   D/F#  Em
-D   A   A   A
-C   Em  G   Em
-C   Em  G   Em
-C   Em  G   Em
-C   Em  G   Em
+Em7 8th Em71 8th Em7 8th Em71 16th Gp0 16th Gp1 16th Gp2 16th Gp1 8th Gp4 8th Gp1 16th Gp0 16th
+Dp0 16th Dp1 16th Dp0 8th Dp2 8th Dp3 16th Dp4 16th Dp4 16th Dp4 8th Ap1 16th Dp4 16th Ap2 16th Ap1 16th Ap3 16th
+Em7 8th Em71 8th Em7 8th Em71 16th Gp0 16th Gp1 16th Gp2 16th Gp1 8th Gp4 8th Gp1 16th Gp0 16th
+Dp0 16th Dp1 16th Dp0 8th Dp2 8th Dp3 16th Dp4 16th Dp4 16th Dp4 8th Ap1 16th Dp4 16th Ap2 16th Ap1 16th Ap3 16th
+Em7 8th Em71 8th Em7 8th Em71 16th Gp0 16th Gp1 16th Gp2 16th Gp1 8th Gp4 8th Gp1 16th Gp0 16th
+Dp0 16th Dp1 16th Dp0 8th Dp2 8th Dp3 16th Dp4 16th Dp4 16th Dp4 8th Ap1 16th Dp4 16th Ap2 16th Ap1 16th Ap3 16th
+Em7 8th Em71 8th Em7 8th Em71 16th Gp0 16th Gp1 16th Gp2 16th Gp1 8th Gp4 8th Gp1 16th Gp0 16th
+Dp0 16th Dp1 16th Dp0 8th Dp2 8th Dp3 16th Dp4 16th Dp4 16th Dp4 8th Ap1 16th Dp4 16th Ap2 16th Ap1 16th Ap3 16th
+Em7 8th Em71 8th Em7 8th Em71 16th Gp0 16th Gp1 16th Gp2 16th Gp1 8th Gp4 8th Gp1 16th Gp0 16th
+Dp0 16th Dp1 16th Dp0 8th Dp2 8th Dp3 16th Dp4 16th Dp4 16th Dp4 8th Ap1 16th Dp4 16th Ap2 16th Ap1 16th Ap3 16th
+Em7 8th Em71 8th Em7 8th Em71 16th Gp0 16th Gp1 16th Gp2 16th Gp1 8th Gp4 8th Gp1 16th Gp0 16th
+Dp0 16th Dp1 16th Dp0 8th Dp2 8th Dp3 16th Dp4 16th Dp4 16th Dp4 8th Ap1 16th Dp4 16th Ap2 16th Ap1 16th Ap3 16th
+Em7 8th Em71 8th Em7 8th Em71 16th Gp0 16th Gp1 16th Gp2 16th Gp1 8th Gp4 8th Gp1 16th Gp0 16th
+Dp0 16th Dp1 16th Dp0 8th Dp2 8th Dp3 16th Dp4 16th Dp4 16th Dp4 8th Ap1 16th Dp4 16th Ap2 16th Ap1 16th Ap3 16th
+Cp1 8th Cp2 8th Cp1 8th Cp2 16th Cp3 16th Cp3 16th Dp5 16th Dp0 8th Dp2 8th Dp2 16th Dp5 16th
+Ap4 16th Ap1 16th Ap4 8th Ap5 8th Ap1 16th Dp4 16th Dp4 16th Dp4 8th Ap1 16th Dp4 16th Ap2 16th Ap1 16th Ap3 16th
+Em7 8th Em71 8th Em7 8th Em71 16th Gp0 16th Gp1 16th Gp2 16th Gp1 8th Gp4 8th Gp1 16th Gp0 16th
+Dp0 16th Dp1 16th Dp0 8th Dp2 8th Dp3 16th Dp4 16th Dp4 16th Dp4 8th Ap1 16th Dp4 16th Ap2 16th Ap1 16th Ap3 16th
+Em7 8th Em71 8th Em7 8th Em71 16th Gp0 16th Gp1 16th Gp2 16th Gp1 8th Gp4 8th Gp1 16th Gp0 16th
+Dp0 16th Dp1 16th Dp0 8th Dp2 8th Dp3 16th Dp4 16th Dp4 16th Dp4 8th Ap1 16th Dp4 16th Ap2 16th Ap1 16th Ap3 16th
+Em7 8th Em71 8th Em7 8th Em71 16th Gp0 16th Gp1 16th Gp2 16th Gp1 8th Gp4 8th Gp1 16th Gp0 16th
+Dp0 16th Dp1 16th Dp0 8th Dp2 8th Dp3 16th Dp4 16th Dp4 16th Dp4 8th Ap1 16th Dp4 16th Ap2 16th Ap1 16th Ap3 16th
+Em7 8th Em71 8th Em7 8th Em71 16th Gp0 16th Gp1 16th Gp2 16th Gp1 8th Gp4 8th Gp1 16th Gp0 16th
+Dp0 16th Dp1 16th Dp0 8th Dp2 8th Dp3 16th Dp4 16th Dp4 16th Dp4 8th Ap1 16th Dp4 16th Ap2 16th Ap1 16th Ap3 16th
+Cp1 8th Cp2 8th Cp1 8th Cp2 16th Cp3 16th Cp3 16th Dp5 16th Dp0 8th Dp2 8th Dp2 16th Dp5 16th
+Em7 8th Em71 8th Em7 8th Em71 16th Dp5 16th Em71 16th Dp5 16th Em71 8th Em7 8th Em71 16th Dp5 16th
+Cp1 8th Cp2 8th Cp1 8th Cp2 16th Cp3 16th Cp3 16th Dp5 16th Dp0 8th Dp2 8th Dp2 16th Dp5 16th
+Em7 8th Em71 8th Em7 8th Em71 16th Dp5 16th Em71 16th Dp5 16th Em71 8th Em7 8th Em71 16th Dp5 16th
+Cp1 8th Cp2 8th Cp1 8th Cp2 16th Cp3 16th Cp3 16th Dp5 16th Dp0 8th Dp2 8th Dp2 16th Dp5 16th
+Gp3 8th Gp3 16th Gp0 16th Gp5 8th Gp5 16th Gp0 16th Em71 8th Em71 16th Gp0 16th Gp3 8th Gp3 16th Gp0 16th
+Ap1 8th Ap6 16th Ap1 16th Ap6 8th Ap1 16th Ap6 16th Ap6 16th Ap1 16th Ap6 16th Ap6 16th Ap6 16th Ap6 16th Ap1 16th Ap6 16th
+Ap1 8th Ap6 16th Ap1 16th Ap6 8th Ap1 16th Ap6 16th Ap6 16th Ap1 16th Ap6 16th Ap6 16th Ap6 16th Ap6 16th Ap1 16th Ap6 16th
+Cp1 8th Cp2 8th Cp1 8th Cp2 16th Dp5 16th Gp1 16th Dp5 16th Gp1 8th Em7 8th Gp1 16th Dp5 16th
+Gp3 8th Gp3 8th Gp4 8th Gp3 16th Dp5 16th Gp1 16th Dp5 16th Gp1 8th Em7 8th Gp1 16th Dp5 16th
+Cp1 8th Cp2 8th Cp1 8th Cp2 16th Dp5 16th Gp1 16th Dp5 16th Gp1 8th Em7 8th Gp1 16th Dp5 16th
+Gp3 8th Gp3 8th Gp4 8th Gp3 16th Dp5 16th Gp1 16th Dp5 16th Gp1 8th Em7 8th Gp1 16th Dp5 16th
+Cp1 8th Cp2 8th Cp1 8th Cp2 16th Dp5 16th Gp1 16th Dp5 16th Gp1 8th Em7 8th Gp1 16th Dp5 16th
+Gp3 8th Gp3 8th Gp4 8th Gp3 16th Dp5 16th Gp1 16th Dp5 16th Gp1 8th Em7 8th Gp1 16th Dp5 16th
+Cp1 8th Cp2 8th Cp1 8th Cp2 16th Dp5 16th Gp1 16th Dp5 16th Gp1 8th Em7 8th Gp1 16th Dp5 16th
+Gp3 8th Gp3 16th Gp4 16th Gp4 16th Gp0 16th Em71 8th Em71 half
+Em71 half
+rest half Ap4 16th Ap5 16th Ap4 16th Ap5 8th Ap5 16th Ap1 16th Ap3 16th
+Em7 8th Em71 8th Em7 8th Em71 16th Gp0 16th Gp1 16th Gp2 16th Gp1 8th Gp4 8th Gp1 16th Gp0 16th
+Dp0 16th Dp1 16th Dp0 8th Dp2 8th Dp3 16th Dp4 16th Dp4 16th Dp4 8th Ap1 16th Dp4 16th Ap2 16th Ap1 16th Ap3 16th
+Em7 8th Em71 8th Em7 8th Em71 16th Gp0 16th Gp1 16th Gp2 16th Gp1 8th Gp4 8th Gp1 16th Gp0 16th
+Dp0 16th Dp1 16th Dp0 8th Dp2 8th Dp3 16th Dp4 16th Dp4 16th Dp4 8th Ap1 16th Dp4 16th Ap2 16th Ap1 16th Ap3 16th
+Em7 8th Em71 8th Em7 8th Em71 16th Gp0 16th Gp1 16th Gp2 16th Gp1 8th Gp4 8th Gp1 16th Gp0 16th
+Dp0 16th Dp1 16th Dp0 8th Dp2 8th Dp3 16th Dp4 16th Dp4 16th Dp4 8th Ap1 16th Dp4 16th Ap2 16th Ap1 16th Ap3 16th
+Em7 8th Em71 8th Em7 8th Em71 16th Gp0 16th Gp1 16th Gp2 16th Gp1 8th Gp4 8th Gp1 16th Gp0 16th
+Dp0 16th Dp1 16th Dp0 8th Dp2 8th Dp3 16th Dp4 16th Dp4 16th Dp4 8th Ap1 16th Dp4 16th Ap2 16th Ap1 16th Ap3 16th
+Cp1 8th Cp2 8th Cp1 8th Cp2 16th Cp3 16th Cp3 16th Dp5 16th Dp0 8th Dp2 8th Dp2 16th Dp5 16th
+Em7 8th Em71 8th Em7 8th Em71 16th Dp5 16th Em71 16th Dp5 16th Em71 8th Em7 8th Em71 16th Dp5 16th
+Cp1 8th Cp2 8th Cp1 8th Cp2 16th Cp3 16th Cp3 16th Dp5 16th Dp0 8th Dp2 8th Dp2 16th Dp5 16th
+Em7 8th Em71 8th Em7 8th Em71 16th Dp5 16th Em71 16th Dp5 16th Em71 8th Em7 8th Em71 16th Dp5 16th
+Cp1 8th Cp2 8th Cp1 8th Cp2 16th Cp3 16th Cp3 16th Dp5 16th Dp0 8th Dp2 8th Dp2 16th Dp5 16th
+Gp3 8th Gp3 16th Gp0 16th Gp5 8th Gp5 16th Gp0 16th Em71 8th Em71 16th Gp0 16th Gp3 8th Gp3 16th Gp0 16th
+Ap1 8th Ap6 16th Ap1 16th Ap6 8th Ap1 16th Ap6 16th Ap6 16th Ap1 16th Ap6 16th Ap6 16th Ap6 16th Ap6 16th Ap1 16th Ap6 16th
+Ap1 8th Ap6 16th Ap1 16th Ap6 8th Ap1 16th Ap6 16th Ap6 16th Ap1 16th Ap6 16th Ap6 16th Ap6 16th Ap6 16th Ap1 16th Ap6 16th
+Cp1 8th Cp2 8th Cp1 8th Cp2 16th Dp5 16th Gp1 16th Dp5 16th Gp1 8th Em7 8th Gp1 16th Dp5 16th
+Gp3 8th Gp3 8th Gp4 8th Gp3 16th Dp5 16th Gp1 16th Dp5 16th Gp1 8th Em7 8th Gp1 16th Dp5 16th
+Cp1 8th Cp2 8th Cp1 8th Cp2 16th Dp5 16th Gp1 16th Dp5 16th Gp1 8th Em7 8th Gp1 16th Dp5 16th
+Gp3 8th Gp3 8th Gp4 8th Gp3 16th Dp5 16th Gp1 16th Dp5 16th Gp1 8th Em7 8th Gp1 16th Dp5 16th
+Cp1 8th Cp2 8th Cp1 8th Cp2 16th Dp5 16th Gp1 16th Dp5 16th Gp1 8th Em7 8th Gp1 16th Dp5 16th
+Gp3 8th Gp3 8th Gp4 8th Gp3 16th Dp5 16th Gp1 16th Dp5 16th Gp1 8th Em7 8th Gp1 16th Dp5 16th
+Cp1 8th Cp2 8th Cp1 8th Cp2 16th Dp5 16th Gp1 16th Dp5 16th Gp1 8th Em7 8th Gp1 16th Dp5 16th
+Gp3 8th Gp3 8th Gp4 8th Gp3 16th Dp5 16th Gp1 16th Dp5 16th Gp1 8th Em7 8th Gp1 16th Dp5 16th
+Cp1 8th Cp2 8th Cp1 8th Cp2 16th Dp5 16th Gp1 16th Dp5 16th Gp1 8th Em7 8th Gp1 16th Dp5 16th
+Gp3 8th Gp3 8th Gp4 8th Gp3 16th Dp5 16th Gp1 16th Dp5 16th Gp1 8th Em7 8th Gp1 16th Dp5 16th
+Cp1 8th Cp2 8th Cp1 8th Cp2 16th Dp5 16th Gp1 16th Dp5 16th Gp1 8th Em7 8th Gp1 16th Dp5 16th
+Gp3 8th Gp3 8th Gp4 8th Gp3 16th Dp5 16th Gp1 16th Dp5 16th Gp1 8th Em7 8th Gp1 16th Dp5 16th
+Cp1 8th Cp2 8th Cp1 8th Cp2 16th Dp5 16th Gp1 16th Dp5 16th Gp1 8th Em7 8th Gp1 16th Dp5 16th
+Gp3 8th Gp3 8th Gp4 8th Gp3 16th Dp5 16th Gp1 16th Dp5 16th Gp1 8th Em7 8th Gp1 16th Dp5 16th
+Cp1 8th Cp2 8th Cp1 8th Cp2 16th Dp5 16th Gp1 16th Dp5 16th Gp1 8th Em7 8th Gp1 16th Dp5 16th
+Gp3 8th Gp3 8th Gp4 8th Gp3 16th Dp5 16th Gp1 16th Dp5 16th Gp1 8th Em7 8th Gp1 16th Dp5 16th
+Cp1 8th Cp2 8th Cp1 8th Cp2 16th Dp5 16th Gp1 16th Dp5 16th Gp1 8th Em7 8th Gp1 16th Dp5 16th
+Gp3 8th Gp3 8th Gp4 8th Gp3 16th Dp5 16th Gp1 16th Dp5 16th Gp1 8th Em7 8th Gp1 16th Dp5 16th
+Cp1 8th Cp2 8th Cp1 8th Cp2 16th Dp5 16th Gp1 16th Dp5 16th Gp1 8th Em7 8th Gp1 16th Dp5 16th
+Gp3 8th Gp3 8th Gp4 8th Gp3 16th Dp5 16th Gp1 16th Dp5 16th Gp1 8th Em7 8th Gp1 16th Dp5 16th
+Cp1 8th Cp2 8th Cp1 8th Cp2 16th Dp5 16th Gp1 16th Dp5 16th Gp1 8th Em7 8th Gp1 16th Dp5 16th
+Gp3 8th Gp3 8th Gp4 8th Gp3 16th Dp5 16th Gp1 16th Dp5 16th Gp1 8th Em7 8th Gp1 16th Dp5 16th
+Cp1 8th Cp2 8th Cp1 8th Cp2 16th Dp5 16th Gp1 16th Dp5 16th Gp1 8th Em7 8th Gp1 16th Dp5 16th
+Gp3 8th Gp3 8th Gp4 8th Gp3 16th Dp5 16th Gp1 16th Dp5 16th Gp1 8th Em7 8th Gp1 16th Dp5 16th
+Cp1 8th Cp2 8th Cp1 8th Cp2 16th Dp5 16th Gp1 16th Dp5 16th Gp1 8th Em7 8th Gp1 16th Dp5 16th
+Gp3 8th Gp3 8th Gp4 8th Gp3 16th Dp5 16th Gp1 16th Dp5 16th Gp1 8th Em7 8th Gp1 16th Dp5 16th
+Cp1 8th Cp2 8th Cp1 8th Cp2 16th Dp5 16th Gp1 16th Dp5 16th Gp1 8th Em7 8th Gp1 16th Dp5 16th
+Gp3 8th Gp3 8th Gp4 8th Gp3 16th Dp5 16th Gp1 16th Dp5 16th Gp1 8th Em7 8th Gp1 16th Dp5 16th
+Cp1 8th Cp2 8th Cp1 8th Cp2 16th Dp5 16th Gp1 16th Dp5 16th Gp1 8th Em7 8th Gp1 16th Dp5 16th
+Gp3 8th Gp3 8th Gp4 8th Gp3 16th Dp5 16th Gp1 16th Dp5 16th Gp1 8th Em7 8th Gp1 16th Dp5 16th
+Cp1 8th Cp2 8th Cp1 8th Cp2 16th Dp5 16th Gp1 16th Dp5 16th Gp1 8th Em7 8th Gp1 16th Dp5 16th
+Gp3 8th Gp3 16th Gp4 16th Gp4 16th Dp5 16th Gp1 8th Gp1 half
