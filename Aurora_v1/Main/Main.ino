@@ -1,5 +1,3 @@
-#include <TFT.h>
-
 #include <TouchScreen.h>
 #include <Adafruit_GFX.h>    // Core graphics library
 #include <Adafruit_HX8357.h>
@@ -10,25 +8,35 @@
 #include "SD.h"
 #include "Controls.h"
 
+#include <Fonts/JosefinSans_Bold20pt7b.h>
+#include <Fonts/JosefinSans_Bold12pt7b.h>
+#include <Fonts/JosefinSans_Bold10pt7b.h>
+#include <Fonts/JosefinSans_Bold8pt7b.h>
+#include <Fonts/JosefinSans_BoldItalic20pt7b.h>
+#include <Fonts/JosefinSans_BoldItalic12pt7b.h>
+#include <Fonts/JosefinSans_BoldItalic10pt7b.h>
+#include <Fonts/JosefinSans_BoldItalic8pt7b.h>
+
 extern bool play; 
 
 //creating type "State"
-enum State {HOME = 0, LESSONS = 1, LEARN = 2, PLAY = 3, SETTINGS = 4, SHIFTING = 5, SUSTAIN = 6, CHORDS = 7, PLAYING_LESSON = 8, LEARNING_SONG = 9, PLAYING_SONG = 10, FINISHED_LESSON = 11, FINISHED_LEARNING = 12, FINISHED_PLAYING = 13, PAUSED = 14};
+enum State {HOME = 0, LESSONS = 1, LEARN = 2, PLAY = 3, SETTINGS = 4, SHIFTING = 5, SUSTAIN = 6, CHORDS = 7, PLAYING_LESSON = 8, LEARNING_SONG = 9, PLAYING_SONG = 10, FINISHED_LESSON = 11, FINISHED_LEARNING = 12, FINISHED_PLAYING = 13};
 
 //creating variable of type "State" called CurrState
 enum State CurrState;
 
 void setup() {
   // put your setup code here, to run once:
-  InitializeVars();
+  Serial.begin(9600);
+  Serial.print("In setup");
   play = true;
   setupLED();
   setupSD();
+  LCDSetup();
+  TouchscreenSetup();
   int bpm = openFile("freefall.txt");
   String song = readFile();
   lightLED(song);
-  LCDSetup();
-  TouchscreenSetup();
   InitializeVars(); 
   analogReadResolution(12);
 }
@@ -268,24 +276,20 @@ void loop() {
    case PLAY:
       Serial.println("In Play ");
       switch (BtnPressed){
-        case Btn1: //UP:
-          //TODO: UPsongList()
-          //TODO: DrawPlayScreen(); //to refresh the songlist
-          break;
-        case Btn2: //DOWN:
-          //TODO: DOWNsongList() //same as UPsongList
-          //TODO: DrawPlayScreen();
-          break;
-        case Btn3: //SONG1:
-          //TODO: DrawPlaySong(); draws the learning song screen
+        case Btn1: 
+          DrawPlaySong(1);
           CurrState = PLAYING_SONG;
           break;
-        case Btn4: //SONG2:
-          //TODO: DrawPlaySong();
+        case Btn2: 
+          DrawPlaySong(2);
           CurrState = PLAYING_SONG;
           break;
-        case Btn5: //SONG3:
-          //TODO: DrawPlaySong();
+        case Btn3: 
+          DrawPlaySong(3);
+          CurrState = PLAYING_SONG;
+          break;
+        case Btn4: 
+          DrawPlaySong(4);
           CurrState = PLAYING_SONG;
           break;
         case BackBtn: //Back:

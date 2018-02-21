@@ -1,11 +1,7 @@
-S/* TODO: Any function that has "Draw" in it.
+/* TODO: Any function that has "Draw" in it.
  *       
  *       This Module will just draw each screen.
  */
-
-void UpdateScreen(){
-  
-}
 
 #define TFT_DC 9
 #define TFT_CS 10
@@ -16,8 +12,8 @@ Adafruit_HX8357 tft = Adafruit_HX8357(TFT_CS, TFT_DC);
 
 
 void LCDSetup(void) {
-  Serial.begin(9600);
-
+  Serial.print("In LCDSetup");
+  
   tft.begin(HX8357D);
   
   tft.setRotation(3);
@@ -32,14 +28,24 @@ void LCDSetup(void) {
   //bmpDraw("jumpers.bmp", 0, 0);
 }
 
-void DrawStartupScreen(){
-  // bmpDraw(bmpfilename, 0, 0);
- }
-
  void DrawHomeScreen(){
-  bmpDraw("home.bmp", 0, 0);
-  tft.
-  //Home screen options
+  tft.fillRect(0, 0, 240, 200, HX8357_WHITE);
+  tft.fillRect(240, 0, 240, 320, 0x981F);
+  tft.drawLine(260, 105, 460, 105, HX8357_WHITE);
+  tft.drawLine(260, 215, 460, 215, HX8357_WHITE);
+
+  tft.setFont(&JosefinSans_Bold20pt7b);
+  tft.setTextColor(HX8357_WHITE);
+  tft.setCursor(268, 70);
+  tft.print("LESSONS");
+
+  tft.setCursor(295, 170);
+  tft.print("LEARN");
+
+  tft.setCursor(310, 283);
+  tft.print("PLAY");
+
+//  bmpDraw("play.bmp", 0, 0); 
  }
 
  /*********** HOME MENU SCREENS **********/
@@ -54,8 +60,56 @@ void DrawStartupScreen(){
  }
 
  void DrawPlayScreen(){
-  bmpDraw("play.bmp", 0, 0);
-  //shows song list for playing
+  tft.fillRect(0, 50, 220, 200, HX8357_WHITE);
+  tft.fillRect(240, 0, 240, 320, 0xF81D);
+  tft.drawLine(260, 80, 460, 80, 0xFE5F);
+  tft.drawLine(260, 160, 460, 160, 0xFE5F);
+  tft.drawLine(260, 240, 460, 240, 0xFE5F);
+
+  tft.setFont(&JosefinSans_BoldItalic20pt7b);
+  tft.setTextColor(0xF81D);
+  tft.setCursor(70, 155);
+  tft.print("PLAY");
+
+  tft.setTextColor(0x9CF3);
+  tft.setFont(&JosefinSans_Bold8pt7b);
+  tft.setCursor(20, 180);
+  tft.print("SELECT A SONG TO PLAY");
+  tft.setCursor(60, 198);
+  tft.print("ON YOUR OWN");
+
+  tft.setFont(&JosefinSans_Bold20pt7b);
+  tft.setCursor(11, 33);
+  tft.print("<");
+
+  tft.setFont(&JosefinSans_Bold12pt7b);
+  tft.setTextColor(HX8357_WHITE);
+  tft.setCursor(275, 40);
+  tft.print("WONDERWALL");
+
+  tft.setCursor(280, 120);
+  tft.print("FREE FALLIN'");
+
+  tft.setCursor(318, 200);
+  tft.print("AFRICA");
+
+  tft.setCursor(300, 280);
+  tft.print("I'M YOURS");
+
+
+  tft.setTextColor(0xFE5F);
+  tft.setFont(&JosefinSans_Bold8pt7b);
+  tft.setCursor(335, 60);
+  tft.print("OASIS");
+
+  tft.setCursor(318, 140);
+  tft.print("TOM PETTY");
+
+  tft.setCursor(340, 220);
+  tft.print("TOTO");
+
+  tft.setCursor(310, 300);
+  tft.print("JASON MRAZ");
  }
 
  void DrawSettingsScreen(){
@@ -114,11 +168,54 @@ void DrawStartupScreen(){
   bmpDraw("learnpl.bmp", 0 , 0);
  }
 
- void DrawPlaySong(){
-  /* same as DrawLearnSong()
-   *  
-   */
-  bmpDraw("playplay.bmp", 0 , 0);
+ void DrawPlaySong(int song){
+  tft.fillRect(0, 0, 480, 260, HX8357_WHITE);
+  tft.fillRect(0, 260, 480, 60, 0x9CF3);
+  tft.drawLine(241, 268, 241, 312, HX8357_WHITE);
+
+  tft.setFont(&JosefinSans_BoldItalic20pt7b);
+  tft.setTextColor(0x07EE);
+  tft.setCursor(360,40);
+  tft.print("PLAY");
+
+  tft.setFont(&JosefinSans_Bold20pt7b);
+  tft.setTextColor(HX8357_WHITE);
+  tft.setCursor(55, 304);
+  tft.print("PAUSE");
+  tft.setCursor(310, 304);
+  tft.print("QUIT");
+
+  switch(song) {
+    case 1:
+      tft.setTextColor(0x07EE);
+      tft.setCursor(87, 120);
+      tft.print("WONDERWALL");
+    
+      tft.setFont(&JosefinSans_Bold12pt7b);
+      tft.setTextColor(0x9CF3);
+      tft.setCursor(205, 152);
+      tft.print("OASIS");
+      break;
+      
+    case 2:
+      tft.setTextColor(0x07EE);
+      tft.setCursor(105, 120);
+      tft.print("FREE FALLIN'");
+    
+      tft.setFont(&JosefinSans_Bold12pt7b);
+      tft.setTextColor(0x9CF3);
+      tft.setCursor(173, 152);
+      tft.print("TOM PETTY");
+      break;
+
+//    case 3:
+
+  //    break;
+
+   // case 4:
+
+ //     break;
+  }
  }
  
 
@@ -138,10 +235,24 @@ void DrawStartupScreen(){
    }
 
  void DrawFinishedPlaying(){
-  /* Same as DrawFinishedPlaying()
-   *  
-   */
-   bmpDraw("playend.bmp", 0 , 0);
+  tft.fillRect(0, 260, 480, 60, 0x9CF3);
+  tft.drawLine(241, 268, 241, 312, HX8357_WHITE);
+  
+  tft.setFont(&JosefinSans_Bold20pt7b);
+  tft.setTextColor(HX8357_WHITE);
+  tft.setCursor(50, 304);
+  tft.print("SONGS");
+  tft.setCursor(300, 304);
+  tft.print("HOME");
+
+  tft.setTextColor(0x9CF3);
+  tft.setCursor(87, 50);
+  tft.print("WONDERWALL");
+  tft.setFont(&JosefinSans_Bold12pt7b);
+  tft.setCursor(205, 78);
+  tft.print("OASIS");
+
+  tft.fillRect(75, 90, 330, 94, 0x073F);  
  }
 
 // This function opens a Windows Bitmap (BMP) file and

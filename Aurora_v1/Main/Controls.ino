@@ -25,7 +25,6 @@ void playPause(String songName){
   // CheckADC(song); 
   // This will update the percentage of notes the user has hit perfectly
   // TODO: DON
-  UpdateScreen(); 
   // Goto Next Note AKA close "for loop".
 }
 
@@ -48,7 +47,7 @@ void CheckTouch(){
         Serial.println("Should go to Learn ");
         BtnPressed = Btn2;
       }
-      else if ((Ycoor < -1060 && Ycoor > -3000) && (Xcoor < -250 && Xcoor > -600 )){
+      else if ((Ycoor < -1060 && Ycoor > -3000) && (Xcoor < 500 && Xcoor > -600 )){
         Serial.println("Should go to Play ");
         BtnPressed = Btn3;
       }
@@ -110,9 +109,9 @@ void CheckTouch(){
         Serial.println("Should go to Africa ");
         BtnPressed = Btn3;
       }
-      else if ((Ycoor < -1060 && Ycoor > -3000) && (Xcoor < -250 && Xcoor > -600 )){  //TODO: CHECK X&Y
+      else if ((Ycoor < -1060 && Ycoor > -3000) && (Xcoor < 500 && Xcoor > -600 )){  //TODO: CHECK X&Y
         Serial.println("Should go to I'm Yours ");
-        BtnPressed = Btn3;
+        BtnPressed = Btn4;
       } 
       else if ((Ycoor < 500 && Ycoor > 150) && (Xcoor < -2000 && Xcoor > -2500)){
         Serial.println("Should go back to HOME");
