@@ -5,28 +5,35 @@
 #include "LCD.h"
 #define TFT_DC 9
 #define TFT_CS 10
+#define SD_CS 4
+
 // Use hardware SPI (on Uno, #13, #12, #11) and the above for CS/DC
 Adafruit_HX8357 tft = Adafruit_HX8357(TFT_CS, TFT_DC);
 
-#define SD_CS 4
-
-void LCDSetup(void) {
-  Serial.print("In LCDSetup");
-  
+bool LCDSetup(void) {
+  Serial.print("Initializing LCD... ");
   tft.begin(HX8357D);
-  
   tft.setRotation(3);
   tft.fillScreen(HX8357_WHITE);
+
+  Serial.println("done.");
+  Serial.print("Initializing SD card... ");
   
-  Serial.print("Initializing SD card...");
   if (!SD.begin(SD_CS)) {
     Serial.println("failed!");
+    return false;
   }
-  Serial.println("OK!");
+  else{
+    Serial.println("done.");
+    return true;
+  }
+}
+
+void UpdateScreen(){
 }
 
  void DrawHomeScreen(){
-  tft.fillRect(0, 0, 240, 200, HX8357_WHITE);
+  tft.fillRect(0, 0, 240, 360, HX8357_WHITE);
   tft.fillRect(240, 0, 240, 320/3, 0x00DF);
   tft.fillTriangle(240, 0, 240, 320/3, 255, 320/3, HX8357_WHITE);
   tft.fillRect(240, 320/3, 240, 323/3, 0xF81D);
@@ -57,7 +64,7 @@ void LCDSetup(void) {
 
  /*********** HOME MENU SCREENS **********/
  void DrawLessonsScreen(){
-  tft.fillRect(0, 50, 220, 200, HX8357_WHITE);
+  tft.fillRect(0, 0, 240, 360, HX8357_WHITE);
   tft.fillRect(240, 0, 240, 320, 0xF81D);
   tft.drawLine(260, 320/3, 460, 320/3, 0xFE5F);
   tft.drawLine(260, 640/3, 460, 640/3, 0xFE5F);
@@ -91,7 +98,7 @@ void LCDSetup(void) {
  }
 
  void DrawLearnScreen(){
-  tft.fillRect(0, 50, 220, 200, HX8357_WHITE);
+  tft.fillRect(0, 0, 240, 360, HX8357_WHITE);
   tft.fillRect(240, 0, 240, 320, 0xF81D);
   tft.drawLine(260, 80, 465, 80, 0xFE5F);
   tft.drawLine(260, 160, 465, 160, 0xFE5F);
@@ -144,7 +151,7 @@ void LCDSetup(void) {
  }
 
  void DrawPlayScreen(){
-  tft.fillRect(0, 50, 220, 200, HX8357_WHITE);
+  tft.fillRect(0, 0, 240, 360, HX8357_WHITE);
   tft.fillRect(240, 0, 240, 320, 0xF81D);
   tft.drawLine(260, 80, 460, 80, 0xFE5F);
   tft.drawLine(260, 160, 460, 160, 0xFE5F);
@@ -554,12 +561,13 @@ void LCDSetup(void) {
 
  /********** FINSIHED SCREENS *******/
  void DrawFinishedLessons(){
+  tft.fillRect(0, 0, 480, 80, HX8357_WHITE);
   tft.fillRect(0, 260, 480, 60, 0x9CF3);
   tft.drawLine(241, 268, 241, 312, HX8357_WHITE);
   
   tft.setFont(&JosefinSans_Bold20pt7b);
   tft.setTextColor(HX8357_WHITE);
-  tft.setCursor(38, 304);
+  tft.setCursor(33, 304);
   tft.print("LESSONS");
   tft.setCursor(300, 304);
   tft.print("HOME");
@@ -628,6 +636,7 @@ void LCDSetup(void) {
  }
 
  void DrawFinishedLearning(){
+  tft.fillRect(0, 0, 480, 80, HX8357_WHITE);
   tft.fillRect(0, 260, 480, 60, 0x9CF3);
   tft.drawLine(241, 268, 241, 312, HX8357_WHITE);
   
@@ -638,7 +647,7 @@ void LCDSetup(void) {
   tft.setCursor(300, 304);
   tft.print("HOME");
 
-  switch(currentPlay) {
+  switch(currentLearn) {
     case 1:
       tft.setTextColor(0x9CF3);
       tft.setCursor(87, 50);
@@ -681,6 +690,7 @@ void LCDSetup(void) {
  }
 
  void DrawFinishedPlaying(){
+  tft.fillRect(0, 0, 480, 80, HX8357_WHITE);
   tft.fillRect(0, 260, 480, 60, 0x9CF3);
   tft.drawLine(241, 268, 241, 312, HX8357_WHITE);
   
@@ -767,7 +777,7 @@ void bmpDraw(char *filename, uint8_t x, uint16_t y) {
 
   // Open requested file on SD card
   if ((bmpFile = SD.open(filename)) == NULL) {
-    Serial.print(F("File not found"));
+    Serial.println(F("File not found"));
     return;
   }
 

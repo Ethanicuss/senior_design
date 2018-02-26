@@ -1,13 +1,11 @@
-  #include <TouchScreen.h>
+#include <TouchScreen.h>
 #include <Adafruit_GFX.h>    // Core graphics library
 #include <Adafruit_HX8357.h>
-#include <TouchScreen.h>
 #include <SPI.h>
 #include <SD.h>
+#include <DueTimer.h>
 #include "Switches.h"
-#include "SD.h"
 #include "LCD.h"
-#include "Controls.h"
 
 #include <Fonts/JosefinSans_Bold20pt7b.h>
 #include <Fonts/JosefinSans_Bold15pt7b.h>
@@ -29,24 +27,19 @@ enum State {HOME = 0, LESSONS = 1, LEARN = 2, PLAY = 3, SETTINGS = 4, SHIFTING =
 enum State CurrState;
 
 void setup() {
-  // put your setup code here, to run once:
   Serial.begin(9600);
   Serial.print("In setup");
-  play = true;
-  setupLED();
-  setupSD();
-  LCDSetup();
-  TouchscreenSetup();
-  int bpm = openFile("freefall.txt");
-  String song = readFile();
-  lightLED(song);
-  InitializeVars(); 
-  analogReadResolution(12);
+  bool success = LCDSetup();
+  if(success){
+    LEDSetup();
+    analogReadResolution(12);
+    InitializeState();
+  }
 }
 
 void loop() {
   
-  //SWITCH STATEMENT THAT HANDLES EVERY SCREEN STATE
+  // SWITCH STATEMENT THAT HANDLES EVERY SCREEN STATE
   // -- See UI Diagram for Control Flow Graph
 /****************** HOME SCREEN OPTIONS *****************/
 
@@ -196,18 +189,20 @@ void loop() {
                                      
           break;
         case Btn2: //Quit:
-          //TODO: DrawFinishedLesson();
-          //TODO: Quit(); //within this function should be a "CurrState = FINISHED_LESSON"
-        
-        //TODO: At 100% in this screen it should change State. Ex. "CurrState = FINISHED_LESSON"
-        //TODO: 
+          DrawFinishedLessons();
+          CurrState = FINISHED_LESSON;
           break;
       }
       break;
     case FINISHED_LESSON:
       switch (BtnPressed){
         case Btn1: //Lessons:
-          //TODO: CurrState = DrawLessonsScreen();
+          DrawLessonsScreen();
+          CurrState = LESSONS;
+          break;
+        case Btn2:
+          DrawHomeScreen();
+          CurrState = HOME;
           break;
       }
       break;
@@ -259,7 +254,8 @@ void loop() {
           break;
         case Btn2: //Quit:
           //TODO: Quit(); //within this function should be a "CurrState = FINISHED_LEARNING"
-          //TODO: DrawFinishedLearning();
+          DrawFinishedLearning();
+          CurrState = FINISHED_LEARNING;
           break;
         
         //TODO: At 100% in this screen it should change State. Ex. "CurrState = FINSIHED_LEARNING
@@ -269,11 +265,12 @@ void loop() {
    case FINISHED_LEARNING:
       switch (BtnPressed){
         case Btn1: //PlayCurrentSong:
-          //TODO: PlaySong();  
-          break;
-        case BackBtn:
-          //TODO: DrawLearnScreen();
+          DrawLearnScreen();
           CurrState = LEARN;
+          break;
+        case Btn2:
+          DrawHomeScreen();
+          CurrState = HOME;
           break;
       }
       break;
@@ -325,7 +322,7 @@ void loop() {
           break;
         case Btn2: //Quit:
           //TODO: Quit(); //quits the song, and takes user to the results
-          //TODO: DrawFinishedPlaying();
+          DrawFinishedPlaying();
           CurrState = FINISHED_PLAYING;
           break;
         
@@ -336,8 +333,12 @@ void loop() {
    case FINISHED_PLAYING:
       switch (BtnPressed){
         case Btn1: //SongSelect:
-          //TODO: DrawPlayScreen();
+          DrawPlayScreen();
           CurrState = PLAY;  
+          break;
+        case Btn2: //SongSelect:
+          DrawHomeScreen();
+          CurrState = HOME;  
           break;
       }
       break;
@@ -357,7 +358,7 @@ void loop() {
   BtnPressed = NONE;
 }
 
-void InitializeVars(){
+void InitializeState(){
  CurrState = HOME;
  BtnPressed = NONE;
  DrawHomeScreen();

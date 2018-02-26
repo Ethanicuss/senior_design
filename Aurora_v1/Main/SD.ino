@@ -2,42 +2,39 @@
 #include <SD.h>
 
 File f;
+int len;
 
-void setupSD(){
-   // Open serial communications and wait for port to open:
-  while (!Serial) {
-    ; // wait for serial port to connect. Needed for native USB port only
+int GetSongLength(){
+  if(f){
+    return len;
   }
-
-  if (!SD.begin(4)) {
-    Serial.println("SD initialization failed!");
+  else{
+    return 0;
   }
-  
 }
 
-int openFile(String fname){
-  char line[2];
+String OpenFile(String fname){
+  char line[3];
   char newline[1];
-  int bpm = 0;
   // open the file for reading:
   f = SD.open(fname);
   // read song bpm from first line of file
   if (f) {
-    // read song bpm
-    f.read(line, 2);
+    // read number of chords in the song
+    f.read(line, 3);
     // read newline character in to dummy buffer
     f.read(newline, 1);
-    // calculate bpm (basically convert from chars to an integer using the minus '0' trick)
-    bpm = (line[0] - '0') * 10 + (line[1] - '0');
+    // find the number of lines in the song (basically convert from chars to an integer using the minus '0' trick)
+    len = (line[0] - '0') * 100 + (line[1] - '0') * 10 + (line[2] - '0');
+    return ReadFile();
   } 
   else {
     // if the file didn't open, print an error:
-    Serial.println("error opening song file");
+    Serial.println("Error opening song file!");
   }
-  return bpm;
 }
 
-String readFile(){
+String ReadFile(){
   char line[18];
   char newline[1];
   if(f.available()){
@@ -50,7 +47,6 @@ String readFile(){
   else{
     return "X";
   }
-  
 }
 
 
