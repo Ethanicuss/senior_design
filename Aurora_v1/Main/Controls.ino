@@ -212,6 +212,56 @@ void CheckTouch(){
         BtnPressed = Btn2;
       }
       break;
+    case LEARNING_SONG:
+      if ((Ycoor < 350 && Ycoor > -1050) && (Xcoor < 300 && Xcoor > -300)){
+        Serial.println("Should pause/play ");
+        BtnPressed = Btn1;
+      }
+      else if ((Ycoor < -1050 && Ycoor > -3000) && (Xcoor < 300 && Xcoor > -300 )){
+        Serial.println("Should quit ");
+        BtnPressed = Btn2;
+      }
+      break;
+    case PLAYING_SONG:
+      if ((Ycoor < 350 && Ycoor > -1050) && (Xcoor < 300 && Xcoor > -300)){
+        Serial.println("Should pause/play ");
+        BtnPressed = Btn1;
+      }
+      else if ((Ycoor < -1050 && Ycoor > -3000) && (Xcoor < 300 && Xcoor > -300 )){
+        Serial.println("Should quit ");
+        BtnPressed = Btn2;
+      }
+      break;
+    case FINISHED_LESSON:
+      if ((Ycoor < 350 && Ycoor > -1050) && (Xcoor < 300 && Xcoor > -300)){
+        Serial.println("Should go to lessons ");
+        BtnPressed = Btn1;
+      }
+      else if ((Ycoor < -1050 && Ycoor > -3000) && (Xcoor < 300 && Xcoor > -300 )){
+        Serial.println("Should go home ");
+        BtnPressed = Btn2;
+      }
+      break;
+     case FINISHED_LEARNING:
+      if ((Ycoor < 350 && Ycoor > -1050) && (Xcoor < 300 && Xcoor > -300)){
+        Serial.println("Should go to lessons ");
+        BtnPressed = Btn1;
+      }
+      else if ((Ycoor < -1050 && Ycoor > -3000) && (Xcoor < 300 && Xcoor > -300 )){
+        Serial.println("Should go home ");
+        BtnPressed = Btn2;
+      }
+      break;
+    case FINISHED_PLAYING:
+      if ((Ycoor < 350 && Ycoor > -1050) && (Xcoor < 300 && Xcoor > -300)){
+        Serial.println("Should go to lessons ");
+        BtnPressed = Btn1;
+      }
+      else if ((Ycoor < -1050 && Ycoor > -3000) && (Xcoor < 300 && Xcoor > -300 )){
+        Serial.println("Should go home ");
+        BtnPressed = Btn2;
+      }
+      break;
     case SETTINGS:
       if (Ycoor < 1000 && Ycoor > 712 ){
         BtnPressed = BackBtn;

@@ -33,7 +33,7 @@ void UpdateScreen(){
 }
 
  void DrawHomeScreen(){
-  tft.fillRect(0, 0, 240, 200, HX8357_WHITE);
+  tft.fillRect(0, 0, 240, 360, HX8357_WHITE);
   tft.fillRect(240, 0, 240, 320/3, 0x00DF);
   tft.fillTriangle(240, 0, 240, 320/3, 255, 320/3, HX8357_WHITE);
   tft.fillRect(240, 320/3, 240, 323/3, 0xF81D);
@@ -64,7 +64,7 @@ void UpdateScreen(){
 
  /*********** HOME MENU SCREENS **********/
  void DrawLessonsScreen(){
-  tft.fillRect(0, 50, 220, 200, HX8357_WHITE);
+  tft.fillRect(0, 0, 240, 360, HX8357_WHITE);
   tft.fillRect(240, 0, 240, 320, 0xF81D);
   tft.drawLine(260, 320/3, 460, 320/3, 0xFE5F);
   tft.drawLine(260, 640/3, 460, 640/3, 0xFE5F);
@@ -98,7 +98,7 @@ void UpdateScreen(){
  }
 
  void DrawLearnScreen(){
-  tft.fillRect(0, 50, 220, 200, HX8357_WHITE);
+  tft.fillRect(0, 0, 240, 360, HX8357_WHITE);
   tft.fillRect(240, 0, 240, 320, 0xF81D);
   tft.drawLine(260, 80, 465, 80, 0xFE5F);
   tft.drawLine(260, 160, 465, 160, 0xFE5F);
@@ -151,7 +151,7 @@ void UpdateScreen(){
  }
 
  void DrawPlayScreen(){
-  tft.fillRect(0, 50, 220, 200, HX8357_WHITE);
+  tft.fillRect(0, 0, 240, 360, HX8357_WHITE);
   tft.fillRect(240, 0, 240, 320, 0xF81D);
   tft.drawLine(260, 80, 460, 80, 0xFE5F);
   tft.drawLine(260, 160, 460, 160, 0xFE5F);
@@ -561,12 +561,13 @@ void UpdateScreen(){
 
  /********** FINSIHED SCREENS *******/
  void DrawFinishedLessons(){
+  tft.fillRect(0, 0, 480, 80, HX8357_WHITE);
   tft.fillRect(0, 260, 480, 60, 0x9CF3);
   tft.drawLine(241, 268, 241, 312, HX8357_WHITE);
   
   tft.setFont(&JosefinSans_Bold20pt7b);
   tft.setTextColor(HX8357_WHITE);
-  tft.setCursor(38, 304);
+  tft.setCursor(33, 304);
   tft.print("LESSONS");
   tft.setCursor(300, 304);
   tft.print("HOME");
@@ -635,6 +636,7 @@ void UpdateScreen(){
  }
 
  void DrawFinishedLearning(){
+  tft.fillRect(0, 0, 480, 80, HX8357_WHITE);
   tft.fillRect(0, 260, 480, 60, 0x9CF3);
   tft.drawLine(241, 268, 241, 312, HX8357_WHITE);
   
@@ -645,7 +647,7 @@ void UpdateScreen(){
   tft.setCursor(300, 304);
   tft.print("HOME");
 
-  switch(currentPlay) {
+  switch(currentLearn) {
     case 1:
       tft.setTextColor(0x9CF3);
       tft.setCursor(87, 50);
@@ -688,6 +690,7 @@ void UpdateScreen(){
  }
 
  void DrawFinishedPlaying(){
+  tft.fillRect(0, 0, 480, 80, HX8357_WHITE);
   tft.fillRect(0, 260, 480, 60, 0x9CF3);
   tft.drawLine(241, 268, 241, 312, HX8357_WHITE);
   

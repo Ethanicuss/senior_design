@@ -8,7 +8,7 @@
 
 CRGB led[NUM_LEDS];
 
-void LEDSetup() {
+void LEDSetup(void) {
   pinMode(LED_PIN, OUTPUT);
   FastLED.addLeds<NEOPIXEL, LED_PIN>(led, NUM_LEDS);
   FastLED.setBrightness(100);

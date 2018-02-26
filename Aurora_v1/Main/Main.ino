@@ -189,18 +189,20 @@ void loop() {
                                      
           break;
         case Btn2: //Quit:
-          //TODO: DrawFinishedLesson();
-          //TODO: Quit(); //within this function should be a "CurrState = FINISHED_LESSON"
-        
-        //TODO: At 100% in this screen it should change State. Ex. "CurrState = FINISHED_LESSON"
-        //TODO: 
+          DrawFinishedLessons();
+          CurrState = FINISHED_LESSON;
           break;
       }
       break;
     case FINISHED_LESSON:
       switch (BtnPressed){
         case Btn1: //Lessons:
-          //TODO: CurrState = DrawLessonsScreen();
+          DrawLessonsScreen();
+          CurrState = LESSONS;
+          break;
+        case Btn2:
+          DrawHomeScreen();
+          CurrState = HOME;
           break;
       }
       break;
@@ -252,7 +254,8 @@ void loop() {
           break;
         case Btn2: //Quit:
           //TODO: Quit(); //within this function should be a "CurrState = FINISHED_LEARNING"
-          //TODO: DrawFinishedLearning();
+          DrawFinishedLearning();
+          CurrState = FINISHED_LEARNING;
           break;
         
         //TODO: At 100% in this screen it should change State. Ex. "CurrState = FINSIHED_LEARNING
@@ -262,11 +265,12 @@ void loop() {
    case FINISHED_LEARNING:
       switch (BtnPressed){
         case Btn1: //PlayCurrentSong:
-          //TODO: PlaySong();  
-          break;
-        case BackBtn:
-          //TODO: DrawLearnScreen();
+          DrawLearnScreen();
           CurrState = LEARN;
+          break;
+        case Btn2:
+          DrawHomeScreen();
+          CurrState = HOME;
           break;
       }
       break;
@@ -318,7 +322,7 @@ void loop() {
           break;
         case Btn2: //Quit:
           //TODO: Quit(); //quits the song, and takes user to the results
-          //TODO: DrawFinishedPlaying();
+          DrawFinishedPlaying();
           CurrState = FINISHED_PLAYING;
           break;
         
@@ -329,8 +333,12 @@ void loop() {
    case FINISHED_PLAYING:
       switch (BtnPressed){
         case Btn1: //SongSelect:
-          //TODO: DrawPlayScreen();
+          DrawPlayScreen();
           CurrState = PLAY;  
+          break;
+        case Btn2: //SongSelect:
+          DrawHomeScreen();
+          CurrState = HOME;  
           break;
       }
       break;
