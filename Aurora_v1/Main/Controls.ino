@@ -51,10 +51,6 @@ void CheckTouch(){
         Serial.println("Should go to Play ");
         BtnPressed = Btn3;
       }
-//      else if (Ycoor < 314 && Ycoor> 100 ){
-//        Serial.println("Should go to Settings ");
-//        BtnPressed = Btn4;
-//      }
       break;
     case LESSONS:
       if ((Ycoor < -1060 && Ycoor > -3000) && (Xcoor < -1500 && Xcoor > -2500)){
@@ -65,7 +61,7 @@ void CheckTouch(){
         Serial.println("Should go to Sustains ");
         BtnPressed = Btn2;
       }
-      else if ((Ycoor < -1060 && Ycoor > -3000) && (Xcoor < -250 && Xcoor > -600 )){
+      else if ((Ycoor < -1060 && Ycoor > -3000) && (Xcoor < 500 && Xcoor > -600 )){
         Serial.println("Should go to Chords ");
         BtnPressed = Btn3;
       }
@@ -75,21 +71,21 @@ void CheckTouch(){
       }
       break;
     case LEARN:
-      if ((Ycoor < -1060 && Ycoor > -3000) && (Xcoor < -1500 && Xcoor > -2500)){  //TODO: CHECK X&Y
+      if ((Ycoor < -1060 && Ycoor > -3000) && (Xcoor < -1750 && Xcoor > -2500)){  //TODO: CHECK X&Y
         Serial.println("Should go Wonderwall ");
         BtnPressed = Btn1;
       }
-      else if ((Ycoor < -1060 && Ycoor > -3000) && (Xcoor < -600 && Xcoor > -1500 )){  //TODO: CHECK X&Y
+      else if ((Ycoor < -1060 && Ycoor > -3000) && (Xcoor < -1065 && Xcoor > -1750 )){  //TODO: CHECK X&Y
         Serial.println("Should go to Free Fallin ");
         BtnPressed = Btn2;
       }
-      else if ((Ycoor < -1060 && Ycoor > -3000) && (Xcoor < -250 && Xcoor > -600 )){  //TODO: CHECK X&Y
+      else if ((Ycoor < -1060 && Ycoor > -3000) && (Xcoor < -360 && Xcoor > -1065 )){  //TODO: CHECK X&Y
         Serial.println("Should go to Africa ");
         BtnPressed = Btn3;
       }
-      else if ((Ycoor < -1060 && Ycoor > -3000) && (Xcoor < -250 && Xcoor > -600 )){  //TODO: CHECK X&Y
+      else if ((Ycoor < -1060 && Ycoor > -3000) && (Xcoor < 400 && Xcoor > -360 )){  //TODO: CHECK X&Y
         Serial.println("Should go to I'm Yours ");
-        BtnPressed = Btn3;
+        BtnPressed = Btn4;
       } 
       else if ((Ycoor < 500 && Ycoor > 150) && (Xcoor < -2000 && Xcoor > -2500)){
         Serial.println("Should go back to HOME");
@@ -97,19 +93,19 @@ void CheckTouch(){
       }
       break;
     case PLAY:
-      if ((Ycoor < -1060 && Ycoor > -3000) && (Xcoor < -1500 && Xcoor > -2500)){  //TODO: CHECK X&Y
+      if ((Ycoor < -1060 && Ycoor > -3000) && (Xcoor < -1750 && Xcoor > -2500)){  //TODO: CHECK X&Y
         Serial.println("Should go Wonderwall ");
         BtnPressed = Btn1;
       }
-      else if ((Ycoor < -1060 && Ycoor > -3000) && (Xcoor < -600 && Xcoor > -1500 )){  //TODO: CHECK X&Y
+      else if ((Ycoor < -1060 && Ycoor > -3000) && (Xcoor < -1065 && Xcoor > -1750 )){  //TODO: CHECK X&Y
         Serial.println("Should go to Free Fallin ");
         BtnPressed = Btn2;
       }
-      else if ((Ycoor < -1060 && Ycoor > -3000) && (Xcoor < -250 && Xcoor > -600 )){  //TODO: CHECK X&Y
+      else if ((Ycoor < -1060 && Ycoor > -3000) && (Xcoor < -360 && Xcoor > -1065 )){  //TODO: CHECK X&Y
         Serial.println("Should go to Africa ");
         BtnPressed = Btn3;
       }
-      else if ((Ycoor < -1060 && Ycoor > -3000) && (Xcoor < 500 && Xcoor > -600 )){  //TODO: CHECK X&Y
+      else if ((Ycoor < -1060 && Ycoor > -3000) && (Xcoor < 400 && Xcoor > -360 )){  //TODO: CHECK X&Y
         Serial.println("Should go to I'm Yours ");
         BtnPressed = Btn4;
       } 
@@ -125,19 +121,56 @@ void CheckTouch(){
         BtnPressed = Btn1;
       }
       else if ((Ycoor < -1060 && Ycoor > -3000) && (Xcoor < -600 && Xcoor > -1500 )){
-        Serial.println("Should go to Sustains ");
+        Serial.println("Should go Lessons 102 ");
         BtnPressed = Btn2;
       }
-      else if ((Ycoor < -1060 && Ycoor > -3000) && (Xcoor < -250 && Xcoor > -600 )){
-        Serial.println("Should go to Chords ");
+      else if ((Ycoor < -1060 && Ycoor > -3000) && (Xcoor < 500 && Xcoor > -600 )){
+        Serial.println("Should go Lessons 103 ");
         BtnPressed = Btn3;
       }
       else if ((Ycoor < 500 && Ycoor > 150) && (Xcoor < -2000 && Xcoor > -2500)){
-        Serial.println("Should go back to HOME");
+        Serial.println("Should go back to LESSONS");
         BtnPressed = BackBtn;
       }
       break;
-      
+
+    case SUSTAIN:
+      if ((Ycoor < -1060 && Ycoor > -3000) && (Xcoor < -1500 && Xcoor > -2500)){
+        Serial.println("Should go Lessons 101 ");
+        BtnPressed = Btn1;
+      }
+      else if ((Ycoor < -1060 && Ycoor > -3000) && (Xcoor < -600 && Xcoor > -1500 )){
+        Serial.println("Should go Lessons 102 ");
+        BtnPressed = Btn2;
+      }
+      else if ((Ycoor < -1060 && Ycoor > -3000) && (Xcoor < 500 && Xcoor > -600 )){
+        Serial.println("Should go Lessons 103 ");
+        BtnPressed = Btn3;
+      }
+      else if ((Ycoor < 500 && Ycoor > 150) && (Xcoor < -2000 && Xcoor > -2500)){
+        Serial.println("Should go back to LESSONS");
+        BtnPressed = BackBtn;
+      }
+      break;
+
+    case CHORDS:
+      if ((Ycoor < -1060 && Ycoor > -3000) && (Xcoor < -1500 && Xcoor > -2500)){
+        Serial.println("Should go Lessons 101 ");
+        BtnPressed = Btn1;
+      }
+      else if ((Ycoor < -1060 && Ycoor > -3000) && (Xcoor < -600 && Xcoor > -1500 )){
+        Serial.println("Should go Lessons 102 ");
+        BtnPressed = Btn2;
+      }
+      else if ((Ycoor < -1060 && Ycoor > -3000) && (Xcoor < 500 && Xcoor > -600 )){
+        Serial.println("Should go Lessons 103 ");
+        BtnPressed = Btn3;
+      }
+      else if ((Ycoor < 500 && Ycoor > 150) && (Xcoor < -2000 && Xcoor > -2500)){
+        Serial.println("Should go back to LESSONS");
+        BtnPressed = BackBtn;
+      }
+      break;  
 
     case PLAYING_LESSON:
       if ((Ycoor < 350 && Ycoor > -1050) && (Xcoor < 300 && Xcoor > -300)){

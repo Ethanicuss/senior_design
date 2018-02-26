@@ -1,4 +1,4 @@
-#include <TouchScreen.h>
+  #include <TouchScreen.h>
 #include <Adafruit_GFX.h>    // Core graphics library
 #include <Adafruit_HX8357.h>
 #include <TouchScreen.h>
@@ -6,13 +6,16 @@
 #include <SD.h>
 #include "Switches.h"
 #include "SD.h"
+#include "LCD.h"
 #include "Controls.h"
 
 #include <Fonts/JosefinSans_Bold20pt7b.h>
+#include <Fonts/JosefinSans_Bold15pt7b.h>
 #include <Fonts/JosefinSans_Bold12pt7b.h>
 #include <Fonts/JosefinSans_Bold10pt7b.h>
 #include <Fonts/JosefinSans_Bold8pt7b.h>
 #include <Fonts/JosefinSans_BoldItalic20pt7b.h>
+#include <Fonts/JosefinSans_BoldItalic15pt7b.h>
 #include <Fonts/JosefinSans_BoldItalic12pt7b.h>
 #include <Fonts/JosefinSans_BoldItalic10pt7b.h>
 #include <Fonts/JosefinSans_BoldItalic8pt7b.h>
@@ -56,27 +59,24 @@ void loop() {
       switch (BtnPressed){
         case Btn1: //LESSONS:
           Serial.println("Button 1 Hit");
-          //TODO: DrawLessonsScreen() DON
           DrawLessonsScreen();
           CurrState = LESSONS;
           break;
         case Btn2: //LEARN:
           Serial.println("Button 2 Hit");
-          //TODO: DrawLearnScreen() DON
           DrawLearnScreen();
           CurrState = LEARN;
           break;
         case Btn3: //PLAY:
           Serial.println("Button 3 Hit");
-          //TODO: DrawPlayScreen() DON
           DrawPlayScreen();
           CurrState = PLAY;
           break;
         case Btn4: //SETTINGS:
           Serial.println("Button 4 Hit");
           //TODO: DrawSettingsScreen()
-          DrawSettingsScreen();
-          CurrState = SETTINGS;
+       //   DrawSettingsScreen();
+         // CurrState = SETTINGS;
           break;
       }
       break;
@@ -93,11 +93,13 @@ void loop() {
         case Btn2: //SUSTAIN:
           Serial.println("Button 2.1 Hit");
           //TODO: DrawSustainScreen()
+          DrawSustainScreen();
           CurrState = SUSTAIN;
           break;
         case Btn3: //CHORDS:
           Serial.println("Button 3.1 Hit");
           //TODO: DrawChordsScreen()
+          DrawChordsScreen();
           CurrState = CHORDS;
           break;
         case BackBtn: //Back:
@@ -109,79 +111,78 @@ void loop() {
       break;
     case SHIFTING:
       switch (BtnPressed){
-        case Btn1: //Shifting101:
-          //TODO: DrawShiftingLesson(101);
-            // -- Make Changes for each Difficulty withing the draw
-            // -- ex. print("101")
+        case Btn1: 
+          currentLesson = 1;
+          currentLessonType = 1;
           DrawShiftingLesson();
           CurrState = PLAYING_LESSON;
           break;
-        case Btn2: //Shifting102:
-          //TODO: DrawShiftingLesson(102);
-              // -- Make Changes for each Difficulty within the draw
-              // -- ex. print("102")
+        case Btn2:
+          currentLesson = 2;
+          currentLessonType = 1;
+          DrawShiftingLesson();
           CurrState = PLAYING_LESSON;
           break;
-        case Btn3: //Shifting103:
-          //TODO: DrawShiftingLesson(103);
-            // -- Make Changes for each Difficulty within the draw
-            // -- ex. print("101")
+        case Btn3: 
+          currentLesson = 3;
+          currentLessonType = 1;
+          DrawShiftingLesson();
           CurrState = PLAYING_LESSON;
           break;
-        case BackBtn: //Back:
-          //TODO: DrawLessonsScreen()
+        case BackBtn:
+          DrawLessonsScreen();
           CurrState = LESSONS;
           break;
       }
       break;
     case SUSTAIN:
       switch (BtnPressed){
-        case Btn1: //Sustain101:
-          //TODO: DrawSustainLesson();
-            // -- Make Changes for each Difficulty within the draw
-            // -- ex. print("101")
+        case Btn1:
+          currentLesson = 1;
+          currentLessonType = 2;
+          DrawSustainLesson();
           CurrState = PLAYING_LESSON;
           break;
-        case Btn2: //Sustain102:
-          //TODO: DrawSustainLesson();
-              // -- Make Changes for each Difficulty within the draw
-              // -- ex. print("102")
+        case Btn2:
+          currentLesson = 2;
+          currentLessonType = 2;
+          DrawSustainLesson();
           CurrState = PLAYING_LESSON;
           break;
-        case Btn3: //Sustain103:
-          //TODO: DrawSustainLesson();
-            // -- Make Changes for each Difficulty within the draw
-            // -- ex. print("101")
+        case Btn3:
+          currentLesson = 3;
+          currentLessonType = 2;
+          DrawSustainLesson();
           CurrState = PLAYING_LESSON;
           break;
-        case BackBtn: //Back:
-          //TODO: DrawLessonsScreen()
+        case BackBtn:
+          DrawLessonsScreen();
           CurrState = LESSONS;
           break;
       }
       break;
     case CHORDS:
       switch (BtnPressed){
-        case Btn1: //Chords101:
-          //TODO: DrawChordsLesson();
-            // -- Make Changes for each Difficulty within the draw
-            // -- ex. print("101")
+        case Btn1:
+          currentLesson = 1;
+          currentLessonType = 3;
+          DrawChordsLesson();
           CurrState = PLAYING_LESSON;
           break;
-        case Btn2: //Chords102:
-          //TODO: DrawChordsLesson();
-              // -- Make Changes for each Difficulty within the draw
-              // -- ex. print("102")
+        case Btn2:
+          currentLesson = 2;
+          currentLessonType = 3;
+          DrawChordsLesson();
           CurrState = PLAYING_LESSON;
           break;
-        case Btn3: //Chords103:
-          //TODO: DrawChordsLesson();
-            // -- Make Changes for each Difficulty within the draw
-            // -- ex. print("101")
+        case Btn3:
+          currentLesson = 3;
+          currentLessonType = 3;
+          DrawChordsLesson();
           CurrState = PLAYING_LESSON;
           break;
-        case BackBtn: //Back:
-          //TODO: DrawLessonsScreen()
+        case BackBtn:
+          DrawLessonsScreen();
           CurrState = LESSONS;
           break;
       }
@@ -214,26 +215,30 @@ void loop() {
     case LEARN:
       Serial.println("In Learn ");
       switch (BtnPressed){
-        case Btn1: //SONG1:
-          //TODO: DrawLearnSong(); draws the learning song screen
+        case Btn1: 
+          currentLearn = 1;
+          DrawLearnSong();
           CurrState = LEARNING_SONG;
           break;
-        case Btn2: //SONG2:
-          //TODO: DrawLearnSong();
+        case Btn2: 
+          currentLearn = 2;
+          DrawLearnSong();
           CurrState = LEARNING_SONG;
           break;
-        case Btn3: //SONG3:
-          //TODO: DrawLearnSong();
+        case Btn3: 
+          currentLearn = 3;
+          DrawLearnSong();
           CurrState = LEARNING_SONG;
           break;
-        case Btn4: //SONG1:
-          //TODO: DrawLearnSong(); draws the learning song screen
+        case Btn4: 
+          currentLearn = 4;
+          DrawLearnSong();
           CurrState = LEARNING_SONG;
           break;
         case BackBtn: //Back:
           DrawHomeScreen();
           CurrState = HOME;
-          break;      
+          break;       
       }
       break;
     case LEARNING_SONG:
@@ -277,19 +282,23 @@ void loop() {
       Serial.println("In Play ");
       switch (BtnPressed){
         case Btn1: 
-          DrawPlaySong(1);
+          currentPlay = 1;
+          DrawPlaySong();
           CurrState = PLAYING_SONG;
           break;
         case Btn2: 
-          DrawPlaySong(2);
+          currentPlay = 2;
+          DrawPlaySong();
           CurrState = PLAYING_SONG;
           break;
         case Btn3: 
-          DrawPlaySong(3);
+          currentPlay = 3;
+          DrawPlaySong();
           CurrState = PLAYING_SONG;
           break;
         case Btn4: 
-          DrawPlaySong(4);
+          currentPlay = 4;
+          DrawPlaySong();
           CurrState = PLAYING_SONG;
           break;
         case BackBtn: //Back:
@@ -352,6 +361,9 @@ void InitializeVars(){
  CurrState = HOME;
  BtnPressed = NONE;
  DrawHomeScreen();
+ currentLesson = 0;
+ currentLearn = 0;
+ currentPlay = 0;
 }
 
 
