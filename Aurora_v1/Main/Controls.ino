@@ -4,57 +4,71 @@
 
 // Functions that control song play and can be called from any screen
 bool playing;
-bool changeNote;
-int lengthNote;
 String currentChord;
 String nextChord;
-int currentBrightness;
-int nextBrightness;
+int currentDuration;
+int nextDuration;
 
 // Interrupt is called once per millisecond
 void InterruptHandler(){
-  if(playing){
-    changeNote = true;
+  playing = UpdateNote(false);
+}
+
+void ChangeInterruptPeriod(int newPeriod){
+  Timer3.setPeriod(newPeriod);
+}
+
+void InterruptSetup(int firstPeriod){
+  // interrupts every X microseconds
+  Timer3.attachInterrupt(InterruptHandler).start(firstPeriod);
+}
+
+bool UpdateNote(bool firstNote){
+  if(firstNote){
+    currentChord = ReadFile();
+    currentDuration = ReadFile().toInt();
   }
-}
+  else{
+    currentChord = nextChord;
+    currentDuration = nextDuration;
+  }
 
-void InterruptSetup(){
-  Timer3.attachInterrupt(InterruptHandler).start(500000);
-  Serial.println("Initializing interrupts... done.");
-  changeNote = false;
-  playing = false;
-  currentBrightness = 100;
-  nextBrightness = 50;
-}
+  Serial.println(currentChord);
+  Serial.println(currentDuration);
 
-bool UpdateNote(){
-  // ex: "ExxA0wD2rG2gB2be0w";
-  currentChord = nextChord;
-  nextChord = ReadFile();
   // exit from playing loop if we reach the end of the song 
   if(currentChord == "X"){
     return false;
   }
+
+  // read next chord/duration from file
+  nextChord = ReadFile();
+  nextDuration = ReadFile().toInt();
+  
   // actually light up LEDs
   LightLED(currentChord, true); 
   LightLED(nextChord, false);
+
+  // set duration of interrupt
+  if(firstNote){
+    InterruptSetup(currentDuration);
+  }
+  else{
+    ChangeInterruptPeriod(currentDuration);
+  }
+
   return true;
 }
 
 void PlaySong(String songName){
   // load song from SD card
-  nextChord = OpenFile(songName);
+  OpenFile(songName);
   // "play" first note in the song
-  playing = UpdateNote();
+  playing = UpdateNote(true);
   while(playing){
-    if(changeNote){
-      playing = UpdateNote();
-      if(!playing){
-        Quit();
-      }
-      changeNote = false;
-    }
   }
+  // once you're done playing, dark all LEDs
+  Quit();
 }
 
 void Quit(){

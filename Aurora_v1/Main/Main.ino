@@ -16,7 +16,6 @@ void setup() {
   bool success = LCDSetup();
   if(success){
     LEDSetup();
-    InterruptSetup();
     analogReadResolution(12);
     InitializeState();
     PlaySong("wonderwa.txt");
