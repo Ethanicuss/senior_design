@@ -10,7 +10,7 @@
 // Use hardware SPI (on Uno, #13, #12, #11) and the above for CS/DC
 Adafruit_HX8357 tft = Adafruit_HX8357(TFT_CS, TFT_DC);
 
-void LCDSetup(void) {
+bool LCDSetup(void) {
   Serial.print("Initializing LCD... ");
   tft.begin(HX8357D);
   tft.setRotation(3);

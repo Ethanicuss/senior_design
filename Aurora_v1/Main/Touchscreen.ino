@@ -22,12 +22,6 @@ TouchScreen getTS(){
   return ts;
 }
 
-<<<<<<< .merge_file_XiYOxb
-=======
-void TouchscreenSetup(void) {
-}
-
->>>>>>> .merge_file_cAs8lC
 void DisplayXYZ(void) {
   // a point object holds x y and z coordinates
   TSPoint p = ts.getPoint();
