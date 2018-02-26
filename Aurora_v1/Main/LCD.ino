@@ -1,3 +1,8 @@
+/* TODO: Any function that has "Draw" in it.
+ *       
+ *       This Module will just draw each screen.
+ */
+#include "LCD.h"
 #define TFT_DC 9
 #define TFT_CS 10
 #define SD_CS 4
@@ -5,12 +10,8 @@
 // Use hardware SPI (on Uno, #13, #12, #11) and the above for CS/DC
 Adafruit_HX8357 tft = Adafruit_HX8357(TFT_CS, TFT_DC);
 
-bool LCDSetup(void) {
-
-  Serial.begin(9600);
-  
+void LCDSetup(void) {
   Serial.print("Initializing LCD... ");
-
   tft.begin(HX8357D);
   tft.setRotation(3);
   tft.fillScreen(HX8357_WHITE);
@@ -26,109 +27,717 @@ bool LCDSetup(void) {
     Serial.println("done.");
     return true;
   }
-
 }
 
 void UpdateScreen(){
-  
 }
 
-void DrawStartupScreen(){
-  // bmpDraw(bmpfilename, 0, 0);
- }
-
  void DrawHomeScreen(){
-  bmpDraw("home.bmp", 0, 0);
-  //Home screen options
+  tft.fillRect(0, 0, 240, 200, HX8357_WHITE);
+  tft.fillRect(240, 0, 240, 320/3, 0x00DF);
+  tft.fillTriangle(240, 0, 240, 320/3, 255, 320/3, HX8357_WHITE);
+  tft.fillRect(240, 320/3, 240, 323/3, 0xF81D);
+  tft.fillTriangle(240, 320/3, 240, 320/3+323/3, 255, 320/3+323/3, HX8357_WHITE);
+  tft.fillRect(240, 640/3, 240, 326/3, 0x07EE);  
+  tft.fillTriangle(240, 640/3, 240, 320/3+323/3+326/3, 255, 320/3+323/3+326/3, HX8357_WHITE);
+
+  tft.setFont(&JosefinSans_BoldItalic20pt7b);
+  tft.setTextColor(0x981F);
+  tft.setCursor(35, 155);
+  tft.print("AURORA");
+  tft.setFont(&JosefinSans_Bold8pt7b);
+  tft.setCursor(41, 180);
+  tft.setTextColor(0x9CF3);
+  tft.print("LET'S PLAY GUITAR!");
+
+  tft.setFont(&JosefinSans_Bold20pt7b);
+  tft.setTextColor(HX8357_WHITE);
+  tft.setCursor(273, 70);
+  tft.print("LESSONS");
+
+  tft.setCursor(300, 170);
+  tft.print("LEARN");
+
+  tft.setCursor(315, 283);
+  tft.print("PLAY");
  }
 
  /*********** HOME MENU SCREENS **********/
  void DrawLessonsScreen(){
-  bmpDraw("lessons.bmp", 0, 0);
-  //shwos lessons - shifting, sustains, chords
+  tft.fillRect(0, 50, 220, 200, HX8357_WHITE);
+  tft.fillRect(240, 0, 240, 320, 0xF81D);
+  tft.drawLine(260, 320/3, 460, 320/3, 0xFE5F);
+  tft.drawLine(260, 640/3, 460, 640/3, 0xFE5F);
+
+  tft.setFont(&JosefinSans_BoldItalic20pt7b);
+  tft.setTextColor(0xF81D);
+  tft.setCursor(26, 155);
+  tft.print("LESSONS");
+
+  tft.setTextColor(0x9CF3);
+  tft.setFont(&JosefinSans_Bold8pt7b);
+  tft.setCursor(35, 180);
+  tft.print("LEARN BASIC GUITAR");
+  tft.setCursor(68, 198);
+  tft.print("TECHNIQUES");
+
+  tft.setFont(&JosefinSans_Bold20pt7b);
+  tft.setCursor(11, 33);
+  tft.print("<");
+
+  tft.setFont(&JosefinSans_Bold15pt7b);
+  tft.setTextColor(HX8357_WHITE);
+  tft.setCursor(290, 65);
+  tft.print("SHIFTING");
+
+  tft.setCursor(288, 170);
+  tft.print("SUSTAINS");
+
+  tft.setCursor(295, 278);
+  tft.print("CHORDS");
  }
 
  void DrawLearnScreen(){
-  bmpDraw("learn.bmp", 0, 0);
-  //shows song list for learning
+  tft.fillRect(0, 50, 220, 200, HX8357_WHITE);
+  tft.fillRect(240, 0, 240, 320, 0xF81D);
+  tft.drawLine(260, 80, 465, 80, 0xFE5F);
+  tft.drawLine(260, 160, 465, 160, 0xFE5F);
+  tft.drawLine(260, 240, 465, 240, 0xFE5F);
+
+  tft.setFont(&JosefinSans_BoldItalic20pt7b);
+  tft.setTextColor(0xF81D);
+  tft.setCursor(49, 155);
+  tft.print("LEARN");
+
+  tft.setTextColor(0x9CF3);
+  tft.setFont(&JosefinSans_Bold8pt7b);
+  tft.setCursor(28, 180);
+  tft.print("SELECT A SONG FOR A");
+  tft.setCursor(52, 198);
+  tft.print("GUIDED LESSON");
+
+  tft.setFont(&JosefinSans_Bold20pt7b);
+  tft.setCursor(11, 33);
+  tft.print("<");
+
+  tft.setFont(&JosefinSans_Bold12pt7b);
+  tft.setTextColor(HX8357_WHITE);
+  tft.setCursor(275, 40);
+  tft.print("WONDERWALL");
+
+  tft.setCursor(280, 120);
+  tft.print("FREE FALLIN'");
+
+  tft.setCursor(318, 200);
+  tft.print("AFRICA");
+
+  tft.setCursor(300, 280);
+  tft.print("I'M YOURS");
+
+
+  tft.setTextColor(0xFE5F);
+  tft.setFont(&JosefinSans_Bold8pt7b);
+  tft.setCursor(335, 60);
+  tft.print("OASIS");
+
+  tft.setCursor(318, 140);
+  tft.print("TOM PETTY");
+
+  tft.setCursor(340, 220);
+  tft.print("TOTO");
+
+  tft.setCursor(310, 300);
+  tft.print("JASON MRAZ");
  }
 
  void DrawPlayScreen(){
-  bmpDraw("Play.bmp", 0, 0);
-  //shows song list for playing
- }
+  tft.fillRect(0, 50, 220, 200, HX8357_WHITE);
+  tft.fillRect(240, 0, 240, 320, 0xF81D);
+  tft.drawLine(260, 80, 460, 80, 0xFE5F);
+  tft.drawLine(260, 160, 460, 160, 0xFE5F);
+  tft.drawLine(260, 240, 460, 240, 0xFE5F);
 
- void DrawSettingsScreen(){
-  bmpDraw("Play.bmp", 0, 0);
-  //shows settings
+  tft.setFont(&JosefinSans_BoldItalic20pt7b);
+  tft.setTextColor(0xF81D);
+  tft.setCursor(70, 155);
+  tft.print("PLAY");
+
+  tft.setTextColor(0x9CF3);
+  tft.setFont(&JosefinSans_Bold8pt7b);
+  tft.setCursor(20, 180);
+  tft.print("SELECT A SONG TO PLAY");
+  tft.setCursor(60, 198);
+  tft.print("ON YOUR OWN");
+
+  tft.setFont(&JosefinSans_Bold20pt7b);
+  tft.setCursor(11, 33);
+  tft.print("<");
+
+  tft.setFont(&JosefinSans_Bold12pt7b);
+  tft.setTextColor(HX8357_WHITE);
+  tft.setCursor(275, 40);
+  tft.print("WONDERWALL");
+
+  tft.setCursor(280, 120);
+  tft.print("FREE FALLIN'");
+
+  tft.setCursor(318, 200);
+  tft.print("AFRICA");
+
+  tft.setCursor(300, 280);
+  tft.print("I'M YOURS");
+
+
+  tft.setTextColor(0xFE5F);
+  tft.setFont(&JosefinSans_Bold8pt7b);
+  tft.setCursor(335, 60);
+  tft.print("OASIS");
+
+  tft.setCursor(318, 140);
+  tft.print("TOM PETTY");
+
+  tft.setCursor(340, 220);
+  tft.print("TOTO");
+
+  tft.setCursor(310, 300);
+  tft.print("JASON MRAZ");
  }
 
  /*********** LESSONS SCREENS ***********/
 
  void DrawShiftingScreen(){
-   bmpDraw("shifting.bmp", 0 , 0);
-  // shows shifting 101, 102, 103
+  tft.fillRect(0, 50, 220, 200, HX8357_WHITE);
+  tft.fillRect(240, 0, 240, 320, 0x00DF);
+  tft.drawLine(260, 320/3, 460, 320/3, 0xFE5F);
+  tft.drawLine(260, 640/3, 460, 640/3, 0xFE5F);
+
+  tft.setFont(&JosefinSans_BoldItalic20pt7b);
+  tft.setTextColor(0x00DF);
+  tft.setCursor(26, 155);
+  tft.print("SHIFTING");
+
+  tft.setTextColor(0x9CF3);
+  tft.setFont(&JosefinSans_Bold8pt7b);
+  tft.setCursor(32, 180);
+  tft.print("LEARN PROPER HAND");
+  tft.setCursor(70, 198);
+  tft.print("MOVEMENT");
+
+  tft.setFont(&JosefinSans_Bold20pt7b);
+  tft.setCursor(11, 33);
+  tft.print("<");
+
+  tft.setFont(&JosefinSans_Bold12pt7b);
+  tft.setTextColor(HX8357_WHITE);
+  tft.setCursor(283, 65);
+  tft.print("SHIFTING 101");
+
+  tft.setCursor(283, 170);
+  tft.print("SHIFTING 102");
+
+  tft.setCursor(283, 278);
+  tft.print("SHIFTING 103");
  }
 
  void DrawSustainScreen(){
-   bmpDraw("sustain.bmp", 0 , 0);
-  // shows sustains 101, 102, 103
+  tft.fillRect(0, 50, 220, 200, HX8357_WHITE);
+  tft.fillRect(240, 0, 240, 320, 0x00DF);
+  tft.drawLine(260, 320/3, 460, 320/3, 0xFE5F);
+  tft.drawLine(260, 640/3, 460, 640/3, 0xFE5F);
+
+  tft.setFont(&JosefinSans_BoldItalic20pt7b);
+  tft.setTextColor(0x00DF);
+  tft.setCursor(23, 155);
+  tft.print("SUSTAINS");
+
+  tft.setTextColor(0x9CF3);
+  tft.setFont(&JosefinSans_Bold8pt7b);
+  tft.setCursor(32, 180);
+  tft.print("LEARN HOW TO HOLD");
+  tft.setCursor(92, 198);
+  tft.print("NOTES");
+
+  tft.setFont(&JosefinSans_Bold20pt7b);
+  tft.setCursor(11, 33);
+  tft.print("<");
+
+  tft.setFont(&JosefinSans_Bold12pt7b);
+  tft.setTextColor(HX8357_WHITE);
+  tft.setCursor(283, 65);
+  tft.print("SUSTAINS 101");
+
+  tft.setCursor(283, 170);
+  tft.print("SUSTAINS 102");
+
+  tft.setCursor(283, 278);
+  tft.print("SUSTAINS 103");
  }
 
  void DrawChordsScreen(){
-   bmpDraw("chords.bmp", 0 , 0);  
-  // shows chords 101, 102, 103
+  tft.fillRect(0, 50, 220, 200, HX8357_WHITE);
+  tft.fillRect(240, 0, 240, 320, 0x00DF);
+  tft.drawLine(260, 320/3, 460, 320/3, 0xFE5F);
+  tft.drawLine(260, 640/3, 460, 640/3, 0xFE5F);
+
+  tft.setFont(&JosefinSans_BoldItalic20pt7b);
+  tft.setTextColor(0x00DF);
+  tft.setCursor(35, 155);
+  tft.print("CHORDS");
+
+  tft.setTextColor(0x9CF3);
+  tft.setFont(&JosefinSans_Bold8pt7b);
+  tft.setCursor(32, 180);
+  tft.print("LEARN HOW TO PLAY");
+  tft.setCursor(50, 198);
+  tft.print("MULTIPLE NOTES");
+
+  tft.setFont(&JosefinSans_Bold20pt7b);
+  tft.setCursor(11, 33);
+  tft.print("<");
+
+  tft.setFont(&JosefinSans_Bold12pt7b);
+  tft.setTextColor(HX8357_WHITE);
+  tft.setCursor(290, 65);
+  tft.print("CHORDS 101");
+
+  tft.setCursor(290, 170);
+  tft.print("CHORDS 102");
+
+  tft.setCursor(290, 278);
+  tft.print("CHORDS 103");
  }
 
  /*********** SHIFTING LESSON ***********/
  void DrawShiftingLesson(){
-  // shows current progress in lesson
+  tft.fillRect(0, 0, 480, 260, HX8357_WHITE);
+  tft.fillRect(0, 260, 480, 60, 0x9CF3);
+  tft.drawLine(241, 268, 241, 312, HX8357_WHITE);
+
+  tft.setFont(&JosefinSans_BoldItalic15pt7b);
+  tft.setTextColor(0x07EE);
+  tft.setCursor(330,40);
+  tft.print("LESSONS");
+
+  tft.setFont(&JosefinSans_Bold20pt7b);
+  tft.setTextColor(HX8357_WHITE);
+  tft.setCursor(55, 304);
+  tft.print("PAUSE");
+  tft.setCursor(310, 304);
+  tft.print("QUIT");
+
+  tft.setFont(&JosefinSans_Bold15pt7b);
+  switch(currentLesson) {
+    case 1:
+      tft.setTextColor(0x07EE);
+      tft.setCursor(148, 120);
+      tft.print("SHIFTING 101");
+      break;
+      
+    case 2:
+      tft.setTextColor(0x07EE);
+      tft.setCursor(148, 120);
+      tft.print("SHIFTING 102");
+      break;
+
+    case 3:
+      tft.setTextColor(0x07EE);
+      tft.setCursor(148, 120);
+      tft.print("SHIFTING 103");
+      break;
+  }
  }
 
  /*********** SUSTAIN LESSON ***********/
  void DrawSustainLesson(){
-  // shows current progress in lesson
+  tft.fillRect(0, 0, 480, 260, HX8357_WHITE);
+  tft.fillRect(0, 260, 480, 60, 0x9CF3);
+  tft.drawLine(241, 268, 241, 312, HX8357_WHITE);
+
+  tft.setFont(&JosefinSans_BoldItalic15pt7b);
+  tft.setTextColor(0x07EE);
+  tft.setCursor(330,40);
+  tft.print("LESSONS");
+
+  tft.setFont(&JosefinSans_Bold20pt7b);
+  tft.setTextColor(HX8357_WHITE);
+  tft.setCursor(55, 304);
+  tft.print("PAUSE");
+  tft.setCursor(310, 304);
+  tft.print("QUIT");
+
+  tft.setFont(&JosefinSans_Bold15pt7b);
+  switch(currentLesson) {
+    case 1:
+      tft.setTextColor(0x07EE);
+      tft.setCursor(148, 120);
+      tft.print("SUSTAINS 101");
+      break;
+      
+    case 2:
+      tft.setTextColor(0x07EE);
+      tft.setCursor(148, 120);
+      tft.print("SUSTAINS 102");
+      break;
+
+    case 3:
+      tft.setTextColor(0x07EE);
+      tft.setCursor(148, 120);
+      tft.print("SUSTAINS 103");
+      break;
+  }
  }
 
  /*********** CHORDS LESSON ***********/
  void DrawChordsLesson(){
-  // shows current progress in lesson
+  tft.fillRect(0, 0, 480, 260, HX8357_WHITE);
+  tft.fillRect(0, 260, 480, 60, 0x9CF3);
+  tft.drawLine(241, 268, 241, 312, HX8357_WHITE);
+
+  tft.setFont(&JosefinSans_BoldItalic15pt7b);
+  tft.setTextColor(0x07EE);
+  tft.setCursor(330,40);
+  tft.print("LESSONS");
+
+  tft.setFont(&JosefinSans_Bold20pt7b);
+  tft.setTextColor(HX8357_WHITE);
+  tft.setCursor(55, 304);
+  tft.print("PAUSE");
+  tft.setCursor(310, 304);
+  tft.print("QUIT");
+
+  tft.setFont(&JosefinSans_Bold15pt7b);
+  switch(currentLesson) {
+    case 1:
+      tft.setTextColor(0x07EE);
+      tft.setCursor(155, 120);
+      tft.print("CHORDS 101");
+      break;
+      
+    case 2:
+      tft.setTextColor(0x07EE);
+      tft.setCursor(155, 120);
+      tft.print("CHORDS 102");
+      break;
+
+    case 3:
+      tft.setTextColor(0x07EE);
+      tft.setCursor(155, 120);
+      tft.print("CHORDS 103");
+      break;
+  }
  }
 
  /*********** WHILE PLAYING SCREENS******/
  void DrawLearnSong(){
-  /* shows current progress while learning song
-    
-     Should keep track of which song was selected
-     just a suggestion:
-     switch(song){ // In main you can say song=1, song=2, etc...
-      case(1):
-        print("Wonderwall");
-      case(2):
-        print("Hey Jude");
-      etc...
+  tft.fillRect(0, 0, 480, 260, HX8357_WHITE);
+  tft.fillRect(0, 260, 480, 60, 0x9CF3);
+  tft.drawLine(241, 268, 241, 312, HX8357_WHITE);
 
-     ^ May not be the best way, just my first thought.
-  */
+  tft.setFont(&JosefinSans_BoldItalic15pt7b);
+  tft.setTextColor(0x07EE);
+  tft.setCursor(363,40);
+  tft.print("LEARN");
+
+  tft.setFont(&JosefinSans_Bold20pt7b);
+  tft.setTextColor(HX8357_WHITE);
+  tft.setCursor(55, 304);
+  tft.print("PAUSE");
+  tft.setCursor(310, 304);
+  tft.print("QUIT");
+
+  tft.setFont(&JosefinSans_Bold15pt7b);
+  switch(currentLearn) {
+    case 1:
+      tft.setTextColor(0x07EE);
+      tft.setCursor(125, 120);
+      tft.print("WONDERWALL");
+    
+      tft.setFont(&JosefinSans_Bold12pt7b);
+      tft.setTextColor(0x9CF3);
+      tft.setCursor(205, 152);
+      tft.print("OASIS");
+      break;
+      
+    case 2:
+      tft.setTextColor(0x07EE);
+      tft.setCursor(140, 120);
+      tft.print("FREE FALLIN'");
+    
+      tft.setFont(&JosefinSans_Bold12pt7b);
+      tft.setTextColor(0x9CF3);
+      tft.setCursor(173, 152);
+      tft.print("TOM PETTY");
+      break;
+
+    case 3:
+      tft.setTextColor(0x07EE);
+      tft.setCursor(185, 120);
+      tft.print("AFRICA");
+    
+      tft.setFont(&JosefinSans_Bold12pt7b);
+      tft.setTextColor(0x9CF3);
+      tft.setCursor(208, 152);
+      tft.print("TOTO");
+      break;
+
+    case 4:
+      tft.setTextColor(0x07EE);
+      tft.setCursor(165, 120);
+      tft.print("I'M YOURS");
+    
+      tft.setFont(&JosefinSans_Bold12pt7b);
+      tft.setTextColor(0x9CF3);
+      tft.setCursor(165, 152);
+      tft.print("JASON MRAZ");
+      break;
+  }
  }
 
  void DrawPlaySong(){
-  /* same as DrawLearnSong()
-   *  
-   */
+  tft.fillRect(0, 0, 480, 260, HX8357_WHITE);
+  tft.fillRect(0, 260, 480, 60, 0x9CF3);
+  tft.drawLine(241, 268, 241, 312, HX8357_WHITE);
+
+  tft.setFont(&JosefinSans_BoldItalic15pt7b);
+  tft.setTextColor(0x07EE);
+  tft.setCursor(385,40);
+  tft.print("PLAY");
+
+  tft.setFont(&JosefinSans_Bold20pt7b);
+  tft.setTextColor(HX8357_WHITE);
+  tft.setCursor(55, 304);
+  tft.print("PAUSE");
+  tft.setCursor(310, 304);
+  tft.print("QUIT");
+
+  tft.setFont(&JosefinSans_Bold15pt7b);
+  switch(currentPlay) {
+    case 1:
+      tft.setTextColor(0x07EE);
+      tft.setCursor(125, 120);
+      tft.print("WONDERWALL");
+    
+      tft.setFont(&JosefinSans_Bold12pt7b);
+      tft.setTextColor(0x9CF3);
+      tft.setCursor(205, 152);
+      tft.print("OASIS");
+      break;
+      
+    case 2:
+      tft.setTextColor(0x07EE);
+      tft.setCursor(140, 120);
+      tft.print("FREE FALLIN'");
+    
+      tft.setFont(&JosefinSans_Bold12pt7b);
+      tft.setTextColor(0x9CF3);
+      tft.setCursor(173, 152);
+      tft.print("TOM PETTY");
+      break;
+
+    case 3:
+      tft.setTextColor(0x07EE);
+      tft.setCursor(185, 120);
+      tft.print("AFRICA");
+    
+      tft.setFont(&JosefinSans_Bold12pt7b);
+      tft.setTextColor(0x9CF3);
+      tft.setCursor(208, 152);
+      tft.print("TOTO");
+      break;
+
+    case 4:
+      tft.setTextColor(0x07EE);
+      tft.setCursor(165, 120);
+      tft.print("I'M YOURS");
+    
+      tft.setFont(&JosefinSans_Bold12pt7b);
+      tft.setTextColor(0x9CF3);
+      tft.setCursor(165, 152);
+      tft.print("JASON MRAZ");
+      break;
+  }
  }
+ 
 
  /********** FINSIHED SCREENS *******/
+ void DrawFinishedLessons(){
+  tft.fillRect(0, 260, 480, 60, 0x9CF3);
+  tft.drawLine(241, 268, 241, 312, HX8357_WHITE);
+  
+  tft.setFont(&JosefinSans_Bold20pt7b);
+  tft.setTextColor(HX8357_WHITE);
+  tft.setCursor(38, 304);
+  tft.print("LESSONS");
+  tft.setCursor(300, 304);
+  tft.print("HOME");
+
+  switch(currentLessonType) {
+    case 1:
+      switch(currentLesson) {
+        case 1:
+          tft.setTextColor(0x9CF3);
+          tft.setCursor(87, 50);
+          tft.print("SHIFTING 101");
+          break;
+        case 2:
+          tft.setTextColor(0x9CF3);
+          tft.setCursor(87, 50);
+          tft.print("SHIFTING 102");
+          break;
+        case 3:
+          tft.setTextColor(0x9CF3);
+          tft.setCursor(87, 50);
+          tft.print("SHIFTING 103");
+          break;
+      }
+      break;
+    case 2:
+      switch(currentLesson) {
+        case 1:
+          tft.setTextColor(0x9CF3);
+          tft.setCursor(87, 50);
+          tft.print("SUSTAINS 101");
+          break;
+        case 2:
+          tft.setTextColor(0x9CF3);
+          tft.setCursor(87, 50);
+          tft.print("SUSTAINS 102");
+          break;
+        case 3:
+          tft.setTextColor(0x9CF3);
+          tft.setCursor(87, 50);
+          tft.print("SUSTAINS 103");
+          break;
+      }
+      break;
+    case 3:
+      switch(currentLesson) {
+        case 1:
+          tft.setTextColor(0x9CF3);
+          tft.setCursor(87, 50);
+          tft.print("CHORDS 101");
+          break;
+        case 2:
+          tft.setTextColor(0x9CF3);
+          tft.setCursor(87, 50);
+          tft.print("CHORDS 102");
+          break;
+        case 3:
+          tft.setTextColor(0x9CF3);
+          tft.setCursor(87, 50);
+          tft.print("CHORDS 103");
+          break;
+      }
+      break;
+  }
+
+  tft.fillRect(75, 90, 330, 94, 0x073F);  
+ }
+
  void DrawFinishedLearning(){
-  /* Should show the results of the learning screen
-   *  and give you the appropriate buttons
-   */
+  tft.fillRect(0, 260, 480, 60, 0x9CF3);
+  tft.drawLine(241, 268, 241, 312, HX8357_WHITE);
+  
+  tft.setFont(&JosefinSans_Bold20pt7b);
+  tft.setTextColor(HX8357_WHITE);
+  tft.setCursor(50, 304);
+  tft.print("SONGS");
+  tft.setCursor(300, 304);
+  tft.print("HOME");
+
+  switch(currentPlay) {
+    case 1:
+      tft.setTextColor(0x9CF3);
+      tft.setCursor(87, 50);
+      tft.print("WONDERWALL");
+      
+      tft.setFont(&JosefinSans_Bold12pt7b);
+      tft.setCursor(205, 78);
+      tft.print("OASIS");
+      break;
+    case 2:
+      tft.setTextColor(0x9CF3);
+      tft.setCursor(87, 50);
+      tft.print("FREE FALLIN'");
+      
+      tft.setFont(&JosefinSans_Bold12pt7b);
+      tft.setCursor(205, 78);
+      tft.print("TOM PETTY");
+      break;
+    case 3:
+      tft.setTextColor(0x9CF3);
+      tft.setCursor(87, 50);
+      tft.print("AFRICA");
+      
+      tft.setFont(&JosefinSans_Bold12pt7b);
+      tft.setCursor(205, 78);
+      tft.print("TOTO");
+      break;
+    case 4:
+      tft.setTextColor(0x9CF3);
+      tft.setCursor(87, 50);
+      tft.print("I'M YOURS");
+      
+      tft.setFont(&JosefinSans_Bold12pt7b);
+      tft.setCursor(205, 78);
+      tft.print("JASON MRAZ");
+      break;
+  }
+
+  tft.fillRect(75, 90, 330, 94, 0x073F);
  }
 
  void DrawFinishedPlaying(){
-  /* Same as DrawFinishedPlaying()
-   *  
-   */
+  tft.fillRect(0, 260, 480, 60, 0x9CF3);
+  tft.drawLine(241, 268, 241, 312, HX8357_WHITE);
+  
+  tft.setFont(&JosefinSans_Bold20pt7b);
+  tft.setTextColor(HX8357_WHITE);
+  tft.setCursor(50, 304);
+  tft.print("SONGS");
+  tft.setCursor(300, 304);
+  tft.print("HOME");
+
+  switch(currentPlay) {
+    case 1:
+      tft.setTextColor(0x9CF3);
+      tft.setCursor(87, 50);
+      tft.print("WONDERWALL");
+      
+      tft.setFont(&JosefinSans_Bold12pt7b);
+      tft.setCursor(205, 78);
+      tft.print("OASIS");
+      break;
+    case 2:
+      tft.setTextColor(0x9CF3);
+      tft.setCursor(87, 50);
+      tft.print("FREE FALLIN'");
+      
+      tft.setFont(&JosefinSans_Bold12pt7b);
+      tft.setCursor(205, 78);
+      tft.print("TOM PETTY");
+      break;
+    case 3:
+      tft.setTextColor(0x9CF3);
+      tft.setCursor(87, 50);
+      tft.print("AFRICA");
+      
+      tft.setFont(&JosefinSans_Bold12pt7b);
+      tft.setCursor(205, 78);
+      tft.print("TOTO");
+      break;
+    case 4:
+      tft.setTextColor(0x9CF3);
+      tft.setCursor(87, 50);
+      tft.print("I'M YOURS");
+      
+      tft.setFont(&JosefinSans_Bold12pt7b);
+      tft.setCursor(205, 78);
+      tft.print("JASON MRAZ");
+      break;
+  }
+
+  tft.fillRect(75, 90, 330, 94, 0x073F);  
  }
 
 // This function opens a Windows Bitmap (BMP) file and
