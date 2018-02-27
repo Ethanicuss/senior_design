@@ -63,7 +63,6 @@ void Quit(){
 }
 
 void CheckTouch(){
-
   //Touchscreen ts = getTS();
   //TSPoint p = ts.getPoint();
   //Serial.println("in checktouch");

@@ -18,6 +18,7 @@ void setup() {
     LEDSetup();
     InterruptSetup();
     analogReadResolution(12);
+    MuxSetup();
     InitializeState();
     PlaySong("wonderwa.txt");
   }
