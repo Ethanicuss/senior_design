@@ -7,16 +7,16 @@
 #include "Switches.h"
 #include "LCD.h"
 
-#include <Fonts/JosefinSans_Bold20pt7b.h>
-#include <Fonts/JosefinSans_Bold15pt7b.h>
-#include <Fonts/JosefinSans_Bold12pt7b.h>
-#include <Fonts/JosefinSans_Bold10pt7b.h>
-#include <Fonts/JosefinSans_Bold8pt7b.h>
-#include <Fonts/JosefinSans_BoldItalic20pt7b.h>
-#include <Fonts/JosefinSans_BoldItalic15pt7b.h>
-#include <Fonts/JosefinSans_BoldItalic12pt7b.h>
-#include <Fonts/JosefinSans_BoldItalic10pt7b.h>
-#include <Fonts/JosefinSans_BoldItalic8pt7b.h>
+#include "Fonts/JosefinSans_Bold20pt7b.h"
+#include "Fonts/JosefinSans_Bold15pt7b.h"
+#include "Fonts/JosefinSans_Bold12pt7b.h"
+#include "Fonts/JosefinSans_Bold10pt7b.h"
+#include "Fonts/JosefinSans_Bold8pt7b.h"
+#include "Fonts/JosefinSans_BoldItalic20pt7b.h"
+#include "Fonts/JosefinSans_BoldItalic15pt7b.h"
+#include "Fonts/JosefinSans_BoldItalic12pt7b.h"
+#include "Fonts/JosefinSans_BoldItalic10pt7b.h"
+#include "Fonts/JosefinSans_BoldItalic8pt7b.h"
 
 extern bool play; 
 
