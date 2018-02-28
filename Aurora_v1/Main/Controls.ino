@@ -8,6 +8,11 @@ String currentChord;
 String nextChord;
 int currentDuration;
 int nextDuration;
+int songPosition;
+
+int GetSongPosition(){
+  return songPosition;
+}
 
 // Interrupt is called once per millisecond
 void InterruptHandler(){
@@ -57,12 +62,15 @@ bool UpdateNote(bool firstNote){
     ChangeInterruptPeriod(currentDuration);
   }
 
+  songPosition++;
+
   return true;
 }
 
 void PlaySong(String songName){
   // load song from SD card
   OpenFile(songName);
+  songPosition = 0;
   // "play" first note in the song
   playing = UpdateNote(true);
   while(playing){

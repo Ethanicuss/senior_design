@@ -70,7 +70,7 @@ void LightLED(String s, bool fullBrightness){
           case 'b':
             led[index] = CRGB(0,255,0);
             break;
-           case '_':
+           case 'p':
             led[index] = CRGB(255,0,255);
             break;
         }
@@ -87,7 +87,7 @@ void LightLED(String s, bool fullBrightness){
           case 'b':
             led[index] = CRGB(0,75,0);
             break;
-          case '_':
+          case 'p':
             led[index] = CRGB(75,0,75);
             break;
         }
