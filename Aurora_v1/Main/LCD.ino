@@ -577,17 +577,17 @@ void UpdateScreen(){
       switch(currentLesson) {
         case 1:
           tft.setTextColor(0x9CF3);
-          tft.setCursor(87, 50);
+          tft.setCursor(114, 50);
           tft.print("SHIFTING 101");
           break;
         case 2:
           tft.setTextColor(0x9CF3);
-          tft.setCursor(87, 50);
+          tft.setCursor(114, 50);
           tft.print("SHIFTING 102");
           break;
         case 3:
           tft.setTextColor(0x9CF3);
-          tft.setCursor(87, 50);
+          tft.setCursor(114, 50);
           tft.print("SHIFTING 103");
           break;
       }

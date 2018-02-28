@@ -252,14 +252,10 @@ void loop() {
           //TODO: PlayPause() //Use a change of flag in the interrupt for this
           //                     -- to know if it is on Play or Pause.
           break;
-        case Btn2: //Quit:
-          //TODO: Quit(); //within this function should be a "CurrState = FINISHED_LEARNING"
+        case Btn2:
           DrawFinishedLearning();
           CurrState = FINISHED_LEARNING;
           break;
-        
-        //TODO: At 100% in this screen it should change State. Ex. "CurrState = FINSIHED_LEARNING
-        //TODO: DrawFinishedLearning();
       }
       break;
    case FINISHED_LEARNING:
