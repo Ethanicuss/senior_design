@@ -15,6 +15,11 @@ int maxValue;
 int sensorValue;
 char* noteString = "E1gA1r";
 
+//Use this line to check sensor for ADC 9, 10 , 11
+//sensorValue = readSensor(0); //for A9
+//sensorValue = readSensor(1); //for A10
+//sensorValue = readSensor(1); //for A11
+
 boolean checkPlacement(char* noteString){
   boolean correctPlacement = false;
 

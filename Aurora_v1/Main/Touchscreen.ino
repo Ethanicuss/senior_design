@@ -6,8 +6,8 @@
 #include "TouchScreen.h"
 #include "Switches.h"
 
-#define YP A2  // must be an analog pin, use "An" notation!
-#define XM A3  // must be an analog pin, use "An" notation!
+#define YP A11  // must be an analog pin, use "An" notation!
+#define XM A10  // must be an analog pin, use "An" notation!
 #define YM 7   // can be a digital pin
 #define XP 8   // can be a digital pin
 
@@ -15,7 +15,6 @@
 // between X+ and X- Use any multimeter to read it
 // For the one we're using, its 300 ohms across the X plate
 TouchScreen ts = TouchScreen(XP, YP, XM, YM, 700);
-
 
 
 TouchScreen getTS(){
@@ -42,6 +41,10 @@ void DisplayXYZ(void) {
   //Serial.print("Xcoor = "); Serial.println(Xcoor);
   
   delay(50);
+}
+
+void assignPins(void){
+  
 }
 
 

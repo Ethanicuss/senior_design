@@ -33,6 +33,7 @@ void setup() {
   if(success){
     LEDSetup();
     analogReadResolution(12);
+    MuxSetup();
     InitializeState();
   }
 }

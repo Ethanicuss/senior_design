@@ -70,19 +70,25 @@ void LightLED(String s, bool fullBrightness){
           case 'b':
             led[index] = CRGB(0,255,0);
             break;
+           case 'p':
+            led[index] = CRGB(255,0,255);
+            break;
         }
       }
       else{
         // CRGB values change based on color we want
         switch(color){
           case 'r':
-            led[index] = CRGB(125,0,0);
+            led[index] = CRGB(75,0,0);
             break;
           case 'g':
-            led[index] = CRGB(0,0,125);
+            led[index] = CRGB(0,0,75);
             break;
           case 'b':
-            led[index] = CRGB(0,125,0);
+            led[index] = CRGB(0,75,0);
+            break;
+          case 'p':
+            led[index] = CRGB(75,0,75);
             break;
         }
       }
@@ -137,10 +143,6 @@ void DarkLED(){
 }
 
 void LearnSong(char* song, int numberOfNotes){
- for(int i = 0; i < numberOfNotes; i++){
-//  LED_ON(song[i], song[i].length);
-//  LED_ON(song[i], sizeof(song)/sizeof(song[0]));
- }
 
 }
 
