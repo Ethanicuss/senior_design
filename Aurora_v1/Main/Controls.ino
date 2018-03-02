@@ -83,24 +83,9 @@ void PlaySong(String songName){
   playing = UpdateNote(true);
   while(playing){
     CheckTouch();
-    if(BtnPressed == Btn1){ //they hit Pause for the first time
-      playing = false;
-      //draw pause screen (outside of the while loop so it only gets drawn once)
-      while (!playing){
-        //Paused
-        CheckTouch();
-        if (BtnPressed == Btn1){
-          playing = true;
-          //draw play screen again
-        }
-      }
-    }
-    if (BtnPressed == Btn2){
-      Quit();
-      DrawFinishedPlaying();
-      CurrState = FINISHED_PLAYING;
-    }
+    checkPlayPause();
     //interrrupts move the sequence of notes
+    playing = UpdateNote(false);
   }
   // once you're done playing, dark all LEDs
   Quit();
@@ -113,31 +98,65 @@ void LearnSong(String songName){
   songPosition = 0;
   // "play" first note in the song
   playing = UpdateNote(true);
+  //TESTING 
+  Serial.println("in LearnSong");
+  //TESTING
   while(playing){
-    if(BtnPressed == Btn1){ //they hit Pause for the first time
+    //TESTING
+    Serial.println("in playing");
+    //TESTING
+    CheckTouch();
+    checkPlayPause();
+    playing = UpdateNote(false);
+    while(!checkPlacement(currentChord)){
+      checkPlayPause();
+      //TESTING
+       Serial.println("checking Placement");
+      //TESTING
+      adcOUT();
+    }
+  }
+  // once you're done playing, dark all LEDs
+  Quit();
+}
+
+void checkPlayPause(){
+  if(BtnPressed == Btn1){ //they hit Pause for the first time
+      BtnPressed = NONE;
+      //TESTING
+      Serial.println("Paused");
+      //TESTING
       playing = false;
       //draw pause screen (outside of the while loop so it only gets drawn once)
       while (!playing){
         //Paused
         CheckTouch();
         if (BtnPressed == Btn1){
+          BtnPressed = NONE;
+          //TESTING
+          Serial.println("un-Paused");
+          //TESTING
           playing = true;
           //draw learn screen again
         }
       }
     }
-    if (BtnPressed == Btn2){
-      Quit();
-      DrawFinishedLearning();
-      CurrState = FINISHED_LEARNING;
+    if(CurrState == LEARNING_SONG){
+      if (BtnPressed == Btn2){
+        BtnPressed = NONE;
+        Quit();
+        DrawFinishedLearning();
+        CurrState = FINISHED_LEARNING;
+      }
     }
-     while(!checkPlacement(currentChord)){
-      adcOUT();
-     }
-     playing = UpdateNote(false);
-  }
-  // once you're done playing, dark all LEDs
-  Quit();
+    else if (CurrState == PLAYING_SONG){
+      if (BtnPressed == Btn2){
+        BtnPressed = NONE;
+        Quit();
+        DrawFinishedPlaying();
+        CurrState = FINISHED_PLAYING;
+      }
+    }
 }
 
 void Quit(){

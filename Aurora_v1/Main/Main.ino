@@ -35,7 +35,6 @@ void setup() {
     analogReadResolution(12);
     MuxSetup();
     InitializeState();
-    PlaySong("wonderwa.txt");
   }
 }
 
@@ -251,10 +250,29 @@ void loop() {
           */
       switch (BtnPressed){
         case Btn1: //PlayPause:
-          //TODO: PlayPause() //Use a change of flag in the interrupt for this
-          //                     -- to know if it is on Play or Pause.
+          paused = !paused;
+          if (!paused) {
+            DrawPlay();
+            switch (currentLearn){
+              case 1:
+                LearnSong("wonderwa.txt");
+                break;
+              case 2:
+                LearnSong("freefall.txt");
+                break;
+              case 3:
+                LearnSong("africa.txt");
+                break;
+              case 4:
+                LearnSong("imyours.txt");
+                break;
+            }
+          }
+          else {
+            DrawPause();
+          }
           break;
-        case Btn2:
+        case Btn2: //Quit:
           DrawFinishedLearning();
           CurrState = FINISHED_LEARNING;
           break;
