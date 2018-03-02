@@ -4,6 +4,7 @@
 
 // Functions that control song play and can be called from any screen
 bool playing;
+bool changeNote = false;
 String currentChord;
 String nextChord;
 int currentDuration;
@@ -14,9 +15,9 @@ int GetSongPosition(){
   return songPosition;
 }
 
-// Interrupt is called once per millisecond
+// Interrupt is called once per currentDuration milliseconds
 void InterruptHandler(){
-  playing = UpdateNote(false);
+  changeNote = true;
 }
 
 void ChangeInterruptPeriod(int newPeriod){
@@ -29,6 +30,7 @@ void InterruptSetup(int firstPeriod){
 }
 
 bool UpdateNote(bool firstNote){
+  // update current note
   if(firstNote){
     currentChord = ReadFile();
     currentDuration = ReadFile().toInt();
@@ -37,23 +39,16 @@ bool UpdateNote(bool firstNote){
     currentChord = nextChord;
     currentDuration = nextDuration;
   }
-
-  Serial.println(currentChord);
-  Serial.println(currentDuration);
-
   // exit from playing loop if we reach the end of the song 
   if(currentChord == "X"){
     return false;
   }
-
   // read next chord/duration from file
   nextChord = ReadFile();
   nextDuration = ReadFile().toInt();
-  
   // actually light up LEDs
   LightLED(currentChord, true); 
   LightLED(nextChord, false);
-
   // set duration of interrupt
   if(firstNote){
     InterruptSetup(currentDuration);
@@ -61,9 +56,9 @@ bool UpdateNote(bool firstNote){
   else{
     ChangeInterruptPeriod(currentDuration);
   }
-
+  // for keeping track of how far through the song you are
   songPosition++;
-
+  // true = still playing, false = paused/not playing
   return true;
 }
 
@@ -74,6 +69,10 @@ void PlaySong(String songName){
   // "play" first note in the song
   playing = UpdateNote(true);
   while(playing){
+    if(changeNote){
+      playing = UpdateNote(false);
+      changeNote = false;
+    }
   }
   // once you're done playing, dark all LEDs
   Quit();

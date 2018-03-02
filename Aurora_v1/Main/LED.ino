@@ -32,8 +32,11 @@ void LightLED(String s, bool fullBrightness){
   for(int i = 0; i < NUM_STRINGS; i++){
     // get the string name, fret number, and LED color
     char str = s[3 * i];
+    Serial.println("String: " + str);
     int fret = int(s[3 * i + 1]) - 48;
+    Serial.println("fret: " + fret);
     char color = s[3 * i + 2];
+    Serial.println("color: " + color);
     if(color != 'x' && fret != 0){
       // index in the LED array
       int index = 0;
@@ -91,8 +94,7 @@ void LightLED(String s, bool fullBrightness){
             led[index] = CRGB(75,0,75);
             break;
         }
-      }
-      
+      } 
     }
     // special case of an open string
       if(fret == 0){
@@ -126,8 +128,7 @@ void LightLED(String s, bool fullBrightness){
           for(int i = 0; i< NUM_FRETS; i++){
             led[i * NUM_STRINGS + offset] = CRGB(125,125,125);
           }
-        }
-        
+        } 
       }
   }
   FastLED.show();
