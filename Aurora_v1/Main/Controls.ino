@@ -14,6 +14,11 @@ int GetSongPosition(){
   return songPosition;
 }
 
+int GetPlayPercent(){
+  return (GetSongPosition()/GetSongLength())*100;
+  // Percent of song completed
+}
+
 // Interrupt is called once per millisecond
 void InterruptHandler(){
   playing = UpdateNote(false);

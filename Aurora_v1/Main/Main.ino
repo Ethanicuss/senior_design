@@ -7,11 +7,13 @@
 #include "Switches.h"
 #include "LCD.h"
 
+#include "Fonts/JosefinSans_Bold40pt7b.h"
 #include "Fonts/JosefinSans_Bold20pt7b.h"
 #include "Fonts/JosefinSans_Bold15pt7b.h"
 #include "Fonts/JosefinSans_Bold12pt7b.h"
 #include "Fonts/JosefinSans_Bold10pt7b.h"
 #include "Fonts/JosefinSans_Bold8pt7b.h"
+#include "Fonts/JosefinSans_BoldItalic40pt7b.h"
 #include "Fonts/JosefinSans_BoldItalic20pt7b.h"
 #include "Fonts/JosefinSans_BoldItalic15pt7b.h"
 #include "Fonts/JosefinSans_BoldItalic12pt7b.h"
@@ -316,6 +318,13 @@ void loop() {
         case Btn1: //PlayPause:
           //TODO: PlayPause() //Use a change of flag in the interrupt for this
           //                     -- to know if it is on Play or Pause.
+          paused = !paused;
+          if (!paused) {
+    //        tft.fillRect(20, 300, 480, 260, HX8357_WHITE);
+          }
+          else {
+      //      tft.fillRect(20, 300, 480, 260, HX8357_WHITE);
+          }
           break;
         case Btn2: //Quit:
           //TODO: Quit(); //quits the song, and takes user to the results

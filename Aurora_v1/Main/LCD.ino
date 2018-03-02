@@ -556,6 +556,18 @@ void UpdateScreen(){
       tft.print("JASON MRAZ");
       break;
   }
+
+  tft.setCursor(165, 290);
+  tft.print("PROGRESS");
+
+  tft.setFont(&JosefinSans_Bold40pt7b);
+  tft.setTextColor(0x07EE);
+  tft.setCursor(80, 270);
+  int testInt = 87;
+  tft.print(testInt);
+  tft.setCursor(120, 270);
+  tft.print("%");
+  
  }
  
 

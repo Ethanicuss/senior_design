@@ -4,5 +4,6 @@ extern int currentLessonType = 0;
 extern int currentLesson = 0;
 extern int currentLearn = 0;
 extern int currentPlay = 0;
+extern bool paused = false;
 
 #endif
