@@ -5,6 +5,7 @@
 // Functions that control song play and can be called from any screen
 bool playMode = false;
 bool playing;
+bool changeNote = false;
 String currentChord;
 String nextChord;
 int currentDuration;
@@ -37,6 +38,7 @@ void InterruptSetup(int firstPeriod){
 }
 
 bool UpdateNote(bool firstNote){
+  // update current note
   if(firstNote){
     currentChord = ReadFile();
     currentDuration = ReadFile().toInt();
@@ -45,21 +47,15 @@ bool UpdateNote(bool firstNote){
     currentChord = nextChord;
     currentDuration = nextDuration;
   }
-
-  Serial.println(currentChord);
-  Serial.println(currentDuration);
-
-  // exit from playing loop if we reach the end of the song 
+  // exit from playing loop if we reach the end of the song
   if(currentChord == "X"){
     return false;
   }
-
   // read next chord/duration from file
   nextChord = ReadFile();
   nextDuration = ReadFile().toInt();
-  
   // actually light up LEDs
-  LightLED(currentChord, true); 
+  LightLED(currentChord, true);
   LightLED(nextChord, false);
 
   // only do interrupt stuff if you're in play mode, NOT in learn mode
@@ -72,9 +68,9 @@ bool UpdateNote(bool firstNote){
       ChangeInterruptPeriod(currentDuration);
     }
   }
-
+  // for keeping track of how far through the song you are
   songPosition++;
-
+  // true = still playing, false = paused/not playing
   return true;
 }
 
@@ -202,7 +198,7 @@ void CheckTouch(){
       else if ((Ycoor < -1060 && Ycoor > -3000) && (Xcoor < 400 && Xcoor > -360 )){  //TODO: CHECK X&Y
         Serial.println("Should go to I'm Yours ");
         BtnPressed = Btn4;
-      } 
+      }
       else if ((Ycoor < 500 && Ycoor > 150) && (Xcoor < -2000 && Xcoor > -2500)){
         //Serial.println("Should go back to HOME");
         BtnPressed = BackBtn;
@@ -224,7 +220,7 @@ void CheckTouch(){
       else if ((Ycoor < -1060 && Ycoor > -3000) && (Xcoor < 400 && Xcoor > -360 )){  //TODO: CHECK X&Y
         Serial.println("Should go to I'm Yours ");
         BtnPressed = Btn4;
-      } 
+      }
       else if ((Ycoor < 500 && Ycoor > 150) && (Xcoor < -2000 && Xcoor > -2500)){
         //Serial.println("Should go back to HOME");
         BtnPressed = BackBtn;
@@ -286,7 +282,7 @@ void CheckTouch(){
         Serial.println("Should go back to LESSONS");
         BtnPressed = BackBtn;
       }
-      break;  
+      break;
 
     case PLAYING_LESSON:
       if ((Ycoor < 350 && Ycoor > -1050) && (Xcoor < 300 && Xcoor > -300)){
@@ -355,4 +351,3 @@ void CheckTouch(){
       break;
   }
 }
-

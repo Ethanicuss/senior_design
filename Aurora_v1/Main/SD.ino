@@ -31,13 +31,16 @@ String ReadFile(){
   String line = "";
   if(f.available()){
     char c = f.read();
-    while(c != '\n'){
+    while(f.available()){
+      if(c < 48 || c > 122){
+        return line;
+      }
       line.concat(c);
       c = f.read();
     }
-    return line;
   }
   else{
+    Serial.println("File not available.");
     return "X";
   }
 }
