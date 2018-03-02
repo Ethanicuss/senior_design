@@ -3,6 +3,7 @@
 #include <DueTimer.h>
 
 // Functions that control song play and can be called from any screen
+bool playMode = false;
 bool playing;
 String currentChord;
 String nextChord;
@@ -61,12 +62,15 @@ bool UpdateNote(bool firstNote){
   LightLED(currentChord, true); 
   LightLED(nextChord, false);
 
-  // set duration of interrupt
-  if(firstNote){
-    InterruptSetup(currentDuration);
-  }
-  else{
-    ChangeInterruptPeriod(currentDuration);
+  // only do interrupt stuff if you're in play mode, NOT in learn mode
+  if(playMode){
+    // set duration of interrupt
+    if(firstNote){
+      InterruptSetup(currentDuration);
+    }
+    else{
+      ChangeInterruptPeriod(currentDuration);
+    }
   }
 
   songPosition++;
@@ -75,6 +79,7 @@ bool UpdateNote(bool firstNote){
 }
 
 void PlaySong(String songName){
+  playMode = true;
   // load song from SD card
   OpenFile(songName);
   songPosition = 0;
@@ -82,14 +87,58 @@ void PlaySong(String songName){
   playing = UpdateNote(true);
   while(playing){
     CheckTouch();
-    if(BtnPressed == Btn1){
+    if(BtnPressed == Btn1){ //they hit Pause for the first time
       playing = false;
-      // draw pause screen (outside of while loop so it only gets drawn once)
-     while(!playing){
+      //draw pause screen (outside of the while loop so it only gets drawn once)
+      while (!playing){
+        //Paused
+        CheckTouch();
+        if (BtnPressed == Btn1){
+          playing = true;
+          //draw play screen again
+        }
       }
-      // draw play screen again
-      playing = true;
     }
+    if (BtnPressed == Btn2){
+      Quit();
+      DrawFinishedPlaying();
+      CurrState = FINISHED_PLAYING;
+    }
+    //interrrupts move the sequence of notes
+  }
+  // once you're done playing, dark all LEDs
+  Quit();
+  playMode = false;
+}
+
+void LearnSong(String songName){
+  // load song from SD card
+  OpenFile(songName);
+  songPosition = 0;
+  // "play" first note in the song
+  playing = UpdateNote(true);
+  while(playing){
+    if(BtnPressed == Btn1){ //they hit Pause for the first time
+      playing = false;
+      //draw pause screen (outside of the while loop so it only gets drawn once)
+      while (!playing){
+        //Paused
+        CheckTouch();
+        if (BtnPressed == Btn1){
+          playing = true;
+          //draw learn screen again
+        }
+      }
+    }
+    if (BtnPressed == Btn2){
+      Quit();
+      DrawFinishedLearning();
+      CurrState = FINISHED_LEARNING;
+    }
+     while(!checkPlacement(currentChord)){
+      adcOUT();
+     }
+     playing = UpdateNote(false);
   }
   // once you're done playing, dark all LEDs
   Quit();
