@@ -3,6 +3,7 @@
 #include <DueTimer.h>
 
 // Functions that control song play and can be called from any screen
+bool playMode;
 bool playing;
 String currentChord;
 String nextChord;
@@ -54,12 +55,15 @@ bool UpdateNote(bool firstNote){
   LightLED(currentChord, true); 
   LightLED(nextChord, false);
 
-  // set duration of interrupt
-  if(firstNote){
-    InterruptSetup(currentDuration);
-  }
-  else{
-    ChangeInterruptPeriod(currentDuration);
+  // only do interrupt stuff if you're in play mode, NOT in learn mode
+  if(playMode){
+    // set duration of interrupt
+    if(firstNote){
+      InterruptSetup(currentDuration);
+    }
+    else{
+      ChangeInterruptPeriod(currentDuration);
+    }
   }
 
   songPosition++;
@@ -68,12 +72,30 @@ bool UpdateNote(bool firstNote){
 }
 
 void PlaySong(String songName){
+  playMode = true;
   // load song from SD card
   OpenFile(songName);
   songPosition = 0;
   // "play" first note in the song
   playing = UpdateNote(true);
   while(playing){
+  }
+  // once you're done playing, dark all LEDs
+  Quit();
+  playMode = false;
+}
+
+void LearnSong(String songName){
+  // load song from SD card
+  OpenFile(songName);
+  songPosition = 0;
+  // "play" first note in the song
+  playing = UpdateNote(true);
+  while(playing){
+    while(!checkPlacement(currentChord)){
+      adcOUT();
+    }
+    playing = UpdateNote(false);
   }
   // once you're done playing, dark all LEDs
   Quit();

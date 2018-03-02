@@ -20,9 +20,8 @@ char* noteString = "E1gA1r";
 //sensorValue = readSensor(1); //for A10
 //sensorValue = readSensor(1); //for A11
 
-boolean checkPlacement(char* noteString){
+boolean checkPlacement(String noteString){
   boolean correctPlacement = false;
-
   for (int i = 0; (i+1) <= sizeof(noteString); i=i+3){
     char stringName = noteString[i];
     char fretNumber = noteString[i+1];
@@ -211,5 +210,21 @@ boolean checkPlacement(char* noteString){
     return false;
   }
 }
+
+void adcOUT(void){
+  // show all sensor readings
+    Serial.println("Sensor A0: " + analogRead(A0));
+    Serial.println("Sensor A1: " + analogRead(A1));
+    Serial.println("Sensor A2: " + analogRead(A2));
+    Serial.println("Sensor A3: " + analogRead(A3));
+    Serial.println("Sensor A4: " + analogRead(A4));
+    Serial.println("Sensor A5: " + analogRead(A5));
+    Serial.println("Sensor A6: " + analogRead(A6));
+    Serial.println("Sensor A7: " + analogRead(A7));
+    Serial.println("Sensor A8: " + analogRead(A8));
+    Serial.println("Sensor A9: " + readSensor(0));
+    Serial.println("Sensor A10: " + readSensor(1));
+    Serial.println("Sensor A11: " + readSensor(2));
+}  // end of loop
  
 
