@@ -21,7 +21,9 @@ int GetPlayPercent(){
 
 // Interrupt is called once per millisecond
 void InterruptHandler(){
-  playing = UpdateNote(false);
+  if(playing){
+    playing = UpdateNote(false);
+  }
 }
 
 void ChangeInterruptPeriod(int newPeriod){
@@ -79,6 +81,15 @@ void PlaySong(String songName){
   // "play" first note in the song
   playing = UpdateNote(true);
   while(playing){
+    CheckTouch();
+    if(BtnPressed == Btn1){
+      playing = false;
+      // draw pause screen (outside of while loop so it only gets drawn once)
+     while(!playing){
+      }
+      // draw play screen again
+      playing = true;
+    }
   }
   // once you're done playing, dark all LEDs
   Quit();

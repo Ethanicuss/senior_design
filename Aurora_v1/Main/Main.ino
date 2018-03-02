@@ -316,24 +316,33 @@ void loop() {
           */
       switch (BtnPressed){
         case Btn1: //PlayPause:
-          //TODO: PlayPause() //Use a change of flag in the interrupt for this
-          //                     -- to know if it is on Play or Pause.
           paused = !paused;
           if (!paused) {
-    //        tft.fillRect(20, 300, 480, 260, HX8357_WHITE);
+            DrawPlay();
+            DrawPercent();
+            switch (currentPlay){
+              case 1:
+                PlaySong("wonderwa.txt");
+                break;
+              case 2:
+                PlaySong("freefall.txt");
+                break;
+              case 3:
+                PlaySong("africa.txt");
+                break;
+              case 4:
+                PlaySong("imyours.txt");
+                break;
+            }
           }
           else {
-      //      tft.fillRect(20, 300, 480, 260, HX8357_WHITE);
+            DrawPause();
           }
           break;
         case Btn2: //Quit:
-          //TODO: Quit(); //quits the song, and takes user to the results
           DrawFinishedPlaying();
           CurrState = FINISHED_PLAYING;
           break;
-        
-        //TODO: At 100% in this screen it should change State. Ex. "CurrState = FINSIHED_PlAYING"
-        //TODO: DrawFinishedPlaying();
       }
       break;
    case FINISHED_PLAYING:

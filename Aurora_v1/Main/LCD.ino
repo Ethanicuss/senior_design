@@ -3,13 +3,13 @@
  *       This Module will just draw each screen.
  */
 #include "LCD.h"
+#define SD_CS 4
 #define TFT_DC 9
 #define TFT_CS 10
-#define SD_CS 4
+
+extern Adafruit_HX8357 tft = Adafruit_HX8357(TFT_CS, TFT_DC);
 
 // Use hardware SPI (on Uno, #13, #12, #11) and the above for CS/DC
-Adafruit_HX8357 tft = Adafruit_HX8357(TFT_CS, TFT_DC);
-
 bool LCDSetup(void) {
   Serial.print("Initializing LCD... ");
   tft.begin(HX8357D);
@@ -321,7 +321,7 @@ void UpdateScreen(){
   tft.setFont(&JosefinSans_Bold20pt7b);
   tft.setTextColor(HX8357_WHITE);
   tft.setCursor(55, 304);
-  tft.print("PAUSE");
+  tft.print("PLAY");
   tft.setCursor(310, 304);
   tft.print("QUIT");
 
@@ -361,7 +361,7 @@ void UpdateScreen(){
   tft.setFont(&JosefinSans_Bold20pt7b);
   tft.setTextColor(HX8357_WHITE);
   tft.setCursor(55, 304);
-  tft.print("PAUSE");
+  tft.print("PLAY");
   tft.setCursor(310, 304);
   tft.print("QUIT");
 
@@ -401,7 +401,7 @@ void UpdateScreen(){
   tft.setFont(&JosefinSans_Bold20pt7b);
   tft.setTextColor(HX8357_WHITE);
   tft.setCursor(55, 304);
-  tft.print("PAUSE");
+  tft.print("PLAY");
   tft.setCursor(310, 304);
   tft.print("QUIT");
 
@@ -441,7 +441,7 @@ void UpdateScreen(){
   tft.setFont(&JosefinSans_Bold20pt7b);
   tft.setTextColor(HX8357_WHITE);
   tft.setCursor(55, 304);
-  tft.print("PAUSE");
+  tft.print("PLAY");
   tft.setCursor(310, 304);
   tft.print("QUIT");
 
@@ -505,8 +505,8 @@ void UpdateScreen(){
 
   tft.setFont(&JosefinSans_Bold20pt7b);
   tft.setTextColor(HX8357_WHITE);
-  tft.setCursor(55, 304);
-  tft.print("PAUSE");
+  tft.setCursor(65, 304);
+  tft.print("PLAY");
   tft.setCursor(310, 304);
   tft.print("QUIT");
 
@@ -557,17 +557,52 @@ void UpdateScreen(){
       break;
   }
 
-  tft.setCursor(165, 290);
-  tft.print("PROGRESS");
+// This stuff needs to go in while(playing)
+//  tft.setCursor(165, 290);
+//  tft.print("PROGRESS");
+//
+//  tft.setFont(&JosefinSans_Bold40pt7b);
+//  tft.setTextColor(0x07EE);
+//  tft.setCursor(80, 270);
+//  int testInt = 87;
+//  tft.print(testInt);
+//  tft.setCursor(120, 270);
+//  tft.print("%");
+  
+ }
 
+ void DrawPercent(){
   tft.setFont(&JosefinSans_Bold40pt7b);
   tft.setTextColor(0x07EE);
-  tft.setCursor(80, 270);
-  int testInt = 87;
+  tft.setCursor(145, 230);
+  int testInt = 100;
+  int pcent= GetPlayPercent();
   tft.print(testInt);
-  tft.setCursor(120, 270);
+  tft.setCursor(280, 230);
   tft.print("%");
+ }
+
+ /********** PLAY/PAUSED ************/
+ void DrawPause(){
+  tft.fillRect(0, 260, 240, 60, 0x9CF3);
+  tft.setFont(&JosefinSans_Bold20pt7b);
+  tft.setTextColor(HX8357_WHITE);
+  tft.setCursor(65, 304);
+  tft.print("PLAY");
   
+  tft.fillRect(0, 160, 480, 95, HX8357_WHITE);
+  tft.fillRect(205, 165, 24, 82, 0x07EE);
+  tft.fillRect(252, 165, 24, 82, 0x07EE);
+ }
+
+ void DrawPlay(){
+  tft.fillRect(0, 260, 240, 60, 0x9CF3);
+  tft.setFont(&JosefinSans_Bold20pt7b);
+  tft.setTextColor(HX8357_WHITE);
+  tft.setCursor(55, 304);
+  tft.print("PAUSE");
+  
+  tft.fillRect(0, 160, 480, 95, HX8357_WHITE);
  }
  
 
