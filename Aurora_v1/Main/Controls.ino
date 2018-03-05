@@ -1,6 +1,7 @@
 #include <stdint.h>
 #include <TouchScreen.h>
 #include <DueTimer.h>
+#include "Controls.h"
 
 // Functions that control song play and can be called from any screen
 bool playMode = false;
@@ -11,6 +12,9 @@ String nextChord;
 int currentDuration;
 int nextDuration;
 int songPosition;
+
+String songTitle = "";
+bool endOfNote = false;
 
 int GetSongPosition(){
   return songPosition;
@@ -23,9 +27,11 @@ int GetPlayPercent(){
 
 // Interrupt is called once per millisecond
 void InterruptHandler(){
-  if(playing){
+  endOfNote = true;
+  /*if(playing){
     playing = UpdateNote(false);
   }
+  */
 }
 
 void ChangeInterruptPeriod(int newPeriod){
@@ -37,6 +43,20 @@ void InterruptSetup(int firstPeriod){
   Timer3.attachInterrupt(InterruptHandler).start(firstPeriod);
 }
 
+void FirstNote(void){
+  currentChord = ReadFile();
+  currentDuration = ReadFile().toInt();
+
+  nextChord = ReadFile();
+  nextDuration = ReadFile().toInt();
+
+  LightLED(currentChord, true);
+  LightLED(nextChord, false);
+
+  songPosition++;
+
+  InterruptSetup(currentDuration);
+}
 bool UpdateNote(bool firstNote){
   // update current note
   if(firstNote){
@@ -72,6 +92,40 @@ bool UpdateNote(bool firstNote){
   songPosition++;
   // true = still playing, false = paused/not playing
   return true;
+}
+
+void songSetup(String songName){
+  OpenFile(songName);
+  songPosition = 0;
+  songTitle = songName;
+}
+
+void PlaySong_TK(String songTitle){
+  if(currentChord == "X"){ //is this a problem???
+    Serial.println("Song is finished");
+    Quit();
+    CurrState = FINISHED_PLAYING;
+  }
+  else if (songPosition == 0){
+    FirstNote();
+  }
+  else if (endOfNote == true){
+    Serial.println("Should go to Next Note");
+    endOfNote = false;
+    songPosition++;
+    //1. go to next note
+    currentChord = nextChord;
+    currentDuration = nextDuration;
+    nextChord = ReadFile();
+    nextDuration = ReadFile().toInt();
+    
+    //2. actually light up LEDs
+    LightLED(currentChord, true);
+    LightLED(nextChord, false);
+
+    //3. set up interrupts
+    ChangeInterruptPeriod(currentDuration);
+  }
 }
 
 void PlaySong(String songName){

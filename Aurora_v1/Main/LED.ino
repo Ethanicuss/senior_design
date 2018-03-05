@@ -32,11 +32,11 @@ void LightLED(String s, bool fullBrightness){
   for(int i = 0; i < NUM_STRINGS; i++){
     // get the string name, fret number, and LED color
     char str = s[3 * i];
-    Serial.println("String: " + str);
+    //Serial.println("String: " + str);
     int fret = int(s[3 * i + 1]) - 48;
-    Serial.println("fret: " + fret);
+    //Serial.println("fret: " + fret);
     char color = s[3 * i + 2];
-    Serial.println("color: " + color);
+    //Serial.println("color: " + color);
     if(color != 'x' && fret != 0){
       // index in the LED array
       int index = 0;
