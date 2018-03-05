@@ -21,8 +21,8 @@ int GetSongPosition(){
 }
 
 int GetPlayPercent(){
-  return (GetSongPosition()/GetSongLength())*100;
-  // Percent of song completed
+  double fraction = GetSongPosition()/GetSongLength();
+  return (int) fraction*100;
 }
 
 // Interrupt is called once per millisecond
@@ -58,6 +58,7 @@ void FirstNote(void){
   InterruptSetup(currentDuration);
 }
 bool UpdateNote(bool firstNote){
+
   // update current note
   if(firstNote){
     currentChord = ReadFile();
@@ -110,12 +111,14 @@ void PlaySong_TK(String songTitle){
     FirstNote();
   }
   else if (endOfNote == true){
-    Serial.println("Should go to Next Note");
+    //Serial.println("Should go to Next Note");
     endOfNote = false;
     songPosition++;
+    // clear lit LEDs from last current chord
+    DarkLED(currentChord);
     //1. go to next note
-    currentChord = nextChord;
-    currentDuration = nextDuration;
+    currentChord = nextChord;  
+    currentDuration = nextDuration;  
     nextChord = ReadFile();
     nextDuration = ReadFile().toInt();
     
@@ -124,7 +127,7 @@ void PlaySong_TK(String songTitle){
     LightLED(nextChord, false);
 
     //3. set up interrupts
-    ChangeInterruptPeriod(currentDuration);
+    InterruptSetup(currentDuration);
   }
 }
 
@@ -211,11 +214,6 @@ void checkPlayPause(){
         CurrState = FINISHED_PLAYING;
       }
     }
-}
-
-void Quit(){
-  // turns off all the LEDS
-  DarkLED();
 }
 
 void CheckTouch(){

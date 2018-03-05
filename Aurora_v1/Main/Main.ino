@@ -196,6 +196,7 @@ void loop() {
           //TODO: PlayPause() DOMINO //Use a change of flag in the interrupt for this
                                      //  -- to know if it is on Play or Pause.
                                      // within PlayPause() will be LED functionality.
+          
           PreState = PLAYING_SONG;
           CurrState = PAUSED;                           
           break;
@@ -314,7 +315,8 @@ void loop() {
           //playMode = true;
           for (int i = 0; i < 3; i++){
             //TODO: DrawCountDown()
-            Serial.println("Song Starts in: " + i);
+            Serial.print("Song Starts in: ");
+            Serial.println(i);
           }
           //FirstNote();
           CurrState = PLAYING_SONG;
@@ -327,7 +329,8 @@ void loop() {
           FirstNote();
           for (int i = 0; i < 3; i++){
             //TODO: DrawCountDown()
-            Serial.println("Song Starts in: " + i);
+            Serial.print("Song Starts in: ");
+            Serial.println(i);
           }
           CurrState = PLAYING_SONG;
           break;
@@ -339,7 +342,8 @@ void loop() {
           FirstNote();
           for (int i = 0; i < 3; i++){
             //TODO: DrawCountDown()
-            Serial.println("Song Starts in: " + i);
+            Serial.print("Song Starts in: ");
+            Serial.println(i);
           }
           CurrState = PLAYING_SONG;
           break;
@@ -351,7 +355,8 @@ void loop() {
           FirstNote();
           for (int i = 0; i < 3; i++){
             //TODO: DrawCountDown()
-            Serial.println("Song Starts in: " + i);
+            Serial.print("Song Starts in: ");
+            Serial.println(i);
           }
           CurrState = PLAYING_SONG;
           break;
@@ -391,9 +396,11 @@ void loop() {
             */
       switch (BtnPressed){
         case Btn1: //PlayPause:
+          DrawPause();
           PreState = PLAYING_SONG;
           CurrState = PAUSED;
           
+          /*
           paused = !paused;
           if (!paused) {
             DrawPlay();
@@ -416,6 +423,7 @@ void loop() {
           else {
             DrawPause();
           }
+          */
           break;
         case Btn2: //Quit:
           DrawFinishedPlaying();
@@ -450,10 +458,13 @@ void loop() {
     break;
 /********************************** PAUSED **************************************/
   case PAUSED:
+    Serial.println("Paused");
+    Serial.println(PreState);
+    Serial.println(BtnPressed);
     switch (BtnPressed){
       case Btn1: //Play - resume
-        if (PreState == PLAYING_SONG){
-          //Draw
+        if (PreState == 10){
+          DrawPlay();
           CurrState = PLAYING_SONG; 
         }
         else if (PreState == LEARNING_SONG){
@@ -480,9 +491,9 @@ void loop() {
         }
         //STAY HERE IF PAUSED & no button is being hit.
         //TESTING
-        Serial.println("Paused");
-        //TESTING
+        break;
     }
+    break;
   } //State Switch Closing Brace
   BtnPressed = NONE;
 }
