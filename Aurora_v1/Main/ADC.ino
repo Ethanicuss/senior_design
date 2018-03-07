@@ -213,7 +213,32 @@ boolean checkPlacement(String noteString){
 
 void adcOUT(void){
   // show all sensor readings
-    Serial.println("Sensor A0: " + analogRead(A0));
+    Serial.print("Sensor A0: ");
+    Serial.println(analogRead(A0));
+    Serial.print("Sensor A1: ");
+    Serial.println(analogRead(A1));
+    Serial.print("Sensor A2: ");
+    Serial.println(analogRead(A2));
+    Serial.print("Sensor A3: ");
+    Serial.println(analogRead(A3));
+    Serial.print("Sensor A4: ");
+    Serial.println(analogRead(A4));
+    Serial.print("Sensor A5: ");
+    Serial.println(analogRead(A5));
+    Serial.print("Sensor A6: ");
+    Serial.println(analogRead(A6));
+    Serial.print("Sensor A7: ");
+    Serial.println(analogRead(A7));
+    Serial.print("Sensor A8: ");
+    Serial.println(analogRead(A8));
+    Serial.print("Sensor A9: ");
+    Serial.println(readSensor(0));
+    Serial.print("Sensor A0: ");
+    Serial.println(readSensor(1));
+    Serial.print("Sensor A0: ");
+    Serial.println(readSensor(2));
+
+    /*
     Serial.println("Sensor A1: " + analogRead(A1));
     Serial.println("Sensor A2: " + analogRead(A2));
     Serial.println("Sensor A3: " + analogRead(A3));
@@ -225,6 +250,7 @@ void adcOUT(void){
     Serial.println("Sensor A9: " + readSensor(0));
     Serial.println("Sensor A10: " + readSensor(1));
     Serial.println("Sensor A11: " + readSensor(2));
+    */
 }  // end of loop
  
 

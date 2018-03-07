@@ -195,6 +195,7 @@ void DarkLED(String s){
 }
 
 void Quit(){
+  songPosition = 0;
   for(int i = 0; i < NUM_ROWS; i++){
     for(int j = 0; j < LEDS_PER_ROW; j++){
       led[i * LEDS_PER_ROW + j] = CRGB(0, 0, 0);  
