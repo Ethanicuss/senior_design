@@ -336,6 +336,7 @@ void loop() {
           paused = !paused;
           if (!paused) {
             DrawPlay();
+            void DrawCountdown(){
             DrawPercent();
             switch (currentPlay){
               case 1:

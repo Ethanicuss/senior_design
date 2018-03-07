@@ -556,6 +556,7 @@ void UpdateScreen(){
       tft.print("JASON MRAZ");
       break;
   }
+ }
 
 // This stuff needs to go in while(playing)
 //  tft.setCursor(165, 290);
@@ -569,7 +570,7 @@ void UpdateScreen(){
 //  tft.setCursor(120, 270);
 //  tft.print("%");
   
- }
+ 
 
  void DrawPercent(){
   tft.setFont(&JosefinSans_Bold40pt7b);
@@ -583,6 +584,26 @@ void UpdateScreen(){
  }
 
  /********** PLAY/PAUSED ************/
+ void DrawCountdown(){
+  tft.fillRect(0, 160, 480, 95, HX8357_WHITE);
+  tft.setFont(&JosefinSans_Bold40pt7b);
+  tft.setTextColor(0x07EE);
+  tft.setCursor(145, 230);
+  tft.fillRect(0, 250, 480/4, 10, 0x0x07EE);
+  tft.print(3);
+  tft.fillRect(0, 160, 480, 85, HX8357_WHITE);
+  tft.fillRect(480/4, 250, 480/4, 10, 0x0x07EE);
+  tft.print(2);
+  tft.fillRect(0, 160, 480, 85, HX8357_WHITE);
+  tft.fillRect(480*2/4, 250, 480/4, 10, 0x0x07EE);
+  tft.print(1);
+  tft.fillRect(0, 160, 480, 85, HX8357_WHITE);
+  tft.fillRect(480*3/4, 250, 480/4, 10, 0x0x07EE);
+  tft.setCursor(130, 230);
+  tft.print(START!);
+  tft.fillRect(0, 160, 480, 95, HX8357_WHITE);
+ }
+ 
  void DrawPause(){
   tft.fillRect(0, 260, 240, 60, 0x9CF3);
   tft.setFont(&JosefinSans_Bold20pt7b);
