@@ -322,7 +322,7 @@ void UpdateScreen(){
   tft.setFont(&JosefinSans_Bold20pt7b);
   tft.setTextColor(HX8357_WHITE);
   tft.setCursor(55, 304);
-  tft.print("PLAY");
+  tft.print("PAUSE");
   tft.setCursor(310, 304);
   tft.print("QUIT");
 
@@ -362,7 +362,7 @@ void UpdateScreen(){
   tft.setFont(&JosefinSans_Bold20pt7b);
   tft.setTextColor(HX8357_WHITE);
   tft.setCursor(55, 304);
-  tft.print("PLAY");
+  tft.print("PAUSE");
   tft.setCursor(310, 304);
   tft.print("QUIT");
 
@@ -402,7 +402,7 @@ void UpdateScreen(){
   tft.setFont(&JosefinSans_Bold20pt7b);
   tft.setTextColor(HX8357_WHITE);
   tft.setCursor(55, 304);
-  tft.print("PLAY");
+  tft.print("PAUSE");
   tft.setCursor(310, 304);
   tft.print("QUIT");
 
@@ -442,7 +442,7 @@ void UpdateScreen(){
   tft.setFont(&JosefinSans_Bold20pt7b);
   tft.setTextColor(HX8357_WHITE);
   tft.setCursor(55, 304);
-  tft.print("PLAY");
+  tft.print("PAUSE");
   tft.setCursor(310, 304);
   tft.print("QUIT");
 
@@ -506,8 +506,8 @@ void UpdateScreen(){
 
   tft.setFont(&JosefinSans_Bold20pt7b);
   tft.setTextColor(HX8357_WHITE);
-  tft.setCursor(65, 304);
-  tft.print("PLAY");
+  tft.setCursor(55, 304);
+  tft.print("PAUSE");
   tft.setCursor(310, 304);
   tft.print("QUIT");
 
@@ -573,15 +573,28 @@ void UpdateScreen(){
   
  
 
- void DrawPercent(){
+ void DrawPlayPercent(){
   tft.setFont(&JosefinSans_Bold40pt7b);
   tft.setTextColor(0x07EE);
-  tft.setCursor(145, 230);
-  int testInt = 100;
   int pcent= GetPlayPercent();
-  tft.print(testInt);
-  tft.setCursor(280, 230);
-  tft.print("%");
+  if (pcent != currentPcent) {
+    tft.fillRect(0, 160, 280, 95, HX8357_WHITE);
+    if (pcent < 10) {
+      tft.setCursor(220, 230);
+      tft.print(pcent);
+    }
+    else if (pcent < 100) {
+      tft.setCursor(180, 230);
+      tft.print(pcent);
+    }
+    else {
+      tft.setCursor(155, 230);
+      tft.print(pcent);
+    }
+    tft.setCursor(280, 230);
+    tft.print("%");
+  }
+  currentPcent = pcent;
  }
 
  /********** PLAY/PAUSED ************/
@@ -589,20 +602,33 @@ void UpdateScreen(){
   tft.fillRect(0, 160, 480, 95, HX8357_WHITE);
   tft.setFont(&JosefinSans_Bold40pt7b);
   tft.setTextColor(0x07EE);
-  tft.setCursor(145, 230);
-  tft.fillRect(0, 250, 480/4, 10, 0x0x07EE);
-  tft.print(3);
+  tft.setCursor(220, 230);
+  CountdownDelay();
+  tft.fillRect(0, 250, 480/4, 10, 0x07EE);
+  tft.print("3");
+  CountdownDelay();
   tft.fillRect(0, 160, 480, 85, HX8357_WHITE);
-  tft.fillRect(480/4, 250, 480/4, 10, 0x0x07EE);
-  tft.print(2);
+  tft.fillRect(480/4, 250, 480/4, 10, 0x07EE);
+  tft.setCursor(220, 230);
+  tft.print("2");
+  CountdownDelay();
   tft.fillRect(0, 160, 480, 85, HX8357_WHITE);
-  tft.fillRect(480*2/4, 250, 480/4, 10, 0x0x07EE);
-  tft.print(1);
+  tft.fillRect(480*2/4, 250, 480/4, 10, 0x07EE);
+  tft.setCursor(230, 230);
+  tft.print("1");
+  CountdownDelay();
   tft.fillRect(0, 160, 480, 85, HX8357_WHITE);
-  tft.fillRect(480*3/4, 250, 480/4, 10, 0x0x07EE);
-  tft.setCursor(130, 230);
-  tft.print(START!);
-  tft.fillRect(0, 160, 480, 95, HX8357_WHITE);
+  tft.fillRect(480*3/4, 250, 480/4, 10, 0x07EE);
+  tft.setCursor(110, 230);
+  tft.print("START!");
+  CountdownDelay();
+  tft.fillRect(0, 160, 480, 100, HX8357_WHITE);
+ }
+
+ void CountdownDelay(){
+   for (int i = 0; i < 400; i++) {
+    tft.fillRect(470, 200, 10, 40, HX8357_WHITE);
+   }
  }
  
  void DrawPause(){
