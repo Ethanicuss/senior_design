@@ -1,6 +1,7 @@
 #include <stdint.h>
 #include <TouchScreen.h>
 #include <DueTimer.h>
+#include "Controls.h"
 
 // Functions that control song play and can be called from any screen
 bool playMode = false;
@@ -12,20 +13,25 @@ int currentDuration;
 int nextDuration;
 int songPosition;
 
+String songTitle = "";
+bool endOfNote = false;
+
 int GetSongPosition(){
   return songPosition;
 }
 
 int GetPlayPercent(){
-  return (GetSongPosition()/GetSongLength())*100;
-  // Percent of song completed
+  double fraction = GetSongPosition()/GetSongLength();
+  return (int) fraction*100;
 }
 
 // Interrupt is called once per millisecond
 void InterruptHandler(){
-  if(playing){
+  endOfNote = true;
+  /*if(playing){
     playing = UpdateNote(false);
   }
+  */
 }
 
 void ChangeInterruptPeriod(int newPeriod){
@@ -37,7 +43,22 @@ void InterruptSetup(int firstPeriod){
   Timer3.attachInterrupt(InterruptHandler).start(firstPeriod);
 }
 
+void FirstNote(void){
+  currentChord = ReadFile();
+  currentDuration = ReadFile().toInt();
+
+  nextChord = ReadFile();
+  nextDuration = ReadFile().toInt();
+
+  LightLED(currentChord, true);
+  LightLED(nextChord, false);
+
+  songPosition++;
+
+  InterruptSetup(currentDuration);
+}
 bool UpdateNote(bool firstNote){
+
   // update current note
   if(firstNote){
     currentChord = ReadFile();
@@ -74,6 +95,43 @@ bool UpdateNote(bool firstNote){
   return true;
 }
 
+void songSetup(String songName){
+  OpenFile(songName);
+  songPosition = 0;
+  songTitle = songName;
+}
+
+void PlaySong_TK(String songTitle){
+  if(currentChord == "X"){ //is this a problem???
+    Serial.println("Song is finished");
+    Quit();
+    CurrState = FINISHED_PLAYING;
+  }
+  else if (songPosition == 0){
+    FirstNote();
+  }
+  else if (endOfNote == true){
+    //Serial.println("Should go to Next Note");
+    endOfNote = false;
+    songPosition++;
+    // clear lit LEDs from last current chord
+    DarkLED(currentChord);
+    //1. go to next note
+    currentChord = nextChord;  
+    currentDuration = nextDuration;  
+    nextChord = ReadFile();
+    nextDuration = ReadFile().toInt();
+    
+    //2. actually light up LEDs
+    LightLED(currentChord, true);
+    LightLED(nextChord, false);
+
+    //3. set up interrupts
+    InterruptSetup(currentDuration);
+  }
+}
+
+/*
 void PlaySong(String songName){
   playMode = true;
   // load song from SD card
@@ -91,7 +149,9 @@ void PlaySong(String songName){
   Quit();
   playMode = false;
 }
+*/
 
+/*
 void LearnSong(String songName){
   // load song from SD card
   OpenFile(songName);
@@ -119,7 +179,40 @@ void LearnSong(String songName){
   // once you're done playing, dark all LEDs
   Quit();
 }
+*/
 
+void LearnSong_TK(String songName){
+  Serial.println("in learnsong");
+  if(currentChord == "X"){ //is this a problem???
+    Serial.println("Song is finished");
+    Quit();
+    CurrState = FINISHED_LEARNING;
+  }
+  else if (songPosition == 0){
+    FirstNote();
+  }
+  else if (checkPlacement(currentChord)){
+  //Serial.println("Should go to Next Note");
+  endOfNote = false;
+  songPosition++;
+  // clear lit LEDs from last current chord
+  DarkLED(currentChord);
+  //1. go to next note
+  currentChord = nextChord;  
+  currentDuration = nextDuration;  
+  nextChord = ReadFile();
+  nextDuration = ReadFile().toInt();
+  
+  //2. actually light up LEDs
+  LightLED(currentChord, true);
+  LightLED(nextChord, false);
+  return;
+  }
+  else{
+    Serial.println("adc values: ");
+    adcOUT();
+  }
+}
 void checkPlayPause(){
   if(BtnPressed == Btn1){ //they hit Pause for the first time
       BtnPressed = NONE;
@@ -157,11 +250,6 @@ void checkPlayPause(){
         CurrState = FINISHED_PLAYING;
       }
     }
-}
-
-void Quit(){
-  // turns off all the LEDS
-  DarkLED();
 }
 
 void CheckTouch(){
@@ -368,5 +456,15 @@ void CheckTouch(){
         BtnPressed = BackBtn;
       }
       break;
+    case PAUSED:
+      if ((Ycoor < 350 && Ycoor > -1050) && (Xcoor < 300 && Xcoor > -300)){
+        Serial.println("Should pause/play ");
+        BtnPressed = Btn1;
+      }
+      else if ((Ycoor < -1050 && Ycoor > -3000) && (Xcoor < 300 && Xcoor > -300 )){
+        Serial.println("Should quit ");
+        BtnPressed = Btn2;
+      }
+      break;  
   }
 }

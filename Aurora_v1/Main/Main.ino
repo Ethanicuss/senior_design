@@ -6,6 +6,7 @@
 #include <DueTimer.h>
 #include "Switches.h"
 #include "LCD.h"
+#include "Controls.h"
 
 #include "Fonts/JosefinSans_Bold40pt7b.h"
 #include "Fonts/JosefinSans_Bold20pt7b.h"
@@ -20,11 +21,9 @@
 #include "Fonts/JosefinSans_BoldItalic10pt7b.h"
 #include "Fonts/JosefinSans_BoldItalic8pt7b.h"
 
-//creating type "State"
-enum State {HOME = 0, LESSONS = 1, LEARN = 2, PLAY = 3, SETTINGS = 4, SHIFTING = 5, SUSTAIN = 6, CHORDS = 7, PLAYING_LESSON = 8, LEARNING_SONG = 9, PLAYING_SONG = 10, FINISHED_LESSON = 11, FINISHED_LEARNING = 12, FINISHED_PLAYING = 13};
-
-//creating variable of type "State" called CurrState
-enum State CurrState;
+//String songTitle = "";
+enum State CurrState = HOME;
+enum State PreState = HOME;
 
 void setup() {
   Serial.begin(9600);
@@ -108,18 +107,21 @@ void loop() {
         case Btn1: 
           currentLesson = 1;
           currentLessonType = 1;
+          songSetup("shift1.txt");
           DrawShiftingLesson();
           CurrState = PLAYING_LESSON;
           break;
         case Btn2:
           currentLesson = 2;
           currentLessonType = 1;
+          songSetup("shift2.txt");
           DrawShiftingLesson();
           CurrState = PLAYING_LESSON;
           break;
         case Btn3: 
           currentLesson = 3;
           currentLessonType = 1;
+          songSetup("shift3.txt");
           DrawShiftingLesson();
           CurrState = PLAYING_LESSON;
           break;
@@ -134,18 +136,21 @@ void loop() {
         case Btn1:
           currentLesson = 1;
           currentLessonType = 2;
+          songSetup("sustain1.txt");
           DrawSustainLesson();
           CurrState = PLAYING_LESSON;
           break;
         case Btn2:
           currentLesson = 2;
           currentLessonType = 2;
+          songSetup("sustain2.txt");
           DrawSustainLesson();
           CurrState = PLAYING_LESSON;
           break;
         case Btn3:
           currentLesson = 3;
           currentLessonType = 2;
+          songSetup("sustain3.txt");
           DrawSustainLesson();
           CurrState = PLAYING_LESSON;
           break;
@@ -160,18 +165,21 @@ void loop() {
         case Btn1:
           currentLesson = 1;
           currentLessonType = 3;
+          songSetup("chord1.txt");
           DrawChordsLesson();
           CurrState = PLAYING_LESSON;
           break;
         case Btn2:
           currentLesson = 2;
           currentLessonType = 3;
+          songSetup("chord2.txt");
           DrawChordsLesson();
           CurrState = PLAYING_LESSON;
           break;
         case Btn3:
           currentLesson = 3;
           currentLessonType = 3;
+          songSetup("chord3.txt");
           DrawChordsLesson();
           CurrState = PLAYING_LESSON;
           break;
@@ -182,12 +190,15 @@ void loop() {
       }
       break;
     case PLAYING_LESSON:
+      PlaySong_TK(songTitle);
       switch (BtnPressed){
         case Btn1: //PlayPause:
           //TODO: PlayPause() DOMINO //Use a change of flag in the interrupt for this
                                      //  -- to know if it is on Play or Pause.
                                      // within PlayPause() will be LED functionality.
-                                     
+          
+          PreState = PLAYING_SONG;
+          CurrState = PAUSED;                           
           break;
         case Btn2: //Quit:
           DrawFinishedLessons();
@@ -214,21 +225,45 @@ void loop() {
         case Btn1: 
           currentLearn = 1;
           DrawLearnSong();
+          songSetup("wonderwa.txt");
+          for (int i = 0; i < 3; i++){
+            //TODO: DrawCountDown()
+            Serial.print("Song Starts in: ");
+            Serial.println(i);
+          }
           CurrState = LEARNING_SONG;
           break;
         case Btn2: 
           currentLearn = 2;
           DrawLearnSong();
+          songSetup("freefall.txt");
+          for (int i = 0; i < 3; i++){
+            //TODO: DrawCountDown()
+            Serial.print("Song Starts in: ");
+            Serial.println(i);
+          }
           CurrState = LEARNING_SONG;
           break;
         case Btn3: 
           currentLearn = 3;
           DrawLearnSong();
+          songSetup("africa.txt");
+          for (int i = 0; i < 3; i++){
+            //TODO: DrawCountDown()
+            Serial.print("Song Starts in: ");
+            Serial.println(i);
+          }
           CurrState = LEARNING_SONG;
           break;
         case Btn4: 
           currentLearn = 4;
           DrawLearnSong();
+          songSetup("imyours.txt");
+          for (int i = 0; i < 3; i++){
+            //TODO: DrawCountDown()
+            Serial.print("Song Starts in: ");
+            Serial.println(i);
+          }
           CurrState = LEARNING_SONG;
           break;
         case BackBtn: //Back:
@@ -238,6 +273,8 @@ void loop() {
       }
       break;
     case LEARNING_SONG:
+        LearnSong_TK(songTitle);
+        Serial.println("Learning Song");
         /*TODO: LearnSong() this function should check whatever variable you have assigned
                               for each song, so that it can just do a quick, "switch(songNumber)"
                               to know which song to Learn, should also have this line at the end 
@@ -250,30 +287,13 @@ void loop() {
           */
       switch (BtnPressed){
         case Btn1: //PlayPause:
-          paused = !paused;
-          if (!paused) {
-            DrawPlay();
-            switch (currentLearn){
-              case 1:
-                LearnSong("wonderwa.txt");
-                break;
-              case 2:
-                LearnSong("freefall.txt");
-                break;
-              case 3:
-                LearnSong("africa.txt");
-                break;
-              case 4:
-                LearnSong("imyours.txt");
-                break;
-            }
-          }
-          else {
-            DrawPause();
-          }
+          DrawPause();
+          PreState = LEARNING_SONG;
+          CurrState = PAUSED;
           break;
         case Btn2: //Quit:
-          DrawFinishedLearning();
+          DrawFinishedPlaying();
+          Quit();
           CurrState = FINISHED_LEARNING;
           break;
       }
@@ -286,6 +306,7 @@ void loop() {
           break;
         case Btn2:
           DrawHomeScreen();
+          Quit();
           CurrState = HOME;
           break;
       }
@@ -297,21 +318,53 @@ void loop() {
         case Btn1: 
           currentPlay = 1;
           DrawPlaySong();
+          songSetup("wonderwa.txt");
+          //playMode = true;
+          for (int i = 0; i < 3; i++){
+            //TODO: DrawCountDown()
+            Serial.print("Song Starts in: ");
+            Serial.println(i);
+          }
+          //FirstNote();
           CurrState = PLAYING_SONG;
           break;
         case Btn2: 
           currentPlay = 2;
           DrawPlaySong();
+          songSetup("freefall.txt");
+          //playMode = true;
+          FirstNote();
+          for (int i = 0; i < 3; i++){
+            //TODO: DrawCountDown()
+            Serial.print("Song Starts in: ");
+            Serial.println(i);
+          }
           CurrState = PLAYING_SONG;
           break;
         case Btn3: 
           currentPlay = 3;
           DrawPlaySong();
+          songSetup("africa.txt");
+          //playMode = true;
+          FirstNote();
+          for (int i = 0; i < 3; i++){
+            //TODO: DrawCountDown()
+            Serial.print("Song Starts in: ");
+            Serial.println(i);
+          }
           CurrState = PLAYING_SONG;
           break;
         case Btn4: 
           currentPlay = 4;
           DrawPlaySong();
+          songSetup("imyours.txt");
+          //playMode = true;
+          FirstNote();
+          for (int i = 0; i < 3; i++){
+            //TODO: DrawCountDown()
+            Serial.print("Song Starts in: ");
+            Serial.println(i);
+          }
           CurrState = PLAYING_SONG;
           break;
         case BackBtn: //Back:
@@ -321,6 +374,7 @@ void loop() {
       }
       break;
    case PLAYING_SONG:
+        PlaySong_TK(songTitle);
         /*TODO: PlaySong() this function should check whatever variable you have assigned
                               for each song, so that it can just do a quick, "switch(songNumber)"
                               to know which song to Learn, should also have this line at the end 
@@ -333,6 +387,7 @@ void loop() {
           */
       switch (BtnPressed){
         case Btn1: //PlayPause:
+<<<<<<< HEAD
           paused = !paused;
           if (!paused) {
             DrawPlay();
@@ -356,14 +411,21 @@ void loop() {
           else {
             DrawPause();
           }
+=======
+          DrawPause();
+          PreState = PLAYING_SONG;
+          CurrState = PAUSED;
+>>>>>>> origin
           break;
         case Btn2: //Quit:
           DrawFinishedPlaying();
+          Quit();
           CurrState = FINISHED_PLAYING;
           break;
       }
       break;
    case FINISHED_PLAYING:
+      //playMode = false;
       switch (BtnPressed){
         case Btn1: //SongSelect:
           DrawPlayScreen();
@@ -371,6 +433,7 @@ void loop() {
           break;
         case Btn2: //SongSelect:
           DrawHomeScreen();
+          Quit();
           CurrState = HOME;  
           break;
       }
@@ -385,6 +448,49 @@ void loop() {
           DrawHomeScreen();
           CurrState = HOME;
           break; 
+    }
+    break;
+/********************************** PAUSED **************************************/
+  case PAUSED:
+    Serial.println("Paused");
+    //Serial.println(PreState);
+    //Serial.println(BtnPressed);
+    switch (BtnPressed){
+      case Btn1: //Play - resume
+        if (PreState == PLAYING_SONG){
+          DrawPlay();
+          PreState = PAUSED;
+          CurrState = PLAYING_SONG; 
+        }
+        else if (PreState == LEARNING_SONG){
+          //Draw
+          CurrState = LEARNING_SONG;
+        }
+        else if (PreState == PLAYING_LESSON){
+          //Draw
+          CurrState = PLAYING_LESSON;
+        }
+        break;
+      case Btn2: //Quit
+        if (PreState == PLAYING_SONG){
+          DrawFinishedPlaying();
+          PreState = PAUSED;
+          Quit();
+          CurrState = FINISHED_PLAYING; 
+        }
+        else if (PreState == LEARNING_SONG){
+          //Draw
+          Quit();
+          CurrState = FINISHED_LEARNING;
+        }
+        else if (PreState == PLAYING_LESSON){
+          //Draw
+          Quit();
+          CurrState = FINISHED_LESSON;
+        }
+        //STAY HERE IF PAUSED & no button is being hit.
+        //TESTING
+        break;
     }
     break;
   } //State Switch Closing Brace

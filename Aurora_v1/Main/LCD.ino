@@ -3,6 +3,7 @@
  *       This Module will just draw each screen.
  */
 #include "LCD.h"
+#include "Controls.h"
 #define SD_CS 4
 #define TFT_DC 9
 #define TFT_CS 10
