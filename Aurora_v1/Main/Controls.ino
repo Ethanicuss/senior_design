@@ -57,6 +57,21 @@ void FirstNote(void){
 
   InterruptSetup(currentDuration);
 }
+
+
+void FirstNote_Learn(void){
+  currentChord = ReadFile();
+  currentDuration = ReadFile().toInt();
+
+  nextChord = ReadFile();
+  nextDuration = ReadFile().toInt();
+
+  LightLED(currentChord, true);
+  LightLED(nextChord, false);
+
+  songPosition++;
+}
+
 bool UpdateNote(bool firstNote){
 
   // update current note
@@ -107,10 +122,12 @@ void PlaySong_TK(String songTitle){
     Quit();
     CurrState = FINISHED_PLAYING;
   }
-  else if (songPosition == 0){
-    FirstNote();
+  else {
+    if (songPosition == 0){
+      FirstNote();
+    }
   }
-  else if (endOfNote == true){
+  if (endOfNote == true){
     //Serial.println("Should go to Next Note");
     endOfNote = false;
     songPosition++;
@@ -188,25 +205,27 @@ void LearnSong_TK(String songName){
     Quit();
     CurrState = FINISHED_LEARNING;
   }
-  else if (songPosition == 0){
-    FirstNote();
+  else {
+    if (songPosition == 0){
+      FirstNote_Learn();
+    }
   }
-  else if (checkPlacement(currentChord)){
-  //Serial.println("Should go to Next Note");
-  endOfNote = false;
-  songPosition++;
-  // clear lit LEDs from last current chord
-  DarkLED(currentChord);
-  //1. go to next note
-  currentChord = nextChord;  
-  currentDuration = nextDuration;  
-  nextChord = ReadFile();
-  nextDuration = ReadFile().toInt();
-  
-  //2. actually light up LEDs
-  LightLED(currentChord, true);
-  LightLED(nextChord, false);
-  return;
+  if (checkPlacement(currentChord)){
+    //Serial.println("Should go to Next Note");
+    endOfNote = false;
+    songPosition++;
+    // clear lit LEDs from last current chord
+    DarkLED(currentChord);
+    //1. go to next note
+    currentChord = nextChord;  
+    currentDuration = nextDuration;  
+    nextChord = ReadFile();
+    nextDuration = ReadFile().toInt();
+    
+    //2. actually light up LEDs
+    LightLED(currentChord, true);
+    LightLED(nextChord, false);
+    return;
   }
   else{
     Serial.println("adc values: ");
