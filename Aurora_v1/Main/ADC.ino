@@ -9,12 +9,41 @@
  */
 
 #include <stdint.h>
+#include "Switches.h"
  
 int minValue;
 int maxValue;
 int sensorValue;
 int sensorValueBeta;
 char* noteString = "E1gA1r";
+
+int fret1min = 0;
+int fret1max = 0;
+int fret2min = 0;
+int fret2max = 0;
+int fret3min = 0;
+int fret3max = 0;
+int fret4min = 0;
+int fret4max = 0;
+int fret5min = 0;
+int fret5max = 0;
+int fret6min = 0;
+int fret6max = 0;
+
+int fret7min = fret1min;
+int fret7max = fret1max;
+int fret8min = fret2min;
+int fret8max = fret2max;
+int fret9min = fret3min;
+int fret9max = fret3max;
+int fret10min = fret4min;
+int fret10min = fret4max;
+int fret11max = fret5min;
+int fret11max = fret5max;
+int fret12min = fret6min;
+int fret12max = fret6max;
+
+String recordedString = "xxxxxxxxxxxxxxxxxx" //18chars
 
 //Use this line to check sensor for ADC 9, 10 , 11
 //sensorValue = readSensor(0); //for A9
@@ -1039,4 +1068,36 @@ void adcOUT(void){
     */
 }  // end of loop
  
-
+String recordPlacement(void){
+  if (analogRead(A0) >= fret1min && analogRead(A0) <= fret1max)){
+    recordedString[i] = 'E';
+    recordedString[i+1] = '1';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  if (analogRead(A0) >= fret2min && analogRead(A0) <= fret2max)){
+    recordedString[i] = 'E';
+    recordedString[i+1] = '2';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  if (analogRead(A0) >= fret3min && analogRead(A0) <= fret3max)){
+    recordedString[i] = 'E';
+    recordedString[i+1] = '3';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  if (analogRead(A0) >= fret4min && analogRead(A0) <= fret4max)){
+    recordedString[i] = 'E';
+    recordedString[i+1] = '4';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  if (analogRead(A0) >= fret5min && analogRead(A0) <= fret5max)){
+    recordedString[i] = 'E';
+    recordedString[i+1] = '5';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  
+}

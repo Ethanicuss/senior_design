@@ -71,6 +71,12 @@ void loop() {
        //   DrawSettingsScreen();
          // CurrState = SETTINGS;
           break;
+        case Btn5: //Record
+          Serial.println("Button 5 Hit");
+          //TODO: DrawREC_REDScreen();
+          i = 0;
+          color = 'r';
+          CurrState = REC_RED;
       }
       break;
 /*********************** LESSONS MODE **********************/
@@ -467,6 +473,18 @@ void loop() {
         break;
     }
     break;
+/********** RECORD ********************/
+/*********** Record-Red*************/
+case REC_RED:
+  recordedString = recordPlacement();
+  switch (BtnPressed){
+    case Btn1: //next color
+      color = 'b';
+      i = i+3;
+      CurrState = REC_BLUE;
+  }
+break;
+
   } //State Switch Closing Brace
   BtnPressed = NONE;
 }
