@@ -1069,6 +1069,7 @@ void adcOUT(void){
 }  // end of loop
  
 String recordPlacement(void){
+  /*** String E Fret 1-6 ***/
   if (analogRead(A0) >= fret1min && analogRead(A0) <= fret1max)){
     recordedString[i] = 'E';
     recordedString[i+1] = '1';
@@ -1099,5 +1100,426 @@ String recordPlacement(void){
     recordedString[i+2] = color;
     LightLED(recordedString, false);
   }
-  
+  if (analogRead(A0) >= fret6min && analogRead(A0) <= fret6max)){
+    recordedString[i] = 'E';
+    recordedString[i+1] = '6';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  /*** String E Frets 7-12 ***/
+  if (analogRead(A1) >= fret1min && analogRead(A1) <= fret1max)){
+    recordedString[i] = 'E';
+    recordedString[i+1] = '7';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  if (analogRead(A1) >= fret2min && analogRead(A1) <= fret2max)){
+    recordedString[i] = 'E';
+    recordedString[i+1] = '8';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  if (analogRead(A1) >= fret3min && analogRead(A1) <= fret3max)){
+    recordedString[i] = 'E';
+    recordedString[i+1] = '9';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  if (analogRead(A1) >= fret4min && analogRead(A1) <= fret4max)){
+    recordedString[i] = 'E';
+    recordedString[i+1] = 'A';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  if (analogRead(A1) >= fret5min && analogRead(A1) <= fret5max)){
+    recordedString[i] = 'E';
+    recordedString[i+1] = 'B';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  if (analogRead(A1) >= fret6min && analogRead(A1) <= fret6max)){
+    recordedString[i] = 'E';
+    recordedString[i+1] = 'C';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  /***** String A Fret 1-6 *******/
+  if (analogRead(A2) >= fret1min && analogRead(A2) <= fret1max)){
+    recordedString[i] = 'A';
+    recordedString[i+1] = '1';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  if (analogRead(A2) >= fret2min && analogRead(A2) <= fret2max)){
+    recordedString[i] = 'A';
+    recordedString[i+1] = '2';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  if (analogRead(A2) >= fret3min && analogRead(A2) <= fret3max)){
+    recordedString[i] = 'A';
+    recordedString[i+1] = '3';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  if (analogRead(A2) >= fret4min && analogRead(A2) <= fret4max)){
+    recordedString[i] = 'A';
+    recordedString[i+1] = '4';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  if (analogRead(A2) >= fret5min && analogRead(A2) <= fret5max)){
+    recordedString[i] = 'A';
+    recordedString[i+1] = '5';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  if (analogRead(A2) >= fret6min && analogRead(A2) <= fret6max)){
+    recordedString[i] = 'A';
+    recordedString[i+1] = '6';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  /***** String A Frets 7-12 ****/
+  if (analogRead(A3) >= fret1min && analogRead(A3) <= fret1max)){
+    recordedString[i] = 'A';
+    recordedString[i+1] = '7';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  if (analogRead(A3) >= fret2min && analogRead(A3) <= fret2max)){
+    recordedString[i] = 'A';
+    recordedString[i+1] = '8';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  if (analogRead(A3) >= fret3min && analogRead(A3) <= fret3max)){
+    recordedString[i] = 'A';
+    recordedString[i+1] = '9';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  if (analogRead(A3) >= fret4min && analogRead(A3) <= fret4max)){
+    recordedString[i] = 'A';
+    recordedString[i+1] = 'A';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  if (analogRead(A3) >= fret5min && analogRead(A3) <= fret5max)){
+    recordedString[i] = 'A';
+    recordedString[i+1] = 'B';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  if (analogRead(A3) >= fret6min && analogRead(A3) <= fret6max)){
+    recordedString[i] = 'A';
+    recordedString[i+1] = 'C';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  /*** String D Fret 1-6 ***/
+  if (analogRead(A4) >= fret1min && analogRead(A4) <= fret1max)){
+    recordedString[i] = 'D';
+    recordedString[i+1] = '1';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  if (analogRead(A4) >= fret2min && analogRead(A4) <= fret2max)){
+    recordedString[i] = 'D';
+    recordedString[i+1] = '2';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  if (analogRead(A4) >= fret3min && analogRead(A4) <= fret3max)){
+    recordedString[i] = 'D';
+    recordedString[i+1] = '3';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  if (analogRead(A4) >= fret4min && analogRead(A4) <= fret4max)){
+    recordedString[i] = 'D';
+    recordedString[i+1] = '4';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  if (analogRead(A4) >= fret5min && analogRead(A4) <= fret5max)){
+    recordedString[i] = 'D';
+    recordedString[i+1] = '5';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  if (analogRead(A4) >= fret6min && analogRead(A4) <= fret6max)){
+    recordedString[i] = 'D';
+    recordedString[i+1] = '6';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  /****** String D Fret 7-12******/
+  if (analogRead(A5) >= fret1min && analogRead(A5) <= fret1max)){
+    recordedString[i] = 'D';
+    recordedString[i+1] = '7';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  if (analogRead(A5) >= fret2min && analogRead(A5) <= fret2max)){
+    recordedString[i] = 'D';
+    recordedString[i+1] = '8';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  if (analogRead(A5) >= fret3min && analogRead(A5) <= fret3max)){
+    recordedString[i] = 'D';
+    recordedString[i+1] = '9';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  if (analogRead(A5) >= fret4min && analogRead(A5) <= fret4max)){
+    recordedString[i] = 'D';
+    recordedString[i+1] = 'A';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  if (analogRead(A5) >= fret5min && analogRead(A5) <= fret5max)){
+    recordedString[i] = 'D';
+    recordedString[i+1] = 'B';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  if (analogRead(A5) >= fret6min && analogRead(A5) <= fret6max)){
+    recordedString[i] = 'D';
+    recordedString[i+1] = 'C';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  /****** String G Fret 1-6****/
+  if (analogRead(A6) >= fret1min && analogRead(A6) <= fret1max)){
+    recordedString[i] = 'G';
+    recordedString[i+1] = '1';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  if (analogRead(A6) >= fret2min && analogRead(A6) <= fret2max)){
+    recordedString[i] = 'G';
+    recordedString[i+1] = '2';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  if (analogRead(A6) >= fret3min && analogRead(A6) <= fret3max)){
+    recordedString[i] = 'G';
+    recordedString[i+1] = '3';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  if (analogRead(A6) >= fret4min && analogRead(A6) <= fret4max)){
+    recordedString[i] = 'G';
+    recordedString[i+1] = '4';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  if (analogRead(A6) >= fret5min && analogRead(A6) <= fret5max)){
+    recordedString[i] = 'G';
+    recordedString[i+1] = '5';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  if (analogRead(A6) >= fret6min && analogRead(A6) <= fret6max)){
+    recordedString[i] = 'G';
+    recordedString[i+1] = '6';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  /***** String G Fret 7-12*******/
+  if (analogRead(A7) >= fret1min && analogRead(A7) <= fret1max)){
+    recordedString[i] = 'G';
+    recordedString[i+1] = '7';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  if (analogRead(A7) >= fret2min && analogRead(A7) <= fret2max)){
+    recordedString[i] = 'G';
+    recordedString[i+1] = '8';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  if (analogRead(A7) >= fret3min && analogRead(A7) <= fret3max)){
+    recordedString[i] = 'G';
+    recordedString[i+1] = '9';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  if (analogRead(A7) >= fret4min && analogRead(A7) <= fret4max)){
+    recordedString[i] = 'G';
+    recordedString[i+1] = 'A';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  if (analogRead(A7) >= fret5min && analogRead(A7) <= fret5max)){
+    recordedString[i] = 'G';
+    recordedString[i+1] = 'B';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  if (analogRead(A7) >= fret6min && analogRead(A7) <= fret6max)){
+    recordedString[i] = 'G';
+    recordedString[i+1] = 'C';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  /***** String B Fret 1-6****/
+  if (analogRead(A8) >= fret1min && analogRead(A8) <= fret1max)){
+    recordedString[i] = 'B';
+    recordedString[i+1] = '1';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  if (analogRead(A8) >= fret2min && analogRead(A8) <= fret2max)){
+    recordedString[i] = 'B';
+    recordedString[i+1] = '2';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  if (analogRead(A8) >= fret3min && analogRead(A8) <= fret3max)){
+    recordedString[i] = 'B';
+    recordedString[i+1] = '3';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  if (analogRead(A8) >= fret4min && analogRead(A8) <= fret4max)){
+    recordedString[i] = 'B';
+    recordedString[i+1] = '4';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  if (analogRead(A8) >= fret5min && analogRead(A8) <= fret5max)){
+    recordedString[i] = 'B';
+    recordedString[i+1] = '5';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  if (analogRead(A8) >= fret6min && analogRead(A8) <= fret6max)){
+    recordedString[i] = 'B';
+    recordedString[i+1] = '6';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  /***** String B Fret 7-12****/
+  if (readSensor(0) >= fret1min && readSensor(0) <= fret1max)){
+    recordedString[i] = 'B';
+    recordedString[i+1] = '7';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  if (readSensor(0) >= fret2min && readSensor(0) <= fret2max)){
+    recordedString[i] = 'B';
+    recordedString[i+1] = '8';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  if (readSensor(0) >= fret3min && readSensor(0) <= fret3max)){
+    recordedString[i] = 'B';
+    recordedString[i+1] = '9';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  if (readSensor(0) >= fret4min && readSensor(0) <= fret4max)){
+    recordedString[i] = 'B';
+    recordedString[i+1] = 'A';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  if (readSensor(0) >= fret5min && readSensor(0) <= fret5max)){
+    recordedString[i] = 'B';
+    recordedString[i+1] = 'B';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  if (readSensor(0) >= fret6min && readSensor(0) <= fret6max)){
+    recordedString[i] = 'B';
+    recordedString[i+1] = 'C';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  /*** String e Fret 1-6 ****/
+  if (readSensor(1) >= fret1min && readSensor(1) <= fret1max)){
+    recordedString[i] = 'e';
+    recordedString[i+1] = '1';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  if (readSensor(1) >= fret2min && readSensor(1) <= fret2max)){
+    recordedString[i] = 'e';
+    recordedString[i+1] = '2';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  if (readSensor(1) >= fret3min && readSensor(1) <= fret3max)){
+    recordedString[i] = 'e';
+    recordedString[i+1] = '3';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  if (readSensor(1) >= fret4min && readSensor(1) <= fret4max)){
+    recordedString[i] = 'e';
+    recordedString[i+1] = '4';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  if (readSensor(1) >= fret5min && readSensor(1) <= fret5max)){
+    recordedString[i] = 'e';
+    recordedString[i+1] = '5';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  if (readSensor(1) >= fret6min && readSensor(1) <= fret6max)){
+    recordedString[i] = 'e';
+    recordedString[i+1] = '6';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  /**** String e Fret 7-12****/
+  if (readSensor(2) >= fret1min && readSensor(2) <= fret1max)){
+    recordedString[i] = 'e';
+    recordedString[i+1] = '7';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  if (readSensor(2) >= fret2min && readSensor(2) <= fret2max)){
+    recordedString[i] = 'e';
+    recordedString[i+1] = '8';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  if (readSensor(2) >= fret3min && readSensor(2) <= fret3max)){
+    recordedString[i] = 'e';
+    recordedString[i+1] = '9';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  if (readSensor(2) >= fret4min && readSensor(2) <= fret4max)){
+    recordedString[i] = 'e';
+    recordedString[i+1] = 'A';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  if (readSensor(2) >= fret5min && readSensor(2) <= fret5max)){
+    recordedString[i] = 'e';
+    recordedString[i+1] = 'B';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+  if (readSensor(2) >= fret6min && readSensor(2) <= fret6max)){
+    recordedString[i] = 'e';
+    recordedString[i+1] = 'C';
+    recordedString[i+2] = color;
+    LightLED(recordedString, false);
+  }
+}
+
+void recordOpen(String recordedString){
+  if (CurrState == REC_OPEN){
+    switch(BtnPressed){
+      case Btn1: //E string
+        recorded
+    }
+  }
 }

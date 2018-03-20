@@ -1,4 +1,16 @@
 #include "Switches.h"
+#include <TouchScreen.h>
+#include <Adafruit_GFX.h>    // Core graphics library
+#include <Adafruit_HX8357.h>
+#include <SPI.h>
+#include <SD.h>
+#include <DueTimer.h>
+#include "Switches.h"
+#include "LCD.h"
+
+#include "Controls.h"
+#include <stdint.h>
+
 
 /*TODO: Within an interrupt Handler for switch inputs
         we have to assign "BtnPressed = _______"
@@ -35,6 +47,13 @@
 enum Button BtnPressed = NONE;
 int Ycoor = 0;
 int Xcoor = 0;
+
+//*** FOR Record Mode I/O ***//
+void mkRecording(int n){
+  String fileName = "record" + n;
+  FILE* file_ptr = fopen(fileName, "w");
+  fclose(file_ptr);
+}
 
 
 

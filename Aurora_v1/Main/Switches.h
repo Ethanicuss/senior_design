@@ -21,6 +21,18 @@ extern int Ycoor;
 //int Xcoor;
 extern int Xcoor;
 
+//For record Mode
+extern int i; //<-- see recordPlacement in ADC file
+
+extern char color;
+
+extern String recordedString;
+
+extern int BPM;
+
+extern int n; //recording number
+
+
 #endif // _HEADERFILE_H    // Put this line at the end of your file.
 
 
