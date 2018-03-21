@@ -1502,3 +1502,13 @@ String recordPlacement(){
     LightLED(recordedString, false);
   }
 }
+
+void addOpenStrings(char buffer[]){
+  for (int j=0; j < 6; j++){
+    if (buffer[j] != 'x'){
+      noteString[i] = buffer[j];
+      noteString[i+1] = '0';
+      noteString[i+2] = 'w';
+    }
+  }
+}

@@ -56,5 +56,3 @@ void mkRecording(int n){
   //fclose(file_ptr);
 }
 
-
-

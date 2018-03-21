@@ -30,6 +30,7 @@ int i = 0;
 int n = 0;
 char color = 'r';
 String recordedString = "xxxxxxxxxxxxxxxxxx";
+char buffer[6] = {'x','x','x','x','x','x'};
 
 void setup() {
   Serial.begin(9600);
@@ -79,8 +80,29 @@ void loop() {
           break;
         case Btn5: //Record
           Serial.println("Button 5 Hit");
-          //TODO: DrawCHOOSE_BPMScreen();
-          CurrState = CHOOSE_BPM;
+          //TODO: Draw_REC_MODE();
+          CurrState = REC_MODE;
+          break;
+        case Btn6: //UP
+          if (currentPage == 0){
+            //Draw other options
+            currentPage = 1;
+          }
+          else{
+            //draw main home
+            currentPage = 0;
+          }
+          break;
+        case Btn7: //Down;
+          if (currentPage == 0){
+            //draw other options
+            currentPage = 1;
+          }
+          else{
+            //draw main home
+            currentPage = 0;
+          }
+          break;
       }
       break;
 /*********************** LESSONS MODE **********************/
@@ -477,7 +499,39 @@ void loop() {
         break;
     }
     break;
-/********** RECORD ********************/
+/****************************** RECORD *****************************/
+/************ REC_MODE ****************/
+  case REC_MODE:
+    switch(BtnPressed){
+      case Btn1: //Record a song
+        CurrState = CHOOSE_BPM;
+        break;
+      case Btn2: //Learn a recording
+        currentLearn = 5;
+        DrawLearnSong();
+        songSetup("record1.txt");
+        for (int i = 0; i < 3; i++){
+          //TODO: DrawCountDown()
+          Serial.print("Song Starts in: ");
+          Serial.println(i);
+        }
+        CurrState = LEARNING_SONG;
+        break;
+      case Btn3:
+        currentPlay = 5;
+        DrawPlaySong();
+        songSetup("record1.txt");
+        //playMode = true;
+        FirstNote();
+        for (int i = 0; i < 3; i++){
+          //TODO: DrawCountDown()
+          Serial.print("Song Starts in: ");
+          Serial.println(i);
+        }
+        CurrState = PLAYING_SONG;
+        break;
+    }
+    break;
 /********* CHOOSE_BPM *****************/
   case CHOOSE_BPM:
     switch (BtnPressed){
@@ -489,7 +543,15 @@ void loop() {
         //DrawBPM_down()
         BPM--;
         break;
-      case Btn3: //continue
+      case Btn3: //increase BPM by 10
+        BPM = BPM + 10;
+        //Draw Increment BPM by 10
+        break;
+      case Btn4: //decrease BPM by 10
+        BPM = BPM - 10;
+        //draw decreaes BPM by 10
+        break;
+      case Btn5: //continue
         //TODO: Create File for Recording
         mkRecording(n);
         n++;
@@ -498,7 +560,7 @@ void loop() {
         //Draw_REC_RED();
         CurrState = REC_RED;
         break;
-      case Btn4: //back
+      case Btn6: //back
         //DrawCHOOSE_BPMScreen();
         CurrState = HOME;
         break;
@@ -621,26 +683,50 @@ void loop() {
   case REC_OPEN:
     switch (BtnPressed){
       case Btn1: //String E
+        if (buffer[0] == 'E'){
+          buffer[0] = 'x';
+        }
+        buffer[0] = 'E';
         //add to buffer (hightlight box)
         //if present, remove from buffer (dehighlight box)
         break;
       case Btn2: //String A
+        if (buffer[1] == 'A'){
+          buffer[1] = 'x';
+        }
+        buffer[1] = 'A';
         //add to buffer (highlight box)
         //if present remove from buffer (dehighlight box)
         break;
       case Btn3: //String D
+        if (buffer[2] == 'D'){
+          buffer[2] = 'x';
+        }
+        buffer[2] = 'D';
         //add to buffer (highlight box)
         //if present remove from buffer (dehighlight box)
         break;
       case Btn4: //String G
+        if (buffer[3] == 'G'){
+          buffer[3] = 'x';
+        }
+        buffer[3] = 'G';
         //add to buffer (highlight box)
         //if present remove from buffer (dehighlight box)
         break;
       case Btn5: //String b
+        if (buffer[4] == 'B'){
+          buffer[4] = 'x';
+        }
+        buffer[4] = 'B';
         //add to buffer (highlight box)
         //if present remove from buffer (dehighlight box)
         break;
       case Btn6: //String e
+        if (buffer[5] == 'e'){
+          buffer[5] = 'x';
+        }
+        buffer[5] = 'e';
         //add to buffer (highlight box)
         //if present remove from buffer (dehighlight box)
         break;
