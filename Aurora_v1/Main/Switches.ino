@@ -50,9 +50,10 @@ int Xcoor = 0;
 
 //*** FOR Record Mode I/O ***//
 void mkRecording(int n){
-  String fileName = "record" + n;
-  FILE* file_ptr = fopen(fileName, "w");
-  fclose(file_ptr);
+  //FIX THIS METHOD!!!
+  //String fileName = "record" + n;
+  //FILE* file_ptr = fopen(fileName, "w");
+  //fclose(file_ptr);
 }
 
 

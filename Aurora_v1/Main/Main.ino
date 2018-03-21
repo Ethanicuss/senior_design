@@ -29,6 +29,7 @@ int BPM = 100;
 int i = 0;
 int n = 0;
 char color = 'r';
+String recordedString = "xxxxxxxxxxxxxxxxxx";
 
 void setup() {
   Serial.begin(9600);

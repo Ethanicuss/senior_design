@@ -28,15 +28,13 @@ int GetPlayPercent(){
 // Interrupt is called once per millisecond
 void InterruptHandler(){
   endOfNote = true;
-  /*if(playing){
-    playing = UpdateNote(false);
-  }
-  */
 }
 
+/*
 void ChangeInterruptPeriod(int newPeriod){
   Timer3.setPeriod(newPeriod);
 }
+*/
 
 void InterruptSetup(int firstPeriod){
   // interrupts every X microseconds
@@ -72,6 +70,7 @@ void FirstNote_Learn(void){
   songPosition++;
 }
 
+/*
 bool UpdateNote(bool firstNote){
 
   // update current note
@@ -109,6 +108,7 @@ bool UpdateNote(bool firstNote){
   // true = still playing, false = paused/not playing
   return true;
 }
+*/
 
 void songSetup(String songName){
   OpenFile(songName);
@@ -232,6 +232,7 @@ void LearnSong_TK(String songName){
     adcOUT();
   }
 }
+
 void checkPlayPause(){
   if(BtnPressed == Btn1){ //they hit Pause for the first time
       BtnPressed = NONE;
@@ -487,3 +488,4 @@ void CheckTouch(){
       break;  
   }
 }
+
