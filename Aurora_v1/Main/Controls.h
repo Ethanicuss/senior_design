@@ -1,5 +1,5 @@
-#ifndef Controls_h
-#define Controls_h
+#ifndef CONTROLS_H
+#define CONTROLS_H
 
 extern bool playMode;
 extern String songTitle;

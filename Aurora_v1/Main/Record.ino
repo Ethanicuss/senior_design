@@ -1,16 +1,6 @@
-#include "Switches.h"
-#include <TouchScreen.h>
-#include <Adafruit_GFX.h>    // Core graphics library
-#include <Adafruit_HX8357.h>
+#include "Record.h"
 #include <SPI.h>
 #include <SD.h>
-#include <DueTimer.h>
-#include "Switches.h"
-#include "LCD.h"
-
-#include "Controls.h"
-#include <stdint.h>
-
 
 /*TODO: Within an interrupt Handler for switch inputs
         we have to assign "BtnPressed = _______"
@@ -40,34 +30,30 @@
                                       on the CurrStateScreen you are on.
 */
 
-//Remove this code when we figure out touch screen buttons.
-//enum Button {NONE = 0, UP = 1, DOWN = 2, BACK = 3, SET = 4, OFF = 5};
-//extern enum Button BtnPressed;
 
-enum Button BtnPressed = NONE;
-int Ycoor = 0;
-int Xcoor = 0;
-FILE* file_ptr;
-int numNotes = 0;
+File g;
 
 //*** FOR Record Mode I/O ***//
 void mkRecording(){
-  String fileName = "recording";
-  file_ptr = fopen(fileName, "w");
-  fputs("    \n");
+  // reset buffer for new recording
+  String fileName = "rec.txt";
+  g = SD.open(fileName);
+  g.write("    \n");
 }
 
 void writeToFile(String line){
   // write string to file with f.write()
-  fputs(line, file_ptr);
-  fputs(line, '\n');
+  char asarray[50];
+  line.toCharArray(asarray, line.length());
+  g.write(asarray);
+  g.write("\n");
 }
 
 int BPMtoTiming(double BPM, double note){
-  int timing = (int)((1000*(BPM/60))*note);
+  return (int)((1000*(BPM/60))*note);
 }
 
 void resetPointer(void){
-  int value = fseek(file_ptr,0,1);
+  g.seek(0);
 }
 

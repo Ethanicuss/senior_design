@@ -9,7 +9,7 @@
  */
 
 #include <stdint.h>
-#include "Switches.h"
+#include "Record.h"
  
 int minValue;
 int maxValue;

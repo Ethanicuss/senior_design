@@ -4,9 +4,9 @@
 #include <SPI.h>
 #include <SD.h>
 #include <DueTimer.h>
-#include "Switches.h"
 #include "LCD.h"
 #include "Controls.h"
+#include "State.h"
 
 #include "Fonts/JosefinSans_Bold40pt7b.h"
 #include "Fonts/JosefinSans_Bold20pt7b.h"
@@ -20,17 +20,6 @@
 #include "Fonts/JosefinSans_BoldItalic12pt7b.h"
 #include "Fonts/JosefinSans_BoldItalic10pt7b.h"
 #include "Fonts/JosefinSans_BoldItalic8pt7b.h"
-
-//String songTitle = "";
-enum State CurrState = HOME;
-enum State PreState = HOME;
-
-int BPM = 100;
-int i = 0;
-int n = 0;
-char color = 'r';
-String recordedString = "xxxxxxxxxxxxxxxxxx";
-char buffer[6] = {'x','x','x','x','x','x'};
 
 void setup() {
   Serial.begin(9600);
@@ -809,15 +798,6 @@ void loop() {
     break;
   } //State Switch Closing Brace
   BtnPressed = NONE;
-}
-
-void InitializeState(){
- CurrState = HOME;
- BtnPressed = NONE;
- DrawHomeScreen();
- currentLesson = 0;
- currentLearn = 0;
- currentPlay = 0;
 }
 
 

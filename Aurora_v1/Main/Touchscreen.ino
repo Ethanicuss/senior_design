@@ -4,7 +4,7 @@
 
 #include <stdint.h>
 #include "TouchScreen.h"
-#include "Switches.h"
+#include "State.h"
 
 #define YP A11  // must be an analog pin, use "An" notation!
 #define XM A10  // must be an analog pin, use "An" notation!
