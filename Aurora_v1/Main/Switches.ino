@@ -47,12 +47,27 @@
 enum Button BtnPressed = NONE;
 int Ycoor = 0;
 int Xcoor = 0;
+FILE* file_ptr;
+int numNotes = 0;
 
 //*** FOR Record Mode I/O ***//
-void mkRecording(int n){
-  //FIX THIS METHOD!!!
-  //String fileName = "record" + n;
-  //FILE* file_ptr = fopen(fileName, "w");
-  //fclose(file_ptr);
+void mkRecording(){
+  String fileName = "recording";
+  file_ptr = fopen(fileName, "w");
+  fputs("    \n");
+}
+
+void writeToFile(String line){
+  // write string to file with f.write()
+  fputs(line, file_ptr);
+  fputs(line, '\n');
+}
+
+int BPMtoTiming(double BPM, double note){
+  int timing = (int)((1000*(BPM/60))*note);
+}
+
+void resetPointer(void){
+  int value = fseek(file_ptr,0,1);
 }
 

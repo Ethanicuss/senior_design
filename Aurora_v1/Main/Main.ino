@@ -553,7 +553,7 @@ void loop() {
         break;
       case Btn5: //continue
         //TODO: Create File for Recording
-        mkRecording(n);
+        mkRecording();
         n++;
         i = 0;
         color = 'r';
@@ -755,26 +755,34 @@ void loop() {
   case REC_TEMPO:
     switch(BtnPressed){
       case Btn1: //Half note
-        //write timing value to File
         //write recordedString to File
+        writeToFile(recordedString);
+        //write timing value to File
+        writeToFile(String(BPMtoTiming(BPM, 2)));
         //Draw_REC_NEXT();
         CurrState = REC_NEXT;
         break;
       case Btn2: //Quarter note
-        //write timing value to File
         //write recordedString to File
+        writeToFile(recordedString);
+        //write timing value to File
+        writeToFile(String(BPMtoTiming(BPM, 1)));
         //Draw_REC_NEXT();
         CurrState = REC_NEXT;
         break;
       case Btn3: //Eigth note
-        //write timing value to File
         //write recordedString to File
+        writeToFile(recordedString);
+        //write timing value to File
+        writeToFile(String(BPMtoTiming(BPM, (1/2))));
         //Draw_REC_NEXT();
         CurrState = REC_NEXT;
         break;
       case Btn4: //sixteenth note
-        //write timing value to File
         //write recordedString to File
+        writeToFile(recordedString);
+        //write timing value to File
+        writeToFile(String(BPMtoTiming(BPM, (1/4))));
         //Draw_REC_NEXT();
         CurrState = REC_NEXT;
         break;
@@ -786,10 +794,15 @@ void loop() {
       case Btn1: //go to next note
         //if needed move to nextline in File.
         //TODO:Draw_REC_RED();
+        //increment numNotes
+        numNotes++;
         CurrState = REC_RED;
         break;
       case Btn2: //Finished Song
         //DrawPopUp - saying that song has been saved in ____
+        //overwrite the numNotes in the song
+        void resetPointer();
+        writeToFile(String(numNotes));
         CurrState = HOME;
         break;
     }
