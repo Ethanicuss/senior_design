@@ -35,12 +35,18 @@ void UpdateScreen(){
 
  void DrawHomeScreen(){
   tft.fillRect(0, 0, 240, 360, HX8357_WHITE);
-  tft.fillRect(240, 0, 240, 320/3, 0x00DF);
-  tft.fillTriangle(240, 0, 240, 320/3, 255, 320/3, HX8357_WHITE);
-  tft.fillRect(240, 320/3, 240, 323/3, 0xF81D);
-  tft.fillTriangle(240, 320/3, 240, 320/3+323/3, 255, 320/3+323/3, HX8357_WHITE);
-  tft.fillRect(240, 640/3, 240, 326/3, 0x07EE);  
-  tft.fillTriangle(240, 640/3, 240, 320/3+323/3+326/3, 255, 320/3+323/3+326/3, HX8357_WHITE);
+  
+  tft.fillRect(240, 0, 240, 95, 0x00DF);
+  tft.fillTriangle(240, 0, 240, 95, 255, 95, HX8357_WHITE);
+  
+  tft.fillRect(240, 95, 240, 95, 0xF81D);
+  tft.fillTriangle(240, 95, 240, 95+95, 255, 95+95, HX8357_WHITE);
+  
+  tft.fillRect(240, 190, 240, 95, 0x07EE);  
+  tft.fillTriangle(240, 95+95, 240, 95+95+95, 255, 95+95+95, HX8357_WHITE);
+
+  tft.fillRect(240, 285, 240, 35, 0x9CF3);  
+  tft.fillTriangle(240, 95+95+95, 240, 360, 253, 360, HX8357_WHITE);
 
   tft.setFont(&JosefinSans_BoldItalic20pt7b);
   tft.setTextColor(0x981F);
@@ -53,14 +59,18 @@ void UpdateScreen(){
 
   tft.setFont(&JosefinSans_Bold20pt7b);
   tft.setTextColor(HX8357_WHITE);
-  tft.setCursor(273, 70);
+  tft.setCursor(273, 60);
   tft.print("LESSONS");
 
-  tft.setCursor(300, 170);
+  tft.setCursor(300, 155);
   tft.print("LEARN");
 
-  tft.setCursor(315, 283);
+  tft.setCursor(315, 255);
   tft.print("PLAY");
+
+  tft.setFont(&JosefinSans_Bold8pt7b);
+  tft.setCursor(320, 310);
+  tft.print("NEXT PAGE");
  }
 
  /*********** HOME MENU SCREENS **********/
