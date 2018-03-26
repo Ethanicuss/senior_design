@@ -8,8 +8,8 @@
  *       
  */
 
-#include <stdint.h>
 #include "Record.h"
+#include "State.h"
  
 int minValue;
 int maxValue;

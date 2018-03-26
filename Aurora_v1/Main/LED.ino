@@ -1,4 +1,5 @@
 #include <FastLED.h>
+#include "Record.h"
 #define LEDS_PER_ROW 6
 #define NUM_ROWS 12
 #define NUM_LEDS 72

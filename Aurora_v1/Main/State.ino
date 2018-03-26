@@ -1,5 +1,12 @@
 #include "State.h"
 
+
+enum Button BtnPressed;
+enum State CurrState;
+enum State PreState;
+int Ycoor;
+int Xcoor;
+
 void InitializeState(){
   BtnPressed = NONE;
   CurrState = HOME;

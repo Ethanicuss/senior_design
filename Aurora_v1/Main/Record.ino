@@ -31,7 +31,17 @@
 */
 
 
+// file we will write to
 File g;
+
+// define variables associated with recording globally
+int BPM = 100;
+int i = 0;
+int n = 0;
+int numNotes = 0;
+char color = 'r';
+String recordedString = "xxxxxxxxxxxxxxxxxx";
+char buffer[6] = {'x','x','x','x','x','x'};
 
 //*** FOR Record Mode I/O ***//
 void mkRecording(){

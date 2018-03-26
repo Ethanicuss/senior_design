@@ -1,12 +1,13 @@
 #include <TouchScreen.h>
 #include <Adafruit_GFX.h>    // Core graphics library
 #include <Adafruit_HX8357.h>
+#include <DueTimer.h>
 #include <SPI.h>
 #include <SD.h>
-#include <DueTimer.h>
 #include "LCD.h"
 #include "Controls.h"
 #include "State.h"
+#include "Record.h"
 
 #include "Fonts/JosefinSans_Bold40pt7b.h"
 #include "Fonts/JosefinSans_Bold20pt7b.h"
