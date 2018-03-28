@@ -32,11 +32,22 @@ void LightLED(String s, bool fullBrightness){
   for(int i = 0; i < NUM_STRINGS; i++){
     // get the string name, fret number, and LED color
     char str = s[3 * i];
-    Serial.println("String: " + str);
     int fret = int(s[3 * i + 1]) - 48;
-    Serial.println("fret: " + fret);
+    if(fret < 0 || fret > 9){
+      if(s[3 * i + 1] == 'A'){
+        fret = 10;
+      }
+      else if(s[3 * i + 1] == 'B'){
+        fret = 11;
+      }
+      else if(s[3 * i + 1] == 'C'){
+        fret = 12;
+      }
+      else{
+        fret = 13;
+      }
+    }
     char color = s[3 * i + 2];
-    Serial.println("color: " + color);
     if(color != 'x' && fret != 0){
       // index in the LED array
       int index = 0;
@@ -78,6 +89,7 @@ void LightLED(String s, bool fullBrightness){
             break;
         }
       }
+      // halved brightness for next note
       else{
         // CRGB values change based on color we want
         switch(color){
