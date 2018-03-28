@@ -4,7 +4,7 @@
 
 #include <stdint.h>
 #include "TouchScreen.h"
-#include "Switches.h"
+#include "State.h"
 
 #define YP A11  // must be an analog pin, use "An" notation!
 #define XM A10  // must be an analog pin, use "An" notation!
@@ -28,8 +28,8 @@ void DisplayXYZ(void) {
   // we have some minimum pressure we consider 'valid'
   // pressure of 0 means no pressing!
   if (p.z > ts.pressureThreshhold) {
-     Serial.print("X = "); Serial.print(p.x);
-     Serial.print("\tY = "); Serial.print(p.y);
+   //  Serial.print("X = "); Serial.print(p.x);
+   //  Serial.print("\tY = "); Serial.print(p.y);
      //Serial.print("\tPressure = "); Serial.println(p.z);
   }
 

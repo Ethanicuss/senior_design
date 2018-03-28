@@ -1,4 +1,6 @@
-#include "Switches.h"
+#include "Record.h"
+#include <SPI.h>
+#include <SD.h>
 
 /*TODO: Within an interrupt Handler for switch inputs
         we have to assign "BtnPressed = _______"
@@ -28,13 +30,40 @@
                                       on the CurrStateScreen you are on.
 */
 
-//Remove this code when we figure out touch screen buttons.
-//enum Button {NONE = 0, UP = 1, DOWN = 2, BACK = 3, SET = 4, OFF = 5};
-//extern enum Button BtnPressed;
 
-enum Button BtnPressed = NONE;
-int Ycoor = 0;
-int Xcoor = 0;
+// file we will write to
+File g;
 
+// define variables associated with recording globally
+int BPM = 100;
+int i = 0;
+int n = 0;
+int numNotes = 0;
+char color = 'r';
+String recordedString = "xxxxxxxxxxxxxxxxxx";
+char buffer[6] = {'x','x','x','x','x','x'};
 
+//*** FOR Record Mode I/O ***//
+void mkRecording(){
+  // reset buffer for new recording
+  String fileName = "rec.txt";
+  g = SD.open(fileName);
+  g.write("    \n");
+}
+
+void writeToFile(String line){
+  // write string to file with f.write()
+  char asarray[50];
+  line.toCharArray(asarray, line.length());
+  g.write(asarray);
+  g.write("\n");
+}
+
+int BPMtoTiming(double BPM, double note){
+  return (int)((1000*(BPM/60))*note);
+}
+
+void resetPointer(void){
+  g.seek(0);
+}
 
