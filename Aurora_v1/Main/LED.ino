@@ -15,14 +15,10 @@ void LEDSetup(void) {
   FastLED.setBrightness(100);
   for(int i = 0; i < NUM_ROWS; i++){
     for(int j = 0; j < LEDS_PER_ROW; j++){
-      led[i * LEDS_PER_ROW + j] = CRGB(0, 0, 0);  
+      led[i * LEDS_PER_ROW + j] = CRGB(0, 0, 0);
     }
   }
   FastLED.show();
-}
-
-void learnMode(String song[], int numNotes){
-  
 }
 
 // example string would be: ExxA0wD2rG2gB2be0w
@@ -34,6 +30,20 @@ void LightLED(String s, bool fullBrightness){
     // get the string name, fret number, and LED color
     char str = s[3 * i];
     int fret = int(s[3 * i + 1]) - 48;
+    if(fret < 0 || fret > 9){
+      if(s[3 * i + 1] == 'A'){
+        fret = 10;
+      }
+      else if(s[3 * i + 1] == 'B'){
+        fret = 11;
+      }
+      else if(s[3 * i + 1] == 'C'){
+        fret = 12;
+      }
+      else{
+        fret = 13;
+      }
+    }
     char color = s[3 * i + 2];
     if(color != 'x' && fret != 0){
       // index in the LED array
@@ -76,6 +86,7 @@ void LightLED(String s, bool fullBrightness){
             break;
         }
       }
+      // halved brightness for next note
       else{
         // CRGB values change based on color we want
         switch(color){
@@ -92,7 +103,7 @@ void LightLED(String s, bool fullBrightness){
             led[index] = CRGB(75,0,75);
             break;
         }
-      } 
+      }
     }
     // special case of an open string
       if(fret == 0){
@@ -126,7 +137,7 @@ void LightLED(String s, bool fullBrightness){
           for(int i = 0; i< NUM_FRETS; i++){
             led[i * NUM_STRINGS + offset] = CRGB(125,125,125);
           }
-        } 
+        }
       }
   }
   FastLED.show();
@@ -163,7 +174,7 @@ void DarkLED(String s){
           break;
       }
       led[index] = CRGB(0,0,0);
-    } 
+    }
     // special case of an open string
     else{
       int offset = 0;
@@ -189,7 +200,7 @@ void DarkLED(String s){
       }
       for(int i = 0; i< NUM_FRETS; i++){
         led[i * NUM_STRINGS + offset] = CRGB(0,0,0);
-      } 
+      }
     }
   FastLED.show();
   }
@@ -199,10 +210,8 @@ void Quit(){
   songPosition = 0;
   for(int i = 0; i < NUM_ROWS; i++){
     for(int j = 0; j < LEDS_PER_ROW; j++){
-      led[i * LEDS_PER_ROW + j] = CRGB(0, 0, 0);  
+      led[i * LEDS_PER_ROW + j] = CRGB(0, 0, 0);
     }
   }
   FastLED.show();
 }
-
-

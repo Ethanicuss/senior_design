@@ -1,0 +1,90 @@
+Dp1 8th Dp2 8th Dp3 8th Dp2 16th Dp4 8th Dp3 8th. Dp5 16th Dp6 16th Dp7 16th Dp8 16th
+Fp1 8th Fp2 8th Fp3 8th Fp2 16th Fp4 8th Fp3 8th. Fp3 16th Fp5 16th Fp6 16th Fp7 16th
+Dp9(s0) 16th Dp10 16th Dp2 16th Dp10 16th Dp3 8th Dp2 16th Dp4 32nd Dp11 32nd Dp4 16th Dp3 8th. Ep1(s01) 16th Ep2 16th Ep2 16th rest 16th
+Fp8 8th Fp2 8th Fp3 8th Fp2 16th Fp4 8th Fp3 8th. Fp3 16th Fp5 16th Fp6 16th Fp7 16th
+Dp9(s0) 16th Dp10 16th Dp2 16th Dp10 16th Dp3 8th Dp2 16th Dp4 8th Dp3 8th. Dp5 16th Dp6 16th Dp7 16th Dp8 16th
+Fp1 8th Fp2 8th Fp3 8th. Fp4 8th Fp3 8th. Fp3 16th Fp5 16th Fp6 16th Fp7 16th
+Dp9(s0) 16th Dp10 16th Dp2 16th Dp10 16th Dp3 8th Dp2 16th Dp4 32nd Dp11 32nd Dp4 16th Dp3 8th. Ep1(s01) 16th Ep2 16th Ep2 16th rest 16th
+Fp8 8th Fp2 8th Fp3 8th Fp2 16th Fp4 8th Fp3 16th Fp2 8th Fp4 16th Fp3 16th Fp2 16th rest 16th
+Ep3 quarter rest 8th Bp1 8th+half
+Cp1(s01) 16th Cp2 8th Cp3 16th rest 8th Gp1 8th rest 8th Ap1 quarter.
+Ep3 quarter rest 8th Bp1 8th+half
+Cp4 quarter rest 8th Ap1 8th+half
+Ep3 quarter rest 8th Bp1 8th+half
+Cp4 quarter rest 8th Gp1 8th rest 8th Ap1 quarter.
+Ep3 quarter rest 8th Bp1 8th+half
+Cp4 quarter rest 8th Ap1 8th+half
+Ep4 2whole
+
+Ep3 8th. Ep3 16th rest 8th Bp1 8th. Bp2 8th Bp3 16th Bp4 triplet Bp5 triplet Bp4 triplet Bp3 16th Bp2 16th
+Cp1(s01) 32nd Cp2 16th. Cp3 16th Cp2 16th Cp3 8th Ap2 8th rest 8th Ap1 8th Ap3 triplet Ap4 triplet Ap3 triplet Ap5 16th rest 16th
+Ep3 8th. Ep3 16th rest 8th Bp1 8th. Bp2 8th Bp3 16th Bp4 triplet Bp5 triplet Bp4 triplet Bp3 16th Bp2 16th
+Cp1(s01) 32nd Cp2 16th. Cp3 16th Cp2 16th Cp3 16th rest 16th Ap1 quarter Ap3 8th Ap6 8th Ap7 8th
+Ep3 8th. Ep3 16th rest 8th Bp1 8th. Bp2 8th Bp3 16th Bp4 triplet Bp5 triplet Bp4 triplet Bp3 16th Bp2 16th
+Cp1(s01) 32nd Cp2 16th. Cp3 16th Cp2 16th Cp3 8th Ap2 8th rest 8th Ap1 8th Ap3 triplet Ap4 triplet Ap3 triplet Ap4 16th rest 16th
+Ep5 8th. Ep3 16th rest 8th Bp6 8th. Bp2 8th Bp3 16th Bp2 8th. rest 16th
+Cp1(s01) 32nd Cp2 8th+32 Cp3 16th rest 8th Ap1 quarter Ap3 8th Ap6 16th rest 8th.
+Ep4 2whole
+
+rest 8th Fp9 8th rest 8th Ep3 8th Ep3 quarter Ep3 8th rest 8th
+Bp7 16th Bp7 16th Bp7 16th Bp7 16th rest 8th Fp9 quarter Fp10 8th Fp10 8th Fp11 16th Fp11 16th
+Fp11 16th Fp11 16th Fp9 8th rest 8th Ep3 8th Ep3 quarter Ep3 8th rest 8th
+Bp7 16th Fp11 16th Fp11 16th Fp9 16th rest 8th Ep3 8th Ep3 quarter Ep3 8th rest 8th
+Fp11 16th Fp11 16th Fp9 8th rest 8th Ep3 8th Ep3 quarter Ep3 8th rest 8th
+Bp7 16th Bp7 16th Bp7 16th Bp7 16th rest 8th Fp9 quarter Fp10 8th Fp10 8th Fp11 16th Fp11 16th
+Fp11 16th Fp11 16th Fp9 8th rest 8th Ep3 8th Ep3 quarter Ep3 8th rest 8th
+Bp7 16th Bp7 16th Bp7 16th Bp7 16th rest 8th Fp9 quarter Fp10 8th Fp10 8th Fp11 16th Fp11 16th
+Ep3 8th. Ep3 16th Fp11 16th Ep5 16th Bp1 8th. Bp2 8th Bp3 16th Bp2 triplet Bp8 triplet Bp9 triplet Bp10 16th Bp9 16th
+Cp1(s01) 32nd Cp2 16th. Cp3 16th Cp2 16th Cp3 8th Ap2 8th rest 8th Ap1 8th Ap3 triplet Ap4 triplet Ap3 triplet Ap4 16th rest 16th
+Ep7 8th. Ep3 16th Fp11 16th Ep5 16th Bp1 8th. Bp2 8th Bp3 16th Bp4 triplet Bp5 triplet Bp4 triplet Bp6 16th Bp2 16th
+Cp1(s01) 32nd Cp2 16th. Cp3 16th Cp2 16th Cp3 8th Ap1 quarter Ap3 8th Ap6 8th Ap7 16th rest 16th
+Cp5(s0) 32nd Cp6 16th. Cp3 8th Cp6 8th Bp11 8th. Bp10 8th Bp6 16th Bp4 triplet Bp5 triplet Bp4 triplet Bp6 16th Bp4 16th
+Cp1(s01) 32nd Cp2 16th. Cp3 16th Cp2 16th Cp3 8th Ap2 8th rest 8th Ap1 8th Ap3 16th Ap6 16th Ap7 16th rest 16th
+Ep7 8th. Ep3 16th rest 8th Bp3 8th. Bp9 8th Bp4 16th Ap4 32nd Bp12 32nd. rest 32nd. Bp13 8th
+Cp1(s01) 32nd Cp2 16th.+16th Cp3 16th rest 8th Ap1 quarter Ap3 8th Ap6 16th Ap7 8th rest 16th
+Ep7 8th. Ep3 16th rest 8th Bp1 8th. Bp2 8th Bp3 16th Bp2 triplet Bp8 triplet Bp9 triplet Bp10 16th Bp9 16th
+Cp1(s01) 32nd Cp2 16th. Cp3 16th Cp2 16th Cp3 8th Ap2 8th rest 8th Ap1 8th Ap3 triplet Ap4 triplet Ap3 triplet Ap4 16th rest 16th
+Cp5(s0) 32nd Cp6 16th. Cp3 8th Cp6 8th Bp11 8th. Bp10 8th. Bp14 8th Cp5 8th
+Cp5(s0) 32nd Cp6 16th.+16th Cp3 16th rest 8th Ap1 quarter Ap3 8th Ap6 16th rest 8th.
+Ep4 2whole
+
+rest 8th Fp9 8th rest 8th Ep3 8th Ep3 quarter Ep3 8th rest 8th
+Bp7 16th Bp7 16th Bp7 16th Bp7 16th rest 8th Fp9 quarter Fp10 8th Fp10 8th Fp11 16th Fp11 16th
+Fp11 16th Fp11 16th Fp9 8th rest 8th Ep3 8th Ep3 quarter Ep3 8th rest 8th
+Bp7 16th Fp11 16th Fp11 16th Fp9 16th rest 8th Ep3 8th Ep3 quarter Ep3 8th rest 8th
+Fp11 16th Fp11 16th Fp9 8th rest 8th Ep3 8th Ep3 quarter Ep3 8th rest 8th
+Bp7 16th Bp7 16th Bp7 16th Bp7 16th rest 8th Fp9 quarter Fp10 8th Fp10 8th Fp11 16th Fp11 16th
+Fp11 16th Fp11 16th Fp9 8th rest 8th Ep3 8th Ep3 quarter Ep3 8th rest 8th
+Bp7 16th Bp7 16th Bp7 16th Bp7 16th rest 8th Fp9 quarter Fp10 8th Fp10 8th Cp7 16th Cp7 16th
+Cp7 8th. Cp7 16th Fp11 8th Cp8 8th+half
+Bp14 8th. Bp15 8th rest 16th Ap8 8th. Fp11 8th. Fp11 quarter
+Ap9 quarter rest 8th Ap10 8th+half
+Bp14 8th. Bp15 8th. Ap8 8th. Fp11 8th. Fp11(s0) quarter
+Ap9 quarter rest 8th Ap10 8th+half
+Bp14 8th. Bp15 8th. Ap8 8th. Fp11 8th. Fp11 8th Fp12 16th Fp12 16th
+Fp13 16th Fp13 16th Fp13 16th Fp13 16th Fp13 16th Fp13 16th Fp13 16th Fp13 16th Fp13 16th Fp13 16th Fp13 16th Fp13 16th Fp13 16th Fp13 16th Fp13 16th Fp13(s01234) 16th
+Ep8 16th Ep8 16th Ep8 16th Ep8 16th Ep8 16th Ep8 16th Ep8 16th Ep8(s01234) 16th Gp2 16th Gp2 16th Gp2 16th Gp2 16th Gp2 16th Gp2 16th Fp12 16th Fp12 16th
+Ap9 8th. Ap9 16th Fp12 16th Fp12 16th Ap10 quarter Ap10 quarter Fp12 8th
+Bp15 8th. Bp16 8th. Ap8 8th. Fp11 8th. Fp11 8th Fp12 16th Fp12 16th
+Ap9 quarter Fp12 16th Fp12 16th Ap10 8th+half
+Bp15 8th. Bp16 8th. Ap8 8th. Fp11 8th. Fp11 8th Ap9 16th Ap9 16th
+Ap9 quarter. Ap10 8th+half
+Bp15 8th. Bp16 8th. Ap8 8th. Fp11 8th. Fp11(s012) quarter
+Ap9 quarter. Ap10 8th+half
+Bp15 8th. Bp16 8th. Ap8 8th. Fp11 8th. Fp11(s012) quarter
+Ap9 quarter. Ap10 8th+half
+Bp15 8th. Bp16 8th. Ap8 8th. Fp11 8th. Fp11(s012) quarter
+Ap9 quarter. Ap10 8th+half
+Bp15 8th. Bp16 8th. Ap8 8th. Fp11 8th. Fp11(s012) quarter
+Ap9 quarter. Ap10 8th+half
+Bp15 8th. Bp16 8th. Ap8 8th. Fp11(s012) 8th.+quarter
+Ap9 quarter. Ap10 quarter. Ap10 8th rest 8th
+Bp15 8th. Bp16 8th. Ap8 8th. Fp11 8th. Fp11(s012) quarter
+Ap9 8th. Ap9 16th Ap9 16th Ap9 16th Ap10 quarter Ap10 8th Ap10 8th Fp12 16th Fp12 16th
+Bp15 8th. Bp16 16th Bp16 16th Bp16 16th Ap8 8th. Ap8 16th Ap11 8th Rp1 16th Rp2 16th Rp3(s0) 8th
+Ap9 8th. Ap9 16th Fp12 8th Ap10 8th. Rp1 16th Rp1 16th Rp1 16th Rp4 16th Rp1 16th Rp1 16th Rp1 16th
+Rp5 8th. Rp1 16th Rp5 16th Rp1 16th Rp6 8th. Rp7 16th Rp8 16th Rp1 16th Rp9 triplet Rp10 triplet Rp9 triplet Rp11 8th
+Ap9 8th. Ap9 16th Fp14 8th  Ap10 8th. Ap10 16th Fp14 8th Rp12 16th Rp13 16th Rp14 16th rest 16th
+Rp15 8th. Rp1 16th Rp5 16th Rp1 16th Rp16 8th. Ap11 8th Ap11 16th Rp17(s0123) quarter
+Ap9 8th. Ap9 16th Fp14 16th Fp14 16th Ap10 8th. Ap10 16th Fp14 8th Rp14 triplet Rp21 triplet Rp14 triplet Rp22 8th
+Rp18 8th. Rp10 16th Rp19 16th Fp14 16th Rp6 8th Rp19 16th Rp2 16th Rp20 quarter.
