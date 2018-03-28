@@ -20,10 +20,6 @@ void LEDSetup(void) {
   FastLED.show();
 }
 
-void learnMode(String song[], int numNotes){
-  
-}
-
 // example string would be: ExxA0wD2rG2gB2be0w
 void LightLED(String s, bool fullBrightness){
   if(s == "X")
@@ -153,10 +149,6 @@ void DarkLED(){
     }
   }
   FastLED.show();
-}
-
-void LearnSong(char* song, int numberOfNotes){
-
 }
 
 
