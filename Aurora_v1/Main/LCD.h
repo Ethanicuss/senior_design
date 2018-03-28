@@ -6,6 +6,7 @@ extern int currentLessonType = 0;
 extern int currentLesson = 0;
 extern int currentLearn = 0;
 extern int currentPlay = 0;
+extern int currentPcent = -1;
 extern int currentPage = 0;
 extern bool paused = true;
 

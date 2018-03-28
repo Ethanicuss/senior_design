@@ -342,11 +342,7 @@ void loop() {
           DrawPlaySong();
           songSetup("wonderwa.txt");
           //playMode = true;
-          for (int i = 0; i < 3; i++){
-            //TODO: DrawCountDown()
-            Serial.print("Song Starts in: ");
-            Serial.println(i);
-          }
+          DrawCountdown();
           //FirstNote();
           CurrState = PLAYING_SONG;
           break;
@@ -356,11 +352,7 @@ void loop() {
           songSetup("freefall.txt");
           //playMode = true;
           FirstNote();
-          for (int i = 0; i < 3; i++){
-            //TODO: DrawCountDown()
-            Serial.print("Song Starts in: ");
-            Serial.println(i);
-          }
+          DrawCountdown();
           CurrState = PLAYING_SONG;
           break;
         case Btn3: 
@@ -369,11 +361,7 @@ void loop() {
           songSetup("africa.txt");
           //playMode = true;
           FirstNote();
-          for (int i = 0; i < 3; i++){
-            //TODO: DrawCountDown()
-            Serial.print("Song Starts in: ");
-            Serial.println(i);
-          }
+          DrawCountdown();
           CurrState = PLAYING_SONG;
           break;
         case Btn4: 
@@ -382,11 +370,7 @@ void loop() {
           songSetup("imyours.txt");
           //playMode = true;
           FirstNote();
-          for (int i = 0; i < 3; i++){
-            //TODO: DrawCountDown()
-            Serial.print("Song Starts in: ");
-            Serial.println(i);
-          }
+          DrawCountdown();
           CurrState = PLAYING_SONG;
           break;
         case BackBtn: //Back:
@@ -397,6 +381,7 @@ void loop() {
       break;
    case PLAYING_SONG:
         PlaySong_TK(songTitle);
+        DrawPlayPercent();
         /*TODO: PlaySong() this function should check whatever variable you have assigned
                               for each song, so that it can just do a quick, "switch(songNumber)"
                               to know which song to Learn, should also have this line at the end 

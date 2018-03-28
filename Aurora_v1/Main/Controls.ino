@@ -21,8 +21,10 @@ int GetSongPosition(){
 }
 
 int GetPlayPercent(){
-  double fraction = GetSongPosition()/GetSongLength();
-  return (int) fraction*100;
+  // cast everything to doubles
+  double pos = GetSongPosition();
+  double len = GetSongLength();
+  return (int) ((pos/len)*100.0);
 }
 
 // Interrupt is called once per millisecond
