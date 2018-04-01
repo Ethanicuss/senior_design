@@ -1,6 +1,5 @@
 #include "State.h"
 
-
 enum Button BtnPressed;
 enum State CurrState;
 enum State PreState;
@@ -22,17 +21,21 @@ void InitializeState(){
 void CheckTouch(){
   switch (CurrState){
     case HOME:
-      if ((Ycoor < -1060 && Ycoor > -3000) && (Xcoor < -1500 && Xcoor > -2500)){
+      if ((Ycoor < -1060 && Ycoor > -3000) && (Xcoor < -1635 && Xcoor > -2500)){
         //Serial.println("Should go Lessons ");
         BtnPressed = Btn1;
       }
-      else if ((Ycoor < -1060 && Ycoor > -3000) && (Xcoor < -600 && Xcoor > -1500 )){
+      else if ((Ycoor < -1060 && Ycoor > -3000) && (Xcoor < -800 && Xcoor > -1635 )){
         //Serial.println("Should go to Learn ");
         BtnPressed = Btn2;
       }
-      else if ((Ycoor < -1060 && Ycoor > -3000) && (Xcoor < 500 && Xcoor > -600 )){
+      else if ((Ycoor < -1060 && Ycoor > -3000) && (Xcoor < -8 && Xcoor > -800 )){
         Serial.println("Should go to Play ");
         BtnPressed = Btn3;
+      }
+      else if ((Ycoor < -1060 && Ycoor > -3000) && (Xcoor < 500 && Xcoor > -8 )){
+        Serial.println("Should go to Next Page ");
+        BtnPressed = Btn4;
       }
       break;
     case LESSONS:
@@ -229,7 +232,104 @@ void CheckTouch(){
         Serial.println("Should quit ");
         BtnPressed = Btn2;
       }
-      break;  
+      break; 
+    case REC_MODE:
+      if ((Ycoor < -1060 && Ycoor > -3000) && (Xcoor < -1500 && Xcoor > -2500)){
+        BtnPressed = Btn1;
+      }
+      else if ((Ycoor < -1060 && Ycoor > -3000) && (Xcoor < -600 && Xcoor > -1500 )){
+        BtnPressed = Btn2;
+      }
+      else if ((Ycoor < -1060 && Ycoor > -3000) && (Xcoor < 500 && Xcoor > -600 )){
+        BtnPressed = Btn3;
+      }
+      else if ((Ycoor < 500 && Ycoor > 150) && (Xcoor < -2000 && Xcoor > -2500)){
+        //Serial.println("Should go back to HOME");
+        BtnPressed = BackBtn;
+      }
+      break;
+    case CHOOSE_BPM:
+      if ((Ycoor < 71 && Ycoor > -563) && (Xcoor < -320 && Xcoor > -945)){
+        BtnPressed = Btn1;
+      }
+      else if ((Ycoor < -563 && Ycoor > -1038) && (Xcoor < -320 && Xcoor > -945)){
+        BtnPressed = Btn2;
+      }
+      else if ((Ycoor < -1038 && Ycoor > -1550) && (Xcoor < -320 && Xcoor > -945)){
+        BtnPressed = Btn3;
+      }
+      else if ((Ycoor < -1550 && Ycoor > -2200) && (Xcoor < -320 && Xcoor > -945)){
+        BtnPressed = Btn4;
+      }
+      else if ((Ycoor < 350 && Ycoor > -1050) && (Xcoor < 300 && Xcoor > -300)){
+        BtnPressed = Btn5;
+      }
+      else if ((Ycoor < -1050 && Ycoor > -3000) && (Xcoor < 300 && Xcoor > -300 )){
+        BtnPressed = Btn6;
+      }
+      break;
+    case REC_RED:
+    case REC_BLUE:
+    case REC_GREEN:
+    case REC_PURPLE:
+      if ((Ycoor < 350 && Ycoor > -1050) && (Xcoor < 300 && Xcoor > -300)){
+        BtnPressed = Btn1;
+      }
+      else if ((Ycoor < -1050 && Ycoor > -3000) && (Xcoor < 300 && Xcoor > -300 )){
+        BtnPressed = Btn2;
+      }
+      else if ((Ycoor < 500 && Ycoor > 150) && (Xcoor < -2000 && Xcoor > -2500)){
+        BtnPressed = Btn3;
+      }
+      break;
+    case REC_OPEN:
+      if ((Ycoor < 350 && Ycoor > -3000) && (Xcoor < 300 && Xcoor > -280)){
+        BtnPressed = Btn7;
+      }
+      else if ((Ycoor < 350 && Ycoor > 40) && (Xcoor < -280 && Xcoor > -950)){
+        BtnPressed = Btn1;
+      }
+      else if ((Ycoor < 40 && Ycoor > -500) && (Xcoor < -280 && Xcoor > -950)){
+        BtnPressed = Btn2;
+      }
+      else if ((Ycoor < -500 && Ycoor > -1040) && (Xcoor < -280 && Xcoor > -950)){
+        BtnPressed = Btn3;
+      }
+      else if ((Ycoor < -1040 && Ycoor > -1560) && (Xcoor < -280 && Xcoor > -950)){
+        BtnPressed = Btn4;
+      }
+      else if ((Ycoor < -1560 && Ycoor > -2100) && (Xcoor < -280 && Xcoor > -950)){
+        BtnPressed = Btn5;
+      }
+      else if ((Ycoor < -2100 && Ycoor > -3000) && (Xcoor < -280 && Xcoor > -950)){
+        BtnPressed = Btn6;
+      }
+      else if ((Ycoor < 500 && Ycoor > 150) && (Xcoor < -2000 && Xcoor > -2500)){
+        BtnPressed = Btn8;
+      }
+      break;
+    case REC_TEMPO:
+      if ((Ycoor < 1000 && Ycoor > -261) && (Xcoor < -300 && Xcoor > -1100)){
+        BtnPressed = Btn1;
+      }
+      else if ((Ycoor < -261 && Ycoor > -1030) && (Xcoor < -300 && Xcoor > -1100)){
+        BtnPressed = Btn2;
+      }
+      else if ((Ycoor < -1030 && Ycoor > -1870) && (Xcoor < -300 && Xcoor > -1100)){
+        BtnPressed = Btn3;
+      }
+      else if ((Ycoor < -1870 && Ycoor > -2600) && (Xcoor < -300 && Xcoor > -1100)){
+        BtnPressed = Btn4;
+      }
+      break;
+    case REC_NEXT:
+      if ((Ycoor < 75 && Ycoor > -2150) && (Xcoor < -1075 && Xcoor > -1860)){
+        BtnPressed = Btn1;
+      }
+      else if ((Ycoor < 75 && Ycoor > -2150) && (Xcoor < -255 && Xcoor > -1075)){
+        BtnPressed = Btn2;
+      }
+      break;
   }
 }
 

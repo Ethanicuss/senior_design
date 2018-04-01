@@ -49,49 +49,46 @@ void loop() {
       switch (BtnPressed){
         case Btn1: //LESSONS:
           Serial.println("Button 1 Hit");
-          DrawLessonsScreen();
-          CurrState = LESSONS;
+          if(currentPage == 0) {
+            DrawLessonsScreen();
+            CurrState = LESSONS;
+          }
+          else {
+            DrawRecordScreen();
+            CurrState = REC_MODE;
+          }
           break;
         case Btn2: //LEARN:
           Serial.println("Button 2 Hit");
-          DrawLearnScreen();
-          CurrState = LEARN;
+          if(currentPage == 0) {
+            DrawLearnScreen();
+            CurrState = LEARN;
+          }
+          else {
+            
+          }
+          
           break;
         case Btn3: //PLAY:
           Serial.println("Button 3 Hit");
-          DrawPlayScreen();
-          CurrState = PLAY;
+          if(currentPage == 0) {
+            DrawPlayScreen();
+            CurrState = PLAY;
+          }
+          else {
+            
+          }
+          
           break;
-        case Btn4: //SETTINGS:
+        case Btn4: //NEXT PAGE:
           Serial.println("Button 4 Hit");
-          //TODO: DrawSettingsScreen()
-       //   DrawSettingsScreen();
-         // CurrState = SETTINGS;
-          break;
-        case Btn5: //Record
-          Serial.println("Button 5 Hit");
-          //TODO: Draw_REC_MODE();
-          CurrState = REC_MODE;
-          break;
-        case Btn6: //UP
-          if (currentPage == 0){
-            //Draw other options
+          if(currentPage == 0) {
             currentPage = 1;
           }
-          else{
-            //draw main home
+          else {
             currentPage = 0;
           }
-          break;
-        case Btn7: //Down;
-          if (currentPage == 0){
-            //draw other options
-            currentPage = 1;
-          }
-          else{
-            //draw main home
-            currentPage = 0;
-          }
+          DrawHomeScreenButtons();
           break;
       }
       break;
@@ -479,6 +476,7 @@ void loop() {
   case REC_MODE:
     switch(BtnPressed){
       case Btn1: //Record a song
+        DrawChooseBMP();
         CurrState = CHOOSE_BPM;
         break;
       case Btn2: //Learn a recording
@@ -505,26 +503,32 @@ void loop() {
         }
         CurrState = PLAYING_SONG;
         break;
+      case BackBtn:
+        DrawHomeScreen();
+        CurrState = HOME;
+        break;
     }
     break;
 /********* CHOOSE_BPM *****************/
   case CHOOSE_BPM:
     switch (BtnPressed){
       case Btn1: //increase BPM
-        //DrawBPM_up()
-        BPM++;
+        BPM -= 10;
+        if (BPM <= 0) BPM = 0;
+        DrawBPMNumber();
         break;
       case Btn2: //decrease BPM
-        //DrawBPM_down()
         BPM--;
+        if (BPM <= 0) BPM = 0;
+        DrawBPMNumber();
         break;
       case Btn3: //increase BPM by 10
-        BPM = BPM + 10;
-        //Draw Increment BPM by 10
+        BPM++;
+        DrawBPMNumber();
         break;
       case Btn4: //decrease BPM by 10
-        BPM = BPM - 10;
-        //draw decreaes BPM by 10
+        BPM += 10;
+        DrawBPMNumber();
         break;
       case Btn5: //continue
         //TODO: Create File for Recording
@@ -532,28 +536,28 @@ void loop() {
         n++;
         i = 0;
         color = 'r';
-        //Draw_REC_RED();
+        Draw_REC_RED();
         CurrState = REC_RED;
         break;
-      case Btn6: //back
-        //DrawCHOOSE_BPMScreen();
+      case Btn6: //quit
+        DrawHomeScreen();
         CurrState = HOME;
         break;
     }
     break;
 /*********** Record-Red*************/
   case REC_RED:
-    recordedString = recordPlacement();
+ //   recordedString = recordPlacement();
     switch (BtnPressed){
       case Btn1: //next color
         color = 'b';
         i = i+3;
-        //Draw_REC_BLUE();
+        Draw_REC_BLUE();
         CurrState = REC_BLUE;
         break;
       case Btn2: //FINISHED
         LightLED(recordedString, true);
-        //Draw_REC_TEMPO();
+        Draw_REC_TEMPO();
         CurrState = REC_TEMPO;
         PreState = REC_RED;
         break;
@@ -566,17 +570,17 @@ void loop() {
     break;
 //************ Record-Blue ********/
   case REC_BLUE:
-    recordedString = recordPlacement();
+  //  recordedString = recordPlacement();
     switch (BtnPressed){
       case Btn1: //next color
         color = 'g';
         i = i+3;
-        //Draw_REC_GREEN();
+        Draw_REC_GREEN();
         CurrState = REC_GREEN;
         break;
       case Btn2: //FINISHED
         LightLED(recordedString, true);
-        //Draw_REC_TEMPO
+        Draw_REC_TEMPO();
         CurrState = REC_TEMPO;
         PreState = REC_BLUE;
         break;
@@ -589,24 +593,24 @@ void loop() {
         if (i < 0){
           Serial.print("null exception");
         }
-        //Draw_REC_RED
+        Draw_REC_RED();
         CurrState = REC_RED;
         break;
     }
     break;
 //************ Record-Green ********/
   case REC_GREEN:
-    recordedString = recordPlacement();
+ //   recordedString = recordPlacement();
     switch (BtnPressed){
       case Btn1: //next color
         color = 'p';
         i = i+3;
-        //Draw_REC_PURPLE()
+        Draw_REC_PURPLE();
         CurrState = REC_PURPLE;
         break;
       case Btn2: //FINISHED
         LightLED(recordedString, true);
-        //Draw_REC_TEMPO
+        Draw_REC_TEMPO();
         CurrState = REC_TEMPO;
         PreState = REC_GREEN;
         break;
@@ -619,24 +623,24 @@ void loop() {
         if (i < 0){
           Serial.print("null exception");
         }
-        //Draw_REC_BLUE()
+        Draw_REC_BLUE();
         CurrState = REC_BLUE;
         break;
     }
     break;
 //************ Record-Purple ********/
   case REC_PURPLE:
-    recordedString = recordPlacement();
+ //   recordedString = recordPlacement();
     switch (BtnPressed){
       case Btn1: //are there open strings
         color = 'w';
         i = i+3;
-        //Draw_REC_OPEN()
+        Draw_REC_OPEN();
         CurrState = REC_OPEN;
         break;
       case Btn2: //FINISHED
         LightLED(recordedString, true);
-        //Draw_REC_TEMPO()
+        Draw_REC_TEMPO();
         CurrState = REC_TEMPO;
         PreState = REC_PURPLE;
         break;
@@ -649,7 +653,7 @@ void loop() {
         if (i < 0){
           Serial.print("null exception");
         }
-        //Draw_REC_GREEN
+        Draw_REC_GREEN();
         CurrState = REC_GREEN;
         break;
     }
@@ -660,56 +664,86 @@ void loop() {
       case Btn1: //String E
         if (buffer[0] == 'E'){
           buffer[0] = 'x';
+          openStrings[0] = false;
         }
-        buffer[0] = 'E';
-        //add to buffer (hightlight box)
-        //if present, remove from buffer (dehighlight box)
+        else {
+          buffer[0] = 'E';
+          openStrings[0] = true;
+          //if present, remove from buffer (dehighlight box)
+        }
+        DrawOpenHighlight(0, openStrings[0]);
         break;
       case Btn2: //String A
         if (buffer[1] == 'A'){
           buffer[1] = 'x';
+          openStrings[1] = false;
         }
-        buffer[1] = 'A';
-        //add to buffer (highlight box)
-        //if present remove from buffer (dehighlight box)
+        else {
+          buffer[1] = 'A';
+          openStrings[1] = true;
+          //add to buffer (highlight box)
+          //if present remove from buffer (dehighlight box)
+        }
+        DrawOpenHighlight(1, openStrings[1]);
         break;
       case Btn3: //String D
         if (buffer[2] == 'D'){
           buffer[2] = 'x';
+          openStrings[2] = false;
         }
-        buffer[2] = 'D';
-        //add to buffer (highlight box)
-        //if present remove from buffer (dehighlight box)
+        else {
+          buffer[2] = 'D';
+          openStrings[2] = true;
+          //add to buffer (highlight box)
+          //if present remove from buffer (dehighlight box)
+        }
+        DrawOpenHighlight(2, openStrings[2]);
         break;
       case Btn4: //String G
         if (buffer[3] == 'G'){
           buffer[3] = 'x';
+          openStrings[3] = false;
         }
-        buffer[3] = 'G';
-        //add to buffer (highlight box)
-        //if present remove from buffer (dehighlight box)
+        else {
+          buffer[3] = 'G';
+          openStrings[3] = true;
+          //add to buffer (highlight box)
+          //if present remove from buffer (dehighlight box)
+        }
+        DrawOpenHighlight(3, openStrings[3]);
         break;
       case Btn5: //String b
         if (buffer[4] == 'B'){
           buffer[4] = 'x';
+          openStrings[4] = false;
         }
-        buffer[4] = 'B';
-        //add to buffer (highlight box)
-        //if present remove from buffer (dehighlight box)
+        else {
+          buffer[4] = 'B';
+          openStrings[4] = true;
+          //add to buffer (highlight box)
+          //if present remove from buffer (dehighlight box)
+        }
+        DrawOpenHighlight(4, openStrings[4]);
         break;
       case Btn6: //String e
         if (buffer[5] == 'e'){
           buffer[5] = 'x';
+          openStrings[5] = false;
         }
-        buffer[5] = 'e';
-        //add to buffer (highlight box)
-        //if present remove from buffer (dehighlight box)
+        else {
+          buffer[5] = 'e';
+          openStrings[5] = true;
+          //add to buffer (highlight box)
+          //if present remove from buffer (dehighlight box)
+        }
+        DrawOpenHighlight(5, openStrings[5]);
         break;
       case Btn7: //Confirm
         //write all open strings to "recordedString"
-        //Draw_REC_TEMPO
+        Draw_REC_TEMPO();
         CurrState = REC_TEMPO;
         PreState = REC_OPEN;
+        break;
       case Btn8: //Back
         //TODO: empty buffer
         recordedString[i-1] = 'x';
@@ -720,7 +754,7 @@ void loop() {
         if (i < 0){
           Serial.print("null exception");
         }
-        //Draw_REC_PURPLE
+        Draw_REC_PURPLE();
         CurrState = REC_PURPLE;
         CurrState = PreState;
         break;
@@ -728,13 +762,14 @@ void loop() {
     break;
 //******Record-Tempo******/
   case REC_TEMPO:
+  Serial.print("In REC TEMPO");
     switch(BtnPressed){
       case Btn1: //Half note
         //write recordedString to File
         writeToFile(recordedString);
         //write timing value to File
         writeToFile(String(BPMtoTiming(BPM, 2)));
-        //Draw_REC_NEXT();
+        Draw_REC_NEXT();
         CurrState = REC_NEXT;
         break;
       case Btn2: //Quarter note
@@ -742,7 +777,7 @@ void loop() {
         writeToFile(recordedString);
         //write timing value to File
         writeToFile(String(BPMtoTiming(BPM, 1)));
-        //Draw_REC_NEXT();
+        Draw_REC_NEXT();
         CurrState = REC_NEXT;
         break;
       case Btn3: //Eigth note
@@ -750,7 +785,7 @@ void loop() {
         writeToFile(recordedString);
         //write timing value to File
         writeToFile(String(BPMtoTiming(BPM, (1/2))));
-        //Draw_REC_NEXT();
+        Draw_REC_NEXT();
         CurrState = REC_NEXT;
         break;
       case Btn4: //sixteenth note
@@ -758,7 +793,7 @@ void loop() {
         writeToFile(recordedString);
         //write timing value to File
         writeToFile(String(BPMtoTiming(BPM, (1/4))));
-        //Draw_REC_NEXT();
+        Draw_REC_NEXT();
         CurrState = REC_NEXT;
         break;
     }
@@ -768,7 +803,7 @@ void loop() {
     switch(BtnPressed){
       case Btn1: //go to next note
         //if needed move to nextline in File.
-        //TODO:Draw_REC_RED();
+        Draw_REC_RED();
         //increment numNotes
         numNotes++;
         CurrState = REC_RED;
@@ -778,6 +813,7 @@ void loop() {
         //overwrite the numNotes in the song
         void resetPointer();
         writeToFile(String(numNotes));
+        DrawHomeScreen();
         CurrState = HOME;
         break;
     }

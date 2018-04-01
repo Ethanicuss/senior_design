@@ -36,9 +36,9 @@ void DisplayXYZ(void) {
   Ycoor = p.y;
   Xcoor = p.x;
 
-  //Serial.print("Ycoor = "); Serial.println(Ycoor);
+  Serial.print("Ycoor = "); Serial.println(Ycoor);
 
-  //Serial.print("Xcoor = "); Serial.println(Xcoor);
+  Serial.print("Xcoor = "); Serial.println(Xcoor);
   
   delay(50);
 }

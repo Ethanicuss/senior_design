@@ -35,18 +35,6 @@ void UpdateScreen(){
 
  void DrawHomeScreen(){
   tft.fillRect(0, 0, 240, 360, HX8357_WHITE);
-  
-  tft.fillRect(240, 0, 240, 95, 0x00DF);
-  tft.fillTriangle(240, 0, 240, 95, 255, 95, HX8357_WHITE);
-  
-  tft.fillRect(240, 95, 240, 95, 0xF81D);
-  tft.fillTriangle(240, 95, 240, 95+95, 255, 95+95, HX8357_WHITE);
-  
-  tft.fillRect(240, 190, 240, 95, 0x07EE);  
-  tft.fillTriangle(240, 95+95, 240, 95+95+95, 255, 95+95+95, HX8357_WHITE);
-
-  tft.fillRect(240, 285, 240, 35, 0x9CF3);  
-  tft.fillTriangle(240, 95+95+95, 240, 360, 253, 360, HX8357_WHITE);
 
   tft.setFont(&JosefinSans_BoldItalic20pt7b);
   tft.setTextColor(0x981F);
@@ -57,20 +45,60 @@ void UpdateScreen(){
   tft.setTextColor(0x9CF3);
   tft.print("LET'S PLAY GUITAR!");
 
-  tft.setFont(&JosefinSans_Bold20pt7b);
-  tft.setTextColor(HX8357_WHITE);
-  tft.setCursor(273, 60);
-  tft.print("LESSONS");
+  DrawHomeScreenButtons();
+ }
 
-  tft.setCursor(300, 155);
-  tft.print("LEARN");
+ void DrawHomeScreenButtons(){
+  if(currentPage == 0) {
+    tft.fillRect(240, 0, 240, 95, 0x00DF);
+    tft.fillTriangle(240, 0, 240, 95, 255, 95, HX8357_WHITE);
+    tft.setFont(&JosefinSans_Bold20pt7b);
+    tft.setTextColor(HX8357_WHITE);
+    tft.setCursor(273, 60);
+    tft.print("LESSONS");
+  
+    tft.fillRect(240, 95, 240, 95, 0xF81D);
+    tft.fillTriangle(240, 95, 240, 95+95, 255, 95+95, HX8357_WHITE);
+    tft.setCursor(300, 155);
+    tft.print("LEARN");
+  
+    tft.fillRect(240, 190, 240, 95, 0x07EE);  
+    tft.fillTriangle(240, 95+95, 240, 95+95+95, 255, 95+95+95, HX8357_WHITE);
+    tft.setCursor(315, 255);
+    tft.print("PLAY");
+  
+    tft.fillRect(240, 285, 240, 35, 0x9CF3);  
+    tft.fillTriangle(240, 95+95+95, 240, 360, 253, 360, HX8357_WHITE);
+    tft.setFont(&JosefinSans_Bold8pt7b);
+    tft.setCursor(320, 310);
+    tft.print("NEXT PAGE");
+  }
+  else {
+    tft.fillRect(240, 0, 240, 95, 0xF81D);
+    tft.fillTriangle(240, 0, 240, 95, 255, 95, HX8357_WHITE);
+    tft.setFont(&JosefinSans_Bold20pt7b);
+    tft.setTextColor(HX8357_WHITE);
+    tft.setCursor(284, 60);
+    tft.print("RECORD");
+  
+    tft.fillRect(240, 95, 240, 95, 0x07EE);
+    tft.fillTriangle(240, 95, 240, 95+95, 255, 95+95, HX8357_WHITE);
+    tft.setCursor(283, 155);
+    tft.print("UPLOAD");
 
-  tft.setCursor(315, 255);
-  tft.print("PLAY");
-
-  tft.setFont(&JosefinSans_Bold8pt7b);
-  tft.setCursor(320, 310);
-  tft.print("NEXT PAGE");
+    tft.setFont(&JosefinSans_Bold15pt7b);
+    tft.fillRect(240, 190, 240, 95, 0x00DF);  
+    tft.fillTriangle(240, 95+95, 240, 95+95+95, 255, 95+95+95, HX8357_WHITE);
+    tft.setCursor(273, 255);
+    tft.print("DOWNLOAD");
+  
+    tft.fillRect(240, 285, 240, 35, 0x9CF3);  
+    tft.fillTriangle(240, 95+95+95, 240, 360, 253, 360, HX8357_WHITE);
+    tft.setFont(&JosefinSans_Bold8pt7b);
+    tft.setCursor(302, 310);
+    tft.print("PREVIOUS PAGE");
+  }
+  
  }
 
  /*********** HOME MENU SCREENS **********/
@@ -222,14 +250,14 @@ void UpdateScreen(){
 
   tft.setFont(&JosefinSans_BoldItalic20pt7b);
   tft.setTextColor(0xF81D);
-  tft.setCursor(26, 155);
+  tft.setCursor(35, 155);
   tft.print("RECORD");
 
   tft.setTextColor(0x9CF3);
   tft.setFont(&JosefinSans_Bold8pt7b);
-  tft.setCursor(35, 180);
+  tft.setCursor(39, 180);
   tft.print("RECORD A SONG TO");
-  tft.setCursor(40, 198);
+  tft.setCursor(50, 198);
   tft.print("LEARN AND PLAY");
 
   tft.setFont(&JosefinSans_Bold20pt7b);
@@ -238,14 +266,18 @@ void UpdateScreen(){
 
   tft.setFont(&JosefinSans_Bold12pt7b);
   tft.setTextColor(HX8357_WHITE);
-  tft.setCursor(283, 65);
+  tft.setCursor(272, 65);
   tft.print("RECORD SONG");
 
-  tft.setCursor(270, 170);
-  tft.print("LEARN RECORDING");
+  tft.setCursor(320, 155);
+  tft.print("LEARN");
+  tft.setCursor(290, 182);
+  tft.print("RECORDING");
 
-  tft.setCursor(270, 278);
-  tft.print("PLAY RECORDING");
+  tft.setCursor(330, 263);
+  tft.print("PLAY");
+  tft.setCursor(290, 290);
+  tft.print("RECORDING");
  }
  
  /*********** LESSONS SCREENS ***********/
@@ -888,34 +920,372 @@ void DrawChooseBMP(){
   tft.fillRect(0, 260, 480, 60, 0x9CF3);
   tft.drawLine(241, 268, 241, 312, HX8357_WHITE);
   // arrow buttons rectangles
-  tft.fillRect(106, 202, 60, 41, 0x07EE);
-  tft.fillRect(184, 202, 38, 41, 0x07EE);
-  tft.fillRect(259, 202, 38, 41, 0x07EE);
-  tft.fillRect(315, 202, 60, 41, 0x07EE);
+  tft.fillRect(73, 184, 80, 55, 0x07EE);
+  tft.fillRect(177, 184, 51, 55, 0x07EE);
+  tft.fillRect(251, 184, 51, 55, 0x07EE);
+  tft.fillRect(327, 184, 80, 55, 0x07EE);
+
+  tft.setTextColor(HX8357_WHITE);
+  tft.setFont(&JosefinSans_Bold40pt7b);
+  tft.setCursor(75, 230);
+  tft.print("<");
+  tft.setCursor(110, 230);
+  tft.print("<");
+
+  tft.setCursor(184, 230);
+  tft.print("<");
+
+  tft.setCursor(253, 230);
+  tft.print(">");
+
+  tft.setCursor(327, 230);
+  tft.print(">");
+  tft.setCursor(360, 230);
+  tft.print(">");
 
   tft.setFont(&JosefinSans_BoldItalic15pt7b);
   tft.setTextColor(0x07EE);
-  tft.setCursor(355,40);
+  tft.setCursor(340,40);
   tft.print("RECORD");
 
   tft.setFont(&JosefinSans_Bold15pt7b);
   tft.setTextColor(0x9CF3);
-  tft.setCursor(10,40);
+  tft.setCursor(120, 90);
   tft.print("CHOOSE A BPM");
-
-  tft.setFont(&JosefinSans_Bold20pt7b);
-  tft.setTextColor(HX8357_WHITE);
-  tft.setCursor(50, 304);
-  tft.print("CONTINUE");
-  tft.setCursor(310, 304);
-  tft.print("QUIT");
-}
-
-void ChooseBPMNumber(){
-  tft.fillRect(124, 99, 233, 95, HX8357_WHITE);
 
   tft.setFont(&JosefinSans_Bold40pt7b);
   tft.setTextColor(0x07EE);
-  tft.setCursor(10,40);
+  tft.setCursor(180,165);
+  tft.print(BPM);
+
+  tft.setFont(&JosefinSans_Bold15pt7b);
+  tft.setTextColor(HX8357_WHITE);
+  tft.setCursor(37, 300);
+  tft.print("CONTINUE");
+  tft.setCursor(320, 300);
+  tft.print("QUIT");
 }
 
+void DrawBPMNumber(){
+  tft.fillRect(135, 99, 200, 80, HX8357_WHITE);
+  tft.setFont(&JosefinSans_Bold40pt7b);
+  tft.setTextColor(0x07EE);
+
+  if(BPM > 99) {
+    tft.setCursor(180,165);
+    tft.print(BPM);
+  }
+  else if (BPM < 10) {
+    tft.setCursor(220,165);
+    tft.print(BPM);
+  }
+  else {
+    tft.setCursor(200,165);
+    tft.print(BPM);
+  }
+}
+
+void Draw_REC_RED(){
+  tft.fillRect(0, 0, 480, 260, HX8357_WHITE);
+  tft.fillRect(0, 260, 480, 60, 0x9CF3);
+  tft.drawLine(240, 268, 240, 312, HX8357_WHITE);
+  
+  tft.setFont(&JosefinSans_BoldItalic15pt7b);
+  tft.setTextColor(0x07EE);
+  tft.setCursor(340,40);
+  tft.print("RECORD");
+
+  tft.setTextColor(0x9CF3);
+  tft.setFont(&JosefinSans_Bold20pt7b);
+  tft.setCursor(11, 33);
+  tft.print("<");
+    
+  tft.setFont(&JosefinSans_Bold15pt7b);
+  tft.setCursor(77, 95);
+  tft.print("PLACE INDEX FINGER");
+  tft.setCursor(150, 134);
+  tft.print("FOR CHORD");
+
+  tft.fillCircle(240, 198, 45, HX8357_RED);
+  tft.setFont(&JosefinSans_Bold10pt7b);
+  tft.setTextColor(HX8357_WHITE);
+  tft.setCursor(221, 205);
+  tft.print("RED");
+
+  tft.setFont(&JosefinSans_Bold15pt7b);
+  tft.setTextColor(HX8357_WHITE);
+  tft.setCursor(37, 300);
+  tft.print("CONTINUE");
+  tft.setCursor(325, 300);
+  tft.print("END");
+}
+
+void Draw_REC_BLUE(){
+  tft.fillRect(0, 0, 480, 260, HX8357_WHITE);
+  tft.fillRect(0, 260, 480, 60, 0x9CF3);
+  tft.drawLine(240, 268, 240, 312, HX8357_WHITE);
+  
+  tft.setFont(&JosefinSans_BoldItalic15pt7b);
+  tft.setTextColor(0x07EE);
+  tft.setCursor(340,40);
+  tft.print("RECORD");
+
+  tft.setTextColor(0x9CF3);
+  tft.setFont(&JosefinSans_Bold20pt7b);
+  tft.setCursor(11, 33);
+  tft.print("<");
+    
+  tft.setFont(&JosefinSans_Bold15pt7b);
+  tft.setCursor(65, 95);
+  tft.print("PLACE MIDDLE FINGER");
+  tft.setCursor(150, 134);
+  tft.print("FOR CHORD");
+
+  tft.fillCircle(240, 198, 45, HX8357_BLUE);
+  tft.setFont(&JosefinSans_Bold10pt7b);
+  tft.setTextColor(HX8357_WHITE);
+  tft.setCursor(213, 205);
+  tft.print("BLUE");
+
+  tft.setFont(&JosefinSans_Bold15pt7b);
+  tft.setTextColor(HX8357_WHITE);
+  tft.setCursor(37, 300);
+  tft.print("CONTINUE");
+  tft.setCursor(325, 300);
+  tft.print("END");
+}
+
+void Draw_REC_GREEN(){
+  tft.fillRect(0, 0, 480, 260, HX8357_WHITE);
+  tft.fillRect(0, 260, 480, 60, 0x9CF3);
+  tft.drawLine(240, 268, 240, 312, HX8357_WHITE);
+  
+  tft.setFont(&JosefinSans_BoldItalic15pt7b);
+  tft.setTextColor(0x07EE);
+  tft.setCursor(340,40);
+  tft.print("RECORD");
+
+  tft.setTextColor(0x9CF3);
+  tft.setFont(&JosefinSans_Bold20pt7b);
+  tft.setCursor(11, 33);
+  tft.print("<");
+    
+  tft.setFont(&JosefinSans_Bold15pt7b);
+  tft.setCursor(90, 95);
+  tft.print("PLACE RING FINGER");
+  tft.setCursor(150, 134);
+  tft.print("FOR CHORD");
+
+  tft.fillCircle(240, 198, 45, 0x1703);
+  tft.setFont(&JosefinSans_Bold10pt7b);
+  tft.setTextColor(HX8357_WHITE);
+  tft.setCursor(205, 205);
+  tft.print("GREEN");
+
+  tft.setFont(&JosefinSans_Bold15pt7b);
+  tft.setTextColor(HX8357_WHITE);
+  tft.setCursor(37, 300);
+  tft.print("CONTINUE");
+  tft.setCursor(325, 300);
+  tft.print("END");
+}
+
+void Draw_REC_PURPLE(){
+  tft.fillRect(0, 0, 480, 260, HX8357_WHITE);
+  tft.fillRect(0, 260, 480, 60, 0x9CF3);
+  tft.drawLine(240, 268, 240, 312, HX8357_WHITE);
+  
+  tft.setFont(&JosefinSans_BoldItalic15pt7b);
+  tft.setTextColor(0x07EE);
+  tft.setCursor(340,40);
+  tft.print("RECORD");
+
+  tft.setTextColor(0x9CF3);
+  tft.setFont(&JosefinSans_Bold20pt7b);
+  tft.setCursor(11, 33);
+  tft.print("<");
+    
+  tft.setFont(&JosefinSans_Bold15pt7b);
+  tft.setCursor(77, 95);
+  tft.print("PLACE PINKY FINGER");
+  tft.setCursor(150, 134);
+  tft.print("FOR CHORD");
+
+  tft.fillCircle(240, 198, 45, 0xB89C);
+  tft.setFont(&JosefinSans_Bold10pt7b);
+  tft.setTextColor(HX8357_WHITE);
+  tft.setCursor(201, 205);
+  tft.print("PURPLE");
+
+  tft.setFont(&JosefinSans_Bold15pt7b);
+  tft.setTextColor(HX8357_WHITE);
+  tft.setCursor(37, 300);
+  tft.print("CONTINUE");
+  tft.setCursor(325, 300);
+  tft.print("END");
+}
+
+void Draw_REC_OPEN(){
+  tft.fillRect(0, 0, 480, 260, HX8357_WHITE);
+  tft.fillRect(0, 260, 480, 60, 0x9CF3);
+  
+  tft.setFont(&JosefinSans_BoldItalic15pt7b);
+  tft.setTextColor(0x07EE);
+  tft.setCursor(340,40);
+  tft.print("RECORD");
+
+  tft.setTextColor(0x9CF3);
+  tft.setFont(&JosefinSans_Bold20pt7b);
+  tft.setCursor(11, 33);
+  tft.print("<");
+    
+  tft.setFont(&JosefinSans_Bold15pt7b);
+  tft.setCursor(125, 95);
+  tft.print("CHOOSE WHICH");
+  tft.setCursor(98, 134);
+  tft.print("STRINGS ARE OPEN");
+
+  tft.setTextColor(0x07EE);
+  tft.setFont(&JosefinSans_Bold20pt7b);  
+  tft.setCursor(28, 225);
+  tft.print("E");
+  tft.setCursor(106, 225);
+  tft.print("A");
+  tft.setCursor(186, 225);
+  tft.print("D");
+  tft.setCursor(264, 225);
+  tft.print("G");
+  tft.setCursor(348, 225);
+  tft.print("B");
+  tft.setCursor(426, 225);
+  tft.print("E");
+
+  tft.setFont(&JosefinSans_Bold15pt7b);
+  tft.setTextColor(HX8357_WHITE);
+  tft.setCursor(160, 300);
+  tft.print("CONTINUE");
+}
+
+void DrawOpenHighlight(int string, bool isOpen){
+  tft.setFont(&JosefinSans_Bold20pt7b);  
+  if(isOpen){
+    tft.setTextColor(HX8357_WHITE);
+    switch(string) {
+      case 0:
+        tft.setCursor(28, 225);
+        tft.fillRect(0, 170, 80, 90, 0x07EE);
+        tft.print("E");
+        break;
+      case 1:
+        tft.setCursor(106, 225);
+        tft.fillRect(80, 170, 80, 90, 0x07EE);
+        tft.print("A");
+        break;
+      case 2:
+        tft.setCursor(186, 225);
+        tft.fillRect(160, 170, 80, 90, 0x07EE);
+        tft.print("D");
+        break;
+      case 3:
+        tft.setCursor(264, 225);
+        tft.fillRect(240, 170, 80, 90, 0x07EE);
+        tft.print("G");
+        break;
+      case 4:
+        tft.setCursor(348, 225);
+        tft.fillRect(320, 170, 80, 90, 0x07EE);
+        tft.print("B");
+        break;
+      case 5:
+        tft.setCursor(426, 225);
+        tft.fillRect(400, 170, 80, 90, 0x07EE);
+        tft.print("E");
+        break;
+    }
+  }
+  else if(!isOpen){
+    tft.setTextColor(0x07EE);
+    switch(string) {
+      case 0:
+        tft.setCursor(28, 225);
+        tft.fillRect(0, 170, 80, 90, HX8357_WHITE);
+        tft.print("E");
+        break;
+      case 1:
+        tft.setCursor(106, 225);
+        tft.fillRect(80, 170, 80, 90, HX8357_WHITE);
+        tft.print("A");
+        break;
+      case 2:
+        tft.setCursor(186, 225);
+        tft.fillRect(160, 170, 80, 90, HX8357_WHITE);
+        tft.print("D");
+        break;
+      case 3:
+        tft.setCursor(264, 225);
+        tft.fillRect(240, 170, 80, 90, HX8357_WHITE);
+        tft.print("G");
+        break;
+      case 4:
+        tft.setCursor(348, 225);
+        tft.fillRect(320, 170, 80, 90, HX8357_WHITE);
+        tft.print("B");
+        break;
+      case 5:
+        tft.setCursor(426, 225);
+        tft.fillRect(400, 170, 80, 90, HX8357_WHITE);
+        tft.print("E");
+        break;
+    }
+  }
+}
+
+void Draw_REC_TEMPO(){
+  tft.fillRect(0, 0, 480, 260, HX8357_WHITE);
+  
+  tft.setFont(&JosefinSans_BoldItalic15pt7b);
+  tft.setTextColor(0x07EE);
+  tft.setCursor(340,40);
+  tft.print("RECORD");
+
+  tft.setFont(&JosefinSans_Bold15pt7b);
+  tft.setTextColor(0x9CF3);
+  tft.setCursor(80, 115);
+  tft.print("CHOOSE THE TEMPO");
+
+  tft.fillRect(0, 160, 480, 160, 0x07EE);
+  tft.drawLine(121.5, 180.5, 121.5, 299.5, HX8357_WHITE);
+  tft.drawLine(240.5, 180.5, 240.5, 299.5, HX8357_WHITE);
+  tft.drawLine(359.5, 180.5, 359.5, 299.5, HX8357_WHITE);
+
+  tft.setTextColor(HX8357_WHITE);
+  tft.setFont(&JosefinSans_Bold20pt7b);  
+  tft.setCursor(31, 258);
+  tft.print("1/2");
+  tft.setCursor(153, 258);
+  tft.print("1/4");
+  tft.setCursor(274, 258);
+  tft.print("1/8");
+  tft.setCursor(385, 258);
+  tft.print("1/16");
+}
+
+void Draw_REC_NEXT(){
+  tft.fillRect(0, 0, 480, 260, HX8357_WHITE);
+  tft.fillRect(0, 260, 480, 60, HX8357_WHITE);
+  
+  tft.setFont(&JosefinSans_BoldItalic15pt7b);
+  tft.setTextColor(0x07EE);
+  tft.setCursor(340,40);
+  tft.print("RECORD");
+
+  tft.fillRect(73, 70, 335, 80, 0x07EE);
+  tft.fillRect(73, 170, 335, 80, 0x07EE);
+
+  tft.setTextColor(HX8357_WHITE);
+  tft.setFont(&JosefinSans_Bold15pt7b);  
+  tft.setCursor(150, 121);
+  tft.print("NEXT NOTE");
+  tft.setCursor(105, 221);
+  tft.print("SAVE RECORDING");
+}
