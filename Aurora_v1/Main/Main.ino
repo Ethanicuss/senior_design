@@ -25,12 +25,23 @@
 void setup() {
   Serial.begin(9600);
   Serial.println("In setup");
+  Serial.end();
+  
+  //ESP
+  /*
+  Serial1.begin(9600);
+  //Serial1.write("hello");
+  int wifiCase = 0;
+  Serial1.print(wifiCase);
+  Serial1.end();
+  */
+
+
   bool success = LCDSetup();
   if(success){
     LEDSetup();
     analogReadResolution(12);
     MuxSetup();
-    InitializeState();
   }
 }
 
@@ -42,6 +53,17 @@ void loop() {
 
   DisplayXYZ();
   CheckTouch();
+
+  /*
+  Serial1.begin(9600);
+  if (Serial1.available() > 0){
+    deviceID = Serial1.read();
+  }
+  Serial1.println(deviceID);
+  Serial1.end();
+
+  Serial.begin(9600);
+  */
   switch(CurrState){
     case HOME:
       Serial.println("In HOME ");
@@ -813,6 +835,16 @@ void loop() {
         //overwrite the numNotes in the song
         void resetPointer();
         writeToFile(String(numNotes));
+        DrawHomeScreen();
+        CurrState = HOME;
+        break;
+    }
+    break;
+//************ UPLOAD MODE ***********/
+  case UPLOAD:
+    switch(BtnPressed){
+      case Btn1: //upload recording
+        uploadRecording();
         DrawHomeScreen();
         CurrState = HOME;
         break;

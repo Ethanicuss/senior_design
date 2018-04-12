@@ -8,6 +8,8 @@ extern int BPM;
 extern int n; //recording number
 extern char buffer[6];
 extern int numNotes;
+extern int wifiCase;
+extern String deviceID;
 
 #endif
 

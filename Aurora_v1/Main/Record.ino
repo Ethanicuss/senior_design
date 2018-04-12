@@ -43,10 +43,19 @@ char color = 'r';
 String recordedString = "xxxxxxxxxxxxxxxxxx";
 char buffer[6] = {'x','x','x','x','x','x'};
 
+String recordingTime = "";
+
+//WIFI variables:
+int wifiCase = 0;
+String deviceID = "";
+
 //*** FOR Record Mode I/O ***//
 void mkRecording(){
   // reset buffer for new recording
+  //String fileName = timeClient.getFormattedTime(); FIX THIS TO GET IT FROM ESP
   String fileName = "rec.txt";
+  fileName = fileName + ".txt";
+  recordingTime = fileName;
   g = SD.open(fileName);
   g.write("    \n");
 }
@@ -65,5 +74,21 @@ int BPMtoTiming(double BPM, double note){
 
 void resetPointer(void){
   g.seek(0);
+}
+
+//WIFI CODE - MOVE to new WIFI module
+
+//UPLOAD Recording
+void uploadRecording(){
+  if (SD.exists(recordingTime)){
+    Serial.println("recording exists");
+    //TODO:Upload file to firebase
+    //Transmit a 1
+    //TODO:Draw Uploading
+  }
+  else {
+    Serial.println("No file recorded");
+    //TODO:Draw "No file exists popup"
+  }
 }
 
