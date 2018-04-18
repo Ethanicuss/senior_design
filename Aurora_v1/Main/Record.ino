@@ -54,7 +54,7 @@ void mkRecording(){
   // reset buffer for new recording
   //String fileName = timeClient.getFormattedTime(); FIX THIS TO GET IT FROM ESP
   String fileName = "rec.txt";
-  fileName = fileName + ".txt";
+  //fileName = fileName + ".txt";
   recordingTime = fileName;
   g = SD.open(fileName);
   g.write("    \n");

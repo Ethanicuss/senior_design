@@ -45,6 +45,10 @@ String ReadFile(){
   }
 }
 
+void resetFile(){
+  f.seek(0);
+}
+
 
 
 

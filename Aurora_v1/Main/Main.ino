@@ -22,19 +22,23 @@
 #include "Fonts/JosefinSans_BoldItalic10pt7b.h"
 #include "Fonts/JosefinSans_BoldItalic8pt7b.h"
 
+
+int hasHappened = 0;
+int songLen = 0;
+
+
 void setup() {
   Serial.begin(9600);
   Serial.println("In setup");
-  Serial.end();
+  //Serial.end();
   
   //ESP
-  /*
-  Serial1.begin(9600);
+  Serial1.begin(115200);
   //Serial1.write("hello");
   int wifiCase = 0;
-  Serial1.print(wifiCase);
-  Serial1.end();
-  */
+  Serial1.println(wifiCase);
+  //Serial1.end();
+  
 
 
   bool success = LCDSetup();
@@ -51,22 +55,63 @@ void loop() {
   // -- See UI Diagram for Control Flow Graph
 /****************** HOME SCREEN OPTIONS *****************/
 
-  DisplayXYZ();
-  CheckTouch();
+  //DisplayXYZ();
+  //CheckTouch();
 
-  /*
-  Serial1.begin(9600);
-  if (Serial1.available() > 0){
-    deviceID = Serial1.read();
+
+  //Serial1.begin(9600);
+  if (hasHappened == 0){
+    wifiCase = 2; //change to wifiCase = 2 for testing 1
+    Serial1.println(wifiCase);
+    hasHappened = 1; 
   }
-  Serial1.println(deviceID);
-  Serial1.end();
 
-  Serial.begin(9600);
+  
+  String songThing = "freefall.txt";
+  int complete = 0;
+  OpenFile(songThing);
+  songLen = GetSongLength();
+  Serial.println("songLen = " + songLen);
+  resetFile();
+  
+  
+  while(complete < (songLen-1)){
+    String line = ReadFile();
+    Serial.println("line " + line);
+    Serial1.println(line);
+    while (Serial1.available() <= 0){
+      //while buffer is empty do nothing
+      Serial.println("empty bufffer");
+    }
+    complete = Serial1.readString().toInt();
+    Serial.println(complete);
+  }
+
+  Serial.println("Done");
+  
+  
+  //1. read line
+  //2 .print line to serial 1
+  //3. wait to read a number < numNotes
+  //5. then print again
+  
+
+  //PUT THIS CODE IN FOR CASE OF ASSIGNING DEVICE ID
+  /*
+  if (Serial1.available() > 0){
+    deviceID = Serial1.readString();
+  }
+  Serial.print("device ID ");
+  Serial.println(deviceID);
+  //Serial1.end();
   */
+  //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  
+  //Serial.begin(9600);
+ 
   switch(CurrState){
     case HOME:
-      Serial.println("In HOME ");
+      //Serial.println("In HOME ");
       //TODO; HOME
       switch (BtnPressed){
         case Btn1: //LESSONS:
