@@ -40,7 +40,7 @@ int firstDone = 0;
 int done = 0;
 int numNotes = 0;
 String note = "";
-int marker = 0;
+int marker = 1;
 
 void setup() {
   // put your setup code here, to run once:
@@ -48,12 +48,61 @@ void setup() {
   FirebaseSetup();
 }
 
+
+void loop(){
+  //if data is stored in the buffer
+  if (Serial.available() > 0){
+    wifiState = Serial.readString().toInt();
+    Serial.print(wifiState); //Send back to Arduino as proof check
+    Firebase.setInt("wifiState", wifiState); //Update Firebase as proff check
+  }
+  switch(wifiState){
+    case 1: Get Device ID
+      Firebase.setString("players/ID", uuidStr);
+      Serial.print(uuidStr);
+      break;
+    case 2:
+      //Wait until Song Length is sent by Ard.
+      while(numNotes == 0){
+        if(Serial.available() > 0){
+          numNotes = Serial.readString().toInt();  
+        }
+        Firebase.set("songLen", numNotes);
+      }
+      Firebase.set("song/0", numNotes);
+      Serial.print("passed");
+      //^^^^^^^^^^^^^^^^
+      //Wait until Line is sent by Ard.
+      for (int i = 1; i <= numNotes; i++){ //for each note in the song
+        while(newLine == 0){ //while the line isn't new
+          if(Serial.available() > 0){
+            note = Serial.readString();
+            newLine = 1;
+          }
+          Firebase.setString("song/" + i, note);
+        }
+        Serial.print("added");
+        newLine = 0; //reset newLine
+      }
+      Serial.print("done");
+      break;
+  }
+}
+/*
 void loop() {
   outside = !outside;
   Firebase.setBool("outside", outside);
   // put your main code here, to run repeatedly:
   if (Serial.available() > 0){
 
+  
+
+
+
+
+
+  
+  
   wifiState = Serial.readString().toInt();
   //readChar[0] = wifiState[0];
   
@@ -72,6 +121,14 @@ void loop() {
     Serial.print(uuidStr);
   }
 
+
+  
+
+
+
+
+
+
   //Upload Recording
   if (hasHappened == 0){
     //if (readChar[0] == '2'){
@@ -87,6 +144,8 @@ void loop() {
             Firebase.set("notenotReady", !inside); 
            }
            */
+
+           /*
            firstDone = 1;
            Firebase.setInt("song/0", numNotes);   
           }
@@ -134,11 +193,15 @@ void loop() {
         break;
     }
     */
+
+    /*
     //wifiState = "0";
     wifiState = 0;
     readChar[0] = 0;
   }
 }
+
+*/
 
 void WifiSetup(){
   Serial.begin(115200);
@@ -148,6 +211,7 @@ void WifiSetup(){
     Serial.print(".");
     delay(500);
   }
+  Serial.print("connected");
   uuidStr = WiFi.macAddress();
   timeClient.begin();
 }
@@ -158,8 +222,9 @@ void FirebaseSetup(){
   Firebase.setBool("players/available", false);
   Firebase.setString("players/ID", "0");
   Firebase.setBool("outside", outside);
-  Firebase.setString("wifiState", "nothing");
+  Firebase.setInt("wifiState", 0);
   //Firebase.set("song","");
+  Firebase.setInt("songLen", numNotes);
 }
 /*
 void uniqueIDgen(){
