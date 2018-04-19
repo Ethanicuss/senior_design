@@ -71,23 +71,34 @@ void loop() {
   int complete = 0;
   OpenFile(songThing);
   songLen = GetSongLength();
+  Serial1.print(songLen);
+  delay(500);
   Serial.println("songLen = " + songLen);
-  resetFile();
+  delay(500);
+  //resetFile();
   
   
-  while(complete < (songLen-1)){
+  while(complete <= songLen){
     String line = ReadFile();
-    Serial.println("line " + line);
-    Serial1.println(line);
-    while (Serial1.available() <= 0){
+    Serial.println("line = " + line);
+    delay(500);
+    Serial1.print(line);
+    delay(500);
+    if (Serial1.available() <= 0){ //change to while
       //while buffer is empty do nothing
       Serial.println("empty bufffer");
+      delay(500);
     }
-    complete = Serial1.readString().toInt();
+    else{
+      complete = Serial1.readString().toInt();
+      delay(500);
+    }
     Serial.println(complete);
+    delay(500);
   }
 
   Serial.println("Done");
+  delay(500);
   
   
   //1. read line
