@@ -63,6 +63,9 @@ void FirstNote_Learn(void){
   currentChord = ReadFile();
   currentDuration = ReadFile().toInt();
 
+  Serial.println(currentChord);
+  Serial.println(currentDuration);
+
   nextChord = ReadFile();
   nextDuration = ReadFile().toInt();
 
@@ -140,6 +143,10 @@ void PlaySong_TK(String songTitle){
     currentDuration = nextDuration;  
     nextChord = ReadFile();
     nextDuration = ReadFile().toInt();
+
+    //TESTING
+    Serial.println(nextChord);
+    Serial.println(nextDuration);
     
     //2. actually light up LEDs
     LightLED(currentChord, true);

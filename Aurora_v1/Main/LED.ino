@@ -25,6 +25,7 @@ void LEDSetup(void) {
 
 // example string would be: ExxA0wD2rG2gB2be0w
 void LightLED(String s, bool fullBrightness){
+  Serial.println(s);
   if(s == "X")
     return;
   // for each string of the guitar in the chord
