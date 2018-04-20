@@ -53,6 +53,7 @@ void setup() {
   Serial.println("Connected!");
   wifiCase = 2;
   Serial1.print(wifiCase);
+  Serial1.flush();
 }
 
 
@@ -68,48 +69,72 @@ void loop() {
    if (Serial1.available() > 0){
     ESPstate = Serial1.readString().toInt();
    }
-   Serial.println("ESP: " + ESPstate);
+   Serial.print("ESP: ");
+   Serial.println(ESPstate);
+   delay(500);
   }
+  delay(500);
   if (ESPstate == 2){ //UPLOAD
     //TEST - SETUP
     String songThing = "freefall.txt";
     int complete = 0;
     OpenFile(songThing);
     songLen = GetSongLength();
+    //FOR TESTING
+    songLen = 10;
+    //^^^^^^^^^^
+    Serial.print("songLen = ");
+    Serial.println(songLen);
+    delay(500);
     Serial1.print(songLen);
-    delay(500);
-    Serial.println("songLen = " + songLen);
-    delay(500);
+    Serial1.flush();
     //^^^^^^^^^^^^
     //Waiting until songLen has been received by ESP
     while(received != "passed"){
       if(Serial1.available() > 0){
-        received = Serial.readString();
+        received = Serial1.readString();
       }
-      Serial.println("passed? : " + received);
+      Serial.print("passed? : ");
+      Serial.println(received);
+      delay(500);
     }
     //Send First Note
-    for (int x = 0; x <= songLen; x++){ //for each note in the song
+    for (int x = 0; x < songLen; x++){ //for each note in the song
       String line = ReadFile(); 
-      Serial.println("line: " + line);
-      delay(100);
+      Serial.print("line: ");
+      Serial.println(line);
+      delay(500);
       Serial1.print(line);
+      Serial1.flush();
       //wait until that line is "added" to FB
       while(received != "added"){
         if(Serial1.available() > 0){
-          received = Serial.readString();
+          received = Serial1.readString();
         }
-        Serial.println("added? : " + received);
-        received = "empty"; //reset received
+        Serial.print("added? : ");
+        Serial.println(received);
+        delay(500);
+        if (x == (songLen - 1)){
+          break;
+        }
       }
+      received = "empty"; //reset received
     }
+    /*
+    Serial1.print("1");
+    Serial1.flush();
+    */
     while(received != "done"){
       if (Serial1.available() > 0){
-        received = Serial.readString();
+        received = Serial1.readString();
       }
-      Serial.println("done? : " + received);
+      Serial.print("done? : ");
+      Serial.println(received);
+      delay(500);
     }
+    Serial.println("completed!");
   }
+  ESPstate = 0;
 }
 
 
