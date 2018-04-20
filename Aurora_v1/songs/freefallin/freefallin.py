@@ -1,10 +1,10 @@
 # string order: EADGBe
 chords = dict([
-('8th' , '357'),
-('quarter', '714'),
-('dotquarter', '1071'),
-('half', '1429'),
-('whole', '2857'),
+('8th' , '714'),
+('quarter', '1071'),
+('dotquarter', '2142'),
+('half', '2858'),
+('whole', '5716'),
 ('rest', 'ExxAxxDxxGxxBxxexx'),
 ('E'   , 'ExxAxxDxxG3_B6_e5_'),
 ('D'   , 'ExxAxxDxxG5_B6_e6_'),
