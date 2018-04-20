@@ -6,9 +6,9 @@ chords = dict([
 ('half', '2858'),
 ('whole', '5716'),
 ('rest', 'ExxAxxDxxGxxBxxexx'),
-('E'   , 'ExxAxxDxxG3_B6_e5_'),
-('D'   , 'ExxAxxDxxG5_B6_e6_'),
-('A'   , 'ExxAxxDxxG5_B6_e5_'),
+('E'   , 'ExxAxxDxxG3rB6ge5b'),
+('D'   , 'ExxAxxDxxG5rB6ge6b'),
+('A'   , 'ExxAxxDxxG5rB6ge5b'),
 ])
 
 f = open("chords.txt", "r+")
