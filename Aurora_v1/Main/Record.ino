@@ -43,6 +43,9 @@ char color = 'r';
 String recordedString = "xxxxxxxxxxxxxxxxxx";
 char buffer[6] = {'x','x','x','x','x','x'};
 
+String fileName = "rec";
+int recNum = 0;
+
 String recordingTime = "";
 
 //WIFI variables:
@@ -52,10 +55,9 @@ String deviceID = "";
 //*** FOR Record Mode I/O ***//
 void mkRecording(){
   // reset buffer for new recording
-  //String fileName = timeClient.getFormattedTime(); FIX THIS TO GET IT FROM ESP
-  String fileName = "rec.txt";
-  //fileName = fileName + ".txt";
-  recordingTime = fileName;
+  fileName = fileName + recNum;
+  recNum++;
+  fileName = fileName + ".txt";
   g = SD.open(fileName);
   g.write("    \n");
 }
@@ -76,6 +78,9 @@ void resetPointer(void){
   g.seek(0);
 }
 
+String getFileName(){
+  return fileName;
+}
 //WIFI CODE - MOVE to new WIFI module
 
 //UPLOAD Recording

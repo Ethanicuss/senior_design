@@ -115,124 +115,24 @@ void loop(){
       Serial.flush();
       */
       break;
+    case 3: // download the song
+      //check to make sure that this user has a download queued
+      //for testing (remove because the user should enter this info on the website):
+      Firebase.setString("players/ID", uuidStr);
+      //^^^^^
+      String deviceID = Firebase.getString("players/ID");
+      int queue = Firebase.getInt("players/queue");
+      if ((uuidStr == deviceID) && (queue == 1)){
+        
+      }
+      else {
+        Firebase.setString("error", "ID doesn't match/nothing in Queue");
+      }
+      break;
   }
   wifiState = 0;
   //finished = 0;
 }
-/*
-void loop() {
-  outside = !outside;
-  Firebase.setBool("outside", outside);
-  // put your main code here, to run repeatedly:
-  if (Serial.available() > 0){
-
-  
-
-
-
-
-
-  
-  
-  wifiState = Serial.readString().toInt();
-  //readChar[0] = wifiState[0];
-  
-  //Firebase.set("wifiState", readChar[0]);
-  Firebase.setInt("wifiState", wifiState);
-  
-  inside = !inside;
-  Firebase.setBool("inside", inside);
-  
-  //Assign Device ID  
-  if (readChar[0] == '1'){
-    //uuidStr = Wifi.macAddress();
-    //RX Test
-    Firebase.setString("players/ID", uuidStr);
-    
-    Serial.print(uuidStr);
-  }
-
-
-  
-
-
-
-
-
-
-  //Upload Recording
-  if (hasHappened == 0){
-    //if (readChar[0] == '2'){
-    if (wifiState == 2){
-      Firebase.setString("wifiState", "uploading");
-      while (done == 0){
-        if (Serial.available() > 0){
-          if (firstDone == 0){
-           numNotes = Serial.readString().toInt();
-           delay(500);
-           /*
-           while (!Firebase.success()){
-            Firebase.set("notenotReady", !inside); 
-           }
-           */
-
-           /*
-           firstDone = 1;
-           Firebase.setInt("song/0", numNotes);   
-          }
-          if (firstDone == 1) {
-            while (marker < numNotes){
-              while (Serial.available() <= 0) {
-                Firebase.setString("outside", "error");
-              }
-              note = Serial.readString();
-              delay(500);
-              String noteVal = "song/" + marker;
-              Firebase.setString(noteVal, note);
-              //if(Firebase.success()){
-                marker++;
-                Serial.print(marker);
-                delay(500);
-              //}
-              }
-            done = 1;
-            hasHappened = 1;
-            }
-          }
-        }
-      }
-    }
-
-  //Download From Queue
-  if (readChar[0] == '3'){
-    
-  }
-  
-  /*
-    switch (wifiState){
-      case "1": 
-        //TX works
-        if (hasHappened == 0){
-          uniqueIDgen();
-          hasHappened = 1;
-        }
-        //RX Test
-        Serial.print(uuidStr);
-        break;
-      case "2": //Upload
-        Serial.print("Uploading");
-        break;
-    }
-    */
-
-    /*
-    //wifiState = "0";
-    wifiState = 0;
-    readChar[0] = 0;
-  }
-}
-
-*/
 
 void WifiSetup(){
   Serial.begin(115200);
@@ -253,17 +153,11 @@ void FirebaseSetup(){
   Firebase.setBool("inside", false);
   Firebase.setBool("players/available", false);
   Firebase.setString("players/ID", "0");
+  Firebase.setInt("players/queue", 0);
   Firebase.setBool("outside", outside);
   Firebase.setInt("wifiState", 0);
   Firebase.setInt("songLen", numNotes);
 }
-/*
-void uniqueIDgen(){
-  Firebase.setBool("players/available",true);
-  ESP8266TrueRandom.uuid(uuidNumber);
-  uuidStr = ESP8266TrueRandom.uuidToString(uuidNumber);
-  Firebase.setString("players/ID", uuidStr);
-}
-*/
+
 
  

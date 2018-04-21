@@ -27,6 +27,7 @@ int hasHappened = 0;
 int songLen = 0;
 int ESPstate = 0;
 String received;
+String error;
 
 
 void setup() {
@@ -51,7 +52,8 @@ void setup() {
     Serial.print(received);
   }
   Serial.println("Connected!");
-  wifiCase = 2;
+  //wifiCase = 2; //for upload
+  wifiCase = 3; //for download
   Serial1.print(wifiCase);
   Serial1.flush();
 }
@@ -65,6 +67,8 @@ void loop() {
 
   //DisplayXYZ();
   //CheckTouch();
+  
+  //checks the state of the ESP
   while(ESPstate == 0){
    if (Serial1.available() > 0){
     ESPstate = Serial1.readString().toInt();
@@ -74,6 +78,7 @@ void loop() {
    delay(500);
   }
   delay(500);
+  //^^^^^^^^^^^^^^^^^^^^^^^^^^
   if (ESPstate == 2){ //UPLOAD
     //TEST - SETUP
     String songThing = "freefall.txt";
@@ -133,6 +138,19 @@ void loop() {
       delay(500);
     }
     Serial.println("completed!");
+  }
+  if (ESPstate == 3){ //DOWNLOAD
+    //download the file
+    //1. check to make sure that this device has a download queued
+    while (received != "queued"){
+      if(Serial1.available() > 0){
+        received = Serial1.readString();
+      }
+      error = "nothing queued";
+      Serial.println("device queued? : " + received);
+    }
+    received = "empty"; // reset received
+    //2. 
   }
   ESPstate = 0;
 }
