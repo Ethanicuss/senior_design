@@ -8,7 +8,6 @@
 #define NUM_STRINGS 6
 #define LED_CLK 3
 
-
 CRGB led[NUM_LEDS];
 
 void LEDSetup(void) {
