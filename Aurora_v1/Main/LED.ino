@@ -6,12 +6,13 @@
 #define LED_PIN 2
 #define NUM_FRETS 12
 #define NUM_STRINGS 6
+#define LED_CLK 3
 
 CRGB led[NUM_LEDS];
 
 void LEDSetup(void) {
   pinMode(LED_PIN, OUTPUT);
-  FastLED.addLeds<NEOPIXEL, LED_PIN>(led, NUM_LEDS);
+  FastLED.addLeds<APA102, LED_PIN, LED_CLK, GBR>(led, NUM_LEDS);
   FastLED.setBrightness(100);
   for(int i = 0; i < NUM_ROWS; i++){
     for(int j = 0; j < LEDS_PER_ROW; j++){
