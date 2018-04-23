@@ -145,8 +145,7 @@ void PlaySong_TK(String songTitle){
     nextDuration = ReadFile().toInt();
 
     //TESTING
-    Serial.println(nextChord);
-    Serial.println(nextDuration);
+    //Serial.println(currentChord);
     
     //2. actually light up LEDs
     LightLED(currentChord, true);

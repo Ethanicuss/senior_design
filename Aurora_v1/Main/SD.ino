@@ -15,28 +15,30 @@ int GetSongLength(){
 
 void OpenFile(String fname){
   // open the file for reading:
+  Serial.print("Opening song file... ");
   f = SD.open(fname);
   // read song bpm from first line of file
   if (f) {
+    Serial.println("done.");
     // find the number of lines in the song (basically convert from chars to an integer using the minus '0' trick)
     len = ReadFile().toInt();
   } 
   else {
     // if the file didn't open, print an error:
-    Serial.println("Error opening song file!");
+    Serial.println("error opening file!");
   }
 }
 
 String ReadFile(){
   String line = "";
   if(f.available()){
-    char c = f.read();
     while(f.available()){
+      char c = f.read();
       if(c < 48 || c > 122){
+        Serial.println(line);
         return line;
       }
       line.concat(c);
-      c = f.read();
     }
   }
   else{

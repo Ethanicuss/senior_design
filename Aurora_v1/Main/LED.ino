@@ -7,12 +7,14 @@
 #define NUM_FRETS 12
 #define NUM_STRINGS 6
 #define LED_CLK 3
+#define LED_TYPE APA102
+#define COLOR_ORDER GBR
 
 CRGB led[NUM_LEDS];
 
 void LEDSetup(void) {
   pinMode(LED_PIN, OUTPUT);
-  FastLED.addLeds<APA102, LED_PIN, LED_CLK, GBR>(led, NUM_LEDS);
+  FastLED.addLeds<LED_TYPE, LED_PIN, LED_CLK, COLOR_ORDER>(led, NUM_LEDS);
   FastLED.setBrightness(100);
   for(int i = 0; i < NUM_ROWS; i++){
     for(int j = 0; j < LEDS_PER_ROW; j++){
@@ -24,7 +26,7 @@ void LEDSetup(void) {
 
 // example string would be: ExxA0wD2rG2gB2be0w
 void LightLED(String s, bool fullBrightness){
-  Serial.println(s);
+  //Serial.println(s);
   if(s == "X")
     return;
   // for each string of the guitar in the chord
