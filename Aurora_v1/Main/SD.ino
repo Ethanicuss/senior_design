@@ -35,7 +35,6 @@ String ReadFile(){
     while(f.available()){
       char c = f.read();
       if(c < 48 || c > 122){
-        Serial.println(line);
         return line;
       }
       line.concat(c);

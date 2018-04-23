@@ -122,7 +122,7 @@ void songSetup(String songName){
 }
 
 void PlaySong_TK(String songTitle){
-  if(currentChord == "X"){ //is this a problem???
+  if(currentChord == "X"){
     Serial.println("Song is finished");
     Quit();
     CurrState = FINISHED_PLAYING;
@@ -138,14 +138,17 @@ void PlaySong_TK(String songTitle){
     songPosition++;
     // clear lit LEDs from last current chord
     DarkLED(currentChord);
+    
     //1. go to next note
     currentChord = nextChord;  
-    currentDuration = nextDuration;  
-    nextChord = ReadFile();
-    nextDuration = ReadFile().toInt();
+    currentDuration = nextDuration;
+    if(currentChord != "X"){
+      nextChord = ReadFile();
+      nextDuration = ReadFile().toInt();
+    }
 
     //TESTING
-    //Serial.println(currentChord);
+    Serial.println(currentChord);
     
     //2. actually light up LEDs
     LightLED(currentChord, true);
