@@ -144,7 +144,7 @@ fractions = dict([
 ])
 
 f = open("chords.txt", "r+")
-g = open("tabs.txt", "w")
+g = open("bridge.txt", "w")
 
 g.write('1370')
 g.write('\n')

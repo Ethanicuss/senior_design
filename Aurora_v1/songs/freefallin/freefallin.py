@@ -12,7 +12,7 @@ chords = dict([
 ])
 
 f = open("chords.txt", "r+")
-g = open("tabs.txt", "w")
+g = open("freefall.txt", "w")
 
 g.write('333')
 g.write('\n')

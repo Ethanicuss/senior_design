@@ -30,7 +30,7 @@ chords = dict([
 ])
 
 f = open("chords.txt", "r+")
-g = open("tabs.txt", "w")
+g = open("wonderwa.txt", "w")
 
 g.write('1015')
 g.write('\n')
