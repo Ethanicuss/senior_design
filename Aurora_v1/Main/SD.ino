@@ -41,6 +41,7 @@ String ReadFile(){
     }
   }
   else{
+    songEnd = 1;
     Serial.println("File not available.");
     return "X";
   }

@@ -31,6 +31,8 @@
 */
 
 
+int songEnd = 0;
+
 // file we will write to
 File g;
 

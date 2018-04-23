@@ -122,17 +122,18 @@ void songSetup(String songName){
 }
 
 void PlaySong_TK(String songTitle){
-  if(currentChord == "X"){
+   if (songEnd == 1){
     Serial.println("Song is finished");
     Quit();
+    DrawFinishedPlaying();
     CurrState = FINISHED_PLAYING;
-  }
-  else {
+   }
+   else{
     if (songPosition == 0){
       FirstNote();
     }
-  }
-  if (endOfNote == true){
+   }
+   if (endOfNote == true){
     //Serial.println("Should go to Next Note");
     endOfNote = false;
     songPosition++;
