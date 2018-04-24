@@ -330,6 +330,55 @@ void CheckTouch(){
         BtnPressed = Btn2;
       }
       break;
+
+    case DOWNLOADS:
+      if ((Ycoor < -1060 && Ycoor > -3000) && (Xcoor < -1750 && Xcoor > -2500)){  //TODO: CHECK X&Y
+        Serial.println("Should go Wonderwall ");
+        BtnPressed = Btn1;
+      }
+      else if ((Ycoor < -1060 && Ycoor > -3000) && (Xcoor < -1065 && Xcoor > -1750 )){  //TODO: CHECK X&Y
+        Serial.println("Should go to Free Fallin ");
+        BtnPressed = Btn1;
+      }
+      else if ((Ycoor < -1060 && Ycoor > -3000) && (Xcoor < -360 && Xcoor > -1065 )){  //TODO: CHECK X&Y
+        Serial.println("Should go to Africa ");
+        BtnPressed = Btn2;
+      }
+      else if ((Ycoor < -1060 && Ycoor > -3000) && (Xcoor < 400 && Xcoor > -360 )){  //TODO: CHECK X&Y
+        Serial.println("Should go to I'm Yours ");
+        BtnPressed = Btn2;
+      }
+      else if ((Ycoor < 500 && Ycoor > 150) && (Xcoor < -2000 && Xcoor > -2500)){
+        //Serial.println("Should go back to HOME");
+        BtnPressed = BackBtn;
+      }
+      break;
+
+    case DOWNLOADS_LEARN:
+    case DOWNLOADS_PLAY:
+      if ((Ycoor < -1060 && Ycoor > -3000) && (Xcoor < -1750 && Xcoor > -2500)){  //TODO: CHECK X&Y
+        Serial.println("Should go Wonderwall ");
+        BtnPressed = Btn1;
+      }
+      else if ((Ycoor < -1060 && Ycoor > -3000) && (Xcoor < -1065 && Xcoor > -1750 )){  //TODO: CHECK X&Y
+        Serial.println("Should go to Free Fallin ");
+        BtnPressed = Btn2;
+      }
+      else if ((Ycoor < -1060 && Ycoor > -3000) && (Xcoor < -360 && Xcoor > -1065 )){  //TODO: CHECK X&Y
+        Serial.println("Should go to Africa ");
+        BtnPressed = Btn3;
+      }
+      else if ((Ycoor < -1060 && Ycoor > -3000) && (Xcoor < 400 && Xcoor > -360 )){  //TODO: CHECK X&Y
+        Serial.println("Should go to I'm Yours ");
+        BtnPressed = Btn4;
+      }
+      else if ((Ycoor < 500 && Ycoor > 150) && (Xcoor < -2000 && Xcoor > -2500)){
+        //Serial.println("Should go back to HOME");
+        BtnPressed = BackBtn;
+      }
+      break;
+      
   }
+  
 }
 

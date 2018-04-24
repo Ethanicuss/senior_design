@@ -89,8 +89,8 @@ void UpdateScreen(){
     tft.setFont(&JosefinSans_Bold15pt7b);
     tft.fillRect(240, 190, 240, 95, 0x00DF);  
     tft.fillTriangle(240, 95+95, 240, 95+95+95, 255, 95+95+95, HX8357_WHITE);
-    tft.setCursor(273, 255);
-    tft.print("DOWNLOAD");
+    tft.setCursor(265, 255);
+    tft.print("DOWNLOADS");
   
     tft.fillRect(240, 285, 240, 35, 0x9CF3);  
     tft.fillTriangle(240, 95+95+95, 240, 360, 253, 360, HX8357_WHITE);
@@ -167,11 +167,13 @@ void UpdateScreen(){
   tft.setCursor(280, 120);
   tft.print("FREE FALLIN'");
 
-  tft.setCursor(318, 200);
-  tft.print("AFRICA");
+  tft.setFont(&JosefinSans_Bold8pt7b);
+  tft.setCursor(285, 200);
+  tft.print("UNDER THE BRIDGE");
 
-  tft.setCursor(300, 280);
-  tft.print("I'M YOURS");
+  tft.setFont(&JosefinSans_Bold12pt7b);
+  tft.setCursor(270, 290);
+  tft.print("COMING SOON");
 
 
   tft.setTextColor(0xFE5F);
@@ -182,11 +184,8 @@ void UpdateScreen(){
   tft.setCursor(318, 140);
   tft.print("TOM PETTY");
 
-  tft.setCursor(340, 220);
-  tft.print("TOTO");
-
-  tft.setCursor(310, 300);
-  tft.print("JASON MRAZ");
+  tft.setCursor(265, 220);
+  tft.print("RED HOT CHILI PEPPERS");
  }
 
  void DrawPlayScreen(){
@@ -220,11 +219,13 @@ void UpdateScreen(){
   tft.setCursor(280, 120);
   tft.print("FREE FALLIN'");
 
-  tft.setCursor(318, 200);
-  tft.print("AFRICA");
+  tft.setFont(&JosefinSans_Bold8pt7b);
+  tft.setCursor(285, 200);
+  tft.print("UNDER THE BRIDGE");
 
-  tft.setCursor(300, 280);
-  tft.print("I'M YOURS");
+  tft.setFont(&JosefinSans_Bold12pt7b);
+  tft.setCursor(270, 290);
+  tft.print("COMING SOON");
 
 
   tft.setTextColor(0xFE5F);
@@ -235,11 +236,8 @@ void UpdateScreen(){
   tft.setCursor(318, 140);
   tft.print("TOM PETTY");
 
-  tft.setCursor(340, 220);
-  tft.print("TOTO");
-
-  tft.setCursor(310, 300);
-  tft.print("JASON MRAZ");
+  tft.setCursor(265, 220);
+  tft.print("RED HOT CHILI PEPPERS");
  }
 
  void DrawRecordScreen(){
@@ -548,13 +546,13 @@ void UpdateScreen(){
 
     case 3:
       tft.setTextColor(0x07EE);
-      tft.setCursor(185, 120);
-      tft.print("AFRICA");
+      tft.setCursor(100, 120);
+      tft.print("UNDER THE BRIDGE");
     
-      tft.setFont(&JosefinSans_Bold12pt7b);
+      tft.setFont(&JosefinSans_Bold10pt7b);
       tft.setTextColor(0x9CF3);
-      tft.setCursor(208, 152);
-      tft.print("TOTO");
+      tft.setCursor(130, 152);
+      tft.print("RED HOT CHILI PEPPERS");
       break;
 
     case 4:
@@ -566,6 +564,36 @@ void UpdateScreen(){
       tft.setTextColor(0x9CF3);
       tft.setCursor(165, 152);
       tft.print("JASON MRAZ");
+      break;
+
+    case 5:
+      tft.setTextColor(0x07EE);
+      tft.setCursor(155, 120);
+      tft.print("RECORDING");
+      break;
+
+    case 6:
+      tft.setTextColor(0x07EE);
+      tft.setCursor(150, 120);
+      tft.print("DOWNLOAD 1");
+      break;
+
+    case 7:
+      tft.setTextColor(0x07EE);
+      tft.setCursor(150, 120);
+      tft.print("DOWNLOAD 2");
+      break;
+
+    case 8:
+      tft.setTextColor(0x07EE);
+      tft.setCursor(150, 120);
+      tft.print("DOWNLOAD 3");
+      break;
+
+    case 9:
+      tft.setTextColor(0x07EE);
+      tft.setCursor(150, 120);
+      tft.print("DOWNLOAD 4");
       break;
   }
  }
@@ -613,13 +641,13 @@ void UpdateScreen(){
 
     case 3:
       tft.setTextColor(0x07EE);
-      tft.setCursor(185, 120);
-      tft.print("AFRICA");
+      tft.setCursor(100, 120);
+      tft.print("UNDER THE BRIDGE");
     
-      tft.setFont(&JosefinSans_Bold12pt7b);
+      tft.setFont(&JosefinSans_Bold10pt7b);
       tft.setTextColor(0x9CF3);
-      tft.setCursor(208, 152);
-      tft.print("TOTO");
+      tft.setCursor(130, 152);
+      tft.print("RED HOT CHILI PEPPERS");
       break;
 
     case 4:
@@ -631,6 +659,36 @@ void UpdateScreen(){
       tft.setTextColor(0x9CF3);
       tft.setCursor(165, 152);
       tft.print("JASON MRAZ");
+      break;
+
+    case 5:
+      tft.setTextColor(0x07EE);
+      tft.setCursor(155, 120);
+      tft.print("RECORDING");
+      break;
+
+    case 6:
+      tft.setTextColor(0x07EE);
+      tft.setCursor(150, 120);
+      tft.print("DOWNLOAD 1");
+      break;
+
+    case 7:
+      tft.setTextColor(0x07EE);
+      tft.setCursor(150, 120);
+      tft.print("DOWNLOAD 2");
+      break;
+
+    case 8:
+      tft.setTextColor(0x07EE);
+      tft.setCursor(150, 120);
+      tft.print("DOWNLOAD 3");
+      break;
+
+    case 9:
+      tft.setTextColor(0x07EE);
+      tft.setCursor(150, 120);
+      tft.print("DOWNLOAD 4");
       break;
   }
  }
@@ -732,7 +790,7 @@ void UpdateScreen(){
 
  /********** FINSIHED SCREENS *******/
  void DrawFinishedLessons(){
-  tft.fillRect(0, 0, 480, 80, HX8357_WHITE);
+  tft.fillRect(0, 0, 480, 260, HX8357_WHITE);
   tft.fillRect(0, 260, 480, 60, 0x9CF3);
   tft.drawLine(241, 268, 241, 312, HX8357_WHITE);
   
@@ -802,12 +860,15 @@ void UpdateScreen(){
       }
       break;
   }
-
-  tft.fillRect(75, 90, 330, 94, 0x073F);  
+    tft.fillRect(75, 130, 330, 94, 0x073F);
+    tft.setFont(&JosefinSans_Bold20pt7b);
+    tft.setTextColor(HX8357_WHITE);
+    tft.setCursor(130, 190);
+    tft.print("GOOD JOB!");
  }
 
  void DrawFinishedLearning(){
-  tft.fillRect(0, 0, 480, 80, HX8357_WHITE);
+  tft.fillRect(0, 0, 480, 260, HX8357_WHITE);
   tft.fillRect(0, 260, 480, 60, 0x9CF3);
   tft.drawLine(241, 268, 241, 312, HX8357_WHITE);
   
@@ -830,21 +891,21 @@ void UpdateScreen(){
       break;
     case 2:
       tft.setTextColor(0x9CF3);
-      tft.setCursor(87, 50);
+      tft.setCursor(100, 50);
       tft.print("FREE FALLIN'");
       
       tft.setFont(&JosefinSans_Bold12pt7b);
-      tft.setCursor(205, 78);
+      tft.setCursor(170, 78);
       tft.print("TOM PETTY");
       break;
     case 3:
       tft.setTextColor(0x9CF3);
-      tft.setCursor(87, 50);
-      tft.print("AFRICA");
+      tft.setCursor(35, 50);
+      tft.print("UNDER THE BRIDGE");
       
       tft.setFont(&JosefinSans_Bold12pt7b);
-      tft.setCursor(205, 78);
-      tft.print("TOTO");
+      tft.setCursor(90, 78);
+      tft.print("RED HOT CHILI PEPPERS");
       break;
     case 4:
       tft.setTextColor(0x9CF3);
@@ -855,13 +916,42 @@ void UpdateScreen(){
       tft.setCursor(205, 78);
       tft.print("JASON MRAZ");
       break;
+    case 5:
+      tft.setTextColor(0x9CF3);
+      tft.setCursor(77, 50);
+      tft.print("RECORDING");
+      break;
+    case 6:
+      tft.setTextColor(0x9CF3);
+      tft.setCursor(72, 50);
+      tft.print("DOWNLOAD 1");
+      break;
+    case 7:
+      tft.setTextColor(0x9CF3);
+      tft.setCursor(72, 50);
+      tft.print("DOWNLOAD 2");
+      break;
+    case 8:
+      tft.setTextColor(0x9CF3);
+      tft.setCursor(72, 50);
+      tft.print("DOWNLOAD 3");
+      break;
+    case 9:
+      tft.setTextColor(0x9CF3);
+      tft.setCursor(72, 50);
+      tft.print("DOWNLOAD 4");
+      break;
   }
 
-  tft.fillRect(75, 90, 330, 94, 0x073F);
+  tft.fillRect(75, 130, 330, 94, 0x073F);
+  tft.setFont(&JosefinSans_Bold20pt7b);
+  tft.setTextColor(HX8357_WHITE);
+  tft.setCursor(130, 190);
+  tft.print("GOOD JOB!");
  }
 
  void DrawFinishedPlaying(){
-  tft.fillRect(0, 0, 480, 80, HX8357_WHITE);
+  tft.fillRect(0, 0, 480, 260, HX8357_WHITE);
   tft.fillRect(0, 260, 480, 60, 0x9CF3);
   tft.drawLine(241, 268, 241, 312, HX8357_WHITE);
   
@@ -884,21 +974,21 @@ void UpdateScreen(){
       break;
     case 2:
       tft.setTextColor(0x9CF3);
-      tft.setCursor(87, 50);
+      tft.setCursor(100, 50);
       tft.print("FREE FALLIN'");
       
       tft.setFont(&JosefinSans_Bold12pt7b);
-      tft.setCursor(205, 78);
+      tft.setCursor(170, 78);
       tft.print("TOM PETTY");
       break;
     case 3:
       tft.setTextColor(0x9CF3);
-      tft.setCursor(87, 50);
-      tft.print("AFRICA");
+      tft.setCursor(35, 50);
+      tft.print("UNDER THE BRIDGE");
       
       tft.setFont(&JosefinSans_Bold12pt7b);
-      tft.setCursor(205, 78);
-      tft.print("TOTO");
+      tft.setCursor(90, 78);
+      tft.print("RED HOT CHILI PEPPERS");
       break;
     case 4:
       tft.setTextColor(0x9CF3);
@@ -909,9 +999,43 @@ void UpdateScreen(){
       tft.setCursor(205, 78);
       tft.print("JASON MRAZ");
       break;
+    case 5:
+      tft.setTextColor(0x9CF3);
+      tft.setCursor(77, 50);
+      tft.print("RECORDING");
+      break;
+    case 6:
+      tft.setTextColor(0x9CF3);
+      tft.setCursor(72, 50);
+      tft.print("DOWNLOAD 1");
+      break;
+    case 7:
+      tft.setTextColor(0x9CF3);
+      tft.setCursor(72, 50);
+      tft.print("DOWNLOAD 2");
+      break;
+    case 8:
+      tft.setTextColor(0x9CF3);
+      tft.setCursor(72, 50);
+      tft.print("DOWNLOAD 3");
+      break;
+    case 9:
+      tft.setTextColor(0x9CF3);
+      tft.setCursor(72, 50);
+      tft.print("DOWNLOAD 4");
+      break;
   }
 
-  tft.fillRect(75, 90, 330, 94, 0x073F);  
+    int percent = 49;
+
+  // INSERT PLAY CORRECT PERCENT HERE
+
+    tft.setFont(&JosefinSans_Bold40pt7b);
+    tft.setTextColor(0x073F);
+    tft.setCursor(160, 200);
+    tft.print(percent);
+    tft.setCursor(250, 200);
+    tft.print(" %");
  }
 
   /********** RECORD SCREENS *******/
@@ -1288,4 +1412,123 @@ void Draw_REC_NEXT(){
   tft.print("NEXT NOTE");
   tft.setCursor(105, 221);
   tft.print("SAVE RECORDING");
+}
+
+// UPLOAD SCREEN
+
+void DrawUploadScreen() {
+  tft.fillRect(0, 0, 480, 320, HX8357_WHITE);
+  tft.setFont(&JosefinSans_BoldItalic20pt7b);
+  tft.setTextColor(0x07EE);
+  tft.setCursor(120,130);
+  tft.print("UPLOADING");
+
+  tft.fillCircle(203, 198, 10, 0x07EE);
+  tft.fillCircle(240, 198, 10, 0x07EE);
+  tft.fillCircle(277, 198, 10, 0x07EE);
+
+  boolean stillUploading = true;
+
+  while (stillUploading) {
+    CountdownDelay();
+    tft.fillCircle(203, 198, 10, 0x9CF3);
+    tft.fillCircle(277, 198, 10, 0x07EE);
+    CountdownDelay();
+    tft.fillCircle(240, 198, 10, 0x9CF3);
+    tft.fillCircle(203, 198, 10, 0x07EE);
+    CountdownDelay();
+    tft.fillCircle(277, 198, 10, 0x9CF3);
+    tft.fillCircle(240, 198, 10, 0x07EE);
+  }
+  
+}
+
+void DrawDownloadsScreen() {
+  tft.fillRect(0, 0, 240, 360, HX8357_WHITE);
+  tft.fillRect(240, 0, 240, 320, 0xF81D);
+  tft.drawLine(260, 160, 465, 160, 0xFE5F);
+
+  tft.setFont(&JosefinSans_BoldItalic12pt7b);
+  tft.setTextColor(0xF81D);
+  tft.setCursor(33, 167);
+  tft.print("DOWNLOADS");
+
+  tft.setTextColor(0x9CF3);
+  tft.setFont(&JosefinSans_Bold20pt7b);
+  tft.setCursor(11, 33);
+  tft.print("<");
+
+  tft.setFont(&JosefinSans_Bold12pt7b);
+  tft.setTextColor(HX8357_WHITE);
+  tft.setCursor(323, 73);
+  tft.print("LEARN");
+
+  tft.setCursor(281, 103);
+  tft.print("DOWNLOADS");
+
+  tft.setFont(&JosefinSans_Bold12pt7b);
+  tft.setCursor(330, 225);
+  tft.print("PLAY");
+
+  tft.setFont(&JosefinSans_Bold12pt7b);
+  tft.setCursor(281, 255);
+  tft.print("DOWNLOADS");
+}
+
+void DrawDownloadsLearnScreen() {
+  tft.fillRect(0, 0, 240, 360, HX8357_WHITE);
+  tft.fillRect(240, 0, 240, 320, 0xF81D);
+  tft.drawLine(260, 80, 465, 80, 0xFE5F);
+  tft.drawLine(260, 160, 465, 160, 0xFE5F);
+  tft.drawLine(260, 240, 465, 240, 0xFE5F);
+
+  tft.setFont(&JosefinSans_BoldItalic20pt7b);
+  tft.setTextColor(0xF81D);
+  tft.setCursor(49, 155);
+  tft.print("LEARN");
+
+  tft.setTextColor(0x9CF3);
+  tft.setFont(&JosefinSans_Bold8pt7b);
+  tft.setCursor(28, 180);
+  tft.print("SELECT A SONG FOR A");
+  tft.setCursor(52, 198);
+  tft.print("GUIDED LESSON");
+
+  tft.setFont(&JosefinSans_Bold20pt7b);
+  tft.setCursor(11, 33);
+  tft.print("<");
+
+  tft.setFont(&JosefinSans_Bold12pt7b);
+  tft.setTextColor(HX8357_WHITE);
+  tft.setCursor(278, 43);
+  tft.print("DOWNLOAD 1");
+
+  tft.setCursor(278, 124);
+  tft.print("DOWNLOAD 2");
+
+  tft.setFont(&JosefinSans_Bold12pt7b);
+  tft.setCursor(278, 205);
+  tft.print("DOWNLOAD 3");
+
+  tft.setFont(&JosefinSans_Bold12pt7b);
+  tft.setCursor(278, 282);
+  tft.print("DOWNLOAD 4");
+
+
+//  tft.setTextColor(0xFE5F);
+//  tft.setFont(&JosefinSans_Bold8pt7b);
+//  tft.setCursor(335, 60);
+//  tft.print("OASIS");
+//
+//  tft.setCursor(318, 140);
+//  tft.print("TOM PETTY");
+//
+//  tft.setCursor(265, 220);
+//  tft.print("RED HOT CHILI PEPPERS");
+//
+//  tft.setCursor(310, 300);
+//  tft.print("COMING SOON");
+}
+
+void DrawDownloadsPlayScreen() {
 }
