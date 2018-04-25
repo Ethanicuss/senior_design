@@ -1,8 +1,8 @@
 # string order: EADGBe
 chords = dict([
-('8th' , '345'),
-('16th', '172'),
-('half', '1380'),
+('8th' , '690'),
+('16th', '345'),
+('half', '2760'),
 ('Em7' , 'E0wA2rD2gG0wB3be3p'),
 ('Em71', 'E0wA2rDxxGxxBxxexx'),
 ('Gp0' , 'ExxAxxDxxG0wB3re3g'),
@@ -30,7 +30,7 @@ chords = dict([
 ])
 
 f = open("chords.txt", "r+")
-g = open("tabs.txt", "w")
+g = open("wonderwa.txt", "w")
 
 g.write('1015')
 g.write('\n')

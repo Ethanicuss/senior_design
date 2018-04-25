@@ -9,6 +9,9 @@ extern int n; //recording number
 extern char buffer[6];
 extern int numNotes;
 
+//for final note in Song check
+extern int songEnd;
+
 #endif
 
 

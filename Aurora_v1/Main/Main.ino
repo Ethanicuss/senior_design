@@ -403,6 +403,8 @@ void loop() {
       break;
    case FINISHED_PLAYING:
       //playMode = false;
+      Serial.println("Song fin");
+      songEnd = 0;
       switch (BtnPressed){
         case Btn1: //SongSelect:
           DrawPlayScreen();
@@ -410,7 +412,7 @@ void loop() {
           break;
         case Btn2: //SongSelect:
           DrawHomeScreen();
-          Quit();
+          // Quit(); possibly extraneous
           CurrState = HOME;  
           break;
       }

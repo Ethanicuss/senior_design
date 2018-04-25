@@ -63,6 +63,9 @@ void FirstNote_Learn(void){
   currentChord = ReadFile();
   currentDuration = ReadFile().toInt();
 
+  Serial.println(currentChord);
+  Serial.println(currentDuration);
+
   nextChord = ReadFile();
   nextDuration = ReadFile().toInt();
 
@@ -119,27 +122,34 @@ void songSetup(String songName){
 }
 
 void PlaySong_TK(String songTitle){
-  if(currentChord == "X"){ //is this a problem???
+   if (songEnd == 1){
     Serial.println("Song is finished");
     Quit();
+    DrawFinishedPlaying();
     CurrState = FINISHED_PLAYING;
-  }
-  else {
+   }
+   else{
     if (songPosition == 0){
       FirstNote();
     }
-  }
-  if (endOfNote == true){
+   }
+   if (endOfNote == true){
     //Serial.println("Should go to Next Note");
     endOfNote = false;
     songPosition++;
     // clear lit LEDs from last current chord
     DarkLED(currentChord);
+    
     //1. go to next note
     currentChord = nextChord;  
-    currentDuration = nextDuration;  
-    nextChord = ReadFile();
-    nextDuration = ReadFile().toInt();
+    currentDuration = nextDuration;
+    if(currentChord != "X"){
+      nextChord = ReadFile();
+      nextDuration = ReadFile().toInt();
+    }
+
+    //TESTING
+    Serial.println(currentChord);
     
     //2. actually light up LEDs
     LightLED(currentChord, true);
