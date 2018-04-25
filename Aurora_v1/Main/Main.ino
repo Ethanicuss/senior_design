@@ -28,7 +28,8 @@ int songLen = 0;
 int ESPstate = 0;
 String received;
 String error;
-
+int downloadNum = 0;
+File d;
 
 void setup() {
   Serial.begin(9600);
@@ -52,8 +53,8 @@ void setup() {
     Serial.print(received);
   }
   Serial.println("Connected!");
-  //wifiCase = 2; //for upload
-  wifiCase = 3; //for download
+  wifiCase = 2; //for upload
+  //wifiCase = 3; //for download
   Serial1.print(wifiCase);
   Serial1.flush();
 }
@@ -81,7 +82,7 @@ void loop() {
   //^^^^^^^^^^^^^^^^^^^^^^^^^^
   if (ESPstate == 2){ //UPLOAD
     //TEST - SETUP
-    String songThing = "freefall.txt";
+    String songThing = "wonderwall.txt";
     int complete = 0;
     OpenFile(songThing);
     songLen = GetSongLength();
@@ -145,12 +146,62 @@ void loop() {
     while (received != "queued"){
       if(Serial1.available() > 0){
         received = Serial1.readString();
+        Serial.print("device queued? : ");
+        Serial.println(received);
       }
-      error = "nothing queued";
-      Serial.println("device queued? : " + received);
+      else{
+        Serial.println("No Match");
+        error = "nothing queued";
+      }
+      delay(500);
     }
-    received = "empty"; // reset received
-    //2. 
+    Serial1.flush();
+    received = "empty";
+
+    //2. get the NumNotes and make a for loop for that
+    int songNotes = 0;
+    while (songNotes == 0){
+      if(Serial1.available() > 0){
+        songNotes = Serial1.readString().toInt();
+        Serial.print("SongNotes = ");
+        Serial.println(songNotes);
+      }
+      else{
+        Serial.println("No Notess");
+      }
+      delay(500);
+    }
+    Serial1.flush();
+    //3. open a file
+    String DLsong = "downL";
+    DLsong = DLsong + downloadNum;
+    DLsong = DLsong + ".txt";
+    downloadNum++;
+    if (downloadNum > 3){
+      error = "Max Downloads Reached";
+    }
+    d = SD.open(DLsong);
+    //d.write("    \n");
+
+    for(int n = 0; n < songNotes; n++){
+      //4. write lines to the new file
+      if (Serial1.available()){
+        received = Serial1.readString();
+        char DLarray[50];
+        received.toCharArray(DLarray, received.length());
+        d.write(DLarray);
+        d.write("\n");
+        Serial1.print("1");
+      }
+      while (received != "added"){
+        if (Serial1.available()){
+          received = Serial1.readString();
+        }
+        Serial.print("added? : ");
+        Serial.println(received);
+      }
+      received = "empty"; 
+    }
   }
   ESPstate = 0;
 }

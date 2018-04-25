@@ -44,6 +44,8 @@ int marker = 1;
 int newLine = 0;
 int finished = 0;
 
+int added = 0;
+
 void setup() {
   // put your setup code here, to run once:
   WifiSetup();
@@ -120,18 +122,38 @@ void loop(){
       //for testing (remove because the user should enter this info on the website):
       Firebase.setString("players/ID", uuidStr);
       //^^^^^
-      String deviceID = Firebase.getString("players/ID");
+      //String deviceID = Firebase.getString("players/ID");
+      String deviceID = uuidStr;
       int queue = Firebase.getInt("players/queue");
       if ((uuidStr == deviceID) && (queue == 1)){
-        
+        Serial.flush();
+        Serial.print("queued");
+        String DLsong = Firebase.getString("DLsong");
+        String path = "song";
+        path = path + "/";
+        //path = path + "DLsong"; <-- ADD THIS LINE IN FINAL VERSION
+        String numPath = path + "0"; //edit this line to finally point to first line of song
+        int DLsongNotes = Firebase.getString(numPath).toInt();
+        Serial.print(DLsongNotes);
+        for(int i = 0; i < DLsongNotes; i++){
+          String route = path + i;
+          Serial.print(Firebase.getString(route));
+          while(added == 0){
+            if (Serial.available()){
+              added = Serial.readString().toInt();
+              Firebase.setInt("addedNote",added);
+            }
+          }
+          Serial.print("added");
+          added = 0;
+        }
       }
       else {
-        Firebase.setString("error", "ID doesn't match/nothing in Queue");
+        Firebase.setString("error", "ID doesn't match OR nothing in Queue");
       }
       break;
   }
   wifiState = 0;
-  //finished = 0;
 }
 
 void WifiSetup(){
@@ -153,10 +175,12 @@ void FirebaseSetup(){
   Firebase.setBool("inside", false);
   Firebase.setBool("players/available", false);
   Firebase.setString("players/ID", "0");
-  Firebase.setInt("players/queue", 0);
+  Firebase.setInt("players/queue", 1); //change baaac to 0 for finall.
   Firebase.setBool("outside", outside);
   Firebase.setInt("wifiState", 0);
   Firebase.setInt("songLen", numNotes);
+
+  Firebase.setString("DLsong", "wonderwall");
 }
 
 

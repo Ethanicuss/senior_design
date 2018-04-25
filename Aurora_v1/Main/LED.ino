@@ -140,6 +140,12 @@ void LightLED(String s, bool fullBrightness){
         }
       }
   }
+  /*Posssiblle ffix ffor borken pcb
+   * 
+   * if(index > 30){
+   * index = index - 1;
+   * }
+   */
   FastLED.show();
 }
 
