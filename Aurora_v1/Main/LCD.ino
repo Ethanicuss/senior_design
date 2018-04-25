@@ -1427,9 +1427,7 @@ void DrawUploadScreen() {
   tft.fillCircle(240, 198, 10, 0x07EE);
   tft.fillCircle(277, 198, 10, 0x07EE);
 
-  boolean stillUploading = true;
-
-  while (stillUploading) {
+  for (int i = 0; i < 3; i++) {
     CountdownDelay();
     tft.fillCircle(203, 198, 10, 0x9CF3);
     tft.fillCircle(277, 198, 10, 0x07EE);

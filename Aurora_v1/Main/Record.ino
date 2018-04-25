@@ -45,10 +45,19 @@ char color = 'r';
 String recordedString = "xxxxxxxxxxxxxxxxxx";
 char buffer[6] = {'x','x','x','x','x','x'};
 
+String fileName = "rec";
+int recNum = 0;
+
+//WIFI variables:
+int wifiCase = 0;
+String deviceID = "";
+
 //*** FOR Record Mode I/O ***//
 void mkRecording(){
   // reset buffer for new recording
-  String fileName = "rec.txt";
+  fileName = fileName + recNum;
+  recNum++;
+  fileName = fileName + ".txt";
   g = SD.open(fileName);
   g.write("    \n");
 }
